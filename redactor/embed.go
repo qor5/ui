@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"embed"
 
-	"github.com/goplaid/web"
+	"github.com/qor5/web"
 )
 
 //go:embed assets

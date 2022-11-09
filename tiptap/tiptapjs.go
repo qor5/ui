@@ -3,7 +3,7 @@ package tiptap
 // @snippet_begin(TipTapPackrSample)
 import (
 	"embed"
-	"github.com/goplaid/web"
+	"github.com/qor5/web"
 )
 
 //go:embed tiptapjs/dist

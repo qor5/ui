@@ -1,7 +1,7 @@
 package vuetify
 
 import (
-	"github.com/goplaid/web"
+	"github.com/qor5/web"
 )
 
 func (b *VSliderBuilder) ErrorMessages(v ...string) (r *VSliderBuilder) {

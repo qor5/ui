@@ -4,7 +4,7 @@ import (
 	"embed"
 	"strings"
 
-	"github.com/goplaid/web"
+	"github.com/qor5/web"
 )
 
 //go:embed dist

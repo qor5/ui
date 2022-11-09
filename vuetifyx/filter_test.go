@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/goplaid/ui/vuetifyx"
+	. "github.com/qor5/ui/vuetifyx"
 	"github.com/theplant/testingutils"
 )
 
