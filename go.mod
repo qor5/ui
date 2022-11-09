@@ -1,9 +1,9 @@
-module github.com/goplaid/ui
+module github.com/qor5/ui
 
 go 1.19
 
 require (
-	github.com/goplaid/web v1.2.2
+	github.com/qor5/web v1.2.3
 	github.com/rs/xid v1.4.0
 	github.com/sunfmin/reflectutils v1.0.3
 	github.com/theplant/htmlgo v1.0.3

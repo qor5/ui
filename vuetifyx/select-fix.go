@@ -3,7 +3,7 @@ package vuetifyx
 import (
 	"context"
 
-	"github.com/goplaid/ui/vuetify"
+	"github.com/qor5/ui/vuetify"
 	h "github.com/theplant/htmlgo"
 )
 

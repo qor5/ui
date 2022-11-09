@@ -4,7 +4,7 @@ package tiptap
 import (
 	"context"
 
-	"github.com/goplaid/web"
+	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 

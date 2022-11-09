@@ -3,7 +3,7 @@ package vuetifyx
 import (
 	"embed"
 
-	"github.com/goplaid/web"
+	"github.com/qor5/web"
 )
 
 //go:embed vuetifyxjs/dist
