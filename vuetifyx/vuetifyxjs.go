@@ -18,11 +18,11 @@ func JSComponentsPack() web.ComponentsPack {
 	return web.ComponentsPack(v)
 }
 
-//func CSSComponentsPack() web.ComponentsPack {
-//	v, err := assetsbox.ReadFile("vuetifyxjs/dist/vuetifyxjs.css")
-//	if err != nil {
-//		panic(err)
-//	}
-//
-//	return web.ComponentsPack(v)
-//}
+func CSSComponentsPack() web.ComponentsPack {
+	v, err := assetsbox.ReadFile("vuetifyxjs/dist/vuetifyx.min.css")
+	if err != nil {
+		panic(err)
+	}
+
+	return web.ComponentsPack(v)
+}
