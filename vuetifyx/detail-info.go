@@ -1,10 +1,10 @@
-package stripeui
+package vuetifyx
 
 import (
 	"context"
 	"fmt"
 
-	. "github.com/qor5/ui/vuetify"
+	v "github.com/qor5/ui/vuetify"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -20,12 +20,12 @@ func DetailInfo(columns ...h.HTMLComponent) (r *DetailInfoBuilder) {
 }
 
 func (b *DetailInfoBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
-	row := VRow()
+	row := v.VRow()
 	for _, col := range b.columns {
-		row.AppendChildren(VCol(col).Md(true))
+		row.AppendChildren(v.VCol(col).Md(true))
 	}
 
-	return VContainer(row).Class(b.classes...).MarshalHTML(ctx)
+	return v.VContainer(row).Class(b.classes...).MarshalHTML(ctx)
 }
 
 func (b *DetailInfoBuilder) Class(v ...string) (r *DetailInfoBuilder) {

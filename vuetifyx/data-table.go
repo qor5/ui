@@ -1,11 +1,11 @@
-package stripeui
+package vuetifyx
 
 import (
 	"context"
 	"fmt"
 	"strings"
 
-	. "github.com/qor5/ui/vuetify"
+	v "github.com/qor5/ui/vuetify"
 	"github.com/qor5/web"
 	"github.com/rs/xid"
 	"github.com/sunfmin/reflectutils"
@@ -213,7 +213,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		if hasExpand {
 			initContextVarsMap[fmt.Sprintf("%s_%d", expandVarName, i)] = false
 			tds = append(tds, h.Td(
-				VIcon("$vuetify.icons.expand").
+				v.VIcon("$vuetify.icons.expand").
 					Attr(":class", fmt.Sprintf("{\"v-data-table__expand-icon--active\": vars.%s_%d, \"v-data-table__expand-icon\": true}", expandVarName, i)).
 					On("click", fmt.Sprintf("vars.%s_%d = !vars.%s_%d", expandVarName, i, expandVarName, i)),
 			).Class("pr-0").Style("width: 40px;"))
@@ -230,7 +230,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectFunc(id, ctx)
 			}
 			tds = append(tds, h.Td(
-				VCheckbox().
+				v.VCheckbox().
 					Class("mt-0").
 					InputValue(inputValue).
 					TrueValue(id).
@@ -265,14 +265,14 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			rowMenus, ok := objRowMenusMap[id]
 			if ok {
 				td = h.Td(
-					VMenu(
+					v.VMenu(
 						web.Slot(
-							VBtn("").Children(
-								VIcon("more_horiz"),
+							v.VBtn("").Children(
+								v.VIcon("more_horiz"),
 							).Attr("v-on", "on").Text(true).Fab(true).Small(true),
 						).Name("activator").Scope("{ on }"),
 
-						VList(
+						v.VList(
 							rowMenus...,
 						).Dense(true),
 					),
@@ -304,10 +304,10 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			rows = append(rows,
 				h.Tr(
 					h.Td(
-						VExpandTransition(
+						v.VExpandTransition(
 							h.Div(
 								b.rowExpandFunc(obj, ctx),
-								VDivider(),
+								v.VDivider(),
 							).Attr("v-if", fmt.Sprintf("vars.%s_%d", expandVarName, i)).
 								Class("grey lighten-5"),
 						),
@@ -346,7 +346,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectAllFunc(idsOfPage, ctx)
 			}
 			heads = append(heads, h.Th("").Children(
-				VCheckbox().
+				v.VCheckbox().
 					Class("mt-0").
 					TrueValue(idsOfPageComma).
 					InputValue(allInputValue).
@@ -385,14 +385,14 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		var btn h.HTMLComponent
 
 		if inPlaceLoadMore {
-			btn = VBtn(b.loadMoreLabel).
+			btn = v.VBtn(b.loadMoreLabel).
 				Text(true).
 				Small(true).
 				Class("mt-2").
 				On("click",
 					fmt.Sprintf("vars.%s = !vars.%s", loadMoreVarName, loadMoreVarName))
 		} else {
-			btn = VBtn(b.loadMoreLabel).
+			btn = v.VBtn(b.loadMoreLabel).
 				Text(true).
 				Small(true).
 				Link(true).
@@ -403,7 +403,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		tfoot = h.Tfoot(
 			h.Tr(
 				h.Td(
-					h.If(!hasExpand, VDivider()),
+					h.If(!hasExpand, v.VDivider()),
 					btn,
 				).Class("text-center pa-0").Attr("colspan", fmt.Sprint(tdCount)),
 			),
@@ -434,7 +434,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 	table := h.Div(
 		h.Div(
 			selectedCountNotice,
-			VBtn(b.clearSelectionLabel).
+			v.VBtn(b.clearSelectionLabel).
 				Plain(true).
 				Text(true).
 				Small(true).
@@ -442,7 +442,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		).
 			Class("grey lighten-3 text-center pt-2 pb-2").
 			Attr("v-show", fmt.Sprintf("vars.%s > 0", selectedCountVarName)),
-		VSimpleTable(
+		v.VSimpleTable(
 			thead,
 			h.Tbody(rows...),
 			tfoot,
