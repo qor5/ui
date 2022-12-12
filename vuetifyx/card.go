@@ -1,9 +1,9 @@
-package stripeui
+package vuetifyx
 
 import (
 	"context"
 
-	. "github.com/qor5/ui/vuetify"
+	v "github.com/qor5/ui/vuetify"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -54,15 +54,15 @@ func (b *CardBuilder) Class(names ...string) (r *CardBuilder) {
 func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 	var sb h.HTMLComponent
 	if len(b.systemBar) > 0 {
-		sb = VSystemBar(b.systemBar...).Class("mx-2 pt-4").Color("white").Height(32)
+		sb = v.VSystemBar(b.systemBar...).Class("mx-2 pt-4").Color("white").Height(32)
 	}
 
-	return VCard(
+	return v.VCard(
 		sb,
-		VToolbar(
-			VToolbarTitle("").Children(b.header...),
-			VSpacer(),
+		v.VToolbar(
+			v.VToolbarTitle("").Children(b.header...),
+			v.VSpacer(),
 		).Flat(true).AppendChildren(b.actions...),
-		VDivider(),
+		v.VDivider(),
 	).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
 }

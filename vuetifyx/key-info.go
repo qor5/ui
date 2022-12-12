@@ -1,4 +1,4 @@
-package stripeui
+package vuetifyx
 
 import (
 	"context"
