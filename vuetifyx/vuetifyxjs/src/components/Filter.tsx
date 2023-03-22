@@ -16,7 +16,9 @@ import {
 	VTextField,
 	VToolbar,
 	VToolbarTitle,
-	VDatePicker
+	VDatePicker,
+	VList,
+	VListItem
 } from 'vuetify/lib';
 import VAutocomplete from './Autocomplete';
 import * as constants from './Constants';
@@ -745,6 +747,8 @@ export const Filter = Vue.extend({
 		vspacer: VSpacer,
 		vcheckbox: VCheckbox,
 		vchip: VChip,
+		vlist: VList,
+		vlistitem: VListItem,
 	},
 
 	props: {
@@ -1012,7 +1016,7 @@ export const Filter = Vue.extend({
 
 			if (isFoldedItem) {
 				return (
-					<div on={on} class={'my-1 pa-1'} style={'cursor: pointer; user-select: none;'}>{body}</div>
+					<vlistitem on={on} dense={true} class={'my-1 px-2'}>{body}</vlistitem>
 				)
 			}
 			return (
@@ -1140,7 +1144,7 @@ export const Filter = Vue.extend({
 						closeOnContentClick={false}
 						rounded={'md'}
 					>
-						<div class={'pa-2 white'}>{foldedFilters}</div>
+						<vlist flat={true} class={'white pa-0'}>{foldedFilters}</vlist>
 					</vmenu>
 					: null
 				}
