@@ -53,6 +53,16 @@ func (b *VXAutocompleteBuilder) Items(v interface{}) (r *VXAutocompleteBuilder) 
 	return b
 }
 
+func (b *VXAutocompleteBuilder) ChipColor(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("chip-color", v)
+	return b
+}
+
+func (b *VXAutocompleteBuilder) ChipTextColor(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("chip-text-color", v)
+	return b
+}
+
 func (b *VXAutocompleteBuilder) SetDataSource(ds *AutocompleteDataSource) (r *VXAutocompleteBuilder) {
 	b.tag.Attr("remote-url", ds.RemoteURL)
 	b.tag.Attr("event-name", ds.EventName)

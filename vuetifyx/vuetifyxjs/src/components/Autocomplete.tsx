@@ -20,6 +20,8 @@ export default Vue.extend({
 		hideSelected: Boolean,
 		hideDetails: Boolean,
 		sorting: Boolean,
+		chipColor: String,
+		chipTextColor: String,
 		items: {
 			type: Array,
 			default: () => ([]),
@@ -224,8 +226,10 @@ export default Vue.extend({
 				const nodes: VNode[] = [];
 				const nodeData: VNodeData = {
 					props: {
-						...props.attrs,
+						draggable: true,
 						close: true,
+						color: this.chipColor,
+						"text-color": this.chipTextColor,
 					},
 					on: {
 						"click:close": () => {
