@@ -1,4 +1,5 @@
 import Vue, { CreateElement, VNode, VNodeData } from 'vue';
+import draggable from 'vuedraggable';
 import { VAutocomplete, VPagination } from 'vuetify/lib';
 import { Core, SelectedItems, slotTemplates } from './Helpers';
 
@@ -7,6 +8,7 @@ export default Vue.extend({
 	components: {
 		vpagination: VPagination,
 		vautocomplete: VAutocomplete,
+		vdraggable: draggable,
 	},
 
 	props: {
@@ -17,6 +19,7 @@ export default Vue.extend({
 		cacheItems: Boolean,
 		hideSelected: Boolean,
 		hideDetails: Boolean,
+		sorting: Boolean,
 		items: {
 			type: Array,
 			default: () => ([]),
@@ -71,6 +74,33 @@ export default Vue.extend({
 				this.loadRemoteItems();
 			}
 		},
+		changeStatus(vals: any) {
+			const cachedSelectedItems: any[] = [];
+			vals.forEach((val: any) => {
+				this.listItems.forEach((item: any) => {
+					if (val == item.value) {
+						cachedSelectedItems.push(item);
+						return;
+					}
+				})
+			})
+
+			this.cachedSelectedItems = (cachedSelectedItems) as [];
+			this.value = vals;
+			this.$emit("change", vals);
+		},
+		removeItem(v: any) {
+			return () => {
+				this.value = this.value.filter(element => element != v);
+				this.changeStatus(this.value);
+			}
+		},
+		changeOrder(vs: any){
+			this.cachedSelectedItems = vs
+			const vals = this.cachedSelectedItems.map((item: any) => item.value)
+			this.value = vals as any;
+			this.$emit('change', vals);
+		},
 	},
 
 	created() {
@@ -106,7 +136,6 @@ export default Vue.extend({
 	render(h: CreateElement): VNode {
 		const {
 			remoteUrl,
-			multiple,
 			hideDetails,
 		} = this.$props;
 
@@ -116,6 +145,7 @@ export default Vue.extend({
 		} = this.$props
 
 		const slots: VNode[] = slotTemplates(h, this.$slots);
+
 		if (remoteUrl) {
 			hideSelected = true;
 			cacheItems = false;
@@ -170,84 +200,71 @@ export default Vue.extend({
 					</template>
 				)
 			}
+		}
 
-			if (this.hasIcon){
-				this.$scopedSlots["item"] = (props: any)  => {
-					const nodes: VNode[] = [];
-					nodes.push(
-						<v-list-item-avatar tile>
-							<img src={props.item.icon}/>
-						</v-list-item-avatar>
-					)
-					nodes.push(
-						<v-list-item-content>
-							<v-list-item-title v-html={props.item.text}>{props.item.text}</v-list-item-title>
-						</v-list-item-content>
-					)
-					return nodes;
-				}
-
-				this.$scopedSlots["selection"] = (props: any)  => {
-					const nodes: VNode[] = [];
-					const nodeData: VNodeData = {
-						props: {
-							...props.attrs,
-							close: true,
-						},
-						on: {
-							"click:close": () => {
-								this.value.splice(this.value.indexOf(props.item.value as never), 1)
-								this.$emit("change", this.value);
-							},
-						},
-
-					}
-					nodes.push(
-					<v-chip {...nodeData}>
-						<v-avatar left>
-							<v-img src={props.item.icon}></v-img>
-						</v-avatar>
-						{props.item.text}
-					</v-chip>
-					)
-					return nodes;
-				}
+		if (this.hasIcon){
+			this.$scopedSlots["item"] = (props: any)  => {
+				const nodes: VNode[] = [];
+				nodes.push(
+					<v-list-item-avatar tile>
+						<img src={props.item.icon}/>
+					</v-list-item-avatar>
+				)
+				nodes.push(
+					<v-list-item-content>
+						<v-list-item-title v-html={props.item.text}>{props.item.text}</v-list-item-title>
+					</v-list-item-content>
+				)
+				return nodes;
 			}
 		}
 
-		const data: VNodeData = {
+		if (this.$attrs.chips && (this.hasIcon || remoteUrl)){
+			this.$scopedSlots["selection"] = (props: any)  => {
+				const nodes: VNode[] = [];
+				const nodeData: VNodeData = {
+					props: {
+						...props.attrs,
+						close: true,
+					},
+					on: {
+						"click:close": () => {
+							this.value.splice(this.value.indexOf(props.item.value as never), 1)
+							this.changeStatus(this.value);
+						},
+					},
+				}
+				nodes.push(
+				<v-chip {...nodeData}>
+					{ this.hasIcon ?
+					<v-avatar left>
+						<v-img src={props.item.icon}></v-img>
+					</v-avatar>
+					: null }
+					{props.item.text}
+				</v-chip>
+				)
+				return nodes;
+			}
+		}
+
+		const autocompleteData: VNodeData = {
 			props: {
-				...{
-					// solo: true,
-					multiple,
-					chips: true,
-					deletableChips: multiple,
-					clearable: true,
-					hideSelected,
-					cacheItems,
-					hideDetails,
-				},
 				...this.$attrs,
+				...this.$props,
 				...{
 					items: this.listItems,
 					value: this.value,
 					loading: this.isLoading,
+					hideSelected,
+					cacheItems,
+					hideDetails,
 				},
 			},
 
 			on: {
 				...{
-					change: (vals: any) => {
-						const items: any[] = [];
-						this.listItems.forEach((item: any) => {
-							if (vals.includes(item.value)) {
-								items.push(item);
-							}
-						})
-						this.cachedSelectedItems = (items) as [];
-						this.value = vals;
-						this.$emit("change", vals);
-					},
+					change: this.changeStatus,
 					focus: (e: any) => {
 						this.searchKeyword = '';
 					},
@@ -260,11 +277,45 @@ export default Vue.extend({
 				...this.$scopedSlots,
 			}
 		};
+
 		return (
-			<vautocomplete {...data}>
-				{slots}
+		<div>
+			{(this.sorting && this.cachedSelectedItems.length>0)  ?
+			<v-card>
+				<v-list>
+					<vx-draggable animation='300' handle='.handle' value={this.cachedSelectedItems} onInput={this.changeOrder}>
+					{this.cachedSelectedItems.map((item: any, i) => {
+						return (
+						<div key={item.value}>
+							<v-list-item>
+							{this.hasIcon ?
+								<v-list-item-avatar tile>
+									<v-img src={item.icon}></v-img>
+								</v-list-item-avatar>
+								: null}
+								<v-list-item-content>
+									<v-list-item-title>{item.text}</v-list-item-title>
+								</v-list-item-content>
+								<v-list-item-icon>
+									<v-btn icon="true">
+										<v-icon onClick={this.removeItem(item.value)}>delete</v-icon>
+									</v-btn>
+									<v-icon class="handle">reorder</v-icon>
+								</v-list-item-icon>
+							</v-list-item>
+							{i < this.cachedSelectedItems.length - 1 ? <v-divider key={i}></v-divider> : null}
+						</div>
+						)
+					})}
+					</vx-draggable>
+				</v-list>
+			</v-card>
+			: null}
+			<vautocomplete {...autocompleteData}>
+			{slots}
 			</vautocomplete>
+		</div>
 		);
 	},
-});
+})
 
