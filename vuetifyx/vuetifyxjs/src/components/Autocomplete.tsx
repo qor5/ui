@@ -224,6 +224,10 @@ export default Vue.extend({
 		if (this.$attrs.chips && (this.hasIcon || remoteUrl)){
 			this.$scopedSlots["selection"] = (props: any)  => {
 				const nodes: VNode[] = [];
+				if (this.sorting){
+					return nodes
+				}
+
 				const nodeData: VNodeData = {
 					props: {
 						draggable: true,
@@ -260,12 +264,13 @@ export default Vue.extend({
 					items: this.listItems,
 					value: this.value,
 					loading: this.isLoading,
+					clearable: this.sorting ? false : this.$attrs.clearable,
 					hideSelected,
 					cacheItems,
 					hideDetails,
 				},
 			},
-
+			class:  this.sorting ? "v-autocomplete-sorting" : "",
 			on: {
 				...{
 					change: this.changeStatus,
@@ -322,4 +327,3 @@ export default Vue.extend({
 		);
 	},
 })
-

@@ -1,32 +1,41 @@
 <template>
 	<div>
 		<label class="v-label theme--light" v-html="label"></label>
-		<v-card v-if='internalSelectedItems.length > 0'>
+		<v-card v-if="internalSelectedItems.length > 0">
 			<v-list>
 				<vx-draggable
-					v-model='internalSelectedItems'
-					animation='300'
+					v-model="internalSelectedItems"
+					animation="300"
 					handle=".handle"
-					@change="changeOrder">
-					<div v-for='(item, index) in internalSelectedItems' :key='item.id'>
+					@change="changeOrder"
+				>
+					<div
+						v-for="(item, index) in internalSelectedItems"
+						:key="item.id"
+					>
 						<v-list-item>
 							<v-list-item-avatar tile>
 								<v-img :src="item[itemImage]"></v-img>
 							</v-list-item-avatar>
 							<v-list-item-content>
-								<v-list-item-title>{{ item[itemText] }}
+								<v-list-item-title
+									>{{ item[itemText] }}
 								</v-list-item-title>
 							</v-list-item-content>
 							<v-list-item-icon>
-								<v-btn :icon="true" @click="removeItem(item[itemValue])">
+								<v-btn
+									:icon="true"
+									@click="removeItem(item[itemValue])"
+								>
 									<v-icon>delete</v-icon>
 								</v-btn>
 								<v-icon class="handle">reorder</v-icon>
 							</v-list-item-icon>
 						</v-list-item>
 						<v-divider
-							v-if='index < internalSelectedItems.length - 1'
-							:key='index'></v-divider>
+							v-if="index < internalSelectedItems.length - 1"
+							:key="index"
+						></v-divider>
 					</div>
 				</vx-draggable>
 			</v-list>
@@ -49,11 +58,12 @@
 			<template v-slot:item="data">
 				<template>
 					<v-list-item-avatar tile>
-						<img :src="data.item[itemImage]">
+						<img :src="data.item[itemImage]" />
 					</v-list-item-avatar>
 					<v-list-item-content>
 						<v-list-item-title
-							v-html="data.item[itemText]"></v-list-item-title>
+							v-html="data.item[itemText]"
+						></v-list-item-title>
 					</v-list-item-content>
 				</template>
 			</template>
@@ -63,7 +73,7 @@
 
 <script>
 export default {
-	name: 'vx-selectmany',
+	name: "vx-selectmany",
 	props: {
 		items: {
 			type: Array,
@@ -78,23 +88,23 @@ export default {
 		},
 		itemValue: {
 			type: String,
-			default: 'id',
+			default: "id",
 		},
 		itemText: {
 			type: String,
-			default: 'text',
+			default: "text",
 		},
 		itemImage: {
 			type: String,
-			default: 'image',
+			default: "image",
 		},
 		label: {
 			type: String,
-			default: '',
+			default: "",
 		},
 		addItemLabel: {
 			type: String,
-			default: '',
+			default: "",
 		},
 	},
 	data() {
@@ -102,7 +112,7 @@ export default {
 			internalSelectedItems: [],
 			internalItems: [],
 			autocompleteValue: [],
-			searchKeyword: '',
+			searchKeyword: "",
 			isLoading: false,
 			noFilter: false,
 		};
@@ -124,22 +134,30 @@ export default {
 				return;
 			}
 			this.isLoading = true;
-			this.searchItemsFunc(val).then(r => {
-				this.internalItems = r.data || [];
-			}).finally(() => {
-				this.isLoading = false;
-			});
+			this.searchItemsFunc(val)
+				.then((r) => {
+					this.internalItems = r.data || [];
+				})
+				.finally(() => {
+					this.isLoading = false;
+				});
 		},
 	},
 	methods: {
 		addItem(event) {
 			this.autocompleteValue = [];
-			if (this.internalSelectedItems.find(
-				element => element[this.itemValue] == event)) {
+			if (
+				this.internalSelectedItems.find(
+					(element) => element[this.itemValue] == event
+				)
+			) {
 				return;
 			}
 			this.internalSelectedItems.push(
-				this.internalItems.find(element => element[this.itemValue] == event));
+				this.internalItems.find(
+					(element) => element[this.itemValue] == event
+				)
+			);
 			this.setValue();
 		},
 		changeOrder(event) {
@@ -147,7 +165,8 @@ export default {
 		},
 		removeItem(id) {
 			this.internalSelectedItems = this.internalSelectedItems.filter(
-				element => element[this.itemValue] != id);
+				(element) => element[this.itemValue] != id
+			);
 			this.setValue();
 		},
 		search(val) {
@@ -157,12 +176,15 @@ export default {
 			this.searchKeyword = val;
 		},
 		focus() {
-			this.search('');
+			this.search("");
 		},
 		setValue() {
-			this.$emit('input', this.internalSelectedItems.map((i) => {
-				return i[this.itemValue];
-			}));
+			this.$emit(
+				"input",
+				this.internalSelectedItems.map((i) => {
+					return i[this.itemValue];
+				})
+			);
 		},
 	},
 };
@@ -172,5 +194,11 @@ export default {
 .handle {
 	margin-left: 8px;
 	cursor: move;
+}
+</style>
+
+<style>
+.v-autocomplete-sorting .v-label--active {
+	transform: none;
 }
 </style>
