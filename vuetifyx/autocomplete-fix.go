@@ -18,18 +18,13 @@ func VXAutocomplete(children ...h.HTMLComponent) (r *VXAutocompleteBuilder) {
 	r = &VXAutocompleteBuilder{
 		tag: h.Tag("vx-autocomplete").Children(children...),
 	}
-	r.Multiple(true)
+	r.Multiple(true).Chips(true).DeletableChips(true).Clearable(true)
 
 	return
 }
 
 func (b *VXAutocompleteBuilder) ErrorMessages(v ...string) (r *VXAutocompleteBuilder) {
 	vuetify.SetErrorMessages(b.tag, v)
-	return b
-}
-
-func (b *VXAutocompleteBuilder) Items(v interface{}) (r *VXAutocompleteBuilder) {
-	b.items = v
 	return b
 }
 
@@ -40,6 +35,31 @@ func (b *VXAutocompleteBuilder) FieldName(v string) (r *VXAutocompleteBuilder) {
 
 func (b *VXAutocompleteBuilder) SelectedItems(v interface{}) (r *VXAutocompleteBuilder) {
 	b.selectedItems = v
+	return b
+}
+
+func (b *VXAutocompleteBuilder) HasIcon(v bool) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("has-icon", v)
+	return b
+}
+
+func (b *VXAutocompleteBuilder) Sorting(v bool) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("sorting", v)
+	return b
+}
+
+func (b *VXAutocompleteBuilder) Items(v interface{}) (r *VXAutocompleteBuilder) {
+	b.items = v
+	return b
+}
+
+func (b *VXAutocompleteBuilder) ChipColor(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("chip-color", v)
+	return b
+}
+
+func (b *VXAutocompleteBuilder) ChipTextColor(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("chip-text-color", v)
 	return b
 }
 
