@@ -13,6 +13,7 @@ type CardBuilder struct {
 	header     []h.HTMLComponent
 	actions    []h.HTMLComponent
 	classNames []string
+	outlined   bool
 }
 
 func Card(children ...h.HTMLComponent) (r *CardBuilder) {
@@ -51,6 +52,11 @@ func (b *CardBuilder) Class(names ...string) (r *CardBuilder) {
 	return b
 }
 
+func (b *CardBuilder) Outlined(v bool) (r *CardBuilder) {
+	b.outlined = v
+	return b
+}
+
 func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 	var sb h.HTMLComponent
 	if len(b.systemBar) > 0 {
@@ -64,5 +70,5 @@ func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 			v.VSpacer(),
 		).Flat(true).AppendChildren(b.actions...),
 		v.VDivider(),
-	).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
+	).Outlined(b.outlined).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
 }
