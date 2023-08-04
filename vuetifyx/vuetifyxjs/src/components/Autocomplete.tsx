@@ -1,10 +1,10 @@
 import Vue, { CreateElement, VNode, VNodeData } from 'vue';
 import draggable from 'vuedraggable';
 import { VAutocomplete, VPagination } from 'vuetify/lib';
-import { Core, SelectedItems, slotTemplates } from './Helpers';
+import { Core, slotTemplates } from './Helpers';
 
 export default Vue.extend({
-	mixins: [Core, SelectedItems],
+	mixins: [Core],
 	components: {
 		vpagination: VPagination,
 		vautocomplete: VAutocomplete,
@@ -86,8 +86,14 @@ export default Vue.extend({
 					}
 				})
 			})
-
-			this.cachedSelectedItems = (cachedSelectedItems) as [];
+			// remove duplicate items
+			const uniqueCachedSelectedItems = cachedSelectedItems.filter((obj, index, self) => {
+				return index === self.findIndex((o) => (
+					o.value === obj.value
+				));
+			});
+			this.cachedSelectedItems = (uniqueCachedSelectedItems) as [];
+			console.log("cachedSelectedItems", this.cachedSelectedItems);
 			this.value = vals;
 			this.$emit("change", vals);
 		},
@@ -106,9 +112,9 @@ export default Vue.extend({
 	},
 
 	created() {
-		this.listItems =  this.$props.items || this.$props.selectedItems || [];
-		this.cachedSelectedItems = this.$props.selectedItems || [];
+		this.listItems =  this.$props.items || [];
 		this.value = (this.$attrs.value) as any || [];
+		this.cachedSelectedItems = this.value;
 	},
 
 	mounted() {
