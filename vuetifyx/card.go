@@ -13,6 +13,7 @@ type CardBuilder struct {
 	header     []h.HTMLComponent
 	actions    []h.HTMLComponent
 	classNames []string
+	outlined   bool
 }
 
 func Card(children ...h.HTMLComponent) (r *CardBuilder) {
@@ -51,10 +52,27 @@ func (b *CardBuilder) Class(names ...string) (r *CardBuilder) {
 	return b
 }
 
+func (b *CardBuilder) Outlined(v bool) (r *CardBuilder) {
+	b.outlined = v
+	return b
+}
+
 func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 	var sb h.HTMLComponent
+	var hr h.HTMLComponent
 	if len(b.systemBar) > 0 {
 		sb = v.VSystemBar(b.systemBar...).Class("mx-2 pt-4").Color("white").Height(32)
+	}
+	if len(b.children) > 0 {
+		empty := true
+		for _, c := range b.children {
+			if c != nil {
+				empty = false
+			}
+		}
+		if !empty {
+			hr = v.VDivider()
+		}
 	}
 
 	return v.VCard(
@@ -63,6 +81,6 @@ func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 			v.VToolbarTitle("").Children(b.header...),
 			v.VSpacer(),
 		).Flat(true).AppendChildren(b.actions...),
-		v.VDivider(),
-	).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
+		hr,
+	).Outlined(b.outlined).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
 }
