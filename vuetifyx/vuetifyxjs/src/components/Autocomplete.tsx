@@ -77,6 +77,12 @@ export default Vue.extend({
 			}
 		},
 		changeStatus(vals: any) {
+			if (!this.remoteUrl || !this.eventName) {
+				this.value = vals;
+				this.$emit("change", vals);
+				return;
+			}
+
 			const cachedSelectedItems: any[] = [];
 			vals.forEach((val: any) => {
 				this.listItems.forEach((item: any) => {
@@ -93,7 +99,6 @@ export default Vue.extend({
 				));
 			});
 			this.cachedSelectedItems = (uniqueCachedSelectedItems) as [];
-			console.log("cachedSelectedItems", this.cachedSelectedItems);
 			this.value = vals;
 			this.$emit("change", vals);
 		},
