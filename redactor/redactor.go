@@ -36,6 +36,11 @@ func (b *Builder) Config(v Config) (r *Builder) {
 	return b
 }
 
+func (b *Builder) RawConfig(v interface{}) (r *Builder) {
+	b.tag.Attr(":config", h.JSONString(v))
+	return b
+}
+
 func (b *Builder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }
