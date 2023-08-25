@@ -128,6 +128,7 @@ export default Vue.extend({
 				vals.push(val.value);
 			})
 			this.value = vals as any;
+			this.$attrs.value = vals as any;
 		}
 	},
 
