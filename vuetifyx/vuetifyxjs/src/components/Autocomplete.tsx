@@ -119,11 +119,21 @@ export default Vue.extend({
 	created() {
 		this.listItems =  this.$props.items || [];
 		this.value = (this.$attrs.value) as any || [];
-		this.cachedSelectedItems = this.value;
+		if (this.remoteUrl) {
+			this.cachedSelectedItems = this.value;
+			this.listItems =  this.value;
+
+			const vals: any[] = [];
+			this.value.forEach((val: any) => {
+				vals.push(val.value);
+			})
+			this.value = vals as any;
+			this.$attrs.value = vals as any;
+		}
 	},
 
 	mounted() {
-		(this as any).$plaid().fieldValue(this.$props.fieldName, this.$attrs.value);
+		(this as any).$plaid().fieldValue(this.$props.fieldName, this.value);
 	},
 
 	watch: {
