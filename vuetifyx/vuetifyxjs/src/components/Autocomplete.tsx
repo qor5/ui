@@ -126,8 +126,8 @@ export default Vue.extend({
 			const vals: any[] = [];
 			this.value.forEach((val: any) => {
 				vals.push(val.value);
-				this.value = vals as any;
 			})
+			this.value = vals as any;
 		}
 	},
 
