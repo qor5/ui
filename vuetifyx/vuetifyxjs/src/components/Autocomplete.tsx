@@ -132,7 +132,7 @@ export default Vue.extend({
 	},
 
 	mounted() {
-		(this as any).$plaid().fieldValue(this.$props.fieldName, this.$attrs.value);
+		(this as any).$plaid().fieldValue(this.$props.fieldName, this.value);
 	},
 
 	watch: {
