@@ -8,7 +8,7 @@
 				:label="label"
 				:value="formattedDatetime"
 				:hide-details="hideDetails"
-				v-on="on"
+                @click.native="on.click"
 				prepend-icon="edit_calendar"
 				readonly
 			>
