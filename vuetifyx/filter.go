@@ -62,6 +62,7 @@ func (b *VXFilterBuilder) MarshalHTML(ctx context.Context) (r []byte, err error)
 		//	$plaid().stringLocation(qs).mergeQueryWithoutParams(keysInFilterData).url(window.location.href).pushState(true).go()
 		b.onChange = web.GET().
 			StringQuery(web.Var("$event.encodedFilterData")).
+			Query("page", 1).
 			ClearMergeQuery(web.Var("$event.filterKeys")).
 			PushState(true).
 			Go()
