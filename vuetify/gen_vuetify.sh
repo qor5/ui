@@ -4,4 +4,5 @@ if [ -f "$API" ]; then
 else
   npm -g install vuetify@latest
 fi
+find *.go | grep -v "fix-" | xargs rm
 cat $API | vuetifyapi2go -comp=all
