@@ -18,33 +18,18 @@ func VWindow(children ...h.HTMLComponent) (r *VWindowBuilder) {
 	return
 }
 
-func (b *VWindowBuilder) ActiveClass(v string) (r *VWindowBuilder) {
-	b.tag.Attr("active-class", v)
-	return b
-}
-
 func (b *VWindowBuilder) Continuous(v bool) (r *VWindowBuilder) {
 	b.tag.Attr(":continuous", fmt.Sprint(v))
 	return b
 }
 
-func (b *VWindowBuilder) Dark(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VWindowBuilder) NextIcon(v interface{}) (r *VWindowBuilder) {
+	b.tag.Attr(":next-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VWindowBuilder) Light(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowBuilder) NextIcon(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":next-icon", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowBuilder) PrevIcon(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":prev-icon", fmt.Sprint(v))
+func (b *VWindowBuilder) PrevIcon(v interface{}) (r *VWindowBuilder) {
+	b.tag.Attr(":prev-icon", h.JSONString(v))
 	return b
 }
 
@@ -53,18 +38,8 @@ func (b *VWindowBuilder) Reverse(v bool) (r *VWindowBuilder) {
 	return b
 }
 
-func (b *VWindowBuilder) ShowArrows(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":show-arrows", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowBuilder) ShowArrowsOnHover(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":show-arrows-on-hover", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowBuilder) Tag(v string) (r *VWindowBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VWindowBuilder) ShowArrows(v interface{}) (r *VWindowBuilder) {
+	b.tag.Attr(":show-arrows", h.JSONString(v))
 	return b
 }
 
@@ -73,18 +48,38 @@ func (b *VWindowBuilder) Touch(v interface{}) (r *VWindowBuilder) {
 	return b
 }
 
-func (b *VWindowBuilder) Touchless(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":touchless", fmt.Sprint(v))
+func (b *VWindowBuilder) Direction(v interface{}) (r *VWindowBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
 	return b
 }
 
-func (b *VWindowBuilder) Value(v interface{}) (r *VWindowBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VWindowBuilder) ModelValue(v interface{}) (r *VWindowBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VWindowBuilder) Vertical(v bool) (r *VWindowBuilder) {
-	b.tag.Attr(":vertical", fmt.Sprint(v))
+func (b *VWindowBuilder) Disabled(v bool) (r *VWindowBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VWindowBuilder) SelectedClass(v string) (r *VWindowBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VWindowBuilder) Mandatory(v interface{}) (r *VWindowBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
+	return b
+}
+
+func (b *VWindowBuilder) Tag(v string) (r *VWindowBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VWindowBuilder) Theme(v string) (r *VWindowBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

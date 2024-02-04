@@ -18,6 +18,11 @@ func VMain(children ...h.HTMLComponent) (r *VMainBuilder) {
 	return
 }
 
+func (b *VMainBuilder) Scrollable(v bool) (r *VMainBuilder) {
+	b.tag.Attr(":scrollable", fmt.Sprint(v))
+	return b
+}
+
 func (b *VMainBuilder) Tag(v string) (r *VMainBuilder) {
 	b.tag.Attr("tag", v)
 	return b

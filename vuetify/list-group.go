@@ -18,13 +18,13 @@ func VListGroup(children ...h.HTMLComponent) (r *VListGroupBuilder) {
 	return
 }
 
-func (b *VListGroupBuilder) ActiveClass(v string) (r *VListGroupBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VListGroupBuilder) ActiveColor(v string) (r *VListGroupBuilder) {
+	b.tag.Attr("active-color", v)
 	return b
 }
 
-func (b *VListGroupBuilder) AppendIcon(v string) (r *VListGroupBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VListGroupBuilder) BaseColor(v string) (r *VListGroupBuilder) {
+	b.tag.Attr("base-color", v)
 	return b
 }
 
@@ -33,43 +33,48 @@ func (b *VListGroupBuilder) Color(v string) (r *VListGroupBuilder) {
 	return b
 }
 
-func (b *VListGroupBuilder) Disabled(v bool) (r *VListGroupBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
+func (b *VListGroupBuilder) CollapseIcon(v interface{}) (r *VListGroupBuilder) {
+	b.tag.Attr(":collapse-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VListGroupBuilder) Eager(v bool) (r *VListGroupBuilder) {
-	b.tag.Attr(":eager", fmt.Sprint(v))
+func (b *VListGroupBuilder) ExpandIcon(v interface{}) (r *VListGroupBuilder) {
+	b.tag.Attr(":expand-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VListGroupBuilder) Group(v string) (r *VListGroupBuilder) {
-	b.tag.Attr("group", v)
+func (b *VListGroupBuilder) PrependIcon(v interface{}) (r *VListGroupBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VListGroupBuilder) NoAction(v bool) (r *VListGroupBuilder) {
-	b.tag.Attr(":no-action", fmt.Sprint(v))
+func (b *VListGroupBuilder) AppendIcon(v interface{}) (r *VListGroupBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VListGroupBuilder) PrependIcon(v string) (r *VListGroupBuilder) {
-	b.tag.Attr("prepend-icon", v)
+func (b *VListGroupBuilder) Fluid(v bool) (r *VListGroupBuilder) {
+	b.tag.Attr(":fluid", fmt.Sprint(v))
 	return b
 }
 
-func (b *VListGroupBuilder) Ripple(v interface{}) (r *VListGroupBuilder) {
-	b.tag.Attr(":ripple", h.JSONString(v))
+func (b *VListGroupBuilder) Subgroup(v bool) (r *VListGroupBuilder) {
+	b.tag.Attr(":subgroup", fmt.Sprint(v))
 	return b
 }
 
-func (b *VListGroupBuilder) SubGroup(v bool) (r *VListGroupBuilder) {
-	b.tag.Attr(":sub-group", fmt.Sprint(v))
+func (b *VListGroupBuilder) Title(v string) (r *VListGroupBuilder) {
+	b.tag.Attr("title", v)
 	return b
 }
 
 func (b *VListGroupBuilder) Value(v interface{}) (r *VListGroupBuilder) {
 	b.tag.Attr(":value", h.JSONString(v))
+	return b
+}
+
+func (b *VListGroupBuilder) Tag(v string) (r *VListGroupBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 

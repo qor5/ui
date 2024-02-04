@@ -18,8 +18,8 @@ func VItem(children ...h.HTMLComponent) (r *VItemBuilder) {
 	return
 }
 
-func (b *VItemBuilder) ActiveClass(v string) (r *VItemBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VItemBuilder) Value(v interface{}) (r *VItemBuilder) {
+	b.tag.Attr(":value", h.JSONString(v))
 	return b
 }
 
@@ -28,8 +28,8 @@ func (b *VItemBuilder) Disabled(v bool) (r *VItemBuilder) {
 	return b
 }
 
-func (b *VItemBuilder) Value(v interface{}) (r *VItemBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VItemBuilder) SelectedClass(v string) (r *VItemBuilder) {
+	b.tag.Attr("selected-class", v)
 	return b
 }
 

@@ -18,8 +18,8 @@ func VSlideGroup(children ...h.HTMLComponent) (r *VSlideGroupBuilder) {
 	return
 }
 
-func (b *VSlideGroupBuilder) ActiveClass(v string) (r *VSlideGroupBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VSlideGroupBuilder) Symbol(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":symbol", h.JSONString(v))
 	return b
 }
 
@@ -28,48 +28,28 @@ func (b *VSlideGroupBuilder) CenterActive(v bool) (r *VSlideGroupBuilder) {
 	return b
 }
 
-func (b *VSlideGroupBuilder) Dark(v bool) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VSlideGroupBuilder) Direction(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
 	return b
 }
 
-func (b *VSlideGroupBuilder) Light(v bool) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VSlideGroupBuilder) NextIcon(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":next-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VSlideGroupBuilder) Mandatory(v bool) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
+func (b *VSlideGroupBuilder) PrevIcon(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":prev-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VSlideGroupBuilder) Max(v int) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
+func (b *VSlideGroupBuilder) ShowArrows(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":show-arrows", h.JSONString(v))
 	return b
 }
 
-func (b *VSlideGroupBuilder) MobileBreakpoint(v int) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":mobile-breakpoint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSlideGroupBuilder) Multiple(v bool) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSlideGroupBuilder) NextIcon(v string) (r *VSlideGroupBuilder) {
-	b.tag.Attr("next-icon", v)
-	return b
-}
-
-func (b *VSlideGroupBuilder) PrevIcon(v string) (r *VSlideGroupBuilder) {
-	b.tag.Attr("prev-icon", v)
-	return b
-}
-
-func (b *VSlideGroupBuilder) ShowArrows(v bool) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":show-arrows", fmt.Sprint(v))
+func (b *VSlideGroupBuilder) MobileBreakpoint(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 
@@ -78,8 +58,33 @@ func (b *VSlideGroupBuilder) Tag(v string) (r *VSlideGroupBuilder) {
 	return b
 }
 
-func (b *VSlideGroupBuilder) Value(v interface{}) (r *VSlideGroupBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VSlideGroupBuilder) ModelValue(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VSlideGroupBuilder) Multiple(v bool) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSlideGroupBuilder) Max(v int) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":max", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSlideGroupBuilder) SelectedClass(v string) (r *VSlideGroupBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VSlideGroupBuilder) Disabled(v bool) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSlideGroupBuilder) Mandatory(v interface{}) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
 	return b
 }
 

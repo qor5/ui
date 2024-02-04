@@ -18,28 +18,18 @@ func VSlider(children ...h.HTMLComponent) (r *VSliderBuilder) {
 	return
 }
 
-func (b *VSliderBuilder) AppendIcon(v string) (r *VSliderBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VSliderBuilder) Label(v string) (r *VSliderBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VSliderBuilder) BackgroundColor(v string) (r *VSliderBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VSliderBuilder) Focused(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
 	return b
 }
 
-func (b *VSliderBuilder) Color(v string) (r *VSliderBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VSliderBuilder) Dark(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Dense(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VSliderBuilder) Reverse(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":reverse", fmt.Sprint(v))
 	return b
 }
 
@@ -53,103 +43,23 @@ func (b *VSliderBuilder) Error(v bool) (r *VSliderBuilder) {
 	return b
 }
 
-func (b *VSliderBuilder) ErrorCount(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Height(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) HideDetails(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Hint(v string) (r *VSliderBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VSliderBuilder) Id(v string) (r *VSliderBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VSliderBuilder) InverseLabel(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":inverse-label", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Label(v string) (r *VSliderBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VSliderBuilder) Light(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) LoaderHeight(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":loader-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Loading(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Max(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) Messages(v string) (r *VSliderBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VSliderBuilder) Min(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":min", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) PersistentHint(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) PrependIcon(v string) (r *VSliderBuilder) {
-	b.tag.Attr("prepend-icon", v)
-	return b
-}
-
 func (b *VSliderBuilder) Readonly(v bool) (r *VSliderBuilder) {
 	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 
-func (b *VSliderBuilder) Rules(v interface{}) (r *VSliderBuilder) {
-	b.tag.Attr(":rules", h.JSONString(v))
+func (b *VSliderBuilder) Max(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":max", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) Step(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":step", fmt.Sprint(v))
+func (b *VSliderBuilder) Min(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":min", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) Success(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSliderBuilder) SuccessMessages(v string) (r *VSliderBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VSliderBuilder) Step(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":step", h.JSONString(v))
 	return b
 }
 
@@ -158,28 +68,33 @@ func (b *VSliderBuilder) ThumbColor(v string) (r *VSliderBuilder) {
 	return b
 }
 
-func (b *VSliderBuilder) ThumbLabel(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":thumb-label", fmt.Sprint(v))
+func (b *VSliderBuilder) ThumbLabel(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":thumb-label", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) ThumbSize(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":thumb-size", fmt.Sprint(v))
+func (b *VSliderBuilder) ThumbSize(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":thumb-size", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) TickLabels(v interface{}) (r *VSliderBuilder) {
-	b.tag.Attr(":tick-labels", h.JSONString(v))
+func (b *VSliderBuilder) ShowTicks(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":show-ticks", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) TickSize(v int) (r *VSliderBuilder) {
-	b.tag.Attr(":tick-size", fmt.Sprint(v))
+func (b *VSliderBuilder) Ticks(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":ticks", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) Ticks(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":ticks", fmt.Sprint(v))
+func (b *VSliderBuilder) TickSize(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":tick-size", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Color(v string) (r *VSliderBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
@@ -193,18 +108,108 @@ func (b *VSliderBuilder) TrackFillColor(v string) (r *VSliderBuilder) {
 	return b
 }
 
-func (b *VSliderBuilder) ValidateOnBlur(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
+func (b *VSliderBuilder) TrackSize(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":track-size", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) Value(v interface{}) (r *VSliderBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VSliderBuilder) Direction(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
 	return b
 }
 
-func (b *VSliderBuilder) Vertical(v bool) (r *VSliderBuilder) {
-	b.tag.Attr(":vertical", fmt.Sprint(v))
+func (b *VSliderBuilder) Rounded(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Elevation(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Ripple(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":ripple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSliderBuilder) Id(v string) (r *VSliderBuilder) {
+	b.tag.Attr("id", v)
+	return b
+}
+
+func (b *VSliderBuilder) AppendIcon(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) CenterAffix(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSliderBuilder) PrependIcon(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) HideSpinButtons(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSliderBuilder) Hint(v string) (r *VSliderBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VSliderBuilder) PersistentHint(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSliderBuilder) Messages(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Density(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) MaxErrors(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Name(v string) (r *VSliderBuilder) {
+	b.tag.Attr("name", v)
+	return b
+}
+
+func (b *VSliderBuilder) Rules(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":rules", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) ModelValue(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) ValidateOn(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) ValidationValue(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) HideDetails(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
 	return b
 }
 

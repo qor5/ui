@@ -28,23 +28,23 @@ func (b *VProgressLinearBuilder) Active(v bool) (r *VProgressLinearBuilder) {
 	return b
 }
 
-func (b *VProgressLinearBuilder) BackgroundColor(v string) (r *VProgressLinearBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VProgressLinearBuilder) BgColor(v string) (r *VProgressLinearBuilder) {
+	b.tag.Attr("bg-color", v)
 	return b
 }
 
-func (b *VProgressLinearBuilder) BackgroundOpacity(v int) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":background-opacity", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) BgOpacity(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":bg-opacity", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressLinearBuilder) Bottom(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) BufferValue(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":buffer-value", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressLinearBuilder) BufferValue(v int) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":buffer-value", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) Clickable(v bool) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":clickable", fmt.Sprint(v))
 	return b
 }
 
@@ -53,18 +53,8 @@ func (b *VProgressLinearBuilder) Color(v string) (r *VProgressLinearBuilder) {
 	return b
 }
 
-func (b *VProgressLinearBuilder) Dark(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VProgressLinearBuilder) Fixed(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
-	return b
-}
-
-func (b *VProgressLinearBuilder) Height(v int) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) Height(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
@@ -73,23 +63,18 @@ func (b *VProgressLinearBuilder) Indeterminate(v bool) (r *VProgressLinearBuilde
 	return b
 }
 
-func (b *VProgressLinearBuilder) Light(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) Max(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":max", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressLinearBuilder) Query(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":query", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) ModelValue(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
 func (b *VProgressLinearBuilder) Reverse(v bool) (r *VProgressLinearBuilder) {
 	b.tag.Attr(":reverse", fmt.Sprint(v))
-	return b
-}
-
-func (b *VProgressLinearBuilder) Rounded(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
 	return b
 }
 
@@ -103,13 +88,28 @@ func (b *VProgressLinearBuilder) Striped(v bool) (r *VProgressLinearBuilder) {
 	return b
 }
 
-func (b *VProgressLinearBuilder) Top(v bool) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":top", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) RoundedBar(v bool) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":rounded-bar", fmt.Sprint(v))
 	return b
 }
 
-func (b *VProgressLinearBuilder) Value(v int) (r *VProgressLinearBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
+func (b *VProgressLinearBuilder) Location(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VProgressLinearBuilder) Rounded(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VProgressLinearBuilder) Tag(v string) (r *VProgressLinearBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VProgressLinearBuilder) Theme(v string) (r *VProgressLinearBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

@@ -18,6 +18,11 @@ func VCardTitle(children ...h.HTMLComponent) (r *VCardTitleBuilder) {
 	return
 }
 
+func (b *VCardTitleBuilder) Tag(v string) (r *VCardTitleBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VCardTitleBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

@@ -18,68 +18,18 @@ func VExpansionPanels(children ...h.HTMLComponent) (r *VExpansionPanelsBuilder) 
 	return
 }
 
-func (b *VExpansionPanelsBuilder) Accordion(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":accordion", fmt.Sprint(v))
+func (b *VExpansionPanelsBuilder) Color(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VExpansionPanelsBuilder) ActiveClass(v string) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VExpansionPanelsBuilder) Static(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":static", fmt.Sprint(v))
 	return b
 }
 
-func (b *VExpansionPanelsBuilder) Dark(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Disabled(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Flat(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Focusable(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":focusable", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Hover(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":hover", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Inset(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":inset", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Light(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Mandatory(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Max(v int) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Multiple(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Popout(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":popout", fmt.Sprint(v))
+func (b *VExpansionPanelsBuilder) Variant(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 
@@ -88,18 +38,43 @@ func (b *VExpansionPanelsBuilder) Readonly(v bool) (r *VExpansionPanelsBuilder) 
 	return b
 }
 
+func (b *VExpansionPanelsBuilder) ModelValue(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Multiple(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Max(v int) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":max", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) SelectedClass(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Disabled(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Mandatory(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
+	return b
+}
+
 func (b *VExpansionPanelsBuilder) Tag(v string) (r *VExpansionPanelsBuilder) {
 	b.tag.Attr("tag", v)
 	return b
 }
 
-func (b *VExpansionPanelsBuilder) Tile(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Value(v interface{}) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VExpansionPanelsBuilder) Theme(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

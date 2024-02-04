@@ -18,13 +18,18 @@ func VForm(children ...h.HTMLComponent) (r *VFormBuilder) {
 	return
 }
 
+func (b *VFormBuilder) ModelValue(v bool) (r *VFormBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFormBuilder) Disabled(v bool) (r *VFormBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VFormBuilder) LazyValidation(v bool) (r *VFormBuilder) {
-	b.tag.Attr(":lazy-validation", fmt.Sprint(v))
+func (b *VFormBuilder) FastFail(v bool) (r *VFormBuilder) {
+	b.tag.Attr(":fast-fail", fmt.Sprint(v))
 	return b
 }
 
@@ -33,8 +38,8 @@ func (b *VFormBuilder) Readonly(v bool) (r *VFormBuilder) {
 	return b
 }
 
-func (b *VFormBuilder) Value(v bool) (r *VFormBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
+func (b *VFormBuilder) ValidateOn(v interface{}) (r *VFormBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
 	return b
 }
 

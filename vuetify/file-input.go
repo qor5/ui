@@ -18,48 +18,23 @@ func VFileInput(children ...h.HTMLComponent) (r *VFileInputBuilder) {
 	return
 }
 
-func (b *VFileInputBuilder) AppendIcon(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VFileInputBuilder) Label(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VFileInputBuilder) AppendOuterIcon(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("append-outer-icon", v)
+func (b *VFileInputBuilder) Counter(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":counter", fmt.Sprint(v))
 	return b
 }
 
-func (b *VFileInputBuilder) Autofocus(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":autofocus", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) BackgroundColor(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VFileInputBuilder) Flat(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":flat", fmt.Sprint(v))
 	return b
 }
 
 func (b *VFileInputBuilder) Chips(v bool) (r *VFileInputBuilder) {
 	b.tag.Attr(":chips", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) ClearIcon(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("clear-icon", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Clearable(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":clearable", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Color(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Counter(v int) (r *VFileInputBuilder) {
-	b.tag.Attr(":counter", fmt.Sprint(v))
 	return b
 }
 
@@ -73,18 +48,68 @@ func (b *VFileInputBuilder) CounterString(v string) (r *VFileInputBuilder) {
 	return b
 }
 
-func (b *VFileInputBuilder) CounterValue(v interface{}) (r *VFileInputBuilder) {
-	b.tag.Attr(":counter-value", h.JSONString(v))
+func (b *VFileInputBuilder) Multiple(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
 	return b
 }
 
-func (b *VFileInputBuilder) Dark(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VFileInputBuilder) ShowSize(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":show-size", h.JSONString(v))
 	return b
 }
 
-func (b *VFileInputBuilder) Dense(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VFileInputBuilder) Id(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("id", v)
+	return b
+}
+
+func (b *VFileInputBuilder) AppendIcon(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) CenterAffix(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) PrependIcon(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) HideSpinButtons(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Hint(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VFileInputBuilder) PersistentHint(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Messages(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Direction(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Reverse(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":reverse", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Density(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
@@ -98,123 +123,18 @@ func (b *VFileInputBuilder) Error(v bool) (r *VFileInputBuilder) {
 	return b
 }
 
-func (b *VFileInputBuilder) ErrorCount(v int) (r *VFileInputBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
+func (b *VFileInputBuilder) MaxErrors(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b
 }
 
-func (b *VFileInputBuilder) Filled(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":filled", fmt.Sprint(v))
+func (b *VFileInputBuilder) Name(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
-func (b *VFileInputBuilder) Flat(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) FullWidth(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":full-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Height(v int) (r *VFileInputBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) HideDetails(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) HideInput(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":hide-input", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Hint(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Id(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Label(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Light(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) LoaderHeight(v int) (r *VFileInputBuilder) {
-	b.tag.Attr(":loader-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Loading(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Messages(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Multiple(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Outlined(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) PersistentHint(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) PersistentPlaceholder(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":persistent-placeholder", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Placeholder(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("placeholder", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Prefix(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("prefix", v)
-	return b
-}
-
-func (b *VFileInputBuilder) PrependIcon(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("prepend-icon", v)
-	return b
-}
-
-func (b *VFileInputBuilder) PrependInnerIcon(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("prepend-inner-icon", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Reverse(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":reverse", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Rounded(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VFileInputBuilder) Readonly(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 
@@ -223,13 +143,78 @@ func (b *VFileInputBuilder) Rules(v interface{}) (r *VFileInputBuilder) {
 	return b
 }
 
-func (b *VFileInputBuilder) Shaped(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VFileInputBuilder) ModelValue(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VFileInputBuilder) ShowSize(v int) (r *VFileInputBuilder) {
-	b.tag.Attr(":show-size", fmt.Sprint(v))
+func (b *VFileInputBuilder) ValidateOn(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) ValidationValue(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Focused(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) HideDetails(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) AppendInnerIcon(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":append-inner-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) BgColor(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("bg-color", v)
+	return b
+}
+
+func (b *VFileInputBuilder) Clearable(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":clearable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) ClearIcon(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":clear-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Active(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":active", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Color(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VFileInputBuilder) BaseColor(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
+func (b *VFileInputBuilder) Dirty(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":dirty", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) PersistentClear(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":persistent-clear", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFileInputBuilder) PrependInnerIcon(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":prepend-inner-icon", h.JSONString(v))
 	return b
 }
 
@@ -238,53 +223,23 @@ func (b *VFileInputBuilder) SingleLine(v bool) (r *VFileInputBuilder) {
 	return b
 }
 
-func (b *VFileInputBuilder) SmallChips(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":small-chips", fmt.Sprint(v))
+func (b *VFileInputBuilder) Variant(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 
-func (b *VFileInputBuilder) Solo(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":solo", fmt.Sprint(v))
+func (b *VFileInputBuilder) Loading(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":loading", h.JSONString(v))
 	return b
 }
 
-func (b *VFileInputBuilder) SoloInverted(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":solo-inverted", fmt.Sprint(v))
+func (b *VFileInputBuilder) Rounded(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
-func (b *VFileInputBuilder) Success(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) SuccessMessages(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("success-messages", v)
-	return b
-}
-
-func (b *VFileInputBuilder) Suffix(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("suffix", v)
-	return b
-}
-
-func (b *VFileInputBuilder) TruncateLength(v int) (r *VFileInputBuilder) {
-	b.tag.Attr(":truncate-length", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Type(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("type", v)
-	return b
-}
-
-func (b *VFileInputBuilder) ValidateOnBlur(v bool) (r *VFileInputBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Value(v interface{}) (r *VFileInputBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VFileInputBuilder) Theme(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

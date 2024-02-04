@@ -18,18 +18,18 @@ func VThemeProvider(children ...h.HTMLComponent) (r *VThemeProviderBuilder) {
 	return
 }
 
-func (b *VThemeProviderBuilder) Dark(v bool) (r *VThemeProviderBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VThemeProviderBuilder) WithBackground(v bool) (r *VThemeProviderBuilder) {
+	b.tag.Attr(":with-background", fmt.Sprint(v))
 	return b
 }
 
-func (b *VThemeProviderBuilder) Light(v bool) (r *VThemeProviderBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VThemeProviderBuilder) Theme(v string) (r *VThemeProviderBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VThemeProviderBuilder) Root(v bool) (r *VThemeProviderBuilder) {
-	b.tag.Attr(":root", fmt.Sprint(v))
+func (b *VThemeProviderBuilder) Tag(v string) (r *VThemeProviderBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 

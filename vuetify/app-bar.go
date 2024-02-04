@@ -18,83 +18,13 @@ func VAppBar(children ...h.HTMLComponent) (r *VAppBarBuilder) {
 	return
 }
 
-func (b *VAppBarBuilder) Absolute(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
+func (b *VAppBarBuilder) Image(v string) (r *VAppBarBuilder) {
+	b.tag.Attr("image", v)
 	return b
 }
 
-func (b *VAppBarBuilder) App(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":app", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Bottom(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ClippedLeft(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":clipped-left", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ClippedRight(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":clipped-right", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Collapse(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":collapse", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) CollapseOnScroll(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":collapse-on-scroll", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Color(v string) (r *VAppBarBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VAppBarBuilder) Dark(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Dense(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ElevateOnScroll(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":elevate-on-scroll", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Elevation(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Extended(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":extended", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ExtensionHeight(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":extension-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) FadeImgOnScroll(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":fade-img-on-scroll", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Fixed(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
+func (b *VAppBarBuilder) Title(v string) (r *VAppBarBuilder) {
+	b.tag.Attr("title", v)
 	return b
 }
 
@@ -103,98 +33,68 @@ func (b *VAppBarBuilder) Flat(v bool) (r *VAppBarBuilder) {
 	return b
 }
 
+func (b *VAppBarBuilder) Collapse(v bool) (r *VAppBarBuilder) {
+	b.tag.Attr(":collapse", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAppBarBuilder) ModelValue(v bool) (r *VAppBarBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAppBarBuilder) Location(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VAppBarBuilder) Absolute(v bool) (r *VAppBarBuilder) {
+	b.tag.Attr(":absolute", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAppBarBuilder) Color(v string) (r *VAppBarBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VAppBarBuilder) Density(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VAppBarBuilder) Extended(v bool) (r *VAppBarBuilder) {
+	b.tag.Attr(":extended", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAppBarBuilder) ExtensionHeight(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":extension-height", h.JSONString(v))
+	return b
+}
+
 func (b *VAppBarBuilder) Floating(v bool) (r *VAppBarBuilder) {
 	b.tag.Attr(":floating", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAppBarBuilder) Height(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VAppBarBuilder) Height(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VAppBarBuilder) HideOnScroll(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":hide-on-scroll", fmt.Sprint(v))
+func (b *VAppBarBuilder) Border(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
 	return b
 }
 
-func (b *VAppBarBuilder) InvertedScroll(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":inverted-scroll", fmt.Sprint(v))
+func (b *VAppBarBuilder) Elevation(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
 	return b
 }
 
-func (b *VAppBarBuilder) Light(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) MaxHeight(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) MaxWidth(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) MinHeight(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) MinWidth(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Outlined(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Prominent(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":prominent", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Rounded(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ScrollOffScreen(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":scroll-off-screen", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ScrollTarget(v string) (r *VAppBarBuilder) {
-	b.tag.Attr("scroll-target", v)
-	return b
-}
-
-func (b *VAppBarBuilder) ScrollThreshold(v string) (r *VAppBarBuilder) {
-	b.tag.Attr("scroll-threshold", v)
-	return b
-}
-
-func (b *VAppBarBuilder) Shaped(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Short(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":short", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) ShrinkOnScroll(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":shrink-on-scroll", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAppBarBuilder) Src(v interface{}) (r *VAppBarBuilder) {
-	b.tag.Attr(":src", h.JSONString(v))
+func (b *VAppBarBuilder) Rounded(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -203,18 +103,33 @@ func (b *VAppBarBuilder) Tag(v string) (r *VAppBarBuilder) {
 	return b
 }
 
-func (b *VAppBarBuilder) Tile(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VAppBarBuilder) Theme(v string) (r *VAppBarBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VAppBarBuilder) Value(v bool) (r *VAppBarBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
+func (b *VAppBarBuilder) Name(v string) (r *VAppBarBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
-func (b *VAppBarBuilder) Width(v int) (r *VAppBarBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VAppBarBuilder) Order(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":order", h.JSONString(v))
+	return b
+}
+
+func (b *VAppBarBuilder) ScrollTarget(v string) (r *VAppBarBuilder) {
+	b.tag.Attr("scroll-target", v)
+	return b
+}
+
+func (b *VAppBarBuilder) ScrollThreshold(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":scroll-threshold", h.JSONString(v))
+	return b
+}
+
+func (b *VAppBarBuilder) ScrollBehavior(v interface{}) (r *VAppBarBuilder) {
+	b.tag.Attr(":scroll-behavior", h.JSONString(v))
 	return b
 }
 

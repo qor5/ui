@@ -18,13 +18,38 @@ func VAlert(children ...h.HTMLComponent) (r *VAlertBuilder) {
 	return
 }
 
-func (b *VAlertBuilder) Border(v string) (r *VAlertBuilder) {
-	b.tag.Attr("border", v)
+func (b *VAlertBuilder) Title(v string) (r *VAlertBuilder) {
+	b.tag.Attr("title", v)
 	return b
 }
 
-func (b *VAlertBuilder) CloseIcon(v string) (r *VAlertBuilder) {
-	b.tag.Attr("close-icon", v)
+func (b *VAlertBuilder) Text(v string) (r *VAlertBuilder) {
+	b.tag.Attr("text", v)
+	return b
+}
+
+func (b *VAlertBuilder) Border(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) BorderColor(v string) (r *VAlertBuilder) {
+	b.tag.Attr("border-color", v)
+	return b
+}
+
+func (b *VAlertBuilder) Closable(v bool) (r *VAlertBuilder) {
+	b.tag.Attr(":closable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAlertBuilder) CloseIcon(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":close-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) Type(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":type", h.JSONString(v))
 	return b
 }
 
@@ -33,83 +58,13 @@ func (b *VAlertBuilder) CloseLabel(v string) (r *VAlertBuilder) {
 	return b
 }
 
-func (b *VAlertBuilder) Color(v string) (r *VAlertBuilder) {
-	b.tag.Attr("color", v)
+func (b *VAlertBuilder) Icon(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 
-func (b *VAlertBuilder) ColoredBorder(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":colored-border", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Dark(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Dense(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Dismissible(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":dismissible", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Elevation(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Height(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Icon(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":icon", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Light(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) MaxHeight(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) MaxWidth(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) MinHeight(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) MinWidth(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Mode(v string) (r *VAlertBuilder) {
-	b.tag.Attr("mode", v)
-	return b
-}
-
-func (b *VAlertBuilder) Origin(v string) (r *VAlertBuilder) {
-	b.tag.Attr("origin", v)
-	return b
-}
-
-func (b *VAlertBuilder) Outlined(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
+func (b *VAlertBuilder) ModelValue(v bool) (r *VAlertBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
@@ -118,13 +73,58 @@ func (b *VAlertBuilder) Prominent(v bool) (r *VAlertBuilder) {
 	return b
 }
 
-func (b *VAlertBuilder) Rounded(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VAlertBuilder) Density(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VAlertBuilder) Shaped(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VAlertBuilder) Height(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) MaxHeight(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) MaxWidth(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) MinHeight(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) MinWidth(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) Width(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) Elevation(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) Location(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) Position(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":position", h.JSONString(v))
+	return b
+}
+
+func (b *VAlertBuilder) Rounded(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -133,33 +133,18 @@ func (b *VAlertBuilder) Tag(v string) (r *VAlertBuilder) {
 	return b
 }
 
-func (b *VAlertBuilder) Text(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":text", fmt.Sprint(v))
+func (b *VAlertBuilder) Theme(v string) (r *VAlertBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VAlertBuilder) Tile(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VAlertBuilder) Color(v string) (r *VAlertBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VAlertBuilder) Transition(v string) (r *VAlertBuilder) {
-	b.tag.Attr("transition", v)
-	return b
-}
-
-func (b *VAlertBuilder) Type(v string) (r *VAlertBuilder) {
-	b.tag.Attr("type", v)
-	return b
-}
-
-func (b *VAlertBuilder) Value(v bool) (r *VAlertBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAlertBuilder) Width(v int) (r *VAlertBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VAlertBuilder) Variant(v interface{}) (r *VAlertBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 

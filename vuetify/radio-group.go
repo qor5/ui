@@ -18,33 +18,68 @@ func VRadioGroup(children ...h.HTMLComponent) (r *VRadioGroupBuilder) {
 	return
 }
 
-func (b *VRadioGroupBuilder) ActiveClass(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VRadioGroupBuilder) Label(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VRadioGroupBuilder) AppendIcon(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VRadioGroupBuilder) Height(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VRadioGroupBuilder) BackgroundColor(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VRadioGroupBuilder) Type(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("type", v)
 	return b
 }
 
-func (b *VRadioGroupBuilder) Column(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":column", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) Id(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VRadioGroupBuilder) Dark(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) AppendIcon(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VRadioGroupBuilder) Dense(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) CenterAffix(v bool) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) PrependIcon(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) HideSpinButtons(v bool) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Hint(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VRadioGroupBuilder) PersistentHint(v bool) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Messages(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Direction(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Density(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
@@ -58,53 +93,8 @@ func (b *VRadioGroupBuilder) Error(v bool) (r *VRadioGroupBuilder) {
 	return b
 }
 
-func (b *VRadioGroupBuilder) ErrorCount(v int) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) HideDetails(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) Hint(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VRadioGroupBuilder) Id(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VRadioGroupBuilder) Label(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VRadioGroupBuilder) Light(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) Mandatory(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) Max(v int) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) Messages(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VRadioGroupBuilder) Multiple(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) MaxErrors(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b
 }
 
@@ -113,23 +103,8 @@ func (b *VRadioGroupBuilder) Name(v string) (r *VRadioGroupBuilder) {
 	return b
 }
 
-func (b *VRadioGroupBuilder) PersistentHint(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) PrependIcon(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("prepend-icon", v)
-	return b
-}
-
 func (b *VRadioGroupBuilder) Readonly(v bool) (r *VRadioGroupBuilder) {
 	b.tag.Attr(":readonly", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) Row(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":row", fmt.Sprint(v))
 	return b
 }
 
@@ -138,33 +113,68 @@ func (b *VRadioGroupBuilder) Rules(v interface{}) (r *VRadioGroupBuilder) {
 	return b
 }
 
-func (b *VRadioGroupBuilder) Success(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) ModelValue(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VRadioGroupBuilder) SuccessMessages(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VRadioGroupBuilder) ValidateOn(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
 	return b
 }
 
-func (b *VRadioGroupBuilder) Tag(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VRadioGroupBuilder) ValidationValue(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
 	return b
 }
 
-func (b *VRadioGroupBuilder) ValidateOnBlur(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) Focused(v bool) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRadioGroupBuilder) Value(v interface{}) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VRadioGroupBuilder) HideDetails(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Color(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VRadioGroupBuilder) DefaultsTarget(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("defaults-target", v)
+	return b
+}
+
+func (b *VRadioGroupBuilder) Inline(v bool) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":inline", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) FalseIcon(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":false-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) TrueIcon(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":true-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Ripple(v bool) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":ripple", fmt.Sprint(v))
 	return b
 }
 
 func (b *VRadioGroupBuilder) ValueComparator(v interface{}) (r *VRadioGroupBuilder) {
 	b.tag.Attr(":value-comparator", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Theme(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

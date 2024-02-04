@@ -18,18 +18,8 @@ func VChipGroup(children ...h.HTMLComponent) (r *VChipGroupBuilder) {
 	return
 }
 
-func (b *VChipGroupBuilder) ActiveClass(v string) (r *VChipGroupBuilder) {
-	b.tag.Attr("active-class", v)
-	return b
-}
-
-func (b *VChipGroupBuilder) CenterActive(v bool) (r *VChipGroupBuilder) {
-	b.tag.Attr(":center-active", fmt.Sprint(v))
-	return b
-}
-
-func (b *VChipGroupBuilder) Color(v string) (r *VChipGroupBuilder) {
-	b.tag.Attr("color", v)
+func (b *VChipGroupBuilder) Symbol(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":symbol", h.JSONString(v))
 	return b
 }
 
@@ -38,48 +28,43 @@ func (b *VChipGroupBuilder) Column(v bool) (r *VChipGroupBuilder) {
 	return b
 }
 
-func (b *VChipGroupBuilder) Dark(v bool) (r *VChipGroupBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VChipGroupBuilder) Filter(v bool) (r *VChipGroupBuilder) {
+	b.tag.Attr(":filter", fmt.Sprint(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) Light(v bool) (r *VChipGroupBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VChipGroupBuilder) ValueComparator(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":value-comparator", h.JSONString(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) Mandatory(v bool) (r *VChipGroupBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
+func (b *VChipGroupBuilder) CenterActive(v bool) (r *VChipGroupBuilder) {
+	b.tag.Attr(":center-active", fmt.Sprint(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) Max(v int) (r *VChipGroupBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
+func (b *VChipGroupBuilder) Direction(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) MobileBreakpoint(v int) (r *VChipGroupBuilder) {
-	b.tag.Attr(":mobile-breakpoint", fmt.Sprint(v))
+func (b *VChipGroupBuilder) NextIcon(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":next-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) Multiple(v bool) (r *VChipGroupBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
+func (b *VChipGroupBuilder) PrevIcon(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":prev-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) NextIcon(v string) (r *VChipGroupBuilder) {
-	b.tag.Attr("next-icon", v)
+func (b *VChipGroupBuilder) ShowArrows(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":show-arrows", h.JSONString(v))
 	return b
 }
 
-func (b *VChipGroupBuilder) PrevIcon(v string) (r *VChipGroupBuilder) {
-	b.tag.Attr("prev-icon", v)
-	return b
-}
-
-func (b *VChipGroupBuilder) ShowArrows(v bool) (r *VChipGroupBuilder) {
-	b.tag.Attr(":show-arrows", fmt.Sprint(v))
+func (b *VChipGroupBuilder) MobileBreakpoint(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 
@@ -88,8 +73,48 @@ func (b *VChipGroupBuilder) Tag(v string) (r *VChipGroupBuilder) {
 	return b
 }
 
-func (b *VChipGroupBuilder) Value(v interface{}) (r *VChipGroupBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VChipGroupBuilder) ModelValue(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VChipGroupBuilder) Multiple(v bool) (r *VChipGroupBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VChipGroupBuilder) Max(v int) (r *VChipGroupBuilder) {
+	b.tag.Attr(":max", fmt.Sprint(v))
+	return b
+}
+
+func (b *VChipGroupBuilder) SelectedClass(v string) (r *VChipGroupBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VChipGroupBuilder) Disabled(v bool) (r *VChipGroupBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VChipGroupBuilder) Mandatory(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
+	return b
+}
+
+func (b *VChipGroupBuilder) Theme(v string) (r *VChipGroupBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VChipGroupBuilder) Color(v string) (r *VChipGroupBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VChipGroupBuilder) Variant(v interface{}) (r *VChipGroupBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 

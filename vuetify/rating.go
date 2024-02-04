@@ -18,18 +18,23 @@ func VRating(children ...h.HTMLComponent) (r *VRatingBuilder) {
 	return
 }
 
-func (b *VRatingBuilder) BackgroundColor(v string) (r *VRatingBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VRatingBuilder) Length(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":length", h.JSONString(v))
 	return b
 }
 
-func (b *VRatingBuilder) Clearable(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":clearable", fmt.Sprint(v))
+func (b *VRatingBuilder) Name(v string) (r *VRatingBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
-func (b *VRatingBuilder) CloseDelay(v int) (r *VRatingBuilder) {
-	b.tag.Attr(":close-delay", fmt.Sprint(v))
+func (b *VRatingBuilder) ItemAriaLabel(v string) (r *VRatingBuilder) {
+	b.tag.Attr("item-aria-label", v)
+	return b
+}
+
+func (b *VRatingBuilder) ActiveColor(v string) (r *VRatingBuilder) {
+	b.tag.Attr("active-color", v)
 	return b
 }
 
@@ -38,28 +43,23 @@ func (b *VRatingBuilder) Color(v string) (r *VRatingBuilder) {
 	return b
 }
 
-func (b *VRatingBuilder) Dark(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VRatingBuilder) Clearable(v bool) (r *VRatingBuilder) {
+	b.tag.Attr(":clearable", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRatingBuilder) Dense(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VRatingBuilder) Disabled(v bool) (r *VRatingBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRatingBuilder) EmptyIcon(v string) (r *VRatingBuilder) {
-	b.tag.Attr("empty-icon", v)
+func (b *VRatingBuilder) EmptyIcon(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":empty-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VRatingBuilder) FullIcon(v string) (r *VRatingBuilder) {
-	b.tag.Attr("full-icon", v)
-	return b
-}
-
-func (b *VRatingBuilder) HalfIcon(v string) (r *VRatingBuilder) {
-	b.tag.Attr("half-icon", v)
+func (b *VRatingBuilder) FullIcon(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":full-icon", h.JSONString(v))
 	return b
 }
 
@@ -73,63 +73,48 @@ func (b *VRatingBuilder) Hover(v bool) (r *VRatingBuilder) {
 	return b
 }
 
-func (b *VRatingBuilder) IconLabel(v string) (r *VRatingBuilder) {
-	b.tag.Attr("icon-label", v)
-	return b
-}
-
-func (b *VRatingBuilder) Large(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":large", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRatingBuilder) Length(v int) (r *VRatingBuilder) {
-	b.tag.Attr(":length", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRatingBuilder) Light(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRatingBuilder) OpenDelay(v int) (r *VRatingBuilder) {
-	b.tag.Attr(":open-delay", fmt.Sprint(v))
-	return b
-}
-
 func (b *VRatingBuilder) Readonly(v bool) (r *VRatingBuilder) {
 	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRatingBuilder) Ripple(v interface{}) (r *VRatingBuilder) {
-	b.tag.Attr(":ripple", h.JSONString(v))
+func (b *VRatingBuilder) ModelValue(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VRatingBuilder) Size(v int) (r *VRatingBuilder) {
-	b.tag.Attr(":size", fmt.Sprint(v))
+func (b *VRatingBuilder) ItemLabelPosition(v string) (r *VRatingBuilder) {
+	b.tag.Attr("item-label-position", v)
 	return b
 }
 
-func (b *VRatingBuilder) Small(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":small", fmt.Sprint(v))
+func (b *VRatingBuilder) Ripple(v bool) (r *VRatingBuilder) {
+	b.tag.Attr(":ripple", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRatingBuilder) Value(v int) (r *VRatingBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
+func (b *VRatingBuilder) Density(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VRatingBuilder) XLarge(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":x-large", fmt.Sprint(v))
+func (b *VRatingBuilder) Size(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
 	return b
 }
 
-func (b *VRatingBuilder) XSmall(v bool) (r *VRatingBuilder) {
-	b.tag.Attr(":x-small", fmt.Sprint(v))
+func (b *VRatingBuilder) Tag(v string) (r *VRatingBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VRatingBuilder) Theme(v string) (r *VRatingBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VRatingBuilder) ItemLabels(v interface{}) (r *VRatingBuilder) {
+	b.tag.Attr(":item-labels", h.JSONString(v))
 	return b
 }
 

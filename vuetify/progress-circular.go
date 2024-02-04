@@ -18,8 +18,8 @@ func VProgressCircular(children ...h.HTMLComponent) (r *VProgressCircularBuilder
 	return
 }
 
-func (b *VProgressCircularBuilder) Button(v bool) (r *VProgressCircularBuilder) {
-	b.tag.Attr(":button", fmt.Sprint(v))
+func (b *VProgressCircularBuilder) BgColor(v string) (r *VProgressCircularBuilder) {
+	b.tag.Attr("bg-color", v)
 	return b
 }
 
@@ -28,28 +28,38 @@ func (b *VProgressCircularBuilder) Color(v string) (r *VProgressCircularBuilder)
 	return b
 }
 
-func (b *VProgressCircularBuilder) Indeterminate(v bool) (r *VProgressCircularBuilder) {
-	b.tag.Attr(":indeterminate", fmt.Sprint(v))
+func (b *VProgressCircularBuilder) ModelValue(v interface{}) (r *VProgressCircularBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressCircularBuilder) Rotate(v int) (r *VProgressCircularBuilder) {
-	b.tag.Attr(":rotate", fmt.Sprint(v))
+func (b *VProgressCircularBuilder) Rotate(v interface{}) (r *VProgressCircularBuilder) {
+	b.tag.Attr(":rotate", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressCircularBuilder) Size(v int) (r *VProgressCircularBuilder) {
-	b.tag.Attr(":size", fmt.Sprint(v))
+func (b *VProgressCircularBuilder) Width(v interface{}) (r *VProgressCircularBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressCircularBuilder) Value(v int) (r *VProgressCircularBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
+func (b *VProgressCircularBuilder) Size(v interface{}) (r *VProgressCircularBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
 	return b
 }
 
-func (b *VProgressCircularBuilder) Width(v int) (r *VProgressCircularBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VProgressCircularBuilder) Tag(v string) (r *VProgressCircularBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VProgressCircularBuilder) Theme(v string) (r *VProgressCircularBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VProgressCircularBuilder) Indeterminate(v interface{}) (r *VProgressCircularBuilder) {
+	b.tag.Attr(":indeterminate", h.JSONString(v))
 	return b
 }
 

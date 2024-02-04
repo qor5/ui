@@ -18,13 +18,23 @@ func VBreadcrumbsItem(children ...h.HTMLComponent) (r *VBreadcrumbsItemBuilder) 
 	return
 }
 
+func (b *VBreadcrumbsItemBuilder) Active(v bool) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr(":active", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBreadcrumbsItemBuilder) ActiveClass(v string) (r *VBreadcrumbsItemBuilder) {
 	b.tag.Attr("active-class", v)
 	return b
 }
 
-func (b *VBreadcrumbsItemBuilder) Append(v bool) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":append", fmt.Sprint(v))
+func (b *VBreadcrumbsItemBuilder) ActiveColor(v string) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr("active-color", v)
+	return b
+}
+
+func (b *VBreadcrumbsItemBuilder) Color(v string) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
@@ -33,33 +43,13 @@ func (b *VBreadcrumbsItemBuilder) Disabled(v bool) (r *VBreadcrumbsItemBuilder) 
 	return b
 }
 
-func (b *VBreadcrumbsItemBuilder) Exact(v bool) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":exact", fmt.Sprint(v))
+func (b *VBreadcrumbsItemBuilder) Title(v string) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr("title", v)
 	return b
 }
 
-func (b *VBreadcrumbsItemBuilder) ExactActiveClass(v string) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr("exact-active-class", v)
-	return b
-}
-
-func (b *VBreadcrumbsItemBuilder) ExactPath(v bool) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":exact-path", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBreadcrumbsItemBuilder) Href(v interface{}) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":href", h.JSONString(v))
-	return b
-}
-
-func (b *VBreadcrumbsItemBuilder) Link(v bool) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":link", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBreadcrumbsItemBuilder) Nuxt(v bool) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":nuxt", fmt.Sprint(v))
+func (b *VBreadcrumbsItemBuilder) Href(v string) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr("href", v)
 	return b
 }
 
@@ -68,23 +58,18 @@ func (b *VBreadcrumbsItemBuilder) Replace(v bool) (r *VBreadcrumbsItemBuilder) {
 	return b
 }
 
-func (b *VBreadcrumbsItemBuilder) Ripple(v interface{}) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr(":ripple", h.JSONString(v))
-	return b
-}
-
-func (b *VBreadcrumbsItemBuilder) Tag(v string) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr("tag", v)
-	return b
-}
-
-func (b *VBreadcrumbsItemBuilder) Target(v string) (r *VBreadcrumbsItemBuilder) {
-	b.tag.Attr("target", v)
+func (b *VBreadcrumbsItemBuilder) Exact(v bool) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr(":exact", fmt.Sprint(v))
 	return b
 }
 
 func (b *VBreadcrumbsItemBuilder) To(v interface{}) (r *VBreadcrumbsItemBuilder) {
 	b.tag.Attr(":to", h.JSONString(v))
+	return b
+}
+
+func (b *VBreadcrumbsItemBuilder) Tag(v string) (r *VBreadcrumbsItemBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 

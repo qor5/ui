@@ -10,7 +10,6 @@ func VAutocomplete(children ...h.HTMLComponent) (r *VAutocompleteBuilder) {
 	r = &VAutocompleteBuilder{
 		tag: h.Tag("v-autocomplete").Children(children...),
 	}
-	r.Attach("")
 	return
 }
 

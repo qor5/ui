@@ -18,6 +18,11 @@ func VSlideYTransition(children ...h.HTMLComponent) (r *VSlideYTransitionBuilder
 	return
 }
 
+func (b *VSlideYTransitionBuilder) Disabled(v bool) (r *VSlideYTransitionBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSlideYTransitionBuilder) Group(v bool) (r *VSlideYTransitionBuilder) {
 	b.tag.Attr(":group", fmt.Sprint(v))
 	return b

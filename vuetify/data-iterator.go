@@ -18,88 +18,8 @@ func VDataIterator(children ...h.HTMLComponent) (r *VDataIteratorBuilder) {
 	return
 }
 
-func (b *VDataIteratorBuilder) CheckboxColor(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("checkbox-color", v)
-	return b
-}
-
-func (b *VDataIteratorBuilder) CustomFilter(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":custom-filter", h.JSONString(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) CustomGroup(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":custom-group", h.JSONString(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) CustomSort(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":custom-sort", h.JSONString(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) Dark(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) DisableFiltering(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":disable-filtering", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) DisablePagination(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":disable-pagination", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) DisableSort(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":disable-sort", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) Expanded(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":expanded", h.JSONString(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) FooterProps(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":footer-props", h.JSONString(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) GroupBy(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("group-by", v)
-	return b
-}
-
-func (b *VDataIteratorBuilder) GroupDesc(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":group-desc", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) HideDefaultFooter(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":hide-default-footer", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) ItemKey(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("item-key", v)
-	return b
-}
-
-func (b *VDataIteratorBuilder) Items(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":items", h.JSONString(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) ItemsPerPage(v int) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":items-per-page", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDataIteratorBuilder) Light(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) Search(v string) (r *VDataIteratorBuilder) {
+	b.tag.Attr("search", v)
 	return b
 }
 
@@ -108,18 +28,53 @@ func (b *VDataIteratorBuilder) Loading(v bool) (r *VDataIteratorBuilder) {
 	return b
 }
 
-func (b *VDataIteratorBuilder) LoadingText(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("loading-text", v)
+func (b *VDataIteratorBuilder) Items(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":items", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) Locale(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("locale", v)
+func (b *VDataIteratorBuilder) ItemValue(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":item-value", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) MobileBreakpoint(v int) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":mobile-breakpoint", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) ItemSelectable(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":item-selectable", h.JSONString(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) ReturnObject(v bool) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":return-object", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) ShowSelect(v bool) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":show-select", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) SelectStrategy(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":select-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) Page(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":page", h.JSONString(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) ModelValue(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) ValueComparator(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":value-comparator", h.JSONString(v))
+	return b
+}
+
+func (b *VDataIteratorBuilder) SortBy(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":sort-by", h.JSONString(v))
 	return b
 }
 
@@ -133,63 +88,63 @@ func (b *VDataIteratorBuilder) MustSort(v bool) (r *VDataIteratorBuilder) {
 	return b
 }
 
-func (b *VDataIteratorBuilder) NoDataText(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("no-data-text", v)
+func (b *VDataIteratorBuilder) CustomKeySort(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":custom-key-sort", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) NoResultsText(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("no-results-text", v)
+func (b *VDataIteratorBuilder) ItemsPerPage(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":items-per-page", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) Options(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":options", h.JSONString(v))
+func (b *VDataIteratorBuilder) ExpandOnClick(v bool) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":expand-on-click", fmt.Sprint(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) Page(v int) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":page", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) ShowExpand(v bool) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":show-expand", fmt.Sprint(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) Search(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("search", v)
+func (b *VDataIteratorBuilder) Expanded(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":expanded", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) SelectableKey(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("selectable-key", v)
+func (b *VDataIteratorBuilder) GroupBy(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":group-by", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) ServerItemsLength(v int) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":server-items-length", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) FilterMode(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":filter-mode", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) SingleExpand(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":single-expand", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) NoFilter(v bool) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":no-filter", fmt.Sprint(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) SingleSelect(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":single-select", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) CustomFilter(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":custom-filter", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) SortBy(v string) (r *VDataIteratorBuilder) {
-	b.tag.Attr("sort-by", v)
+func (b *VDataIteratorBuilder) CustomKeyFilter(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":custom-key-filter", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) SortDesc(v bool) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":sort-desc", fmt.Sprint(v))
+func (b *VDataIteratorBuilder) FilterKeys(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":filter-keys", h.JSONString(v))
 	return b
 }
 
-func (b *VDataIteratorBuilder) Value(v interface{}) (r *VDataIteratorBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VDataIteratorBuilder) Tag(v string) (r *VDataIteratorBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 

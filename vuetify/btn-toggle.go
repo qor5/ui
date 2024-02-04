@@ -18,68 +18,28 @@ func VBtnToggle(children ...h.HTMLComponent) (r *VBtnToggleBuilder) {
 	return
 }
 
-func (b *VBtnToggleBuilder) ActiveClass(v string) (r *VBtnToggleBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VBtnToggleBuilder) Divided(v bool) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":divided", fmt.Sprint(v))
 	return b
 }
 
-func (b *VBtnToggleBuilder) BackgroundColor(v string) (r *VBtnToggleBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VBtnToggleBuilder) Border(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnToggleBuilder) Borderless(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":borderless", fmt.Sprint(v))
+func (b *VBtnToggleBuilder) Density(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnToggleBuilder) Color(v string) (r *VBtnToggleBuilder) {
-	b.tag.Attr("color", v)
+func (b *VBtnToggleBuilder) Elevation(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnToggleBuilder) Dark(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Dense(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Group(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":group", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Light(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Mandatory(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Max(v int) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Multiple(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Rounded(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnToggleBuilder) Shaped(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VBtnToggleBuilder) Rounded(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -88,13 +48,48 @@ func (b *VBtnToggleBuilder) Tag(v string) (r *VBtnToggleBuilder) {
 	return b
 }
 
-func (b *VBtnToggleBuilder) Tile(v bool) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VBtnToggleBuilder) Theme(v string) (r *VBtnToggleBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VBtnToggleBuilder) Value(v interface{}) (r *VBtnToggleBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VBtnToggleBuilder) Color(v string) (r *VBtnToggleBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VBtnToggleBuilder) Variant(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnToggleBuilder) ModelValue(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnToggleBuilder) Multiple(v bool) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnToggleBuilder) Max(v int) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":max", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnToggleBuilder) SelectedClass(v string) (r *VBtnToggleBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VBtnToggleBuilder) Disabled(v bool) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnToggleBuilder) Mandatory(v interface{}) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
 	return b
 }
 

@@ -10,7 +10,6 @@ func VSelect(children ...h.HTMLComponent) (r *VSelectBuilder) {
 	r = &VSelectBuilder{
 		tag: h.Tag("v-select").Children(children...),
 	}
-	r.Attach("")
 	return
 }
 

@@ -18,48 +18,53 @@ func VSystemBar(children ...h.HTMLComponent) (r *VSystemBarBuilder) {
 	return
 }
 
-func (b *VSystemBarBuilder) Absolute(v bool) (r *VSystemBarBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSystemBarBuilder) App(v bool) (r *VSystemBarBuilder) {
-	b.tag.Attr(":app", fmt.Sprint(v))
-	return b
-}
-
 func (b *VSystemBarBuilder) Color(v string) (r *VSystemBarBuilder) {
 	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VSystemBarBuilder) Dark(v bool) (r *VSystemBarBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSystemBarBuilder) Fixed(v bool) (r *VSystemBarBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSystemBarBuilder) Height(v int) (r *VSystemBarBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSystemBarBuilder) Light(v bool) (r *VSystemBarBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSystemBarBuilder) LightsOut(v bool) (r *VSystemBarBuilder) {
-	b.tag.Attr(":lights-out", fmt.Sprint(v))
+func (b *VSystemBarBuilder) Height(v interface{}) (r *VSystemBarBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
 func (b *VSystemBarBuilder) Window(v bool) (r *VSystemBarBuilder) {
 	b.tag.Attr(":window", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSystemBarBuilder) Elevation(v interface{}) (r *VSystemBarBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VSystemBarBuilder) Name(v string) (r *VSystemBarBuilder) {
+	b.tag.Attr("name", v)
+	return b
+}
+
+func (b *VSystemBarBuilder) Order(v interface{}) (r *VSystemBarBuilder) {
+	b.tag.Attr(":order", h.JSONString(v))
+	return b
+}
+
+func (b *VSystemBarBuilder) Absolute(v bool) (r *VSystemBarBuilder) {
+	b.tag.Attr(":absolute", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSystemBarBuilder) Rounded(v interface{}) (r *VSystemBarBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VSystemBarBuilder) Tag(v string) (r *VSystemBarBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VSystemBarBuilder) Theme(v string) (r *VSystemBarBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

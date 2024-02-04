@@ -18,6 +18,11 @@ func VScrollYReverseTransition(children ...h.HTMLComponent) (r *VScrollYReverseT
 	return
 }
 
+func (b *VScrollYReverseTransitionBuilder) Disabled(v bool) (r *VScrollYReverseTransitionBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VScrollYReverseTransitionBuilder) Group(v bool) (r *VScrollYReverseTransitionBuilder) {
 	b.tag.Attr(":group", fmt.Sprint(v))
 	return b

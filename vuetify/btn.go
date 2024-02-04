@@ -11,18 +11,28 @@ type VBtnBuilder struct {
 	tag *h.HTMLTagBuilder
 }
 
-func (b *VBtnBuilder) Absolute(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
+func (b *VBtnBuilder) Symbol(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":symbol", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) ActiveClass(v string) (r *VBtnBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VBtnBuilder) Flat(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":flat", fmt.Sprint(v))
 	return b
 }
 
-func (b *VBtnBuilder) Append(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":append", fmt.Sprint(v))
+func (b *VBtnBuilder) Active(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":active", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnBuilder) PrependIcon(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) AppendIcon(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
@@ -31,153 +41,13 @@ func (b *VBtnBuilder) Block(v bool) (r *VBtnBuilder) {
 	return b
 }
 
-func (b *VBtnBuilder) Bottom(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
+func (b *VBtnBuilder) Slim(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":slim", fmt.Sprint(v))
 	return b
 }
 
-func (b *VBtnBuilder) Color(v string) (r *VBtnBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VBtnBuilder) Dark(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Depressed(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":depressed", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Disabled(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Elevation(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Exact(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":exact", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) ExactActiveClass(v string) (r *VBtnBuilder) {
-	b.tag.Attr("exact-active-class", v)
-	return b
-}
-
-func (b *VBtnBuilder) ExactPath(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":exact-path", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Fab(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":fab", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Fixed(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Height(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Href(v interface{}) (r *VBtnBuilder) {
-	b.tag.Attr(":href", h.JSONString(v))
-	return b
-}
-
-func (b *VBtnBuilder) Icon(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":icon", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) InputValue(v interface{}) (r *VBtnBuilder) {
-	b.tag.Attr(":input-value", h.JSONString(v))
-	return b
-}
-
-func (b *VBtnBuilder) Large(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":large", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Left(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Light(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Link(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":link", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Loading(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) MaxHeight(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) MaxWidth(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) MinHeight(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) MinWidth(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Nuxt(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":nuxt", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Outlined(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Plain(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":plain", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Replace(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":replace", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) RetainFocusOnClick(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":retain-focus-on-click", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBtnBuilder) Right(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
+func (b *VBtnBuilder) Stacked(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":stacked", fmt.Sprint(v))
 	return b
 }
 
@@ -186,38 +56,103 @@ func (b *VBtnBuilder) Ripple(v interface{}) (r *VBtnBuilder) {
 	return b
 }
 
-func (b *VBtnBuilder) Rounded(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VBtnBuilder) Value(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":value", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) Shaped(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VBtnBuilder) Text(v string) (r *VBtnBuilder) {
+	b.tag.Attr("text", v)
 	return b
 }
 
-func (b *VBtnBuilder) Small(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":small", fmt.Sprint(v))
+func (b *VBtnBuilder) Border(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) Tag(v string) (r *VBtnBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VBtnBuilder) Density(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) Target(v string) (r *VBtnBuilder) {
-	b.tag.Attr("target", v)
+func (b *VBtnBuilder) Height(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) Text(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":text", fmt.Sprint(v))
+func (b *VBtnBuilder) MaxHeight(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) Tile(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VBtnBuilder) MaxWidth(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) MinHeight(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) MinWidth(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Width(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Elevation(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Disabled(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnBuilder) SelectedClass(v string) (r *VBtnBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VBtnBuilder) Loading(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":loading", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Location(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Position(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":position", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Rounded(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VBtnBuilder) Href(v string) (r *VBtnBuilder) {
+	b.tag.Attr("href", v)
+	return b
+}
+
+func (b *VBtnBuilder) Replace(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":replace", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnBuilder) Exact(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":exact", fmt.Sprint(v))
 	return b
 }
 
@@ -226,33 +161,33 @@ func (b *VBtnBuilder) To(v interface{}) (r *VBtnBuilder) {
 	return b
 }
 
-func (b *VBtnBuilder) Top(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":top", fmt.Sprint(v))
+func (b *VBtnBuilder) Size(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) Type(v string) (r *VBtnBuilder) {
-	b.tag.Attr("type", v)
+func (b *VBtnBuilder) Tag(v string) (r *VBtnBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 
-func (b *VBtnBuilder) Value(v interface{}) (r *VBtnBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VBtnBuilder) Theme(v string) (r *VBtnBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VBtnBuilder) Width(v int) (r *VBtnBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VBtnBuilder) Color(v string) (r *VBtnBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VBtnBuilder) XLarge(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":x-large", fmt.Sprint(v))
+func (b *VBtnBuilder) Variant(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 
-func (b *VBtnBuilder) XSmall(v bool) (r *VBtnBuilder) {
-	b.tag.Attr(":x-small", fmt.Sprint(v))
+func (b *VBtnBuilder) Icon(v interface{}) (r *VBtnBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 

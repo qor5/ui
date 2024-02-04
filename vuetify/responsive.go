@@ -18,8 +18,8 @@ func VResponsive(children ...h.HTMLComponent) (r *VResponsiveBuilder) {
 	return
 }
 
-func (b *VResponsiveBuilder) AspectRatio(v string) (r *VResponsiveBuilder) {
-	b.tag.Attr("aspect-ratio", v)
+func (b *VResponsiveBuilder) AspectRatio(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":aspect-ratio", h.JSONString(v))
 	return b
 }
 
@@ -28,33 +28,38 @@ func (b *VResponsiveBuilder) ContentClass(v string) (r *VResponsiveBuilder) {
 	return b
 }
 
-func (b *VResponsiveBuilder) Height(v int) (r *VResponsiveBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VResponsiveBuilder) Inline(v bool) (r *VResponsiveBuilder) {
+	b.tag.Attr(":inline", fmt.Sprint(v))
 	return b
 }
 
-func (b *VResponsiveBuilder) MaxHeight(v int) (r *VResponsiveBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VResponsiveBuilder) Height(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VResponsiveBuilder) MaxWidth(v int) (r *VResponsiveBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VResponsiveBuilder) MaxHeight(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VResponsiveBuilder) MinHeight(v int) (r *VResponsiveBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
+func (b *VResponsiveBuilder) MaxWidth(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VResponsiveBuilder) MinWidth(v int) (r *VResponsiveBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VResponsiveBuilder) MinHeight(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
 	return b
 }
 
-func (b *VResponsiveBuilder) Width(v int) (r *VResponsiveBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VResponsiveBuilder) MinWidth(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VResponsiveBuilder) Width(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 

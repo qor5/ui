@@ -18,6 +18,11 @@ func VBreadcrumbsDivider(children ...h.HTMLComponent) (r *VBreadcrumbsDividerBui
 	return
 }
 
+func (b *VBreadcrumbsDividerBuilder) Divider(v interface{}) (r *VBreadcrumbsDividerBuilder) {
+	b.tag.Attr(":divider", h.JSONString(v))
+	return b
+}
+
 func (b *VBreadcrumbsDividerBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

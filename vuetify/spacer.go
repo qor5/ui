@@ -18,6 +18,11 @@ func VSpacer(children ...h.HTMLComponent) (r *VSpacerBuilder) {
 	return
 }
 
+func (b *VSpacerBuilder) Tag(v string) (r *VSpacerBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VSpacerBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

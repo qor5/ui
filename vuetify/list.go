@@ -18,18 +18,23 @@ func VList(children ...h.HTMLComponent) (r *VListBuilder) {
 	return
 }
 
-func (b *VListBuilder) Color(v string) (r *VListBuilder) {
-	b.tag.Attr("color", v)
+func (b *VListBuilder) BaseColor(v string) (r *VListBuilder) {
+	b.tag.Attr("base-color", v)
 	return b
 }
 
-func (b *VListBuilder) Dark(v bool) (r *VListBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VListBuilder) ActiveColor(v string) (r *VListBuilder) {
+	b.tag.Attr("active-color", v)
 	return b
 }
 
-func (b *VListBuilder) Dense(v bool) (r *VListBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VListBuilder) ActiveClass(v string) (r *VListBuilder) {
+	b.tag.Attr("active-class", v)
+	return b
+}
+
+func (b *VListBuilder) BgColor(v string) (r *VListBuilder) {
+	b.tag.Attr("bg-color", v)
 	return b
 }
 
@@ -38,48 +43,23 @@ func (b *VListBuilder) Disabled(v bool) (r *VListBuilder) {
 	return b
 }
 
-func (b *VListBuilder) Elevation(v int) (r *VListBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
+func (b *VListBuilder) ExpandIcon(v string) (r *VListBuilder) {
+	b.tag.Attr("expand-icon", v)
 	return b
 }
 
-func (b *VListBuilder) Expand(v bool) (r *VListBuilder) {
-	b.tag.Attr(":expand", fmt.Sprint(v))
+func (b *VListBuilder) CollapseIcon(v string) (r *VListBuilder) {
+	b.tag.Attr("collapse-icon", v)
 	return b
 }
 
-func (b *VListBuilder) Flat(v bool) (r *VListBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
+func (b *VListBuilder) Lines(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":lines", h.JSONString(v))
 	return b
 }
 
-func (b *VListBuilder) Height(v int) (r *VListBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VListBuilder) Light(v bool) (r *VListBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VListBuilder) MaxHeight(v int) (r *VListBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VListBuilder) MaxWidth(v int) (r *VListBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VListBuilder) MinHeight(v int) (r *VListBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VListBuilder) MinWidth(v int) (r *VListBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VListBuilder) Slim(v bool) (r *VListBuilder) {
+	b.tag.Attr(":slim", fmt.Sprint(v))
 	return b
 }
 
@@ -88,23 +68,118 @@ func (b *VListBuilder) Nav(v bool) (r *VListBuilder) {
 	return b
 }
 
-func (b *VListBuilder) Outlined(v bool) (r *VListBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
+func (b *VListBuilder) Mandatory(v bool) (r *VListBuilder) {
+	b.tag.Attr(":mandatory", fmt.Sprint(v))
 	return b
 }
 
-func (b *VListBuilder) Rounded(v bool) (r *VListBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VListBuilder) SelectStrategy(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":select-strategy", h.JSONString(v))
 	return b
 }
 
-func (b *VListBuilder) Shaped(v bool) (r *VListBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VListBuilder) OpenStrategy(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":open-strategy", h.JSONString(v))
 	return b
 }
 
-func (b *VListBuilder) Subheader(v bool) (r *VListBuilder) {
-	b.tag.Attr(":subheader", fmt.Sprint(v))
+func (b *VListBuilder) Opened(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":opened", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Selected(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":selected", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Border(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Density(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Height(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) MaxHeight(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) MaxWidth(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) MinHeight(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) MinWidth(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Width(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Elevation(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) ItemType(v string) (r *VListBuilder) {
+	b.tag.Attr("item-type", v)
+	return b
+}
+
+func (b *VListBuilder) Items(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":items", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) ItemTitle(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":item-title", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) ItemValue(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":item-value", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) ItemChildren(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":item-children", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) ItemProps(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":item-props", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) ReturnObject(v bool) (r *VListBuilder) {
+	b.tag.Attr(":return-object", fmt.Sprint(v))
+	return b
+}
+
+func (b *VListBuilder) ValueComparator(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":value-comparator", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Rounded(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -113,23 +188,18 @@ func (b *VListBuilder) Tag(v string) (r *VListBuilder) {
 	return b
 }
 
-func (b *VListBuilder) ThreeLine(v bool) (r *VListBuilder) {
-	b.tag.Attr(":three-line", fmt.Sprint(v))
+func (b *VListBuilder) Theme(v string) (r *VListBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VListBuilder) Tile(v bool) (r *VListBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VListBuilder) Color(v string) (r *VListBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VListBuilder) TwoLine(v bool) (r *VListBuilder) {
-	b.tag.Attr(":two-line", fmt.Sprint(v))
-	return b
-}
-
-func (b *VListBuilder) Width(v int) (r *VListBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VListBuilder) Variant(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 

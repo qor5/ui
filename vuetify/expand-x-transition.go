@@ -18,8 +18,13 @@ func VExpandXTransition(children ...h.HTMLComponent) (r *VExpandXTransitionBuild
 	return
 }
 
-func (b *VExpandXTransitionBuilder) Mode(v string) (r *VExpandXTransitionBuilder) {
-	b.tag.Attr("mode", v)
+func (b *VExpandXTransitionBuilder) Disabled(v bool) (r *VExpandXTransitionBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpandXTransitionBuilder) Mode(v interface{}) (r *VExpandXTransitionBuilder) {
+	b.tag.Attr(":mode", h.JSONString(v))
 	return b
 }
 

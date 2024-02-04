@@ -23,58 +23,58 @@ func (b *VSheetBuilder) Color(v string) (r *VSheetBuilder) {
 	return b
 }
 
-func (b *VSheetBuilder) Dark(v bool) (r *VSheetBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VSheetBuilder) Border(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) Elevation(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
+func (b *VSheetBuilder) Height(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) Height(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VSheetBuilder) MaxHeight(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) Light(v bool) (r *VSheetBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VSheetBuilder) MaxWidth(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) MaxHeight(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VSheetBuilder) MinHeight(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) MaxWidth(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VSheetBuilder) MinWidth(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) MinHeight(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
+func (b *VSheetBuilder) Width(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) MinWidth(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VSheetBuilder) Elevation(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) Outlined(v bool) (r *VSheetBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
+func (b *VSheetBuilder) Location(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) Rounded(v bool) (r *VSheetBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VSheetBuilder) Position(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":position", h.JSONString(v))
 	return b
 }
 
-func (b *VSheetBuilder) Shaped(v bool) (r *VSheetBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VSheetBuilder) Rounded(v interface{}) (r *VSheetBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -83,13 +83,8 @@ func (b *VSheetBuilder) Tag(v string) (r *VSheetBuilder) {
 	return b
 }
 
-func (b *VSheetBuilder) Tile(v bool) (r *VSheetBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSheetBuilder) Width(v int) (r *VSheetBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VSheetBuilder) Theme(v string) (r *VSheetBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

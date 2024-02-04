@@ -23,23 +23,18 @@ func (b *VImgBuilder) Alt(v string) (r *VImgBuilder) {
 	return b
 }
 
-func (b *VImgBuilder) AspectRatio(v string) (r *VImgBuilder) {
-	b.tag.Attr("aspect-ratio", v)
+func (b *VImgBuilder) Cover(v bool) (r *VImgBuilder) {
+	b.tag.Attr(":cover", fmt.Sprint(v))
 	return b
 }
 
-func (b *VImgBuilder) Contain(v bool) (r *VImgBuilder) {
-	b.tag.Attr(":contain", fmt.Sprint(v))
+func (b *VImgBuilder) Color(v string) (r *VImgBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VImgBuilder) ContentClass(v string) (r *VImgBuilder) {
-	b.tag.Attr("content-class", v)
-	return b
-}
-
-func (b *VImgBuilder) Dark(v bool) (r *VImgBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VImgBuilder) Draggable(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":draggable", h.JSONString(v))
 	return b
 }
 
@@ -53,48 +48,13 @@ func (b *VImgBuilder) Gradient(v string) (r *VImgBuilder) {
 	return b
 }
 
-func (b *VImgBuilder) Height(v int) (r *VImgBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
 func (b *VImgBuilder) LazySrc(v string) (r *VImgBuilder) {
 	b.tag.Attr("lazy-src", v)
 	return b
 }
 
-func (b *VImgBuilder) Light(v bool) (r *VImgBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VImgBuilder) MaxHeight(v int) (r *VImgBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VImgBuilder) MaxWidth(v int) (r *VImgBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VImgBuilder) MinHeight(v int) (r *VImgBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VImgBuilder) MinWidth(v int) (r *VImgBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
 func (b *VImgBuilder) Options(v interface{}) (r *VImgBuilder) {
 	b.tag.Attr(":options", h.JSONString(v))
-	return b
-}
-
-func (b *VImgBuilder) Position(v string) (r *VImgBuilder) {
-	b.tag.Attr("position", v)
 	return b
 }
 
@@ -113,13 +73,73 @@ func (b *VImgBuilder) Srcset(v string) (r *VImgBuilder) {
 	return b
 }
 
-func (b *VImgBuilder) Transition(v bool) (r *VImgBuilder) {
-	b.tag.Attr(":transition", fmt.Sprint(v))
+func (b *VImgBuilder) Position(v string) (r *VImgBuilder) {
+	b.tag.Attr("position", v)
 	return b
 }
 
-func (b *VImgBuilder) Width(v int) (r *VImgBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VImgBuilder) AspectRatio(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":aspect-ratio", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) ContentClass(v string) (r *VImgBuilder) {
+	b.tag.Attr("content-class", v)
+	return b
+}
+
+func (b *VImgBuilder) Inline(v bool) (r *VImgBuilder) {
+	b.tag.Attr(":inline", fmt.Sprint(v))
+	return b
+}
+
+func (b *VImgBuilder) Height(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) MaxHeight(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) MaxWidth(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) MinHeight(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) MinWidth(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) Width(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) Rounded(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) Transition(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) Crossorigin(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":crossorigin", h.JSONString(v))
+	return b
+}
+
+func (b *VImgBuilder) Referrerpolicy(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":referrerpolicy", h.JSONString(v))
 	return b
 }
 

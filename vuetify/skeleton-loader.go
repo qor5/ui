@@ -23,23 +23,8 @@ func (b *VSkeletonLoaderBuilder) Boilerplate(v bool) (r *VSkeletonLoaderBuilder)
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) Dark(v bool) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSkeletonLoaderBuilder) Elevation(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSkeletonLoaderBuilder) Height(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSkeletonLoaderBuilder) Light(v bool) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) Color(v string) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
@@ -48,48 +33,53 @@ func (b *VSkeletonLoaderBuilder) Loading(v bool) (r *VSkeletonLoaderBuilder) {
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) MaxHeight(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) LoadingText(v string) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr("loading-text", v)
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) MaxWidth(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) Type(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":type", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) MinHeight(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) Height(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) MinWidth(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) MaxHeight(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) Tile(v bool) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) MaxWidth(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) Transition(v string) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr("transition", v)
+func (b *VSkeletonLoaderBuilder) MinHeight(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) Type(v string) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr("type", v)
+func (b *VSkeletonLoaderBuilder) MinWidth(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) Types(v interface{}) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":types", h.JSONString(v))
+func (b *VSkeletonLoaderBuilder) Width(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VSkeletonLoaderBuilder) Width(v int) (r *VSkeletonLoaderBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VSkeletonLoaderBuilder) Elevation(v interface{}) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VSkeletonLoaderBuilder) Theme(v string) (r *VSkeletonLoaderBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

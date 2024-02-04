@@ -18,23 +18,8 @@ func VParallax(children ...h.HTMLComponent) (r *VParallaxBuilder) {
 	return
 }
 
-func (b *VParallaxBuilder) Alt(v string) (r *VParallaxBuilder) {
-	b.tag.Attr("alt", v)
-	return b
-}
-
-func (b *VParallaxBuilder) Height(v string) (r *VParallaxBuilder) {
-	b.tag.Attr("height", v)
-	return b
-}
-
-func (b *VParallaxBuilder) Src(v string) (r *VParallaxBuilder) {
-	b.tag.Attr("src", v)
-	return b
-}
-
-func (b *VParallaxBuilder) Srcset(v string) (r *VParallaxBuilder) {
-	b.tag.Attr("srcset", v)
+func (b *VParallaxBuilder) Scale(v interface{}) (r *VParallaxBuilder) {
+	b.tag.Attr(":scale", h.JSONString(v))
 	return b
 }
 

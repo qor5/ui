@@ -18,6 +18,11 @@ func VScaleTransition(children ...h.HTMLComponent) (r *VScaleTransitionBuilder) 
 	return
 }
 
+func (b *VScaleTransitionBuilder) Disabled(v bool) (r *VScaleTransitionBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VScaleTransitionBuilder) Group(v bool) (r *VScaleTransitionBuilder) {
 	b.tag.Attr(":group", fmt.Sprint(v))
 	return b

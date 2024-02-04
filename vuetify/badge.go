@@ -18,18 +18,8 @@ func VBadge(children ...h.HTMLComponent) (r *VBadgeBuilder) {
 	return
 }
 
-func (b *VBadgeBuilder) Avatar(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":avatar", fmt.Sprint(v))
-	return b
-}
-
 func (b *VBadgeBuilder) Bordered(v bool) (r *VBadgeBuilder) {
 	b.tag.Attr(":bordered", fmt.Sprint(v))
-	return b
-}
-
-func (b *VBadgeBuilder) Bottom(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
 	return b
 }
 
@@ -43,18 +33,18 @@ func (b *VBadgeBuilder) Content(v interface{}) (r *VBadgeBuilder) {
 	return b
 }
 
-func (b *VBadgeBuilder) Dark(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
 func (b *VBadgeBuilder) Dot(v bool) (r *VBadgeBuilder) {
 	b.tag.Attr(":dot", fmt.Sprint(v))
 	return b
 }
 
-func (b *VBadgeBuilder) Icon(v string) (r *VBadgeBuilder) {
-	b.tag.Attr("icon", v)
+func (b *VBadgeBuilder) Floating(v bool) (r *VBadgeBuilder) {
+	b.tag.Attr(":floating", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBadgeBuilder) Icon(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 
@@ -68,53 +58,53 @@ func (b *VBadgeBuilder) Label(v string) (r *VBadgeBuilder) {
 	return b
 }
 
-func (b *VBadgeBuilder) Left(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VBadgeBuilder) Max(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":max", h.JSONString(v))
 	return b
 }
 
-func (b *VBadgeBuilder) Light(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VBadgeBuilder) ModelValue(v bool) (r *VBadgeBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
-func (b *VBadgeBuilder) Mode(v string) (r *VBadgeBuilder) {
-	b.tag.Attr("mode", v)
+func (b *VBadgeBuilder) OffsetX(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":offset-x", h.JSONString(v))
 	return b
 }
 
-func (b *VBadgeBuilder) OffsetX(v int) (r *VBadgeBuilder) {
-	b.tag.Attr(":offset-x", fmt.Sprint(v))
+func (b *VBadgeBuilder) OffsetY(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":offset-y", h.JSONString(v))
 	return b
 }
 
-func (b *VBadgeBuilder) OffsetY(v int) (r *VBadgeBuilder) {
-	b.tag.Attr(":offset-y", fmt.Sprint(v))
+func (b *VBadgeBuilder) TextColor(v string) (r *VBadgeBuilder) {
+	b.tag.Attr("text-color", v)
 	return b
 }
 
-func (b *VBadgeBuilder) Origin(v string) (r *VBadgeBuilder) {
-	b.tag.Attr("origin", v)
+func (b *VBadgeBuilder) Location(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
 	return b
 }
 
-func (b *VBadgeBuilder) Overlap(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":overlap", fmt.Sprint(v))
+func (b *VBadgeBuilder) Rounded(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
-func (b *VBadgeBuilder) Tile(v bool) (r *VBadgeBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VBadgeBuilder) Tag(v string) (r *VBadgeBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 
-func (b *VBadgeBuilder) Transition(v string) (r *VBadgeBuilder) {
-	b.tag.Attr("transition", v)
+func (b *VBadgeBuilder) Theme(v string) (r *VBadgeBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VBadgeBuilder) Value(v interface{}) (r *VBadgeBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VBadgeBuilder) Transition(v interface{}) (r *VBadgeBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
 	return b
 }
 

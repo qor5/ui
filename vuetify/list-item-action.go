@@ -18,6 +18,21 @@ func VListItemAction(children ...h.HTMLComponent) (r *VListItemActionBuilder) {
 	return
 }
 
+func (b *VListItemActionBuilder) Start(v bool) (r *VListItemActionBuilder) {
+	b.tag.Attr(":start", fmt.Sprint(v))
+	return b
+}
+
+func (b *VListItemActionBuilder) End(v bool) (r *VListItemActionBuilder) {
+	b.tag.Attr(":end", fmt.Sprint(v))
+	return b
+}
+
+func (b *VListItemActionBuilder) Tag(v string) (r *VListItemActionBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VListItemActionBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

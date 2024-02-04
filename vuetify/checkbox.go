@@ -18,28 +18,63 @@ func VCheckbox(children ...h.HTMLComponent) (r *VCheckboxBuilder) {
 	return
 }
 
-func (b *VCheckboxBuilder) AppendIcon(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VCheckboxBuilder) Label(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VCheckboxBuilder) BackgroundColor(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VCheckboxBuilder) Id(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VCheckboxBuilder) Color(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("color", v)
+func (b *VCheckboxBuilder) AppendIcon(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VCheckboxBuilder) Dark(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VCheckboxBuilder) CenterAffix(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
 	return b
 }
 
-func (b *VCheckboxBuilder) Dense(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VCheckboxBuilder) Type(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("type", v)
+	return b
+}
+
+func (b *VCheckboxBuilder) PrependIcon(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) HideSpinButtons(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Hint(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VCheckboxBuilder) PersistentHint(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Messages(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Direction(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Density(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
@@ -53,83 +88,13 @@ func (b *VCheckboxBuilder) Error(v bool) (r *VCheckboxBuilder) {
 	return b
 }
 
-func (b *VCheckboxBuilder) ErrorCount(v int) (r *VCheckboxBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
+func (b *VCheckboxBuilder) MaxErrors(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b
 }
 
-func (b *VCheckboxBuilder) FalseValue(v interface{}) (r *VCheckboxBuilder) {
-	b.tag.Attr(":false-value", h.JSONString(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) HideDetails(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) Hint(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) Id(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) Indeterminate(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":indeterminate", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) IndeterminateIcon(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("indeterminate-icon", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) InputValue(v interface{}) (r *VCheckboxBuilder) {
-	b.tag.Attr(":input-value", h.JSONString(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) Label(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) Light(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) Messages(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) Multiple(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) OffIcon(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("off-icon", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) OnIcon(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("on-icon", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) PersistentHint(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) PrependIcon(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("prepend-icon", v)
+func (b *VCheckboxBuilder) Name(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
@@ -138,23 +103,48 @@ func (b *VCheckboxBuilder) Readonly(v bool) (r *VCheckboxBuilder) {
 	return b
 }
 
-func (b *VCheckboxBuilder) Ripple(v interface{}) (r *VCheckboxBuilder) {
-	b.tag.Attr(":ripple", h.JSONString(v))
-	return b
-}
-
 func (b *VCheckboxBuilder) Rules(v interface{}) (r *VCheckboxBuilder) {
 	b.tag.Attr(":rules", h.JSONString(v))
 	return b
 }
 
-func (b *VCheckboxBuilder) Success(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
+func (b *VCheckboxBuilder) ModelValue(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VCheckboxBuilder) SuccessMessages(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VCheckboxBuilder) ValidateOn(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) ValidationValue(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Focused(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) HideDetails(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Indeterminate(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":indeterminate", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) IndeterminateIcon(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":indeterminate-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) BaseColor(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("base-color", v)
 	return b
 }
 
@@ -163,8 +153,8 @@ func (b *VCheckboxBuilder) TrueValue(v interface{}) (r *VCheckboxBuilder) {
 	return b
 }
 
-func (b *VCheckboxBuilder) ValidateOnBlur(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
+func (b *VCheckboxBuilder) FalseValue(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":false-value", h.JSONString(v))
 	return b
 }
 
@@ -173,8 +163,43 @@ func (b *VCheckboxBuilder) Value(v interface{}) (r *VCheckboxBuilder) {
 	return b
 }
 
+func (b *VCheckboxBuilder) Color(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VCheckboxBuilder) DefaultsTarget(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("defaults-target", v)
+	return b
+}
+
+func (b *VCheckboxBuilder) FalseIcon(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":false-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) TrueIcon(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":true-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Ripple(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":ripple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Multiple(v bool) (r *VCheckboxBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
+	return b
+}
+
 func (b *VCheckboxBuilder) ValueComparator(v interface{}) (r *VCheckboxBuilder) {
 	b.tag.Attr(":value-comparator", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Theme(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

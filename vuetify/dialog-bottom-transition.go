@@ -18,6 +18,11 @@ func VDialogBottomTransition(children ...h.HTMLComponent) (r *VDialogBottomTrans
 	return
 }
 
+func (b *VDialogBottomTransitionBuilder) Disabled(v bool) (r *VDialogBottomTransitionBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDialogBottomTransitionBuilder) Group(v bool) (r *VDialogBottomTransitionBuilder) {
 	b.tag.Attr(":group", fmt.Sprint(v))
 	return b

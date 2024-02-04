@@ -18,6 +18,11 @@ func VStepperHeader(children ...h.HTMLComponent) (r *VStepperHeaderBuilder) {
 	return
 }
 
+func (b *VStepperHeaderBuilder) Tag(v string) (r *VStepperHeaderBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VStepperHeaderBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

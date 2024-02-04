@@ -18,8 +18,18 @@ func VWindowItem(children ...h.HTMLComponent) (r *VWindowItemBuilder) {
 	return
 }
 
-func (b *VWindowItemBuilder) ActiveClass(v string) (r *VWindowItemBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VWindowItemBuilder) ReverseTransition(v interface{}) (r *VWindowItemBuilder) {
+	b.tag.Attr(":reverse-transition", h.JSONString(v))
+	return b
+}
+
+func (b *VWindowItemBuilder) Transition(v interface{}) (r *VWindowItemBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VWindowItemBuilder) Value(v interface{}) (r *VWindowItemBuilder) {
+	b.tag.Attr(":value", h.JSONString(v))
 	return b
 }
 
@@ -28,23 +38,13 @@ func (b *VWindowItemBuilder) Disabled(v bool) (r *VWindowItemBuilder) {
 	return b
 }
 
+func (b *VWindowItemBuilder) SelectedClass(v string) (r *VWindowItemBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
 func (b *VWindowItemBuilder) Eager(v bool) (r *VWindowItemBuilder) {
 	b.tag.Attr(":eager", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowItemBuilder) ReverseTransition(v bool) (r *VWindowItemBuilder) {
-	b.tag.Attr(":reverse-transition", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowItemBuilder) Transition(v bool) (r *VWindowItemBuilder) {
-	b.tag.Attr(":transition", fmt.Sprint(v))
-	return b
-}
-
-func (b *VWindowItemBuilder) Value(v interface{}) (r *VWindowItemBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
 	return b
 }
 

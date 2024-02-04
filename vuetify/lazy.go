@@ -18,28 +18,8 @@ func VLazy(children ...h.HTMLComponent) (r *VLazyBuilder) {
 	return
 }
 
-func (b *VLazyBuilder) Height(v int) (r *VLazyBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLazyBuilder) MaxHeight(v int) (r *VLazyBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLazyBuilder) MaxWidth(v int) (r *VLazyBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLazyBuilder) MinHeight(v int) (r *VLazyBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLazyBuilder) MinWidth(v int) (r *VLazyBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VLazyBuilder) ModelValue(v bool) (r *VLazyBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
@@ -48,23 +28,43 @@ func (b *VLazyBuilder) Options(v interface{}) (r *VLazyBuilder) {
 	return b
 }
 
+func (b *VLazyBuilder) Height(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VLazyBuilder) MaxHeight(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VLazyBuilder) MaxWidth(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VLazyBuilder) MinHeight(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VLazyBuilder) MinWidth(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VLazyBuilder) Width(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
 func (b *VLazyBuilder) Tag(v string) (r *VLazyBuilder) {
 	b.tag.Attr("tag", v)
 	return b
 }
 
-func (b *VLazyBuilder) Transition(v string) (r *VLazyBuilder) {
-	b.tag.Attr("transition", v)
-	return b
-}
-
-func (b *VLazyBuilder) Value(v interface{}) (r *VLazyBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
-	return b
-}
-
-func (b *VLazyBuilder) Width(v int) (r *VLazyBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VLazyBuilder) Transition(v interface{}) (r *VLazyBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
 	return b
 }
 
