@@ -232,7 +232,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			tds = append(tds, h.Td(
 				v.VCheckbox().
 					Class("mt-0").
-					InputValue(inputValue).
+					Value(inputValue).
 					TrueValue(id).
 					FalseValue("").
 					HideDetails(true).
@@ -269,12 +269,12 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 						web.Slot(
 							v.VBtn("").Children(
 								v.VIcon("more_horiz"),
-							).Attr("v-on", "on").Text(true).Fab(true).Small(true),
+							).Attr("v-on", "on").Variant("text").Size("small"),
 						).Name("activator").Scope("{ on }"),
 
 						v.VList(
 							rowMenus...,
-						).Dense(true),
+						).Density("compact"),
 					),
 				).Style("width: 64px;").Class("pl-0")
 			} else {
@@ -349,7 +349,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				v.VCheckbox().
 					Class("mt-0").
 					TrueValue(idsOfPageComma).
-					InputValue(allInputValue).
+					Value(allInputValue).
 					HideDetails(true).
 					Attr("@change", onChange),
 			).Style("width: 48px;").Class("pr-0"))
@@ -386,16 +386,15 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 		if inPlaceLoadMore {
 			btn = v.VBtn(b.loadMoreLabel).
-				Text(true).
-				Small(true).
+				Variant("text").
+				Size("small").
 				Class("mt-2").
 				On("click",
 					fmt.Sprintf("vars.%s = !vars.%s", loadMoreVarName, loadMoreVarName))
 		} else {
 			btn = v.VBtn(b.loadMoreLabel).
-				Text(true).
-				Small(true).
-				Link(true).
+				Variant("text").
+				Size("small").
 				Class("mt-2").
 				Href(b.loadMoreURL)
 		}
@@ -435,9 +434,8 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		h.Div(
 			selectedCountNotice,
 			v.VBtn(b.clearSelectionLabel).
-				Plain(true).
-				Text(true).
-				Small(true).
+				Variant("plain").
+				Size("small").
 				On("click", onClearSelection),
 		).
 			Class("grey lighten-3 text-center pt-2 pb-2").

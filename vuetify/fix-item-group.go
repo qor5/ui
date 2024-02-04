@@ -8,3 +8,8 @@ func (b *VItemGroupBuilder) FieldName(v string) (r *VItemGroupBuilder) {
 	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
+
+func (b *VItemGroupBuilder) Value(v interface{}) (r *VItemGroupBuilder) {
+	b.ModelValue(v)
+	return b
+}

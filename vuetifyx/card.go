@@ -13,7 +13,7 @@ type CardBuilder struct {
 	header     []h.HTMLComponent
 	actions    []h.HTMLComponent
 	classNames []string
-	outlined   bool
+	variant    string
 }
 
 func Card(children ...h.HTMLComponent) (r *CardBuilder) {
@@ -52,8 +52,8 @@ func (b *CardBuilder) Class(names ...string) (r *CardBuilder) {
 	return b
 }
 
-func (b *CardBuilder) Outlined(v bool) (r *CardBuilder) {
-	b.outlined = v
+func (b *CardBuilder) Variant(v string) (r *CardBuilder) {
+	b.variant = v
 	return b
 }
 
@@ -82,5 +82,5 @@ func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 			v.VSpacer(),
 		).Flat(true).AppendChildren(b.actions...),
 		hr,
-	).Outlined(b.outlined).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
+	).Variant(b.variant).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
 }

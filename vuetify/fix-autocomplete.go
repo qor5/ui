@@ -22,3 +22,8 @@ func (b *VAutocompleteBuilder) FieldName(v string) (r *VAutocompleteBuilder) {
 	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
+
+func (b *VAutocompleteBuilder) Value(v interface{}) (r *VAutocompleteBuilder) {
+	b.ModelValue(v)
+	return b
+}

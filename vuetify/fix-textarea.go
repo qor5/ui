@@ -13,3 +13,8 @@ func (b *VTextareaBuilder) ErrorMessages(v ...string) (r *VTextareaBuilder) {
 	SetErrorMessages(b.tag, v)
 	return b
 }
+
+func (b *VTextareaBuilder) Value(v interface{}) (r *VTextareaBuilder) {
+	b.ModelValue(v)
+	return b
+}

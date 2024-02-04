@@ -49,7 +49,7 @@ func (b *VXReadonlyFieldBuilder) MarshalHTML(ctx context.Context) ([]byte, error
 		vComp = b.children
 	} else {
 		if b.checkbox {
-			vComp = vuetify.VCheckbox().InputValue(b.value).
+			vComp = vuetify.VCheckbox().Value(b.value).
 				Readonly(true).
 				Ripple(false).
 				HideDetails(true).

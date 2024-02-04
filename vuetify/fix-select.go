@@ -22,3 +22,8 @@ func (b *VSelectBuilder) FieldName(v string) (r *VSelectBuilder) {
 	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
+
+func (b *VSelectBuilder) Value(v interface{}) (r *VSelectBuilder) {
+	b.ModelValue(v)
+	return b
+}
