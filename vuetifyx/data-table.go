@@ -440,7 +440,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		).
 			Class("grey lighten-3 text-center pt-2 pb-2").
 			Attr("v-show", fmt.Sprintf("vars.%s > 0", selectedCountVarName)),
-		v.VSimpleTable(
+		v.VTable(
 			thead,
 			h.Tbody(rows...),
 			tfoot,

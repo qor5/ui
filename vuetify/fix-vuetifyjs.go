@@ -30,16 +30,14 @@ func CSSComponentsPack() web.ComponentsPack {
 
 const initVuetify = `
 (window.__goplaidVueComponentRegisters =
-	window.__goplaidVueComponentRegisters || []).push(function(Vue, vueOptions) {
-		var vuetify = new Vuetify({{vuetifyOpts}});
-		Vue.use(Vuetify);
-		vueOptions.vuetify = vuetify;
+	window.__goplaidVueComponentRegisters || []).push(function(app, vueOptions) {
+		app.use(Vuetify.createVuetify({{vuetifyOpts}}));
 	});
 `
 
 const defaultVuetifyOpts = `{
 	icons: {
-		iconfont: 'md', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
+		// defaultSet: 'md', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
 	},
 }`
 
