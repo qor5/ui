@@ -16,3 +16,5 @@ require (
 	github.com/go-playground/form v3.1.4+incompatible // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 )
+
+replace github.com/qor5/web => ../web

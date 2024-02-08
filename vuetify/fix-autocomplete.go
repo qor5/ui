@@ -1,8 +1,6 @@
 package vuetify
 
 import (
-	"github.com/qor5/web"
-
 	h "github.com/theplant/htmlgo"
 )
 
@@ -15,15 +13,5 @@ func VAutocomplete(children ...h.HTMLComponent) (r *VAutocompleteBuilder) {
 
 func (b *VAutocompleteBuilder) ErrorMessages(v ...string) (r *VAutocompleteBuilder) {
 	SetErrorMessages(b.tag, v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) FieldName(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
-	return b
-}
-
-func (b *VAutocompleteBuilder) Value(v interface{}) (r *VAutocompleteBuilder) {
-	b.ModelValue(v)
 	return b
 }

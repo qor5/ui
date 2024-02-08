@@ -20,8 +20,8 @@ func TipTapEditor() (r *TipTapEditorBuilder) {
 	return
 }
 
-func (b *TipTapEditorBuilder) FieldName(v string) (r *TipTapEditorBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
+func (b *TipTapEditorBuilder) FieldName(n string, v string) (r *TipTapEditorBuilder) {
+	b.tag.Attr(web.VField(n, v)...)
 	return b
 }
 
