@@ -3,7 +3,6 @@ package vuetifyx
 import (
 	"context"
 
-	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -15,11 +14,6 @@ func VXLinkageSelect() *VXLinkageSelectBuilber {
 	b := &VXLinkageSelectBuilber{
 		tag: h.Tag("vx-linkageselect"),
 	}
-	return b
-}
-
-func (b *VXLinkageSelectBuilber) FieldName(v string) (r *VXLinkageSelectBuilber) {
-	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
 

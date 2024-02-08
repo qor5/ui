@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/qor5/ui/vuetify"
-	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -25,11 +24,6 @@ func VXAutocomplete(children ...h.HTMLComponent) (r *VXAutocompleteBuilder) {
 
 func (b *VXAutocompleteBuilder) ErrorMessages(v ...string) (r *VXAutocompleteBuilder) {
 	vuetify.SetErrorMessages(b.tag, v)
-	return b
-}
-
-func (b *VXAutocompleteBuilder) FieldName(v string) (r *VXAutocompleteBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
 

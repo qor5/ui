@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -31,11 +30,6 @@ type TimePickerProps struct {
 
 func (b *VXDateTimePickerBuilder) Value(v string) (r *VXDateTimePickerBuilder) {
 	b.tag.Attr(":value", h.JSONString(v))
-	return b
-}
-
-func (b *VXDateTimePickerBuilder) FieldName(v string) (r *VXDateTimePickerBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
 
