@@ -47,7 +47,6 @@ func (b *PickerBuilder) MarshalHTML(ctx context.Context) ([]byte, error) {
 			web.Slot(
 				vuetify.VTextField().
 					Label(b.label).
-					Attr(web.VField(b.fieldName, b.value)...).
 					Readonly(true).
 					PrependIcon("edit_calendar").
 					Attr("v-model", fmt.Sprintf("locals.%s", valueLocal)).
