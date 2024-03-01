@@ -1,6 +1,6 @@
 module github.com/qor5/ui
 
-go 1.19
+go 1.22
 
 require (
 	github.com/qor5/web v1.2.3
