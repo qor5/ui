@@ -452,7 +452,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 	}
 
 	if len(initContextVarsMap) > 0 {
-		table.Attr(web.InitContextVars, h.JSONString(initContextVarsMap))
+		table.AppendChildren(web.ObjectAssignTag("vars", initContextVarsMap))
 	}
 
 	return table.MarshalHTML(c)
