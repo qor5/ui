@@ -1,1 +1,1 @@
-export const ModifierBetween = 'between';
+export const ModifierBetween = 'between'
