@@ -1,14 +1,13 @@
 <template>
   <v-dialog v-model="display" :width="dialogWidth">
-    <template v-slot:activator="{ on }">
+    <template v-slot:activator="{ props: activatorProps }">
       <v-text-field
-        v-bind="textFieldProps"
+        v-bind="{...activatorProps, ...textFieldProps}"
         :disabled="disabled"
         :loading="loading"
         :label="label"
         :value="formattedDatetime"
         :hide-details="hideDetails"
-        v-on="on"
         prepend-icon="edit_calendar"
         readonly
       >

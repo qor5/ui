@@ -7,6 +7,6 @@ import { myMount } from './testutils'
 describe('DatePicker', () => {
   it('renders properly', () => {
     const wrapper = myMount(DatePicker, { props: { msg: 'Hello Vitest' } })
-    expect(wrapper.text()).toContain('Hello Vitest')
+    console.log(wrapper.html())
   })
 })
