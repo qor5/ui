@@ -70,6 +70,7 @@
   </v-container>
 </template>
 
+<script lang="ts">export default {name:"helloworld"}</script>
 <script setup lang="ts">
   //
 </script>
