@@ -29,8 +29,8 @@ func CSSComponentsPack() web.ComponentsPack {
 }
 
 const initVuetify = `
-(window.__goplaidVueComponentRegisters =
-	window.__goplaidVueComponentRegisters || []).push(function(app, vueOptions) {
+window.__goplaidVueComponentRegisters = window.__goplaidVueComponentRegisters || [];
+window.__goplaidVueComponentRegisters.push(function(app, vueOptions) {
 		app.use(Vuetify.createVuetify({{vuetifyOpts}}));
 	});
 `
