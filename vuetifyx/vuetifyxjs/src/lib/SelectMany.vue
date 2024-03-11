@@ -1,6 +1,6 @@
 <template>
   <label class="v-label theme--light" v-html="label"></label>
-  <v-card v-if="internalSelectedItems.length > 0">
+  <v-card v-if="internalSelectedItems.length > 0" variant="flat" class="mb-2">
     <v-list>
       <draggable
         v-model="internalSelectedItems"

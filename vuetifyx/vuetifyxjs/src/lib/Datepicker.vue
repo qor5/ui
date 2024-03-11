@@ -11,7 +11,9 @@
         prepend-icon="mdi-calendar-edit"
         readonly
       >
-        <v-progress-linear color="primary" indeterminate absolute height="2"></v-progress-linear>
+        <template v-slot:loader>
+          <v-progress-linear color="primary" indeterminate absolute height="2"></v-progress-linear>
+        </template>
       </v-text-field>
     </template>
 
@@ -29,10 +31,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="grey lighten-1" variant="text" @click.native="clearHandler(isActive)"
-            >{{ clearText }}
+          >{{ clearText }}
           </v-btn>
           <v-btn color="green darken-1" variant="text" @click="okHandler(isActive)"
-            >{{ okText }}
+          >{{ okText }}
           </v-btn>
         </v-card-actions>
       </v-card>

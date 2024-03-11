@@ -1,14 +1,16 @@
 <template>
   <v-app>
     <v-main>
-      <h1>select-many-example</h1>
-      <select-many-example></select-many-example>
-      <v-divider></v-divider>
-      <h1>datepicker-example</h1>
-      <datepicker-example></datepicker-example>
-      <v-divider></v-divider>
-      <h1>linkage-select-example</h1>
-      <linkage-select-example></linkage-select-example>
+      <v-container>
+        <h1 class="text-h2 mb-4">select-many-example</h1>
+        <select-many-example></select-many-example>
+        <v-divider class="mb-6"></v-divider>
+        <h1 class="text-h2 mb-4">datepicker-example</h1>
+        <datepicker-example></datepicker-example>
+        <v-divider class="mb-6"></v-divider>
+        <h1 class="text-h2 mb-4">linkage-select-example</h1>
+        <linkage-select-example></linkage-select-example>
+      </v-container>
     </v-main>
   </v-app>
 </template>
