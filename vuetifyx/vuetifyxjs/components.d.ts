@@ -7,7 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Datepicker: typeof import('./src/lib/Datepicker.vue')['default']
+    DatepickerExample: typeof import('./src/demo/components/DatepickerExample.vue')['default']
+    Datetimepicker: typeof import('./src/lib/Datetimepicker.vue')['default']
+    DatetimepickerExample: typeof import('./src/demo/components/DatetimepickerExample.vue')['default']
+    DayCalendar: typeof import('./src/lib/VxDatepicker/components/DayCalendar.vue')['default']
     HelloWorld: typeof import('./src/demo/components/HelloWorld.vue')['default']
-    VxDatepicker: typeof import('./src/lib/VxDatepicker.vue')['default']
+    LinkageSelect: typeof import('./src/lib/LinkageSelect.vue')['default']
+    LinkageSelectExample: typeof import('./src/demo/components/LinkageSelectExample.vue')['default']
+    MessageListener: typeof import('./src/lib/MessageListener.vue')['default']
+    SelectMany: typeof import('./src/lib/SelectMany.vue')['default']
+    SelectManyExample: typeof import('./src/demo/components/SelectManyExample.vue')['default']
+    VxCalendar: typeof import('./src/lib/VxDatepicker/VxCalendar.vue')['default']
+    VxDatepicker: typeof import('./src/lib/Datepicker.vue')['default']
   }
 }

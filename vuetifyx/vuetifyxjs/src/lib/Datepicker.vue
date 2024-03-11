@@ -8,11 +8,10 @@
         :label="label"
         v-model="formattedDatetime"
         :hide-details="hideDetails"
-        prepend-icon="edit_calendar"
+        prepend-icon="mdi-calendar-edit"
         readonly
       >
         <v-progress-linear color="primary" indeterminate absolute height="2"></v-progress-linear>
-
       </v-text-field>
     </template>
 
@@ -22,35 +21,33 @@
           <v-container>
             <v-row>
               <v-col cols="6" class="pa-0">
-                <v-date-picker
-                  v-model="date"
-                  full-width
-                  no-title
-                ></v-date-picker>
+                <v-date-picker v-model="date" full-width no-title></v-date-picker>
               </v-col>
-
             </v-row>
           </v-container>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="grey lighten-1" variant="text" @click.native="clearHandler(isActive)">{{
-              clearText
+          <v-btn color="grey lighten-1" variant="text" @click.native="clearHandler(isActive)"
+          >{{ clearText }}
+          </v-btn>
+          <v-btn color="green darken-1" variant="text" @click="okHandler(isActive)">{{
+              okText
             }}
           </v-btn>
-          <v-btn color="green darken-1" variant="text" @click="okHandler(isActive)">{{ okText }}</v-btn>
         </v-card-actions>
       </v-card>
     </template>
   </v-dialog>
 </template>
 
-<script lang="ts">export default {name: "vx-datepicker"}</script>
+<script lang="ts">
+export default { name: 'vx-datepicker' }
+</script>
 <script lang="ts" setup>
-import {format, parse} from 'date-fns'
+import { format, parse } from 'date-fns'
 
-import {computed, onMounted, Ref, ref} from "vue";
-
+import { computed, onMounted, Ref, ref } from 'vue'
 
 const DEFAULT_DATE = ''
 const DEFAULT_TIME = '00:00:00'
@@ -61,7 +58,7 @@ const DEFAULT_CLEAR_TEXT = 'CLEAR'
 const DEFAULT_OK_TEXT = 'OK'
 
 const props = defineProps({
-  value: {
+  modelValue: {
     type: String,
     default: null
   },
@@ -83,10 +80,6 @@ const props = defineProps({
     type: String,
     default: 'yyyy-MM-dd'
   },
-  timeFormat: {
-    type: String,
-    default: 'HH:mm'
-  },
   clearText: {
     type: String,
     default: 'CLEAR'
@@ -101,51 +94,43 @@ const props = defineProps({
   datePickerProps: {
     type: Object
   },
-  timePickerProps: {
-    type: Object
-  },
   hideDetails: {
     type: Boolean
-  },
+  }
 })
 const display = ref(false)
-const date = defineModel()
+const date = ref()
 
 const dateTimeFormat = computed(() => {
-  return props.dateFormat + ' ' + props.timeFormat
+  return props.dateFormat
 })
-
-
 const formattedDatetime = computed(() => {
   return date.value ? format(<Date>date.value, dateTimeFormat.value) : ''
 })
-const dateSelected = (() => {
+const dateSelected = () => {
   return !date.value
-})
+}
 const init = () => {
-  if (!props.value) {
+  if (!props.modelValue) {
     return
   }
   // see https://stackoverflow.com/a/9436948
-  const initDateTime = parse(props.value, dateTimeFormat.value, new Date())
-  date.value = format(initDateTime, DEFAULT_DATE_FORMAT)
+  date.value = parse(props.modelValue, dateTimeFormat.value, new Date())
 }
 
-
-const emit = defineEmits(["input"])
-
+const emit = defineEmits(['update:modelValue'])
 
 const okHandler = (isActive: Ref) => {
   isActive.value = false
   if (!date.value) {
     date.value = new Date()
   }
-  emit("input", formattedDatetime.value)
+  emit('update:modelValue', formattedDatetime.value)
 }
 const clearHandler = (isActive: Ref) => {
   isActive.value = false
   date.value = null
-  emit("input", null)
+  emit('update:modelValue', null)
 }
 
 const resetPicker = () => {
@@ -155,4 +140,3 @@ onMounted(() => {
   init()
 })
 </script>
-

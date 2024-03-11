@@ -1,10 +1,15 @@
-import VxDatepicker from '@/lib/VxDatepicker.vue'
-
 import { App } from 'vue'
+
+import Datepicker from '@/lib/Datepicker.vue'
+import SelectMany from '@/lib/SelectMany.vue'
+import LinkageSelect from '@/lib/LinkageSelect.vue'
+
 
 const vuetifyx = {
   install: (app: App) => {
-    app.component(VxDatepicker.name, VxDatepicker)
+    app.component('vx-datepicker', Datepicker)
+    app.component('vx-selectmany', SelectMany)
+    app.component('vx-linkageselect', LinkageSelect)
   }
 }
 declare const window: any
