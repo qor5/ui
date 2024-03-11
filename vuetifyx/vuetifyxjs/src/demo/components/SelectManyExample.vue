@@ -32,6 +32,4 @@ const items = ref([
   <select-many v-model="value" :items="items" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

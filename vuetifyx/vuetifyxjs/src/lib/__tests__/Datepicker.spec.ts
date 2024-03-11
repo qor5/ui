@@ -6,9 +6,8 @@ import { nextTick, watch } from 'vue'
 
 it('Datepicker modelvulue', async () => {
   const wrapper = mountTemplate(Datepicker, {
-      modelValue: '2023-10-01'
-    }
-  )
+    modelValue: '2023-10-01'
+  })
   await nextTick()
   expect(wrapper.html()).toContain('2023-10-01')
 })

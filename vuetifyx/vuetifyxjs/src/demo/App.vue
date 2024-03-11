@@ -9,7 +9,6 @@
       <v-divider></v-divider>
       <h1>linkage-select-example</h1>
       <linkage-select-example></linkage-select-example>
-
     </v-main>
   </v-app>
 </template>

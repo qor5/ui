@@ -13,7 +13,6 @@ const vuetify = createVuetify({
 
 global.ResizeObserver = require('resize-observer-polyfill')
 
-
 export function mountTemplate(component: Component, props: {}): VueWrapper {
   return mount(component, {
     props: {
@@ -24,4 +23,3 @@ export function mountTemplate(component: Component, props: {}): VueWrapper {
     }
   })
 }
-

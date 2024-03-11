@@ -2,7 +2,12 @@
   <label class="v-label theme--light" v-html="label"></label>
   <v-card v-if="internalSelectedItems.length > 0">
     <v-list>
-      <draggable v-model="internalSelectedItems" :item-key="itemValue" @change="changeOrder" handle=".handle">
+      <draggable
+        v-model="internalSelectedItems"
+        :item-key="itemValue"
+        @change="changeOrder"
+        handle=".handle"
+      >
         <template #item="{ element }">
           <v-list-item
             :prepend-avatar="element[itemImage]"
@@ -86,7 +91,6 @@ const props = defineProps({
   modelValue: {
     type: Array<any>,
     default: []
-
   }
 })
 const internalSelectedItems: Ref<any[]> = ref([])

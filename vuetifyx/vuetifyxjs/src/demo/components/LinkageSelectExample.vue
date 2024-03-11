@@ -6,10 +6,14 @@ const value = ref(['2', '3', '6'])
 const items: Ref<any> = ref([
   [
     {
-      ID: '1', Name: '浙江', ChildrenIDs: ['1', '2']
+      ID: '1',
+      Name: '浙江',
+      ChildrenIDs: ['1', '2']
     },
     {
-      ID: '2', Name: '江苏', ChildrenIDs: ['3', '4']
+      ID: '2',
+      Name: '江苏',
+      ChildrenIDs: ['3', '4']
     }
   ],
   [
@@ -30,15 +34,11 @@ const items: Ref<any> = ref([
   ]
 ])
 const labels = ref(['Province', 'City', 'District'])
-
-
 </script>
 
 <template>
   <p>{{ value }}</p>
-  <linkage-select v-model="value" :items="items" :labels="labels" ></linkage-select>
+  <linkage-select v-model="value" :items="items" :labels="labels"></linkage-select>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
