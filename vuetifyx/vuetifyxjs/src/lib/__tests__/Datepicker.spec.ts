@@ -11,6 +11,6 @@ it('Datepicker modelvulue', async () => {
   })
   await nextTick()
   await flushPromises()
-  expect(wrapper.find("input").element.value).toContain('2023-10-01')
-  expect(wrapper.find("input").element.value).not.toContain('2023-10-02')
+  expect(wrapper.find('input').element.value).toContain('2023-10-01')
+  expect(wrapper.find('input').element.value).not.toContain('2023-10-02')
 })
