@@ -9,7 +9,6 @@ const props = defineProps<{
 props.modelValue.modifier = props.modelValue.modifier || 'contains'
 
 const emit = defineEmits(['update:modelValue'])
-const modifier = ref()
 const t = props.translations
 const items = ref([
   { text: t.equals, value: 'equals' },
@@ -23,7 +22,7 @@ const items = ref([
       <v-select
         class="d-inline-block"
         style="width: 200px"
-        v-model="modifier"
+        v-model="props.modelValue.modifier"
         :items="items"
         item-title="text"
         item-value="value"

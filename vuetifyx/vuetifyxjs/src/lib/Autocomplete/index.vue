@@ -239,7 +239,7 @@ const chipsVisible = computed(() => {
       ></vx-pagination>
       <loadmore-node
         v-else
-        @intersect="loadRemoteItems"
+        @intersect="endIntersect"
         @click="
           () => {
             remote.page += 1

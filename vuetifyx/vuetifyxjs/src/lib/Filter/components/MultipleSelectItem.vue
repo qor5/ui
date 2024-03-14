@@ -14,7 +14,6 @@ const datePickerVisible = ref(false)
 const t = props.translations
 
 const emit = defineEmits(['update:modelValue'])
-const modifier = props.modelValue.modifier
 const items = ref([
   { text: t.in, value: 'in' },
   { text: t.notIn, value: 'notIn' }
@@ -27,7 +26,7 @@ const items = ref([
       <v-select
         class="d-inline-block"
         style="width: 200px"
-        v-model="modifier"
+        v-model="props.modelValue.modifier"
         :items="items"
         item-title="text"
         item-value="value"
