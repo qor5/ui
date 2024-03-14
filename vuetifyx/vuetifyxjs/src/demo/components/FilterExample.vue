@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import VxFilter from '@/lib/Filter/index.vue'
+import VueJsonPretty from 'vue-json-pretty'
+import 'vue-json-pretty/lib/styles.css'
 import { ref } from 'vue'
 
 const value = ref([
@@ -116,9 +118,11 @@ const change = (e: any) => {
 </script>
 
 <template>
-  <p>{{ value }}</p>
+  <h5 class="text-h5">v-model</h5>
+  <VueJsonPretty :data="value"></VueJsonPretty>
   <v-divider />
-  <p>{{ changeValue }}</p>
+  <h5 class="text-h5">change-value</h5>
+  <VueJsonPretty :data="changeValue"></VueJsonPretty>
   <v-divider />
   <vx-filter v-model="value" @change="change" />
 </template>
