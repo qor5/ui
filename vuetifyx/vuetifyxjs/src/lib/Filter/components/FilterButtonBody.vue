@@ -109,23 +109,23 @@ const showValueComputed = computed(() => {
         break
       }
       case 'LinkageSelectItem': {
-        // const textsAre = op.valuesAre.map((o, i) => {
-        //   return op.linkageSelectData.items[i].find((x: any) => {
-        //     console.log(o, x)
-        //     return o === x.ID
-        //   }).Name
-        // })
-        // showValue = textsAre.join(',')
-        // break
-
-        const mod = op.modifier || 'equals'
-        const textsAre = op
-          .options!.filter((o) => op.valuesAre.includes(o.value))
-          .map((o) => o.text)
-        if (mod === 'equals' && op.valuesAre && op.valuesAre.length > 0) {
-          showValue = textsAre.join(', ')
-        }
+        const textsAre = op.valuesAre.map((o, i) => {
+          return op.linkageSelectData?.items[i].find((x: any) => {
+            console.log(o, x)
+            return o === x.ID
+          }).Name
+        })
+        showValue = textsAre.join(',')
         break
+
+        // const mod = op.modifier || 'equals'
+        // const textsAre = op
+        //   .options!.filter((o) => op.valuesAre.includes(o.value))
+        //   .map((o) => o.text)
+        // if (mod === 'equals' && op.valuesAre && op.valuesAre.length > 0) {
+        //   showValue = textsAre.join(', ')
+        // }
+        // break
       }
       default:
         throw new Error(`itemType '${op.itemType}' not supported`)

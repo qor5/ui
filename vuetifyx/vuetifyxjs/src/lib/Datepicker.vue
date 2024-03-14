@@ -75,7 +75,7 @@ const props = defineProps({
   },
   dialogWidth: {
     type: Number,
-    default: 580
+    default: 380
   },
   dateFormat: {
     type: String,

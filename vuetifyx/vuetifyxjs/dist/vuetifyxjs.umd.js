@@ -10997,7 +10997,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       },
       dialogWidth: {
         type: Number,
-        default: 580
+        default: 380
       },
       dateFormat: {
         type: String,

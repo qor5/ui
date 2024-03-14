@@ -1,3 +1,5 @@
+import { an } from 'vitest/dist/reporters-MmQN-57K'
+
 export interface SelectOption {
   text: string
   value: string
@@ -5,6 +7,12 @@ export interface SelectOption {
 
 export interface IndependentTranslations {
   filterBy: string
+}
+
+export interface linkageSelectData {
+  items: Array<any>
+  labels: Array<string>
+  selectOutOfOrder: Boolean
 }
 
 export interface FilterItem {
@@ -22,4 +30,5 @@ export interface FilterItem {
   inTheLastUnit?: string
   options?: SelectOption[]
   translations?: IndependentTranslations
+  linkageSelectData?: linkageSelectData
 }
