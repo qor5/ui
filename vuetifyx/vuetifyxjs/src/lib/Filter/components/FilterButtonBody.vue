@@ -2,7 +2,6 @@
 import { FilterItem } from '@/lib/Filter/Model'
 import { computed } from 'vue'
 import * as constants from '@/lib/Filter/Constants'
-import { an } from 'vitest/dist/reporters-MmQN-57K'
 
 const props = defineProps<{ op: FilterItem; slotProps: any }>()
 const emit = defineEmits(['clear'])
