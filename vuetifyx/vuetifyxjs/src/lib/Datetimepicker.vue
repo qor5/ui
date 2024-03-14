@@ -8,6 +8,7 @@
         :label="label"
         v-model="formattedDatetime"
         :hide-details="hideDetails"
+        color="primary"
         variant="underlined"
         readonly
       >
@@ -23,10 +24,13 @@
     <template v-slot:default="{ isActive }">
       <v-card>
         <v-card-text class="px-0 py-0">
-          <v-container>
+          <v-container class="flex-0-0">
             <v-row>
               <v-col cols="6" class="pa-0">
                 <v-date-picker v-model="date" full-width no-title></v-date-picker>
+              </v-col>
+              <v-col cols="6" class="pa-8" align-self="center" ref="timer">
+                <input type="time" class="text-h2 timer" v-model="time" />
               </v-col>
             </v-row>
           </v-container>
@@ -44,7 +48,6 @@
     </template>
   </v-dialog>
 </template>
-
 <script lang="ts" setup>
 import { format, parse } from 'date-fns'
 
@@ -57,6 +60,7 @@ const DEFAULT_TIME_FORMAT = 'HH:mm:ss'
 const DEFAULT_DIALOG_WIDTH = 580
 const DEFAULT_CLEAR_TEXT = 'CLEAR'
 const DEFAULT_OK_TEXT = 'OK'
+const emit = defineEmits(['update:modelValue', 'input'])
 
 const props = defineProps({
   modelValue: {
@@ -81,6 +85,10 @@ const props = defineProps({
     type: String,
     default: 'yyyy-MM-dd'
   },
+  timeFormat: {
+    type: String,
+    default: 'HH:mm'
+  },
   clearText: {
     type: String,
     default: 'CLEAR'
@@ -95,18 +103,36 @@ const props = defineProps({
   datePickerProps: {
     type: Object
   },
+  timePickerProps: {
+    type: Object
+  },
   hideDetails: {
     type: Boolean
   }
 })
-const display = ref(false)
 const date = ref()
+const time = ref(DEFAULT_TIME)
+const timer = ref()
 
 const dateTimeFormat = computed(() => {
-  return props.dateFormat
+  return props.dateFormat + ' ' + props.timeFormat
+})
+const defaultDateTimeFormat = computed(() => {
+  return DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT
+})
+const selectedDatetime = computed(() => {
+  if (date.value && time.value) {
+    let datetimeString = format(date.value, DEFAULT_DATE_FORMAT) + ' ' + time.value
+    if (time.value.length === 5) {
+      datetimeString += ':00'
+    }
+    return parse(datetimeString, defaultDateTimeFormat.value, new Date())
+  } else {
+    return null
+  }
 })
 const formattedDatetime = computed(() => {
-  return date.value ? format(<Date>date.value, dateTimeFormat.value) : ''
+  return selectedDatetime.value ? format(<Date>selectedDatetime.value, dateTimeFormat.value) : ''
 })
 const dateSelected = () => {
   return !date.value
@@ -116,28 +142,33 @@ const init = () => {
     return
   }
   // see https://stackoverflow.com/a/9436948
-  date.value = parse(props.modelValue, dateTimeFormat.value, new Date())
+  let initDateTime = parse(props.modelValue, dateTimeFormat.value, new Date())
+  date.value = initDateTime
+  time.value = format(initDateTime, DEFAULT_TIME_FORMAT)
 }
 
-const emit = defineEmits(['update:modelValue'])
-
 const okHandler = (isActive: Ref) => {
-  isActive.value = false
+  resetPicker(isActive)
   if (!date.value) {
     date.value = new Date()
   }
   emit('update:modelValue', formattedDatetime.value)
 }
 const clearHandler = (isActive: Ref) => {
-  isActive.value = false
+  resetPicker(isActive)
   date.value = null
   emit('update:modelValue', null)
 }
 
-const resetPicker = () => {
-  display.value = false
+const resetPicker = (isActive: Ref) => {
+  isActive.value = false
+  if (timer.value) {
+    timer.value.selectingHour = true
+  }
 }
 onMounted(() => {
   init()
 })
 </script>
+
+<style scoped></style>

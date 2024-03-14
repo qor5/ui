@@ -38,6 +38,7 @@
     :no-filter="noFilter"
     return-object
     @update:search="search"
+    variant="underlined"
   >
     <template v-slot:item="{ props, item }">
       <v-list-item
@@ -48,9 +49,6 @@
     </template>
   </v-autocomplete>
 </template>
-<script lang="ts">
-export default { name: 'vx-selectmany' }
-</script>
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 

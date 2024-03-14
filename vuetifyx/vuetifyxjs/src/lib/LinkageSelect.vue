@@ -14,6 +14,7 @@
           :chips="chips"
           :disabled="disabled"
           :hide-details="hideDetails"
+          variant="underlined"
         >
         </v-autocomplete>
       </v-col>
@@ -26,6 +27,7 @@
       item-title="Name"
       item-value="ID"
       v-model="selectedIDs[i]"
+      variant="underlined"
       @update:modelValue="selectItem($event, i)"
       :clearable="!chips"
       :error-messages="errorMessages?.[i]"
