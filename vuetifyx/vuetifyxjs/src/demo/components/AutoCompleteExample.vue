@@ -3,20 +3,18 @@ import VxAutocomplete from '@/lib/Autocomplete.vue'
 import { onMounted, reactive, ref } from 'vue'
 
 const remote = reactive({
-  total: 20,
-  current: 0,
-  pages: 4,
+  pageSize: 5,
   page: 1,
-  disabled: false
+  search: ''
 })
 
 const getItems = () => {
   const items = []
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= remote.pageSize; i++) {
     items.push({
       icon: `https://cdn.vuetifyjs.com/images/lists/${i}.jpg`,
       text: `test_${remote.page}_${i}`,
-      value: (remote.current + i).toFixed()
+      value: (remote.pageSize * (remote.page - 1) + i).toFixed()
     })
   }
   return items
@@ -25,9 +23,9 @@ const loadData = (): Promise<any> => {
   return new Promise((resolve, reject) => {
     resolve({
       data: {
-        pages: remote.pages,
-        total: remote.pages,
-        current: remote.current,
+        pages: 4,
+        total: 20,
+        current: remote.page * remote.pageSize,
         items: getItems()
       }
     })
@@ -45,14 +43,12 @@ const value = ref([])
     has-icon
     :remote="remote"
     v-model="value"
-    remote-url="test"
-    eventName="test"
     :isPaging="true"
   ></vx-autocomplete>
-  <!--  <vx-autocomplete :load-data="loadData" sorting :items="items" has-icon :remote="remote"-->
-  <!--                   v-model="value"-->
+  <!--    <vx-autocomplete :load-data="loadData" sorting :items="items" has-icon :remote="remote"-->
+  <!--                     v-model="value"-->
 
-  <!--  ></vx-autocomplete>-->
+  <!--    ></vx-autocomplete>-->
 </template>
 
 <style scoped></style>
