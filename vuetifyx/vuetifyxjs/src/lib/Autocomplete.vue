@@ -94,7 +94,6 @@ const loadRemoteItems = () => {
   props
     .loadData()
     .then((r: any) => {
-
       total.value = getObjMultiValue(r, props.totalKey)
       pages.value = getObjMultiValue(r, props.pagesKey)
       current.value = getObjMultiValue(r, props.currentKey)
@@ -241,7 +240,7 @@ const chipsVisible = computed(() => {
                   loadRemoteItems()
                 }
               "
-            >Load more
+              >Load more
             </v-btn>
             <v-divider vertical></v-divider>
             <span> {{ current }}/{{ total }} </span>
