@@ -4,7 +4,7 @@ import VueJsonPretty from 'vue-json-pretty'
 import 'vue-json-pretty/lib/styles.css'
 import { ref } from 'vue'
 
-const value = ref([
+const internalValue = ref([
   {
     key: 'TestDatetimeRange',
     label: 'TestDatetimeRange',
@@ -110,21 +110,17 @@ const value = ref([
     ]
   }
 ])
-const changeValue = ref()
-
-const change = (e: any) => {
-  changeValue.value = e
-}
+const value = ref()
 </script>
 
 <template>
   <h5 class="text-h5">v-model</h5>
   <VueJsonPretty :data="value"></VueJsonPretty>
   <v-divider />
-  <h5 class="text-h5">change-value</h5>
-  <VueJsonPretty :data="changeValue"></VueJsonPretty>
+  <!--  <h5 class="text-h5">internalValue</h5>-->
+  <!--  <VueJsonPretty :data="internalValue"></VueJsonPretty>-->
   <v-divider />
-  <vx-filter v-model="value" @change="change" />
+  <vx-filter v-model="value" :internal-value="internalValue" />
 </template>
 
 <style scoped></style>

@@ -7,7 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Autocomplete: typeof import('./src/lib/Autocomplete/index.vue')['default']
+    Autocomplete: typeof import('./src/lib/Autocomplete.vue')['default']
+    AutoCompleteExample: typeof import('./src/demo/components/AutoCompleteExample.vue')['default']
     DateItem: typeof import('./src/lib/Filter/components/DateItem.vue')['default']
     Datepicker: typeof import('./src/lib/Datepicker.vue')['default']
     DatepickerExample: typeof import('./src/demo/components/DatepickerExample.vue')['default']
@@ -20,6 +21,7 @@ declare module 'vue' {
     FilterButtonBody: typeof import('./src/lib/Filter/components/FilterButtonBody.vue')['default']
     FilterExample: typeof import('./src/demo/components/FilterExample.vue')['default']
     HelloWorld: typeof import('./src/demo/components/HelloWorld.vue')['default']
+    ItemFilter: typeof import('./src/lib/Filter/components/ItemFilter.vue')['default']
     LinkageSelect: typeof import('./src/lib/LinkageSelect.vue')['default']
     LinkageSelectExample: typeof import('./src/demo/components/LinkageSelectExample.vue')['default']
     LinkageSelectItem: typeof import('./src/lib/Filter/components/LinkageSelectItem.vue')['default']

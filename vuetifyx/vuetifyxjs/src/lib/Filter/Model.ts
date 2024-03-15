@@ -1,5 +1,3 @@
-import { an } from 'vitest/dist/reporters-MmQN-57K'
-
 export interface SelectOption {
   text: string
   value: string

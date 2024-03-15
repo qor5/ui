@@ -2,7 +2,7 @@
 import { computed, h, ref } from 'vue'
 import { encodeFilterData, filterData } from '@/lib/Filter/FilterData'
 import { FilterItem } from '@/lib/Filter/Model'
-import ItemFilter from '@/lib/Filter/components/Filter.vue'
+import ItemFilter from '@/lib/Filter/components/ItemFilter.vue'
 import DatetimeRangeItem from '@/lib/Filter/components/DatetimeRangeItem.vue'
 import DateRangeItem from '@/lib/Filter/components/DateRangeItem.vue'
 import DateItem from '@/lib/Filter/components/DateItem.vue'
@@ -12,7 +12,8 @@ import LinkageSelectItem from '@/lib/Filter/components/LinkageSelectItem.vue'
 import MultipleSelectItem from '@/lib/Filter/components/MultipleSelectItem.vue'
 
 const props = defineProps({
-  modelValue: { type: Array<any>, required: true },
+  internalValue: { type: Array<any>, required: true },
+  modelValue: { type: Array<any> },
   replaceWindowLocation: Boolean,
   translations: {
     type: Object,
@@ -81,39 +82,41 @@ const getSelectedIndexes = (value: FilterItem[]): number[] => {
     .filter((i: number) => i !== -1)
 }
 
-const internalValue = ref(initInternalValue(props.modelValue))
 const visible = ref(false)
-const selectedIndexs = ref(getSelectedIndexes(props.modelValue))
+const selectedIndexs = ref(getSelectedIndexes(props.internalValue))
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
 const clickDone = () => {
-  emit('update:modelValue', internalValue.value) // input event should be the same format as value
   // collect all query keys in the filter, remove them from location search first. then add it by selecting status
   // but keep original search conditions
-  const filterKeys = internalValue.value.map((op: FilterItem, i: number) => {
+  const filterKeys = props.internalValue.map((op: FilterItem, i: number) => {
     return op.key
   })
 
   const event = {
     filterKeys: filterKeys,
-    filterData: filterData(internalValue.value),
-    encodedFilterData: encodeFilterData(internalValue.value)
+    filterData: filterData(props.internalValue),
+    encodedFilterData: encodeFilterData(props.internalValue)
   }
-  emit('change', event)
+  // emit('change', event)
+  // emit('update:modelValue', props.internalValue)
+  emit('change', props.internalValue)
+  emit('update:modelValue', event)
+
   visible.value = false
 }
 
 const clearAll = (e: any) => {
-  internalValue.value.map((op: any) => {
+  props.internalValue.map((op: any) => {
     op.selected = false
   })
-  selectedIndexs.value = getSelectedIndexes(internalValue.value)
+  selectedIndexs.value = getSelectedIndexes(props.internalValue)
   clickDone()
 }
 
 const clear = (e: any) => {
-  selectedIndexs.value = getSelectedIndexes(internalValue.value)
+  selectedIndexs.value = getSelectedIndexes(props.internalValue)
   clickDone()
   e.stopPropagation()
 }
@@ -124,7 +127,7 @@ const togglePopup = () => {
 
 const filterCount = () => {
   let count = 0
-  internalValue.value.map((op: any) => {
+  props.internalValue.map((op: any) => {
     if (op.selected) {
       count++
     }
@@ -137,17 +140,17 @@ const filterCount = () => {
 
 const onPanelExpand = (value: any) => {
   selectedIndexs.value = value
-  for (const fi of internalValue.value) {
+  for (const fi of props.internalValue) {
     fi.selected = false
   }
   for (const i of selectedIndexs.value) {
-    internalValue.value[i].selected = true
+    props.internalValue[i].selected = true
   }
 }
 
 const filtersGetFunc = (f: (item: FilterItem) => boolean, isFoldedItem: boolean) => {
   return (itemTypes: any, trans: any) => {
-    return internalValue.value
+    return props.internalValue
       .filter((op: FilterItem) => {
         if (!f(op)) {
           return false
@@ -159,7 +162,7 @@ const filtersGetFunc = (f: (item: FilterItem) => boolean, isFoldedItem: boolean)
         return {
           itemComp: itemTypes[op.itemType],
           op: op,
-          internalValue: internalValue,
+          internalValue: props.internalValue,
           isFoldedItem: isFoldedItem,
           translations: props.translations,
           compTranslations: trans[op.itemType],
