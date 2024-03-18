@@ -14,7 +14,7 @@ import SelectItem from '@/lib/Filter/components/SelectItem.vue'
 
 const props = defineProps({
   internalValue: { type: Array<any>, required: true },
-  modelValue: { type: Array<any> },
+  modelValue: { type: Object },
   replaceWindowLocation: Boolean,
   translations: {
     type: Object,
@@ -70,9 +70,6 @@ const trans: any = {
   LinkageSelectItem: {}
 }
 
-const initInternalValue = (items: FilterItem[]): FilterItem[] => {
-  return items
-}
 const getSelectedIndexes = (value: FilterItem[]): number[] => {
   return value
     .map((op: FilterItem, i: number) => {
@@ -87,7 +84,7 @@ const getSelectedIndexes = (value: FilterItem[]): number[] => {
 const visible = ref(false)
 const selectedIndexs = ref(getSelectedIndexes(props.internalValue))
 
-const emit = defineEmits(['update:modelValue', 'change'])
+const emit = defineEmits(['update:modelValue'])
 
 const clickDone = () => {
   // collect all query keys in the filter, remove them from location search first. then add it by selecting status
@@ -101,9 +98,6 @@ const clickDone = () => {
     filterData: filterData(props.internalValue),
     encodedFilterData: encodeFilterData(props.internalValue)
   }
-  // emit('change', event)
-  // emit('update:modelValue', props.internalValue)
-  emit('change', props.internalValue)
   emit('update:modelValue', event)
 
   visible.value = false
@@ -121,33 +115,6 @@ const clear = (e: any) => {
   selectedIndexs.value = getSelectedIndexes(props.internalValue)
   clickDone()
   e.stopPropagation()
-}
-
-const togglePopup = () => {
-  visible.value = !visible.value
-}
-
-const filterCount = () => {
-  let count = 0
-  props.internalValue.map((op: any) => {
-    if (op.selected) {
-      count++
-    }
-  })
-  if (count === 0) {
-    return
-  }
-  return h('v-chip', { size: 'small' }, count)
-}
-
-const onPanelExpand = (value: any) => {
-  selectedIndexs.value = value
-  for (const fi of props.internalValue) {
-    fi.selected = false
-  }
-  for (const i of selectedIndexs.value) {
-    props.internalValue[i].selected = true
-  }
 }
 
 const filtersGetFunc = (f: (item: FilterItem) => boolean, isFoldedItem: boolean) => {

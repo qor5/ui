@@ -49,12 +49,7 @@ const clear = (e: any) => {
 <template>
   <v-menu :close-on-content-click="false" class="rounded-lg" v-model="menu">
     <template v-slot:activator="{ props }">
-      <filter-button
-        :op="modelValue"
-        :is-folded-item="isFoldedItem"
-        :slotProps="props"
-        @clear="clear"
-      />
+      <filter-button :op="value" :is-folded-item="isFoldedItem" :slotProps="props" @clear="clear" />
     </template>
     <div class="pa-3 bg-white">
       <div>{{ modelValue.translations?.filterBy }}</div>

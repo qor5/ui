@@ -32,18 +32,17 @@ const loadData = (): Promise<any> => {
   })
 }
 const items = ref([])
-const value = ref([])
+const value = ref(getItems())
 </script>
 <template>
   <p>{{ value }}</p>
   <vx-autocomplete
-    :load-data="loadData"
     sorting
+    v-model="value"
     :items="items"
+    :load-data="loadData"
     has-icon
     :remote="remote"
-    v-model="value"
-    :isPaging="true"
   ></vx-autocomplete>
   <!--    <vx-autocomplete :load-data="loadData" sorting :items="items" has-icon :remote="remote"-->
   <!--                     v-model="value"-->

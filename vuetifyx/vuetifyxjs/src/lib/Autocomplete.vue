@@ -52,7 +52,8 @@ const props = defineProps({
     type: Object,
     default: {
       page: 0,
-      pageSize: 0
+      pageSize: 0,
+      search: ''
     }
   }
 })
@@ -142,19 +143,21 @@ onMounted(() => {
   loadRemoteItems()
 })
 
-watch(props.remote[props.searchKey], (val, oldValue) => {
+const reloadSearch = (val: any) => {
   if (!props.loadData) {
     return
   }
-  if (val == oldValue || !val) {
+  if (val == props.remote[props.searchKey] || !val) {
     return
   }
   if (val == value.value[props.itemTextKey]) {
     return
   }
   props.remote[props.pageKey] = 1
+  props.remote[props.searchKey] = val
   loadRemoteItems()
-})
+}
+
 const chipsVisible = computed(() => {
   return props.chips && props.hasIcon && !props.sorting
 })
@@ -164,7 +167,12 @@ const chipsVisible = computed(() => {
   <div>
     <v-card v-if="sorting && cachedSelectedItems.length > 0">
       <v-list>
-        <draggable animation="300" handle=".handle" v-model="cachedSelectedItems">
+        <draggable
+          animation="300"
+          handle=".handle"
+          v-model="cachedSelectedItems"
+          :item-key="itemValueKey"
+        >
           <template #item="{ element }">
             <v-list-item
               v-if="hasIcon"
@@ -199,11 +207,7 @@ const chipsVisible = computed(() => {
       :class="sorting ? 'v-autocomplete-sorting' : ''"
       @update:modelValue="changeStatus"
       variant="underlined"
-      @update:search="
-        (val) => {
-          remote[searchKey] = val
-        }
-      "
+      @update:search="reloadSearch"
     >
       <template v-slot:item="{ item, props }" v-if="hasIcon">
         <v-list-item

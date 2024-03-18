@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { IndependentTranslations, SelectOption, FilterItem } from '@/lib/Filter/Model'
-import { computed } from 'vue'
-import * as constants from '@/lib/Filter/Constants'
+import { FilterItem } from '@/lib/Filter/Model'
 import FilterButtonBody from '@/lib/Filter/components/FilterButtonBody.vue'
 
 const props = defineProps<{ op: FilterItem; isFoldedItem: boolean; slotProps: any }>()

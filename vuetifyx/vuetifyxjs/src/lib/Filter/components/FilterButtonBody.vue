@@ -6,110 +6,109 @@ import * as constants from '@/lib/Filter/Constants'
 const props = defineProps<{ op: FilterItem; slotProps: any }>()
 const emit = defineEmits(['clear'])
 const showValueComputed = computed(() => {
-  let op = props.op
   let showValue = ''
-  if (op.selected) {
-    switch (op.itemType) {
+  if (props.op.selected) {
+    switch (props.op.itemType) {
       case 'DatetimeRangeItem':
       case 'DateRangeItem': {
-        const mod = op.modifier || constants.ModifierBetween
+        const mod = props.op.modifier || constants.ModifierBetween
 
         if (mod === constants.ModifierBetween) {
-          if (op.valueFrom) {
-            if (op.valueTo) {
-              showValue = `${op.valueFrom} - ${op.valueTo}`
+          if (props.op.valueFrom) {
+            if (props.op.valueTo) {
+              showValue = `${props.op.valueFrom} - ${props.op.valueTo}`
             } else {
-              showValue = ` >= ${op.valueFrom}`
+              showValue = ` >= ${props.op.valueFrom}`
             }
           } else {
-            if (op.valueTo) {
-              showValue = ` < ${op.valueTo}`
+            if (props.op.valueTo) {
+              showValue = ` < ${props.op.valueTo}`
             }
           }
         }
         break
       }
       case 'DateItem': {
-        showValue = op.valueIs
+        showValue = props.op.valueIs
         break
       }
       case 'NumberItem': {
-        const mod = op.modifier || 'equals'
+        const mod = props.op.modifier || 'equals'
 
         if (mod === 'equals') {
-          const floatValue = parseFloat(op.valueIs)
+          const floatValue = parseFloat(props.op.valueIs)
           if (!isNaN(floatValue)) {
             showValue += floatValue
           }
         }
 
         if (mod === 'between') {
-          const floatFrom = parseFloat(op.valueFrom || '')
-          const floatTo = parseFloat(op.valueTo || '')
+          const floatFrom = parseFloat(props.op.valueFrom || '')
+          const floatTo = parseFloat(props.op.valueTo || '')
           const fromValid = !isNaN(floatFrom)
           const toValid = !isNaN(floatTo)
           if (fromValid) {
             if (toValid) {
-              showValue = `${op.valueFrom} - ${op.valueTo}`
+              showValue = `${props.op.valueFrom} - ${props.op.valueTo}`
             } else {
-              showValue = ` >= ${op.valueFrom}`
+              showValue = ` >= ${props.op.valueFrom}`
             }
           } else {
             if (toValid) {
-              showValue = ` <= ${op.valueTo}`
+              showValue = ` <= ${props.op.valueTo}`
             }
           }
         }
 
         if (mod === 'greaterThan') {
-          const floatValue = parseFloat(op.valueIs)
+          const floatValue = parseFloat(props.op.valueIs)
           if (!isNaN(floatValue)) {
-            showValue += ' > ' + op.valueFrom
+            showValue += ' > ' + props.op.valueFrom
           }
         }
 
         if (mod === 'lessThan') {
-          const floatValue = parseFloat(op.valueIs)
+          const floatValue = parseFloat(props.op.valueIs)
           if (!isNaN(floatValue)) {
-            showValue += ' < ' + op.valueTo
+            showValue += ' < ' + props.op.valueTo
           }
         }
         break
       }
       case 'StringItem': {
-        const mod = op.modifier || 'equals'
-        if (mod === 'equals' && op.valueIs) {
-          showValue = op.valueIs
+        const mod = props.op.modifier || 'equals'
+        if (mod === 'equals' && props.op.valueIs) {
+          showValue = props.op.valueIs
         }
 
-        if (mod === 'contains' && op.valueIs) {
-          showValue = ' ~ ' + op.valueIs
+        if (mod === 'contains' && props.op.valueIs) {
+          showValue = ' ~ ' + props.op.valueIs
         }
         break
       }
       case 'SelectItem': {
-        const mod = op.modifier || 'equals'
-        if (mod === 'equals' && op.valueIs) {
-          showValue = op.options!.find((o) => o.value === op.valueIs)!.text
+        const mod = props.op.modifier || 'equals'
+        if (mod === 'equals' && props.op.valueIs) {
+          showValue = props.op.options!.find((o) => o.value === props.op.valueIs)!.text
         }
         break
       }
       case 'MultipleSelectItem': {
-        const mod = op.modifier || 'in'
-        const textsAre = op
-          .options!.filter((o) => op.valuesAre.includes(o.value))
+        const mod = props.op.modifier || 'in'
+        const textsAre = props.op
+          .options!.filter((o) => props.op.valuesAre.includes(o.value))
           .map((o) => o.text)
-        if (mod === 'in' && op.valuesAre && op.valuesAre.length > 0) {
+        if (mod === 'in' && props.op.valuesAre && props.op.valuesAre.length > 0) {
           showValue = ' in ' + '[ ' + textsAre.join(', ') + ' ]'
         }
-        if (mod === 'notIn' && op.valuesAre && op.valuesAre.length > 0) {
+        if (mod === 'notIn' && props.op.valuesAre && props.op.valuesAre.length > 0) {
           showValue = ' not in ' + '[ ' + textsAre.join(', ') + ' ]'
         }
         break
       }
       case 'LinkageSelectItem': {
-        const textsAre = op.valuesAre.map((o, i) => {
-          return op.linkageSelectData?.items[i].find((x: any) => {
+        const textsAre = props.op.valuesAre.map((o, i) => {
+          return props.op.linkageSelectData?.items[i].find((x: any) => {
             console.log(o, x)
             return o === x.ID
           }).Name
@@ -117,17 +116,17 @@ const showValueComputed = computed(() => {
         showValue = textsAre.join(',')
         break
 
-        // const mod = op.modifier || 'equals'
-        // const textsAre = op
-        //   .options!.filter((o) => op.valuesAre.includes(o.value))
+        // const mod =  props.op.modifier || 'equals'
+        // const textsAre =  props.op
+        //   .options!.filter((o) =>  props.op.valuesAre.includes(o.value))
         //   .map((o) => o.text)
-        // if (mod === 'equals' && op.valuesAre && op.valuesAre.length > 0) {
+        // if (mod === 'equals' &&  props.op.valuesAre &&  props.op.valuesAre.length > 0) {
         //   showValue = textsAre.join(', ')
         // }
         // break
       }
       default:
-        throw new Error(`itemType '${op.itemType}' not supported`)
+        throw new Error(`itemType '${props.op.itemType}' not supported`)
     }
   }
 

@@ -3,6 +3,7 @@ import VxFilter from '@/lib/Filter/index.vue'
 import VueJsonPretty from 'vue-json-pretty'
 import 'vue-json-pretty/lib/styles.css'
 import { ref } from 'vue'
+import { tr } from 'vuetify/locale'
 
 const internalValue = ref([
   {
@@ -110,6 +111,14 @@ const internalValue = ref([
     ]
   }
 ])
+// const internalValue = [{
+//   key: 'TestStringItem',
+//   label: 'TestStringItem',
+//   itemType: 'StringItem',
+//   selected: true,
+//   folded: true,
+//   valueIs: 'active'
+// }]
 const value = ref()
 </script>
 
