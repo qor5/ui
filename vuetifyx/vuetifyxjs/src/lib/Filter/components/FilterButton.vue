@@ -11,8 +11,8 @@ const clear = (e: any) => {
 </script>
 
 <template>
-  <v-list-item v-if="isFoldedItem" variant="outlined" class="my-1 px-2">
-    <filter-button-body :op="op" :slot-props="slotProps" @clear="clear" />
+  <v-list-item v-if="isFoldedItem" variant="outlined" class="my-1 px-2" v-bind="slotProps">
+    <filter-button-body :op="op" @clear="clear" />
   </v-list-item>
   <v-chip
     v-else
@@ -20,8 +20,9 @@ const clear = (e: any) => {
     class="mr-2 my-1"
     :class="op.selected ? '' : 'text-grey-darken-1'"
     :style="{ borderStyle: op.selected ? 'solid' : 'dashed' }"
+    v-bind="slotProps"
   >
-    <filter-button-body :op="op" :slot-props="slotProps" @clear="clear" />
+    <filter-button-body :op="op" @clear="clear" />
   </v-chip>
 </template>
 

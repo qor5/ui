@@ -3,7 +3,7 @@ import { FilterItem } from '@/lib/Filter/Model'
 import { computed } from 'vue'
 import * as constants from '@/lib/Filter/Constants'
 
-const props = defineProps<{ op: FilterItem; slotProps: any }>()
+const props = defineProps<{ op: FilterItem }>()
 const emit = defineEmits(['clear'])
 const showValueComputed = computed(() => {
   let showValue = ''
@@ -154,19 +154,17 @@ const clear = (e: any) => {
 </script>
 
 <template>
-  <span>
-    <v-icon
-      start
-      @click="clear"
-      :icon="op.selected ? 'mdi-close-circle' : 'mdi-plus-circle'"
-    ></v-icon>
-    <span v-bind="slotProps" class="cursor-pointer">
+    <span class="cursor-pointer">
+          <v-icon
+            start
+            @click="clear"
+            :icon="op.selected ? 'mdi-close-circle' : 'mdi-plus-circle'"
+          ></v-icon>
       {{ op.label }}
       <span v-if="op.selected">
         | <span class="text-primary">{{ showValueComputed }}</span>
       </span>
     </span>
-  </span>
 </template>
 
 <style scoped></style>

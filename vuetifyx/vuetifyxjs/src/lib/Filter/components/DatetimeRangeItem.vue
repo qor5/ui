@@ -24,7 +24,7 @@ const modifier = props.modelValue.modifier
       :visible="datePickerVisible"
       :hide-details="true"
     />
-    <div style="height: 34px" class="d-flex align-end">
+    <div style="height: 34px" class=" pl-2 pt-4">
       <span>{{ translations['to'] }}</span>
     </div>
     <datetimepicker v-model="modelValue.valueTo" :key="modifier + 'to'" :hide-details="true" />

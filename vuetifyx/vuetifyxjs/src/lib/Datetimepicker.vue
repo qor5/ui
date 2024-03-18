@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :width="dialogWidth">
+  <v-dialog :width="dialogWidth" >
     <template v-slot:activator="{ isActive: isActive, props: activatorProps }">
       <v-text-field
         v-bind="activatorProps"
@@ -13,7 +13,7 @@
         readonly
       >
         <template v-slot:prepend>
-          <v-icon icon="mdi-calendar-edit" :color="isActive ? 'primary' : ''"></v-icon>
+          <v-icon icon="mdi-calendar-edit" :color="isActive ? 'primary' : ''" size="x-large"></v-icon>
         </template>
         <template v-slot:loader>
           <v-progress-linear color="primary" indeterminate absolute height="2"></v-progress-linear>

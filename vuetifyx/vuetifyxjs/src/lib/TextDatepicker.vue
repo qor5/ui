@@ -35,6 +35,7 @@ const change = () => {
         v-bind="props"
         style="width: 180px"
         hide-details
+        variant="underlined"
         v-model="value"
         prepend-inner-icon="mdi-event"
       ></v-text-field>

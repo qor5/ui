@@ -51,11 +51,13 @@ const clear = (e: any) => {
     <template v-slot:activator="{ props }">
       <filter-button :op="value" :is-folded-item="isFoldedItem" :slotProps="props" @clear="clear" />
     </template>
-    <div class="pa-3 bg-white">
+    <v-card class="pa-3 bg-white">
       <div>{{ modelValue.translations?.filterBy }}</div>
       <component v-model="value" :is="itemComp" :translations="compTranslations"></component>
-      <v-btn class="mt-3" color="primary" @click="clickDone">{{ translations.apply }}</v-btn>
-    </div>
+      <div>
+        <v-btn class="mt-5 float-right" color="primary" rounded @click="clickDone">{{ translations.apply }}</v-btn>
+      </div>
+    </v-card>
   </v-menu>
 </template>
 
