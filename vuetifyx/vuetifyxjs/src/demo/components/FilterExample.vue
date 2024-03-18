@@ -3,7 +3,6 @@ import VxFilter from '@/lib/Filter/index.vue'
 import VueJsonPretty from 'vue-json-pretty'
 import 'vue-json-pretty/lib/styles.css'
 import { ref } from 'vue'
-import { tr } from 'vuetify/locale'
 
 const internalValue = ref([
   {
@@ -123,7 +122,7 @@ const value = ref()
 </script>
 
 <template>
-  <h5 class="text-h5">v-model</h5>
+  <!--  <h5 class="text-h5">v-model</h5>-->
   <VueJsonPretty :data="value"></VueJsonPretty>
   <v-divider />
   <!--  <h5 class="text-h5">internalValue</h5>-->

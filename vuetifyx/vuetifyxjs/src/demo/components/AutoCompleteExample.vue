@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VxAutocomplete from '@/lib/Autocomplete.vue'
 import { onMounted, reactive, ref } from 'vue'
+import VueJsonPretty from 'vue-json-pretty'
 
 const remote = reactive({
   pageSize: 5,
@@ -35,7 +36,7 @@ const items = ref([])
 const value = ref(getItems())
 </script>
 <template>
-  <p>{{ value }}</p>
+  <vue-json-pretty :data="value"></vue-json-pretty>
   <vx-autocomplete
     sorting
     v-model="value"
