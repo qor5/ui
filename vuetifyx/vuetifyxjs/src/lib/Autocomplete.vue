@@ -5,8 +5,6 @@ import draggable from 'vuedraggable'
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: { type: Array<any>, required: true },
-  remoteUrl: String,
-  eventName: String,
   isPaging: Boolean,
   hasIcon: Boolean,
   cacheItems: Boolean,
@@ -33,6 +31,10 @@ const props = defineProps({
   totalKey: {
     type: String,
     default: 'total'
+  },
+  itemsKey: {
+    type: String,
+    default: 'items'
   },
   currentKey: {
     type: String,
@@ -98,7 +100,7 @@ const loadRemoteItems = () => {
       pages.value = getObjMultiValue(r, props.pagesKey)
       current.value = getObjMultiValue(r, props.currentKey)
       if (props.isPaging) {
-        listItems.value = r.data.items
+        listItems.value = getObjMultiValue(r, props.itemsKey)
       } else {
         disabled.value = current.value >= total.value
         listItems.value = listItems.value.concat(r.data.items || [])
@@ -147,14 +149,14 @@ watch(props.remote[props.searchKey], (val, oldValue) => {
   if (val == oldValue || !val) {
     return
   }
-  if (val == value.value.text) {
+  if (val == value.value[props.itemTextKey]) {
     return
   }
   props.remote[props.pageKey] = 1
   loadRemoteItems()
 })
 const chipsVisible = computed(() => {
-  return props.chips && (props.hasIcon || props.remoteUrl) && !props.sorting
+  return props.chips && props.hasIcon && !props.sorting
 })
 </script>
 
