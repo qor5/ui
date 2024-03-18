@@ -4,7 +4,7 @@ import Autocomplete from '../Autocomplete.vue'
 import { mountTemplate } from '@/lib/__tests__/testutils'
 import { nextTick, watch } from 'vue'
 
-it('Autocomplete modelvulue', async () => {
+it('Autocomplete modelValue', async () => {
   const pageSize = 1
   const page = 1
   const items = []

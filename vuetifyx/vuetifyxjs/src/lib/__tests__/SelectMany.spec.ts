@@ -4,7 +4,7 @@ import SelectMany from '../SelectMany.vue'
 import { mountTemplate } from '@/lib/__tests__/testutils'
 import { nextTick, watch } from 'vue'
 
-it('SelectMany modelvulue', async () => {
+it('SelectMany modelValue', async () => {
   const wrapper = mountTemplate(SelectMany, {
     items: [
       {

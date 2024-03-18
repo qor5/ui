@@ -1,10 +1,8 @@
-import { expect, vi } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
-import { Component, type Ref } from 'vue'
+import { Component } from 'vue'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import SelectMany from '@/lib/SelectMany.vue'
 
 const vuetify = createVuetify({
   components,

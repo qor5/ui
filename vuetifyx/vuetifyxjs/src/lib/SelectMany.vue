@@ -33,11 +33,9 @@
     v-model="autocompleteValue"
     auto-select-first
     @update:modelValue="addItem"
-    @focus="focus"
     :loading="isLoading"
     :no-filter="noFilter"
     return-object
-    @update:search="search"
     variant="underlined"
   >
     <template v-slot:item="{ props, item }">
@@ -52,7 +50,7 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 
-import { nextTick, onMounted, Ref, ref, watch } from 'vue'
+import { onMounted, Ref, ref } from 'vue'
 
 const props = defineProps({
   items: {
@@ -62,9 +60,6 @@ const props = defineProps({
   selectedItems: {
     type: Array<any>,
     default: () => []
-  },
-  searchItemsFunc: {
-    type: Function
   },
   itemValue: {
     type: String,
@@ -94,7 +89,6 @@ const props = defineProps({
 const internalSelectedItems: Ref<any[]> = ref([])
 const internalItems: Ref<any[]> = ref([])
 const autocompleteValue: Ref<any[]> = ref([])
-const searchKeyword = ref('')
 const isLoading = ref(false)
 const noFilter = ref(false)
 
@@ -106,22 +100,6 @@ onMounted(() => {
   internalSelectedItems.value = props.modelValue.map((id) => {
     return props.items.find((item) => item[props.itemValue] === id)
   })
-  if (props.searchItemsFunc) {
-    noFilter.value = true
-  }
-})
-watch(searchKeyword, (val) => {
-  if (val === '') {
-    return
-  }
-  isLoading.value = true
-  props.searchItemsFunc!(val)
-    .then((r: { data: any }) => {
-      internalItems.value = r.data || []
-    })
-    .finally(() => {
-      isLoading.value = false
-    })
 })
 
 // methods
@@ -147,15 +125,6 @@ const removeItem = (id: string) => {
     (element) => element[props.itemValue] != id
   )
   setValue()
-}
-const search = (val: string) => {
-  if (!props.searchItemsFunc) {
-    return
-  }
-  searchKeyword.value = val
-}
-const focus = () => {
-  search('')
 }
 const setValue = () => {
   emit(

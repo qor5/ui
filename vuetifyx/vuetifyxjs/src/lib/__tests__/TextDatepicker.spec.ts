@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { it, expect } from 'vitest'
 
-import Datepicker from '../Datepicker.vue'
+import TextDatepicker from '../TextDatepicker.vue'
 import { mountTemplate } from '@/lib/__tests__/testutils'
-import { nextTick, watch } from 'vue'
+import { nextTick } from 'vue'
 
-it('Datepicker modelValue', async () => {
-  const wrapper = mountTemplate(Datepicker, {
+it('Datetimepicker modelValue', async () => {
+  const wrapper = mountTemplate(TextDatepicker, {
     modelValue: '2023-10-01'
   })
   await nextTick()

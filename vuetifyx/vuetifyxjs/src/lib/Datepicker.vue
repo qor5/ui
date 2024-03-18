@@ -50,14 +50,6 @@ import { format, parse } from 'date-fns'
 
 import { computed, onMounted, Ref, ref } from 'vue'
 
-const DEFAULT_DATE = ''
-const DEFAULT_TIME = '00:00:00'
-const DEFAULT_DATE_FORMAT = 'yyyy-MM-dd'
-const DEFAULT_TIME_FORMAT = 'HH:mm:ss'
-const DEFAULT_DIALOG_WIDTH = 580
-const DEFAULT_CLEAR_TEXT = 'CLEAR'
-const DEFAULT_OK_TEXT = 'OK'
-
 const props = defineProps({
   modelValue: {
     type: String,
@@ -108,9 +100,6 @@ const dateTimeFormat = computed(() => {
 const formattedDatetime = computed(() => {
   return date.value ? format(<Date>date.value, dateTimeFormat.value) : ''
 })
-const dateSelected = () => {
-  return !date.value
-}
 const init = () => {
   if (!props.modelValue) {
     return

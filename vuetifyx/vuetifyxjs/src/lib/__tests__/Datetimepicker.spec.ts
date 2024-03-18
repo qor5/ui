@@ -4,7 +4,7 @@ import Datetimepicker from '../Datetimepicker.vue'
 import { mountTemplate } from '@/lib/__tests__/testutils'
 import { nextTick, watch } from 'vue'
 
-it('Datetimepicker modelvulue', async () => {
+it('Datetimepicker modelValue', async () => {
   const wrapper = mountTemplate(Datetimepicker, {
     modelValue: '2023-10-01 22:11'
   })

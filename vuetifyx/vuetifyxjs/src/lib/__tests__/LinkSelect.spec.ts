@@ -4,7 +4,7 @@ import LinkageSelect from '../LinkageSelect.vue'
 import { mountTemplate } from '@/lib/__tests__/testutils'
 import { nextTick, watch } from 'vue'
 
-it('LinkageSelect modelvulue', async () => {
+it('LinkageSelect modelValue', async () => {
   const wrapper = mountTemplate(LinkageSelect, {
     items: [
       [

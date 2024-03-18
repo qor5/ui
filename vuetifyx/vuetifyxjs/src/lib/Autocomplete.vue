@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onBeforeMount, reactive, ref, Ref, onMounted, watch, computed } from 'vue'
+import { ref, Ref, onMounted, computed } from 'vue'
 import draggable from 'vuedraggable'
 
 const emit = defineEmits(['update:modelValue'])
@@ -7,7 +7,6 @@ const props = defineProps({
   modelValue: { type: Array<any>, required: true },
   isPaging: Boolean,
   hasIcon: Boolean,
-  cacheItems: Boolean,
   hideSelected: Boolean,
   hideDetails: Boolean,
   clearable: Boolean,
@@ -16,37 +15,14 @@ const props = defineProps({
   itemTextKey: { type: String, default: 'text' },
   itemValueKey: { type: String, default: 'value' },
   itemIconKey: { type: String, default: 'icon' },
-  pageKey: {
-    type: String,
-    default: 'page'
-  },
-  pagesKey: {
-    type: String,
-    default: 'pages'
-  },
-  pageSizeKey: {
-    type: String,
-    default: 'pageSize'
-  },
-  totalKey: {
-    type: String,
-    default: 'total'
-  },
-  itemsKey: {
-    type: String,
-    default: 'items'
-  },
-  currentKey: {
-    type: String,
-    default: 'current'
-  },
-  searchKey: {
-    type: String,
-    default: 'search'
-  },
+  pageKey: { type: String, default: 'page' },
+  pagesKey: { type: String, default: 'pages' },
+  pageSizeKey: { type: String, default: 'pageSize' },
+  totalKey: { type: String, default: 'total' },
+  itemsKey: { type: String, default: 'items' },
+  currentKey: { type: String, default: 'current' },
+  searchKey: { type: String, default: 'search' },
   chipColor: String,
-  chipTextColor: String,
-  items: Array<any>,
   loadData: Function,
   remote: {
     type: Object,
@@ -100,11 +76,12 @@ const loadRemoteItems = () => {
       total.value = getObjMultiValue(r, props.totalKey)
       pages.value = getObjMultiValue(r, props.pagesKey)
       current.value = getObjMultiValue(r, props.currentKey)
+      const items = getObjMultiValue(r, props.itemsKey)
       if (props.isPaging) {
-        listItems.value = getObjMultiValue(r, props.itemsKey)
+        listItems.value = items
       } else {
         disabled.value = current.value >= total.value
-        listItems.value = listItems.value.concat(r.data.items || [])
+        listItems.value = listItems.value.concat(items || [])
       }
     })
     .finally(() => {
@@ -204,6 +181,7 @@ const chipsVisible = computed(() => {
       return-object
       :clearable="sorting ? false : clearable"
       :hide-details="hideDetails"
+      :hide-selected="hideSelected"
       :class="sorting ? 'v-autocomplete-sorting' : ''"
       @update:modelValue="changeStatus"
       variant="underlined"
@@ -219,6 +197,7 @@ const chipsVisible = computed(() => {
       <template v-slot:chip="{ props, item }" v-if="chipsVisible">
         <v-chip
           v-bind="props"
+          :color="chipColor"
           :prepend-avatar="hasIcon ? item.raw[itemIconKey] : undefined"
           :text="item.raw[itemTextKey]"
         ></v-chip>

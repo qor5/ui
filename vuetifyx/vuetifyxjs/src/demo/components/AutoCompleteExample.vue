@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import VxAutocomplete from '@/lib/Autocomplete.vue'
-import { onMounted, reactive, ref } from 'vue'
+import { reactive, ref } from 'vue'
 import VueJsonPretty from 'vue-json-pretty'
 
 const remote = reactive({

@@ -4,7 +4,7 @@ import Filter from '../Filter/index.vue'
 import { mountTemplate } from '@/lib/__tests__/testutils'
 import { nextTick, ref, watch } from 'vue'
 
-it('Filter modelvulue', async () => {
+it('Filter modelValue', async () => {
   const internalValue = [
     {
       key: 'TestStringItem',

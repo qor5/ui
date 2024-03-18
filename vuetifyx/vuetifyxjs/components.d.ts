@@ -25,7 +25,6 @@ declare module 'vue' {
     LinkageSelect: typeof import('./src/lib/LinkageSelect.vue')['default']
     LinkageSelectExample: typeof import('./src/demo/components/LinkageSelectExample.vue')['default']
     LinkageSelectItem: typeof import('./src/lib/Filter/components/LinkageSelectItem.vue')['default']
-    LoadmoreNode: typeof import('./src/lib/Autocomplete/components/LoadmoreNode.vue')['default']
     MessageListener: typeof import('./src/lib/MessageListener.vue')['default']
     MultipleSelectItem: typeof import('./src/lib/Filter/components/MultipleSelectItem.vue')['default']
     NumberItem: typeof import('./src/lib/Filter/components/NumberItem.vue')['default']
@@ -33,6 +32,7 @@ declare module 'vue' {
     SelectMany: typeof import('./src/lib/SelectMany.vue')['default']
     SelectManyExample: typeof import('./src/demo/components/SelectManyExample.vue')['default']
     StringItem: typeof import('./src/lib/Filter/components/StringItem.vue')['default']
-    VxPagination: typeof import('./src/lib/Autocomplete/components/VxPagination.vue')['default']
+    TextDatepicker: typeof import('./src/lib/TextDatepicker.vue')['default']
+    TextDatepickerExample: typeof import('./src/demo/components/TextDatepickerExample.vue')['default']
   }
 }
