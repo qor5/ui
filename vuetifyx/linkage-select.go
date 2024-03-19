@@ -33,11 +33,6 @@ func (b *VXLinkageSelectBuilber) Labels(vs ...string) (r *VXLinkageSelectBuilber
 	return b
 }
 
-func (b *VXLinkageSelectBuilber) SelectedIDs(vs ...string) (r *VXLinkageSelectBuilber) {
-	b.tag.Attr(":value", vs)
-	return b
-}
-
 func (b *VXLinkageSelectBuilber) ErrorMessages(vs ...[]string) (r *VXLinkageSelectBuilber) {
 	b.tag.Attr(":error-messages", vs)
 	return b
@@ -63,6 +58,14 @@ func (b *VXLinkageSelectBuilber) Row(v bool) (r *VXLinkageSelectBuilber) {
 	return b
 }
 
+func (b *VXLinkageSelectBuilber) SetAttr(k string, v interface{}) {
+	b.tag.SetAttr(k, v)
+}
+
+func (b *VXLinkageSelectBuilber) Attr(vs ...interface{}) (r *VXLinkageSelectBuilber) {
+	b.tag.Attr(vs...)
+	return b
+}
 func (b *VXLinkageSelectBuilber) MarshalHTML(ctx context.Context) ([]byte, error) {
 	return b.tag.MarshalHTML(ctx)
 }
