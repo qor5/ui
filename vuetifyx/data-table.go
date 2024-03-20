@@ -268,9 +268,9 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 					v.VMenu(
 						web.Slot(
 							v.VBtn("").Children(
-								v.VIcon("more_horiz"),
-							).Attr("v-on", "on").Variant("text").Size("small"),
-						).Name("activator").Scope("{ on }"),
+								v.VIcon("mdi-dots-horizontal"),
+							).Attr("v-bind", "props").Variant("text").Size("small"),
+						).Name("activator").Scope("{ props }"),
 
 						v.VList(
 							rowMenus...,
