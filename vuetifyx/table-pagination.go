@@ -157,7 +157,7 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 					h.Text(rowsPerPageText),
 				),
 				h.Div(
-					vuetify.VSelect().Items(sItems).Value(fmt.Sprint(tpb.perPage)).
+					vuetify.VSelect().Items(sItems).Variant("underlined").ModelValue(fmt.Sprint(tpb.perPage)).
 						HideDetails(true).Class("pt-0 mt-0").
 						Attr("@input", tpb.onSelectPerPage),
 				).Style("width: 60px;").Class("ml-6"),
@@ -167,11 +167,11 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 			).Class("ml-6"),
 			h.Div(
 				h.Span("").Style(prevIconStyle).Children(
-					vuetify.VBtn("").Icon("navigate_before").Size(32).Disabled(!canPrev).
+					vuetify.VBtn("").Variant("text").Icon("mdi-chevron-left").Size(32).Disabled(!canPrev).
 						Attr("@click", tpb.onPrevPage),
 				),
 				h.Span("").Style(nextIconStyle).Children(
-					vuetify.VBtn("").Icon("navigate_next").Size(32).Disabled(!canNext).
+					vuetify.VBtn("").Variant("text").Icon("mdi-chevron-right").Size(32).Disabled(!canNext).
 						Attr("@click", tpb.onNextPage),
 				).Class("ml-3"),
 			).Class("ml-6"),
