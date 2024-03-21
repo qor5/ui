@@ -3277,6 +3277,25 @@ var __publicField = (obj, key, value) => {
     pagedown: 34,
     shift: 16
   });
+  const keyValues = Object.freeze({
+    enter: "Enter",
+    tab: "Tab",
+    delete: "Delete",
+    esc: "Escape",
+    space: "Space",
+    up: "ArrowUp",
+    down: "ArrowDown",
+    left: "ArrowLeft",
+    right: "ArrowRight",
+    end: "End",
+    home: "Home",
+    del: "Delete",
+    backspace: "Backspace",
+    insert: "Insert",
+    pageup: "PageUp",
+    pagedown: "PageDown",
+    shift: "Shift"
+  });
   function has(obj, key) {
     return key.every((k) => obj.hasOwnProperty(k));
   }
@@ -6292,7 +6311,6 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     mounted,
     unmounted
   };
-  const Intersect$1 = Intersect;
   const makeVImgProps = propsFactory({
     alt: String,
     cover: Boolean,
@@ -6331,7 +6349,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   const VImg = genericComponent()({
     name: "VImg",
     directives: {
-      intersect: Intersect$1
+      intersect: Intersect
     },
     props: makeVImgProps(),
     emits: {
@@ -10792,7 +10810,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   const VTextField = genericComponent()({
     name: "VTextField",
     directives: {
-      Intersect: Intersect$1
+      Intersect
     },
     inheritAttrs: false,
     props: makeVTextFieldProps(),
@@ -10978,7 +10996,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       return forwardRefs({}, vInputRef, vFieldRef, inputRef);
     }
   });
-  const _sfc_main$3 = /* @__PURE__ */ require$$0.defineComponent({
+  const _sfc_main$h = /* @__PURE__ */ require$$0.defineComponent({
     __name: "Datepicker",
     props: {
       modelValue: {
@@ -11070,7 +11088,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               prepend: require$$0.withCtx(() => [
                 require$$0.createVNode(VIcon, {
                   icon: "mdi-calendar-edit",
-                  color: isActive ? "primary" : ""
+                  color: isActive ? "primary" : "",
+                  size: "x-large"
                 }, null, 8, ["color"])
               ]),
               loader: require$$0.withCtx(() => [
@@ -11154,7 +11173,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   const DEFAULT_TIME = "00:00:00";
   const DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
   const DEFAULT_TIME_FORMAT = "HH:mm:ss";
-  const _sfc_main$2 = /* @__PURE__ */ require$$0.defineComponent({
+  const _sfc_main$g = /* @__PURE__ */ require$$0.defineComponent({
     __name: "Datetimepicker",
     props: {
       modelValue: {
@@ -11277,7 +11296,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               prepend: require$$0.withCtx(() => [
                 require$$0.createVNode(VIcon, {
                   icon: "mdi-calendar-edit",
-                  color: isActive ? "primary" : ""
+                  color: isActive ? "primary" : "",
+                  size: "x-large"
                 }, null, 8, ["color"])
               ]),
               loader: require$$0.withCtx(() => [
@@ -18716,6 +18736,71 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       return {};
     }
   });
+  const makeVCheckboxProps = propsFactory({
+    ...makeVInputProps(),
+    ...omit(makeVCheckboxBtnProps(), ["inline"])
+  }, "VCheckbox");
+  const VCheckbox = genericComponent()({
+    name: "VCheckbox",
+    inheritAttrs: false,
+    props: makeVCheckboxProps(),
+    emits: {
+      "update:modelValue": (value) => true,
+      "update:focused": (focused) => true
+    },
+    setup(props, _ref) {
+      let {
+        attrs,
+        slots
+      } = _ref;
+      const model = useProxiedModel(props, "modelValue");
+      const {
+        isFocused,
+        focus,
+        blur
+      } = useFocus(props);
+      const uid = getUid();
+      const id = require$$0.computed(() => props.id || `checkbox-${uid}`);
+      useRender(() => {
+        const [rootAttrs, controlAttrs] = filterInputAttrs(attrs);
+        const inputProps = VInput.filterProps(props);
+        const checkboxProps = VCheckboxBtn.filterProps(props);
+        return require$$0.createVNode(VInput, require$$0.mergeProps({
+          "class": ["v-checkbox", props.class]
+        }, rootAttrs, inputProps, {
+          "modelValue": model.value,
+          "onUpdate:modelValue": ($event) => model.value = $event,
+          "id": id.value,
+          "focused": isFocused.value,
+          "style": props.style
+        }), {
+          ...slots,
+          default: (_ref2) => {
+            let {
+              id: id2,
+              messagesId,
+              isDisabled,
+              isReadonly,
+              isValid: isValid2
+            } = _ref2;
+            return require$$0.createVNode(VCheckboxBtn, require$$0.mergeProps(checkboxProps, {
+              "id": id2.value,
+              "aria-describedby": messagesId.value,
+              "disabled": isDisabled.value,
+              "readonly": isReadonly.value
+            }, controlAttrs, {
+              "error": isValid2.value === false,
+              "modelValue": model.value,
+              "onUpdate:modelValue": ($event) => model.value = $event,
+              "onFocus": focus,
+              "onBlur": blur
+            }), slots);
+          }
+        });
+      });
+      return {};
+    }
+  });
   function bias(val) {
     const c = 0.501;
     const x = Math.abs(val);
@@ -21355,7 +21440,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       }
     })
   }, "VSelect");
-  genericComponent()({
+  const VSelect = genericComponent()({
     name: "VSelect",
     props: makeVSelectProps(),
     emits: {
@@ -22304,8 +22389,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       }, vTextFieldRef);
     }
   });
-  const _hoisted_1 = ["innerHTML"];
-  const _sfc_main$1 = /* @__PURE__ */ require$$0.defineComponent({
+  const _hoisted_1$9 = ["innerHTML"];
+  const _sfc_main$f = /* @__PURE__ */ require$$0.defineComponent({
     __name: "SelectMany",
     props: {
       items: {
@@ -22315,9 +22400,6 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       selectedItems: {
         type: Array,
         default: () => []
-      },
-      searchItemsFunc: {
-        type: Function
       },
       itemValue: {
         type: String,
@@ -22350,7 +22432,6 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       const internalSelectedItems = require$$0.ref([]);
       const internalItems = require$$0.ref([]);
       const autocompleteValue = require$$0.ref([]);
-      const searchKeyword = require$$0.ref("");
       const isLoading = require$$0.ref(false);
       const noFilter = require$$0.ref(false);
       const emit = __emit;
@@ -22358,20 +22439,6 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         internalItems.value = props.items;
         internalSelectedItems.value = props.modelValue.map((id) => {
           return props.items.find((item) => item[props.itemValue] === id);
-        });
-        if (props.searchItemsFunc) {
-          noFilter.value = true;
-        }
-      });
-      require$$0.watch(searchKeyword, (val) => {
-        if (val === "") {
-          return;
-        }
-        isLoading.value = true;
-        props.searchItemsFunc(val).then((r) => {
-          internalItems.value = r.data || [];
-        }).finally(() => {
-          isLoading.value = false;
         });
       });
       const addItem = (event) => {
@@ -22395,15 +22462,6 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         );
         setValue();
       };
-      const search = (val) => {
-        if (!props.searchItemsFunc) {
-          return;
-        }
-        searchKeyword.value = val;
-      };
-      const focus = () => {
-        search("");
-      };
       const setValue = () => {
         emit(
           "update:modelValue",
@@ -22417,7 +22475,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           require$$0.createElementVNode("label", {
             class: "v-label theme--light",
             innerHTML: __props.label
-          }, null, 8, _hoisted_1),
+          }, null, 8, _hoisted_1$9),
           internalSelectedItems.value.length > 0 ? (require$$0.openBlock(), require$$0.createBlock(VCard, {
             key: 0,
             variant: "flat",
@@ -22472,11 +22530,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               addItem
             ],
             "auto-select-first": "",
-            onFocus: focus,
             loading: isLoading.value,
             "no-filter": noFilter.value,
             "return-object": "",
-            "onUpdate:search": search,
             variant: "underlined"
           }, {
             item: require$$0.withCtx(({ props: props2, item }) => [
@@ -22491,7 +22547,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       };
     }
   });
-  const _sfc_main = /* @__PURE__ */ require$$0.defineComponent({
+  const _sfc_main$e = /* @__PURE__ */ require$$0.defineComponent({
     __name: "LinkageSelect",
     props: {
       modelValue: {},
@@ -22707,12 +22763,1616 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       };
     }
   });
+  function useRefs() {
+    const refs = require$$0.ref([]);
+    require$$0.onBeforeUpdate(() => refs.value = []);
+    function updateRef(e, i) {
+      refs.value[i] = e;
+    }
+    return {
+      refs,
+      updateRef
+    };
+  }
+  const makeVPaginationProps = propsFactory({
+    activeColor: String,
+    start: {
+      type: [Number, String],
+      default: 1
+    },
+    modelValue: {
+      type: Number,
+      default: (props) => props.start
+    },
+    disabled: Boolean,
+    length: {
+      type: [Number, String],
+      default: 1,
+      validator: (val) => val % 1 === 0
+    },
+    totalVisible: [Number, String],
+    firstIcon: {
+      type: IconValue,
+      default: "$first"
+    },
+    prevIcon: {
+      type: IconValue,
+      default: "$prev"
+    },
+    nextIcon: {
+      type: IconValue,
+      default: "$next"
+    },
+    lastIcon: {
+      type: IconValue,
+      default: "$last"
+    },
+    ariaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.root"
+    },
+    pageAriaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.page"
+    },
+    currentPageAriaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.currentPage"
+    },
+    firstAriaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.first"
+    },
+    previousAriaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.previous"
+    },
+    nextAriaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.next"
+    },
+    lastAriaLabel: {
+      type: String,
+      default: "$vuetify.pagination.ariaLabel.last"
+    },
+    ellipsis: {
+      type: String,
+      default: "..."
+    },
+    showFirstLastPage: Boolean,
+    ...makeBorderProps(),
+    ...makeComponentProps(),
+    ...makeDensityProps(),
+    ...makeElevationProps(),
+    ...makeRoundedProps(),
+    ...makeSizeProps(),
+    ...makeTagProps({
+      tag: "nav"
+    }),
+    ...makeThemeProps(),
+    ...makeVariantProps({
+      variant: "text"
+    })
+  }, "VPagination");
+  const VPagination = genericComponent()({
+    name: "VPagination",
+    props: makeVPaginationProps(),
+    emits: {
+      "update:modelValue": (value) => true,
+      first: (value) => true,
+      prev: (value) => true,
+      next: (value) => true,
+      last: (value) => true
+    },
+    setup(props, _ref) {
+      let {
+        slots,
+        emit
+      } = _ref;
+      const page = useProxiedModel(props, "modelValue");
+      const {
+        t,
+        n
+      } = useLocale();
+      const {
+        isRtl
+      } = useRtl();
+      const {
+        themeClasses
+      } = provideTheme(props);
+      const {
+        width
+      } = useDisplay();
+      const maxButtons = require$$0.shallowRef(-1);
+      provideDefaults(void 0, {
+        scoped: true
+      });
+      const {
+        resizeRef
+      } = useResizeObserver((entries) => {
+        if (!entries.length)
+          return;
+        const {
+          target,
+          contentRect
+        } = entries[0];
+        const firstItem = target.querySelector(".v-pagination__list > *");
+        if (!firstItem)
+          return;
+        const totalWidth = contentRect.width;
+        const itemWidth = firstItem.offsetWidth + parseFloat(getComputedStyle(firstItem).marginRight) * 2;
+        maxButtons.value = getMax(totalWidth, itemWidth);
+      });
+      const length = require$$0.computed(() => parseInt(props.length, 10));
+      const start = require$$0.computed(() => parseInt(props.start, 10));
+      const totalVisible = require$$0.computed(() => {
+        if (props.totalVisible != null)
+          return parseInt(props.totalVisible, 10);
+        else if (maxButtons.value >= 0)
+          return maxButtons.value;
+        return getMax(width.value, 58);
+      });
+      function getMax(totalWidth, itemWidth) {
+        const minButtons = props.showFirstLastPage ? 5 : 3;
+        return Math.max(0, Math.floor(
+          // Round to two decimal places to avoid floating point errors
+          +((totalWidth - itemWidth * minButtons) / itemWidth).toFixed(2)
+        ));
+      }
+      const range = require$$0.computed(() => {
+        if (length.value <= 0 || isNaN(length.value) || length.value > Number.MAX_SAFE_INTEGER)
+          return [];
+        if (totalVisible.value <= 0)
+          return [];
+        else if (totalVisible.value === 1)
+          return [page.value];
+        if (length.value <= totalVisible.value) {
+          return createRange(length.value, start.value);
+        }
+        const even = totalVisible.value % 2 === 0;
+        const middle = even ? totalVisible.value / 2 : Math.floor(totalVisible.value / 2);
+        const left = even ? middle : middle + 1;
+        const right = length.value - middle;
+        if (left - page.value >= 0) {
+          return [...createRange(Math.max(1, totalVisible.value - 1), start.value), props.ellipsis, length.value];
+        } else if (page.value - right >= (even ? 1 : 0)) {
+          const rangeLength = totalVisible.value - 1;
+          const rangeStart = length.value - rangeLength + start.value;
+          return [start.value, props.ellipsis, ...createRange(rangeLength, rangeStart)];
+        } else {
+          const rangeLength = Math.max(1, totalVisible.value - 3);
+          const rangeStart = rangeLength === 1 ? page.value : page.value - Math.ceil(rangeLength / 2) + start.value;
+          return [start.value, props.ellipsis, ...createRange(rangeLength, rangeStart), props.ellipsis, length.value];
+        }
+      });
+      function setValue(e, value, event) {
+        e.preventDefault();
+        page.value = value;
+        event && emit(event, value);
+      }
+      const {
+        refs,
+        updateRef
+      } = useRefs();
+      provideDefaults({
+        VPaginationBtn: {
+          color: require$$0.toRef(props, "color"),
+          border: require$$0.toRef(props, "border"),
+          density: require$$0.toRef(props, "density"),
+          size: require$$0.toRef(props, "size"),
+          variant: require$$0.toRef(props, "variant"),
+          rounded: require$$0.toRef(props, "rounded"),
+          elevation: require$$0.toRef(props, "elevation")
+        }
+      });
+      const items = require$$0.computed(() => {
+        return range.value.map((item, index2) => {
+          const ref = (e) => updateRef(e, index2);
+          if (typeof item === "string") {
+            return {
+              isActive: false,
+              key: `ellipsis-${index2}`,
+              page: item,
+              props: {
+                ref,
+                ellipsis: true,
+                icon: true,
+                disabled: true
+              }
+            };
+          } else {
+            const isActive = item === page.value;
+            return {
+              isActive,
+              key: item,
+              page: n(item),
+              props: {
+                ref,
+                ellipsis: false,
+                icon: true,
+                disabled: !!props.disabled || +props.length < 2,
+                color: isActive ? props.activeColor : props.color,
+                "aria-current": isActive,
+                "aria-label": t(isActive ? props.currentPageAriaLabel : props.pageAriaLabel, item),
+                onClick: (e) => setValue(e, item)
+              }
+            };
+          }
+        });
+      });
+      const controls = require$$0.computed(() => {
+        const prevDisabled = !!props.disabled || page.value <= start.value;
+        const nextDisabled = !!props.disabled || page.value >= start.value + length.value - 1;
+        return {
+          first: props.showFirstLastPage ? {
+            icon: isRtl.value ? props.lastIcon : props.firstIcon,
+            onClick: (e) => setValue(e, start.value, "first"),
+            disabled: prevDisabled,
+            "aria-label": t(props.firstAriaLabel),
+            "aria-disabled": prevDisabled
+          } : void 0,
+          prev: {
+            icon: isRtl.value ? props.nextIcon : props.prevIcon,
+            onClick: (e) => setValue(e, page.value - 1, "prev"),
+            disabled: prevDisabled,
+            "aria-label": t(props.previousAriaLabel),
+            "aria-disabled": prevDisabled
+          },
+          next: {
+            icon: isRtl.value ? props.prevIcon : props.nextIcon,
+            onClick: (e) => setValue(e, page.value + 1, "next"),
+            disabled: nextDisabled,
+            "aria-label": t(props.nextAriaLabel),
+            "aria-disabled": nextDisabled
+          },
+          last: props.showFirstLastPage ? {
+            icon: isRtl.value ? props.firstIcon : props.lastIcon,
+            onClick: (e) => setValue(e, start.value + length.value - 1, "last"),
+            disabled: nextDisabled,
+            "aria-label": t(props.lastAriaLabel),
+            "aria-disabled": nextDisabled
+          } : void 0
+        };
+      });
+      function updateFocus() {
+        var _a;
+        const currentIndex = page.value - start.value;
+        (_a = refs.value[currentIndex]) == null ? void 0 : _a.$el.focus();
+      }
+      function onKeydown(e) {
+        if (e.key === keyValues.left && !props.disabled && page.value > +props.start) {
+          page.value = page.value - 1;
+          require$$0.nextTick(updateFocus);
+        } else if (e.key === keyValues.right && !props.disabled && page.value < start.value + length.value - 1) {
+          page.value = page.value + 1;
+          require$$0.nextTick(updateFocus);
+        }
+      }
+      useRender(() => require$$0.createVNode(props.tag, {
+        "ref": resizeRef,
+        "class": ["v-pagination", themeClasses.value, props.class],
+        "style": props.style,
+        "role": "navigation",
+        "aria-label": t(props.ariaLabel),
+        "onKeydown": onKeydown,
+        "data-test": "v-pagination-root"
+      }, {
+        default: () => [require$$0.createVNode("ul", {
+          "class": "v-pagination__list"
+        }, [props.showFirstLastPage && require$$0.createVNode("li", {
+          "key": "first",
+          "class": "v-pagination__first",
+          "data-test": "v-pagination-first"
+        }, [slots.first ? slots.first(controls.value.first) : require$$0.createVNode(VBtn, require$$0.mergeProps({
+          "_as": "VPaginationBtn"
+        }, controls.value.first), null)]), require$$0.createVNode("li", {
+          "key": "prev",
+          "class": "v-pagination__prev",
+          "data-test": "v-pagination-prev"
+        }, [slots.prev ? slots.prev(controls.value.prev) : require$$0.createVNode(VBtn, require$$0.mergeProps({
+          "_as": "VPaginationBtn"
+        }, controls.value.prev), null)]), items.value.map((item, index2) => require$$0.createVNode("li", {
+          "key": item.key,
+          "class": ["v-pagination__item", {
+            "v-pagination__item--is-active": item.isActive
+          }],
+          "data-test": "v-pagination-item"
+        }, [slots.item ? slots.item(item) : require$$0.createVNode(VBtn, require$$0.mergeProps({
+          "_as": "VPaginationBtn"
+        }, item.props), {
+          default: () => [item.page]
+        })])), require$$0.createVNode("li", {
+          "key": "next",
+          "class": "v-pagination__next",
+          "data-test": "v-pagination-next"
+        }, [slots.next ? slots.next(controls.value.next) : require$$0.createVNode(VBtn, require$$0.mergeProps({
+          "_as": "VPaginationBtn"
+        }, controls.value.next), null)]), props.showFirstLastPage && require$$0.createVNode("li", {
+          "key": "last",
+          "class": "v-pagination__last",
+          "data-test": "v-pagination-last"
+        }, [slots.last ? slots.last(controls.value.last) : require$$0.createVNode(VBtn, require$$0.mergeProps({
+          "_as": "VPaginationBtn"
+        }, controls.value.last), null)])])]
+      }));
+      return {};
+    }
+  });
+  const _hoisted_1$8 = { class: "text-center" };
+  const _hoisted_2$4 = { key: 1 };
+  const _sfc_main$d = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "Autocomplete",
+    props: {
+      modelValue: { type: Array, required: true },
+      isPaging: Boolean,
+      hasIcon: Boolean,
+      hideSelected: Boolean,
+      hideDetails: Boolean,
+      clearable: Boolean,
+      chips: Boolean,
+      sorting: Boolean,
+      itemTextKey: { type: String, default: "text" },
+      itemValueKey: { type: String, default: "value" },
+      itemIconKey: { type: String, default: "icon" },
+      pageKey: { type: String, default: "page" },
+      pagesKey: { type: String, default: "pages" },
+      pageSizeKey: { type: String, default: "pageSize" },
+      totalKey: { type: String, default: "total" },
+      itemsKey: { type: String, default: "items" },
+      currentKey: { type: String, default: "current" },
+      searchKey: { type: String, default: "search" },
+      chipColor: String,
+      loadData: Function,
+      remote: {
+        type: Object,
+        default: {
+          page: 0,
+          pageSize: 0,
+          search: ""
+        }
+      }
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const emit = __emit;
+      const props = __props;
+      const listItems = require$$0.ref([]);
+      const value = require$$0.ref();
+      const cachedSelectedItems = require$$0.ref([]);
+      const isLoading = require$$0.ref(false);
+      const disabled = require$$0.ref(false);
+      const total = require$$0.ref(0);
+      const pages = require$$0.ref(0);
+      const current = require$$0.ref(0);
+      const getObjMultiValue = (d, key) => {
+        const keys = key.split(".");
+        if (keys.length === 0) {
+          return d;
+        }
+        if (keys[0] === "$") {
+          keys.shift();
+        } else {
+          keys.unshift("data");
+        }
+        return getObjectValue(d, keys);
+      };
+      const getObjectValue = (d, keys) => {
+        if (typeof d !== "object" || keys.length == 0) {
+          return d;
+        }
+        const newKey = keys[0];
+        keys.shift();
+        return getObjectValue(d[newKey], keys);
+      };
+      const loadRemoteItems = () => {
+        if (!props.loadData) {
+          return;
+        }
+        isLoading.value = true;
+        props.loadData().then((r) => {
+          total.value = getObjMultiValue(r, props.totalKey);
+          pages.value = getObjMultiValue(r, props.pagesKey);
+          current.value = getObjMultiValue(r, props.currentKey);
+          const items = getObjMultiValue(r, props.itemsKey);
+          if (props.isPaging) {
+            listItems.value = items;
+          } else {
+            disabled.value = current.value >= total.value;
+            listItems.value = listItems.value.concat(items || []);
+          }
+        }).finally(() => {
+          isLoading.value = false;
+        });
+      };
+      const endIntersect = (isIntersecting) => {
+        if (isIntersecting && !disabled.value) {
+          props.remote[props.pageKey] += 1;
+          loadRemoteItems();
+        }
+      };
+      const changeStatus = (e) => {
+        if (cachedSelectedItems.value.find(
+          (element) => element[props.itemValueKey] == e[props.itemValueKey]
+        )) {
+          return;
+        }
+        cachedSelectedItems.value.push(e);
+        emit("update:modelValue", cachedSelectedItems.value);
+      };
+      const removeItem = (v) => {
+        value.value = "";
+        cachedSelectedItems.value = cachedSelectedItems.value.filter(
+          (element) => element[props.itemValueKey] != v[props.itemValueKey]
+        );
+        emit("update:modelValue", cachedSelectedItems.value);
+      };
+      require$$0.onMounted(() => {
+        cachedSelectedItems.value = props.modelValue;
+        loadRemoteItems();
+      });
+      const reloadSearch = (val) => {
+        if (!props.loadData) {
+          return;
+        }
+        if (val == props.remote[props.searchKey] || !val) {
+          return;
+        }
+        if (val == value.value[props.itemTextKey]) {
+          return;
+        }
+        props.remote[props.pageKey] = 1;
+        props.remote[props.searchKey] = val;
+        loadRemoteItems();
+      };
+      const chipsVisible = require$$0.computed(() => {
+        return props.chips && props.hasIcon && !props.sorting;
+      });
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", null, [
+          __props.sorting && cachedSelectedItems.value.length > 0 ? (require$$0.openBlock(), require$$0.createBlock(VCard, { key: 0 }, {
+            default: require$$0.withCtx(() => [
+              require$$0.createVNode(VList, null, {
+                default: require$$0.withCtx(() => [
+                  require$$0.createVNode(require$$0.unref(draggable), {
+                    animation: "300",
+                    handle: ".handle",
+                    modelValue: cachedSelectedItems.value,
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => cachedSelectedItems.value = $event),
+                    "item-key": __props.itemValueKey
+                  }, {
+                    item: require$$0.withCtx(({ element }) => [
+                      __props.hasIcon ? (require$$0.openBlock(), require$$0.createBlock(VListItem, {
+                        key: 0,
+                        "prepend-avatar": element[__props.itemIconKey],
+                        title: element[__props.itemTextKey],
+                        animation: "300"
+                      }, {
+                        append: require$$0.withCtx(() => [
+                          require$$0.createVNode(VIcon, {
+                            icon: "mdi-drag",
+                            class: "handle mx-2 cursor-grab"
+                          }),
+                          require$$0.createVNode(VBtn, {
+                            onClick: ($event) => removeItem(element),
+                            variant: "text",
+                            icon: "mdi-delete"
+                          }, null, 8, ["onClick"])
+                        ]),
+                        _: 2
+                      }, 1032, ["prepend-avatar", "title"])) : (require$$0.openBlock(), require$$0.createBlock(VListItem, {
+                        key: 1,
+                        title: element[__props.itemTextKey],
+                        animation: "300"
+                      }, {
+                        append: require$$0.withCtx(() => [
+                          require$$0.createVNode(VIcon, {
+                            icon: "mdi-drag",
+                            class: "handle mx-2 cursor-grab"
+                          }),
+                          require$$0.createVNode(VBtn, {
+                            onClick: ($event) => removeItem(element),
+                            variant: "text",
+                            icon: "mdi-delete"
+                          }, null, 8, ["onClick"])
+                        ]),
+                        _: 2
+                      }, 1032, ["title"]))
+                    ]),
+                    _: 1
+                  }, 8, ["modelValue", "item-key"])
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          })) : require$$0.createCommentVNode("", true),
+          require$$0.createVNode(VAutocomplete, {
+            modelValue: value.value,
+            "onUpdate:modelValue": [
+              _cache[4] || (_cache[4] = ($event) => value.value = $event),
+              changeStatus
+            ],
+            items: listItems.value,
+            loading: isLoading.value,
+            "item-value": __props.itemValueKey,
+            "item-title": __props.itemTextKey,
+            "return-object": "",
+            clearable: __props.sorting ? false : __props.clearable,
+            "hide-details": __props.hideDetails,
+            "hide-selected": __props.hideSelected,
+            class: require$$0.normalizeClass(__props.sorting ? "v-autocomplete-sorting" : ""),
+            variant: "underlined",
+            "onUpdate:search": reloadSearch
+          }, require$$0.createSlots({
+            "append-item": require$$0.withCtx(() => [
+              require$$0.createElementVNode("div", _hoisted_1$8, [
+                props.isPaging ? (require$$0.openBlock(), require$$0.createBlock(VPagination, {
+                  key: 0,
+                  modelValue: __props.remote[__props.pageKey],
+                  "onUpdate:modelValue": [
+                    _cache[1] || (_cache[1] = ($event) => __props.remote[__props.pageKey] = $event),
+                    _cache[2] || (_cache[2] = ($event) => loadRemoteItems())
+                  ],
+                  rounded: "circle",
+                  length: pages.value,
+                  "total-visible": "5"
+                }, null, 8, ["modelValue", "length"])) : (require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_2$4, [
+                  require$$0.withDirectives((require$$0.openBlock(), require$$0.createBlock(VBtn, {
+                    class: "ma-2",
+                    color: "primary",
+                    disabled: disabled.value,
+                    loading: isLoading.value,
+                    onClick: _cache[3] || (_cache[3] = () => {
+                      __props.remote[__props.pageKey] += 1;
+                      loadRemoteItems();
+                    })
+                  }, {
+                    default: require$$0.withCtx(() => [
+                      require$$0.createTextVNode("Load more ")
+                    ]),
+                    _: 1
+                  }, 8, ["disabled", "loading"])), [
+                    [Intersect, endIntersect]
+                  ]),
+                  require$$0.createVNode(VDivider, { vertical: "" }),
+                  require$$0.createElementVNode("span", null, require$$0.toDisplayString(current.value) + "/" + require$$0.toDisplayString(total.value), 1)
+                ]))
+              ])
+            ]),
+            _: 2
+          }, [
+            __props.hasIcon ? {
+              name: "item",
+              fn: require$$0.withCtx(({ item, props: props2 }) => [
+                require$$0.createVNode(VListItem, require$$0.mergeProps(props2, {
+                  "prepend-avatar": item.raw[__props.itemIconKey],
+                  title: item.raw[__props.itemTextKey]
+                }), null, 16, ["prepend-avatar", "title"])
+              ]),
+              key: "0"
+            } : void 0,
+            chipsVisible.value ? {
+              name: "chip",
+              fn: require$$0.withCtx(({ props: props2, item }) => [
+                require$$0.createVNode(VChip, require$$0.mergeProps(props2, {
+                  color: __props.chipColor,
+                  "prepend-avatar": __props.hasIcon ? item.raw[__props.itemIconKey] : void 0,
+                  text: item.raw[__props.itemTextKey]
+                }), null, 16, ["color", "prepend-avatar", "text"])
+              ]),
+              key: "1"
+            } : void 0
+          ]), 1032, ["modelValue", "items", "loading", "item-value", "item-title", "clearable", "hide-details", "hide-selected", "class"])
+        ]);
+      };
+    }
+  });
+  const _sfc_main$c = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "TextDatepicker",
+    props: {
+      modelValue: { type: String },
+      visible: { type: Boolean, default: false }
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const emit = __emit;
+      const props = __props;
+      const value = require$$0.ref(props.modelValue);
+      const internalVisible = require$$0.ref(props.visible);
+      const toggle = () => {
+        internalVisible.value = !internalVisible.value;
+      };
+      const change = () => {
+        emit("update:modelValue", value.value);
+        toggle();
+      };
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createBlock(VMenu, {
+          class: "d-inline-block",
+          "min-width": "290px",
+          eager: "",
+          modelValue: internalVisible.value,
+          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => internalVisible.value = $event),
+          location: "end bottom",
+          onInput: toggle
+        }, {
+          activator: require$$0.withCtx(({ props: props2 }) => [
+            require$$0.createVNode(VTextField, require$$0.mergeProps({ class: "d-inline-block" }, props2, {
+              style: { "width": "180px" },
+              "hide-details": "",
+              variant: "underlined",
+              modelValue: value.value,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => value.value = $event),
+              "prepend-inner-icon": "mdi-event"
+            }), null, 16, ["modelValue"])
+          ]),
+          default: require$$0.withCtx(() => [
+            require$$0.createVNode(_sfc_main$h, {
+              modelValue: value.value,
+              "onUpdate:modelValue": [
+                _cache[1] || (_cache[1] = ($event) => value.value = $event),
+                change
+              ]
+            }, null, 8, ["modelValue"])
+          ]),
+          _: 1
+        }, 8, ["modelValue"]);
+      };
+    }
+  });
+  const ModifierBetween = "between";
+  function pushKeyVal(segs, key, mod, val) {
+    const modWithDot = mod ? `.${mod}` : "";
+    segs.push([`${key}${modWithDot}`, val.toString()]);
+  }
+  function pushDatetimeRangeItem(segs, op) {
+    const mod = op.modifier || ModifierBetween;
+    if (mod === ModifierBetween) {
+      if (op.valueFrom) {
+        pushKeyVal(segs, op.key, "gte", op.valueFrom);
+      }
+      if (op.valueTo) {
+        pushKeyVal(segs, op.key, "lt", op.valueTo);
+      }
+      return;
+    }
+  }
+  function pushDateRangeItem(segs, op) {
+    const mod = op.modifier || ModifierBetween;
+    if (mod === ModifierBetween) {
+      if (op.valueFrom) {
+        pushKeyVal(segs, op.key, "gte", op.valueFrom);
+      }
+      if (op.valueTo) {
+        pushKeyVal(segs, op.key, "lte", op.valueTo);
+      }
+      return;
+    }
+  }
+  function pushDateItem(segs, op) {
+    if (!op.valueIs) {
+      return;
+    }
+    pushKeyVal(segs, op.key, "", op.valueIs);
+  }
+  function pushNumberItem(segs, op) {
+    const mod = op.modifier || "equals";
+    if (mod === "equals") {
+      const floatValue = parseFloat(op.valueIs);
+      if (!isNaN(floatValue)) {
+        pushKeyVal(segs, op.key, "", floatValue);
+      }
+      return;
+    }
+    if (mod === "between") {
+      const floatFrom = parseFloat(op.valueFrom);
+      const floatTo = parseFloat(op.valueTo);
+      if (!isNaN(floatFrom)) {
+        pushKeyVal(segs, op.key, "gte", floatFrom);
+      }
+      if (!isNaN(floatTo)) {
+        pushKeyVal(segs, op.key, "lte", floatTo);
+      }
+      return;
+    }
+    if (mod === "greaterThan") {
+      const floatValue = parseFloat(op.valueIs);
+      if (!isNaN(floatValue)) {
+        pushKeyVal(segs, op.key, "gt", floatValue);
+      }
+      return;
+    }
+    if (mod === "lessThan") {
+      const floatValue = parseFloat(op.valueIs);
+      if (!isNaN(floatValue)) {
+        pushKeyVal(segs, op.key, "lt", floatValue);
+      }
+      return;
+    }
+  }
+  function pushStringItem(segs, op) {
+    const mod = op.modifier || "equals";
+    if (mod === "equals" && op.valueIs) {
+      pushKeyVal(segs, op.key, "", op.valueIs);
+      return;
+    }
+    if (mod === "contains" && op.valueIs) {
+      pushKeyVal(segs, op.key, "ilike", op.valueIs);
+      return;
+    }
+  }
+  function pushSelectItem(segs, op) {
+    const mod = op.modifier || "equals";
+    if (mod === "equals" && op.valueIs) {
+      pushKeyVal(segs, op.key, "", op.valueIs);
+      return;
+    }
+  }
+  function pushMultipleSelectItem(segs, op) {
+    const mod = op.modifier || "in";
+    if (mod === "in" && op.valuesAre && op.valuesAre.length > 0) {
+      pushKeyVal(segs, op.key, "in", op.valuesAre);
+      return;
+    }
+    if (mod === "notIn" && op.valuesAre && op.valuesAre.length > 0) {
+      pushKeyVal(segs, op.key, "notIn", op.valuesAre);
+      return;
+    }
+  }
+  function pushLinkageSelectItem(segs, op) {
+    const mod = op.modifier || "equals";
+    if (mod === "equals" && op.valuesAre && op.valuesAre.length > 0) {
+      pushKeyVal(segs, op.key, "", op.valuesAre);
+      return;
+    }
+  }
+  function filterData(data) {
+    if (!data) {
+      return [];
+    }
+    const r = [];
+    data.filter((op) => op.selected).map((op) => {
+      if (op.itemType === "DatetimeRangeItem") {
+        pushDatetimeRangeItem(r, op);
+      }
+      if (op.itemType === "DateRangeItem") {
+        pushDateRangeItem(r, op);
+      }
+      if (op.itemType === "DateItem") {
+        pushDateItem(r, op);
+      }
+      if (op.itemType === "NumberItem") {
+        pushNumberItem(r, op);
+      }
+      if (op.itemType === "StringItem") {
+        pushStringItem(r, op);
+      }
+      if (op.itemType === "SelectItem") {
+        pushSelectItem(r, op);
+      }
+      if (op.itemType === "MultipleSelectItem") {
+        pushMultipleSelectItem(r, op);
+      }
+      if (op.itemType === "LinkageSelectItem") {
+        pushLinkageSelectItem(r, op);
+      }
+      return op;
+    });
+    return r;
+  }
+  function encodeFilterData(data) {
+    return filterData(data).map((e) => `${encodeURIComponent(e[0])}=${encodeURIComponent(e[1])}`).join("&");
+  }
+  const _hoisted_1$7 = { class: "cursor-pointer" };
+  const _hoisted_2$3 = { key: 0 };
+  const _hoisted_3$1 = { class: "text-primary" };
+  const _sfc_main$b = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "FilterButtonBody",
+    props: {
+      op: {}
+    },
+    emits: ["clear"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const emit = __emit;
+      const showValueComputed = require$$0.computed(() => {
+        let showValue = "";
+        if (props.op.selected) {
+          switch (props.op.itemType) {
+            case "DatetimeRangeItem":
+            case "DateRangeItem": {
+              const mod = props.op.modifier || ModifierBetween;
+              if (mod === ModifierBetween) {
+                if (props.op.valueFrom) {
+                  if (props.op.valueTo) {
+                    showValue = `${props.op.valueFrom} - ${props.op.valueTo}`;
+                  } else {
+                    showValue = ` >= ${props.op.valueFrom}`;
+                  }
+                } else {
+                  if (props.op.valueTo) {
+                    showValue = ` < ${props.op.valueTo}`;
+                  }
+                }
+              }
+              break;
+            }
+            case "DateItem": {
+              showValue = props.op.valueIs;
+              break;
+            }
+            case "NumberItem": {
+              const mod = props.op.modifier || "equals";
+              if (mod === "equals") {
+                const floatValue = parseFloat(props.op.valueIs);
+                if (!isNaN(floatValue)) {
+                  showValue += floatValue;
+                }
+              }
+              if (mod === "between") {
+                const floatFrom = parseFloat(props.op.valueFrom || "");
+                const floatTo = parseFloat(props.op.valueTo || "");
+                const fromValid = !isNaN(floatFrom);
+                const toValid = !isNaN(floatTo);
+                if (fromValid) {
+                  if (toValid) {
+                    showValue = `${props.op.valueFrom} - ${props.op.valueTo}`;
+                  } else {
+                    showValue = ` >= ${props.op.valueFrom}`;
+                  }
+                } else {
+                  if (toValid) {
+                    showValue = ` <= ${props.op.valueTo}`;
+                  }
+                }
+              }
+              if (mod === "greaterThan") {
+                const floatValue = parseFloat(props.op.valueIs);
+                if (!isNaN(floatValue)) {
+                  showValue += " > " + props.op.valueFrom;
+                }
+              }
+              if (mod === "lessThan") {
+                const floatValue = parseFloat(props.op.valueIs);
+                if (!isNaN(floatValue)) {
+                  showValue += " < " + props.op.valueTo;
+                }
+              }
+              break;
+            }
+            case "StringItem": {
+              const mod = props.op.modifier || "equals";
+              if (mod === "equals" && props.op.valueIs) {
+                showValue = props.op.valueIs;
+              }
+              if (mod === "contains" && props.op.valueIs) {
+                showValue = " ~ " + props.op.valueIs;
+              }
+              break;
+            }
+            case "SelectItem": {
+              const mod = props.op.modifier || "equals";
+              if (mod === "equals" && props.op.valueIs) {
+                showValue = props.op.options.find((o) => o.value === props.op.valueIs).text;
+              }
+              break;
+            }
+            case "MultipleSelectItem": {
+              const mod = props.op.modifier || "in";
+              const textsAre = props.op.options.filter((o) => props.op.valuesAre.includes(o.value)).map((o) => o.text);
+              if (mod === "in" && props.op.valuesAre && props.op.valuesAre.length > 0) {
+                showValue = " in [ " + textsAre.join(", ") + " ]";
+              }
+              if (mod === "notIn" && props.op.valuesAre && props.op.valuesAre.length > 0) {
+                showValue = " not in [ " + textsAre.join(", ") + " ]";
+              }
+              break;
+            }
+            case "LinkageSelectItem": {
+              const textsAre = props.op.valuesAre.map((o, i) => {
+                var _a;
+                return (_a = props.op.linkageSelectData) == null ? void 0 : _a.items[i].find((x) => {
+                  console.log(o, x);
+                  return o === x.ID;
+                }).Name;
+              });
+              showValue = textsAre.join(",");
+              break;
+            }
+            default:
+              throw new Error(`itemType '${props.op.itemType}' not supported`);
+          }
+        }
+        const showValueCopy = showValue;
+        showValue = "";
+        let showLen = 0;
+        for (let i = 0; i < showValueCopy.length; i++) {
+          showValue += showValueCopy.charAt(i);
+          if (showValueCopy.charCodeAt(i) > 127) {
+            showLen += 2;
+          } else {
+            showLen++;
+          }
+          if (showLen > 66) {
+            showValue += "...";
+            break;
+          }
+        }
+        return showValue;
+      });
+      const clear = (e) => {
+        emit("clear", e);
+      };
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("span", _hoisted_1$7, [
+          require$$0.createVNode(VIcon, {
+            start: "",
+            onClick: clear,
+            icon: _ctx.op.selected ? "mdi-close-circle" : "mdi-plus-circle"
+          }, null, 8, ["icon"]),
+          require$$0.createTextVNode(" " + require$$0.toDisplayString(_ctx.op.label) + " ", 1),
+          _ctx.op.selected ? (require$$0.openBlock(), require$$0.createElementBlock("span", _hoisted_2$3, [
+            require$$0.createTextVNode(" | "),
+            require$$0.createElementVNode("span", _hoisted_3$1, require$$0.toDisplayString(showValueComputed.value), 1)
+          ])) : require$$0.createCommentVNode("", true)
+        ]);
+      };
+    }
+  });
+  const _sfc_main$a = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "FilterButton",
+    props: {
+      op: {},
+      isFoldedItem: { type: Boolean },
+      slotProps: {}
+    },
+    emits: ["clear"],
+    setup(__props, { emit: __emit }) {
+      const emit = __emit;
+      const clear = (e) => {
+        emit("clear", e);
+      };
+      return (_ctx, _cache) => {
+        return _ctx.isFoldedItem ? (require$$0.openBlock(), require$$0.createBlock(VListItem, require$$0.mergeProps({
+          key: 0,
+          variant: "outlined",
+          class: "my-1 px-2"
+        }, _ctx.slotProps), {
+          default: require$$0.withCtx(() => [
+            require$$0.createVNode(_sfc_main$b, {
+              op: _ctx.op,
+              onClear: clear
+            }, null, 8, ["op"])
+          ]),
+          _: 1
+        }, 16)) : (require$$0.openBlock(), require$$0.createBlock(VChip, require$$0.mergeProps({
+          key: 1,
+          variant: "outlined",
+          class: ["mr-2 my-1", _ctx.op.selected ? "" : "text-grey-darken-1"],
+          style: { borderStyle: _ctx.op.selected ? "solid" : "dashed" }
+        }, _ctx.slotProps), {
+          default: require$$0.withCtx(() => [
+            require$$0.createVNode(_sfc_main$b, {
+              op: _ctx.op,
+              onClear: clear
+            }, null, 8, ["op"])
+          ]),
+          _: 1
+        }, 16, ["class", "style"]));
+      };
+    }
+  });
+  const _sfc_main$9 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "ItemFilter",
+    props: {
+      modelValue: {},
+      isFoldedItem: { type: Boolean },
+      itemComp: {},
+      translations: {},
+      compTranslations: {},
+      internalValue: {},
+      index: {}
+    },
+    emits: ["update:modelValue", "change", "clear"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const value = require$$0.ref({ ...props.modelValue });
+      const menu = require$$0.ref(false);
+      const emit = __emit;
+      const clickDone = () => {
+        menu.value = false;
+        if (!value.value.valueIs && (!value.value.valuesAre || value.value.valuesAre.length == 0) && !value.value.valueFrom && !value.value.valueTo) {
+          return;
+        }
+        value.value.selected = true;
+        Object.assign(props.modelValue, value.value);
+        emit("update:modelValue", props.modelValue);
+        emit("change", null);
+      };
+      const clear = (e) => {
+        if (!value.value.selected) {
+          return;
+        }
+        value.value.valueIs = "";
+        value.value.valuesAre = [];
+        value.value.valueFrom = "";
+        value.value.valueTo = "";
+        value.value.selected = false;
+        Object.assign(props.modelValue, value.value);
+        emit("update:modelValue", props.modelValue);
+        emit("clear", e);
+      };
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createBlock(VMenu, {
+          "close-on-content-click": false,
+          class: "rounded-lg",
+          modelValue: menu.value,
+          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => menu.value = $event)
+        }, {
+          activator: require$$0.withCtx(({ props: props2 }) => [
+            require$$0.createVNode(_sfc_main$a, {
+              op: value.value,
+              "is-folded-item": _ctx.isFoldedItem,
+              slotProps: props2,
+              onClear: clear
+            }, null, 8, ["op", "is-folded-item", "slotProps"])
+          ]),
+          default: require$$0.withCtx(() => [
+            require$$0.createVNode(VCard, { class: "pa-3 bg-white" }, {
+              default: require$$0.withCtx(() => {
+                var _a;
+                return [
+                  require$$0.createElementVNode("div", null, require$$0.toDisplayString((_a = _ctx.modelValue.translations) == null ? void 0 : _a.filterBy), 1),
+                  (require$$0.openBlock(), require$$0.createBlock(require$$0.resolveDynamicComponent(_ctx.itemComp), {
+                    modelValue: value.value,
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => value.value = $event),
+                    translations: _ctx.compTranslations
+                  }, null, 8, ["modelValue", "translations"])),
+                  require$$0.createElementVNode("div", null, [
+                    require$$0.createVNode(VBtn, {
+                      class: "mt-5 float-right",
+                      color: "primary",
+                      rounded: "",
+                      onClick: clickDone
+                    }, {
+                      default: require$$0.withCtx(() => [
+                        require$$0.createTextVNode(require$$0.toDisplayString(_ctx.translations.apply), 1)
+                      ]),
+                      _: 1
+                    })
+                  ])
+                ];
+              }),
+              _: 1
+            })
+          ]),
+          _: 1
+        }, 8, ["modelValue"]);
+      };
+    }
+  });
+  const _hoisted_1$6 = { style: { "width": "200px" } };
+  const _hoisted_2$2 = {
+    style: { "height": "34px" },
+    class: "pl-2 pt-4"
+  };
+  const _sfc_main$8 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "DatetimeRangeItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      props.modelValue.modifier = props.modelValue.modifier || ModifierBetween;
+      const datePickerVisible = require$$0.ref(false);
+      const modifier = props.modelValue.modifier;
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1$6, [
+          (require$$0.openBlock(), require$$0.createBlock(_sfc_main$g, {
+            modelValue: _ctx.modelValue.valueFrom,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue.valueFrom = $event),
+            key: require$$0.unref(modifier) + "form",
+            visible: datePickerVisible.value,
+            "hide-details": true
+          }, null, 8, ["modelValue", "visible"])),
+          require$$0.createElementVNode("div", _hoisted_2$2, [
+            require$$0.createElementVNode("span", null, require$$0.toDisplayString(_ctx.translations["to"]), 1)
+          ]),
+          (require$$0.openBlock(), require$$0.createBlock(_sfc_main$g, {
+            modelValue: _ctx.modelValue.valueTo,
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modelValue.valueTo = $event),
+            key: require$$0.unref(modifier) + "to",
+            "hide-details": true
+          }, null, 8, ["modelValue"]))
+        ]);
+      };
+    }
+  });
+  const _hoisted_1$5 = { style: { "width": "200px" } };
+  const _hoisted_2$1 = {
+    style: { "height": "34px" },
+    class: "pl-2 pt-4"
+  };
+  const _sfc_main$7 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "DateRangeItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      props.modelValue.modifier = props.modelValue.modifier || ModifierBetween;
+      const datePickerVisible = require$$0.ref(false);
+      const modifier = props.modelValue.modifier;
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1$5, [
+          (require$$0.openBlock(), require$$0.createBlock(_sfc_main$h, {
+            modelValue: _ctx.modelValue.valueFrom,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue.valueFrom = $event),
+            key: require$$0.unref(modifier) + "form",
+            visible: datePickerVisible.value,
+            "hide-details": true
+          }, null, 8, ["modelValue", "visible"])),
+          require$$0.createElementVNode("div", _hoisted_2$1, [
+            require$$0.createElementVNode("span", null, require$$0.toDisplayString(_ctx.translations["to"]), 1)
+          ]),
+          (require$$0.openBlock(), require$$0.createBlock(_sfc_main$h, {
+            modelValue: _ctx.modelValue.valueTo,
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modelValue.valueTo = $event),
+            key: require$$0.unref(modifier) + "to",
+            "hide-details": true
+          }, null, 8, ["modelValue"]))
+        ]);
+      };
+    }
+  });
+  const _hoisted_1$4 = { style: { "width": "200px" } };
+  const _sfc_main$6 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "DateItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const datePickerVisible = require$$0.ref(false);
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1$4, [
+          require$$0.createVNode(_sfc_main$h, {
+            modelValue: _ctx.modelValue.valueIs,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue.valueIs = $event),
+            visible: datePickerVisible.value,
+            "hide-details": true
+          }, null, 8, ["modelValue", "visible"])
+        ]);
+      };
+    }
+  });
+  const _hoisted_1$3 = { style: { "width": "200px" } };
+  const _hoisted_2 = { key: 0 };
+  const _hoisted_3 = { class: "px-3" };
+  const _hoisted_4 = { key: 1 };
+  const _sfc_main$5 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "NumberItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      props.modelValue.modifier = props.modelValue.modifier || "equals";
+      const modifier = props.modelValue.modifier;
+      const t = props.translations;
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1$3, [
+          require$$0.unref(modifier) == "between" ? (require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_2, [
+            require$$0.createVNode(VIcon, {
+              class: "py-8 mr-4 float-md-start",
+              icon: "mdi-subdirectory-arrow-right",
+              size: "large"
+            }),
+            require$$0.createVNode(VTextField, {
+              class: "d-inline-block",
+              style: { "width": "80px" },
+              type: "number",
+              variant: "underlined",
+              modelValue: props.modelValue.valueFrom,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => props.modelValue.valueFrom = $event)
+            }, null, 8, ["modelValue"]),
+            require$$0.createElementVNode("span", _hoisted_3, require$$0.toDisplayString(require$$0.unref(t).and), 1),
+            require$$0.createVNode(VTextField, {
+              class: "d-inline-block",
+              style: { "width": "80px" },
+              type: "number",
+              variant: "underlined",
+              modelValue: props.modelValue.valueTo,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => props.modelValue.valueTo = $event)
+            }, null, 8, ["modelValue"])
+          ])) : (require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_4, [
+            require$$0.createVNode(VIcon, {
+              class: "py-8 mr-4 float-md-start",
+              icon: "mdi-subdirectory-arrow-right",
+              size: "large"
+            }),
+            require$$0.createVNode(VTextField, {
+              class: "d-inline-block",
+              style: { "width": "120px" },
+              type: "number",
+              variant: "underlined",
+              modelValue: props.modelValue.valueIs,
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => props.modelValue.valueIs = $event)
+            }, null, 8, ["modelValue"])
+          ]))
+        ]);
+      };
+    }
+  });
+  const _sfc_main$4 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "StringItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      props.modelValue.modifier = props.modelValue.modifier || "contains";
+      const t = props.translations;
+      const items = require$$0.ref([
+        { text: t.equals, value: "equals" },
+        { text: t.contains, value: "contains" }
+      ]);
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", null, [
+          require$$0.createElementVNode("div", null, [
+            require$$0.createVNode(VSelect, {
+              class: "d-inline-block",
+              style: { "width": "200px" },
+              modelValue: props.modelValue.modifier,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => props.modelValue.modifier = $event),
+              items: items.value,
+              "item-title": "text",
+              "item-value": "value",
+              variant: "underlined",
+              "hide-details": ""
+            }, null, 8, ["modelValue", "items"])
+          ]),
+          require$$0.createElementVNode("div", null, [
+            require$$0.createVNode(VIcon, {
+              class: "py-8 mr-4 float-md-start",
+              icon: "mdi-subdirectory-arrow-right",
+              size: "large"
+            }),
+            require$$0.createVNode(VTextField, {
+              class: "d-inline-block",
+              style: { "width": "120px" },
+              variant: "underlined",
+              type: "text",
+              modelValue: props.modelValue.valueIs,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => props.modelValue.valueIs = $event),
+              "hide-etails": ""
+            }, null, 8, ["modelValue"])
+          ])
+        ]);
+      };
+    }
+  });
+  const _sfc_main$3 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "LinkageSelectItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createBlock(_sfc_main$e, {
+          style: { "width": "500px" },
+          modelValue: _ctx.modelValue.valuesAre,
+          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue.valuesAre = $event),
+          items: _ctx.modelValue.linkageSelectData.items,
+          labels: _ctx.modelValue.linkageSelectData.labels,
+          "select-out-of-order": _ctx.modelValue.linkageSelectData.selectOutOfOrder,
+          row: "",
+          "hide-details": ""
+        }, null, 8, ["modelValue", "items", "labels", "select-out-of-order"]);
+      };
+    }
+  });
+  const _hoisted_1$2 = { style: { "max-height": "160px", "overflow-y": "scroll" } };
+  const _sfc_main$2 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "MultipleSelectItem",
+    props: {
+      modelValue: {},
+      translations: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      props.modelValue.modifier = props.modelValue.modifier || "in";
+      require$$0.ref(false);
+      const t = props.translations;
+      const items = require$$0.ref([
+        { text: t.in, value: "in" },
+        { text: t.notIn, value: "notIn" }
+      ]);
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", null, [
+          require$$0.createElementVNode("div", null, [
+            require$$0.createVNode(VSelect, {
+              class: "d-inline-block",
+              style: { "width": "200px" },
+              modelValue: props.modelValue.modifier,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => props.modelValue.modifier = $event),
+              items: items.value,
+              "item-title": "text",
+              "item-value": "value",
+              variant: "underlined",
+              "hide-details": ""
+            }, null, 8, ["modelValue", "items"])
+          ]),
+          require$$0.createElementVNode("div", _hoisted_1$2, [
+            (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(_ctx.modelValue.options, (opt) => {
+              return require$$0.openBlock(), require$$0.createBlock(VCheckbox, {
+                modelValue: _ctx.modelValue.valuesAre,
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modelValue.valuesAre = $event),
+                label: opt.text,
+                value: opt.value,
+                "hide-details": "",
+                density: "comfortable"
+              }, null, 8, ["modelValue", "label", "value"]);
+            }), 256))
+          ])
+        ]);
+      };
+    }
+  });
+  const _hoisted_1$1 = { style: { "width": "200px" } };
+  const _sfc_main$1 = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "SelectItem",
+    props: {
+      modelValue: {},
+      options: {}
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1$1, [
+          require$$0.createVNode(_sfc_main$d, {
+            modelValue: _ctx.modelValue.valueIs,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue.valueIs = $event),
+            items: _ctx.options,
+            style: { "width": "200px" },
+            class: "d-inline-block",
+            "hide-details": ""
+          }, null, 8, ["modelValue", "items"])
+        ]);
+      };
+    }
+  });
+  const _hoisted_1 = { class: "d-flex flex-grow-1" };
+  const _sfc_main = /* @__PURE__ */ require$$0.defineComponent({
+    __name: "index",
+    props: {
+      internalValue: { type: Array, required: true },
+      modelValue: { type: Object },
+      replaceWindowLocation: Boolean,
+      translations: {
+        type: Object,
+        default: () => {
+          return {
+            date: {
+              to: "to"
+            },
+            number: {
+              equals: "is equal to",
+              between: "between",
+              greaterThan: "is greater than",
+              lessThan: "is less than",
+              and: "and"
+            },
+            string: {
+              equals: "is equal to",
+              contains: "contains"
+            },
+            multipleSelect: {
+              in: "in",
+              notIn: "not in"
+            },
+            clear: "Clear Filters",
+            add: "Add Filters",
+            apply: "Apply"
+          };
+        }
+      }
+    },
+    emits: ["update:modelValue"],
+    setup(__props, { emit: __emit }) {
+      const props = __props;
+      const t = props.translations;
+      const itemTypes = {
+        DatetimeRangeItem: _sfc_main$8,
+        DateRangeItem: _sfc_main$7,
+        DateItem: _sfc_main$6,
+        NumberItem: _sfc_main$5,
+        StringItem: _sfc_main$4,
+        LinkageSelectItem: _sfc_main$3,
+        MultipleSelectItem: _sfc_main$2,
+        SelectItem: _sfc_main$1
+      };
+      const trans = {
+        DatetimeRangeItem: t.date,
+        DateRangeItem: t.date,
+        DateItem: t.date,
+        NumberItem: t.number,
+        StringItem: t.string,
+        SelectItem: {},
+        MultipleSelectItem: t.multipleSelect,
+        LinkageSelectItem: {}
+      };
+      const getSelectedIndexes = (value) => {
+        return value.map((op, i) => {
+          if (op.selected) {
+            return i;
+          }
+          return -1;
+        }).filter((i) => i !== -1);
+      };
+      const visible = require$$0.ref(false);
+      const selectedIndexs = require$$0.ref(getSelectedIndexes(props.internalValue));
+      const emit = __emit;
+      const clickDone = () => {
+        const filterKeys = props.internalValue.map((op, i) => {
+          return op.key;
+        });
+        const event = {
+          filterKeys,
+          filterData: filterData(props.internalValue),
+          encodedFilterData: encodeFilterData(props.internalValue)
+        };
+        emit("update:modelValue", event);
+        visible.value = false;
+      };
+      const clearAll = (e) => {
+        props.internalValue.map((op) => {
+          op.selected = false;
+        });
+        selectedIndexs.value = getSelectedIndexes(props.internalValue);
+        clickDone();
+      };
+      const clear = (e) => {
+        selectedIndexs.value = getSelectedIndexes(props.internalValue);
+        clickDone();
+        e.stopPropagation();
+      };
+      const filtersGetFunc = (f, isFoldedItem) => {
+        return (itemTypes2, trans2) => {
+          return props.internalValue.filter((op) => {
+            if (!f(op)) {
+              return false;
+            }
+            return itemTypes2[op.itemType];
+          }).map((op, i) => {
+            return {
+              itemComp: itemTypes2[op.itemType],
+              op,
+              internalValue: props.internalValue,
+              isFoldedItem,
+              translations: props.translations,
+              compTranslations: trans2[op.itemType],
+              index: i
+            };
+          });
+        };
+      };
+      const fixedFilters = require$$0.computed(() => {
+        return filtersGetFunc((item) => !item.folded, false)(itemTypes, trans);
+      });
+      const otherSelectedFilters = require$$0.computed(() => {
+        return filtersGetFunc((item) => item.folded && !!item.selected, false)(itemTypes, trans);
+      });
+      const foldedFilters = require$$0.computed(() => {
+        return filtersGetFunc((item) => item.folded && !item.selected, true)(itemTypes, trans);
+      });
+      return (_ctx, _cache) => {
+        return require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1, [
+          require$$0.createElementVNode("div", null, [
+            (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(fixedFilters.value, (item) => {
+              return require$$0.openBlock(), require$$0.createBlock(_sfc_main$9, require$$0.mergeProps({
+                modelValue: item.op,
+                "onUpdate:modelValue": ($event) => item.op = $event
+              }, item, {
+                onChange: clickDone,
+                onClear: clear
+              }), null, 16, ["modelValue", "onUpdate:modelValue"]);
+            }), 256)),
+            (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(otherSelectedFilters.value, (item) => {
+              return require$$0.openBlock(), require$$0.createBlock(_sfc_main$9, require$$0.mergeProps({
+                modelValue: item.op,
+                "onUpdate:modelValue": ($event) => item.op = $event
+              }, item, {
+                onChange: clickDone,
+                onClear: clear
+              }), null, 16, ["modelValue", "onUpdate:modelValue"]);
+            }), 256))
+          ]),
+          require$$0.createVNode(VSpacer),
+          require$$0.createVNode(VBtn, {
+            onClick: clearAll,
+            variant: "plain",
+            size: "small",
+            disabled: __props.internalValue.findIndex((item) => item.selected) < 0,
+            class: "my-1"
+          }, {
+            default: require$$0.withCtx(() => [
+              require$$0.createVNode(VIcon, {
+                size: "small",
+                icon: "mdi-close"
+              }),
+              require$$0.createTextVNode(" " + require$$0.toDisplayString(require$$0.unref(t).clear), 1)
+            ]),
+            _: 1
+          }, 8, ["disabled"]),
+          foldedFilters.value.length > 0 ? (require$$0.openBlock(), require$$0.createBlock(VMenu, {
+            key: 0,
+            "close-on-content-click": false,
+            class: "rounded-lg"
+          }, {
+            activator: require$$0.withCtx(({ props: props2 }) => [
+              require$$0.createVNode(VBtn, require$$0.mergeProps(props2, {
+                variant: "plain",
+                size: "small",
+                color: "primary",
+                class: "my-1"
+              }), {
+                default: require$$0.withCtx(() => [
+                  require$$0.createVNode(VIcon, {
+                    size: "small",
+                    icon: "mdi-filter"
+                  }),
+                  require$$0.createTextVNode(" " + require$$0.toDisplayString(require$$0.unref(t).add), 1)
+                ]),
+                _: 2
+              }, 1040)
+            ]),
+            default: require$$0.withCtx(() => [
+              require$$0.createVNode(VList, {
+                variant: "flat",
+                class: "white pa-0"
+              }, {
+                default: require$$0.withCtx(() => [
+                  (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(foldedFilters.value, (item) => {
+                    return require$$0.openBlock(), require$$0.createBlock(_sfc_main$9, require$$0.mergeProps({
+                      modelValue: item.op,
+                      "onUpdate:modelValue": ($event) => item.op = $event
+                    }, item, {
+                      onChange: clickDone,
+                      onClear: clear
+                    }), null, 16, ["modelValue", "onUpdate:modelValue"]);
+                  }), 256))
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          })) : require$$0.createCommentVNode("", true)
+        ]);
+      };
+    }
+  });
   const vuetifyx = {
     install: (app) => {
-      app.component("vx-datepicker", _sfc_main$3);
-      app.component("vx-datetimepicker", _sfc_main$2);
-      app.component("vx-selectmany", _sfc_main$1);
-      app.component("vx-linkageselect", _sfc_main);
+      app.component("vx-datepicker", _sfc_main$h);
+      app.component("vx-datetimepicker", _sfc_main$g);
+      app.component("vx-selectmany", _sfc_main$f);
+      app.component("vx-linkageselect", _sfc_main$e);
+      app.component("vx-filter", _sfc_main);
+      app.component("vx-autocomplete", _sfc_main$d);
+      app.component("vx-textdatepicker", _sfc_main$c);
     }
   };
   window.__goplaidVueComponentRegisters = window.__goplaidVueComponentRegisters || [];

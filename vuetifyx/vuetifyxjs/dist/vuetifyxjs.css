@@ -3313,6 +3313,11 @@ textarea.v-field__input::placeholder {
 .v-autocomplete--active-menu .v-autocomplete__menu-icon {
   opacity: var(--v-high-emphasis-opacity);
   transform: rotate(180deg);
+}.v-checkbox.v-input {
+  flex: 0 1 auto;
+}
+.v-checkbox .v-selection-control {
+  min-height: var(--v-input-control-height);
 }.v-selection-control {
   align-items: center;
   contain: layout;
@@ -4533,4 +4538,12 @@ textarea.v-field__input::placeholder {
 }
 .v-virtual-scroll__container {
   display: block;
+}.v-pagination__list {
+  display: inline-flex;
+  list-style-type: none;
+  justify-content: center;
+  width: 100%;
+}
+.v-pagination__item, .v-pagination__first, .v-pagination__prev, .v-pagination__next, .v-pagination__last {
+  margin: 0.3rem;
 }
