@@ -230,13 +230,15 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectFunc(id, ctx)
 			}
 			tds = append(tds, h.Td(
-				v.VCheckbox().
-					Class("mt-0").
-					Value(inputValue).
-					TrueValue(id).
-					FalseValue("").
-					HideDetails(true).
-					Attr("@change", onChange+fmt.Sprintf(";vars.%s+=($event?1:-1)", selectedCountVarName)),
+				web.Scope(
+					v.VCheckbox().
+						Class("mt-0").
+						Attr("v-model", "itemLocals.inputValue").
+						TrueValue(id).
+						FalseValue("").
+						HideDetails(true).
+						Attr("@update:model-value", onChange+fmt.Sprintf(";vars.%s+=($event?1:-1)", selectedCountVarName)),
+				).VSlotDefault("{ locals: itemLocals }").Init(fmt.Sprintf(`{ inputValue :"%v"} `, inputValue)),
 			).Class("pr-0"))
 		}
 
@@ -346,12 +348,14 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectAllFunc(idsOfPage, ctx)
 			}
 			heads = append(heads, h.Th("").Children(
-				v.VCheckbox().
-					Class("mt-0").
-					TrueValue(idsOfPageComma).
-					Value(allInputValue).
-					HideDetails(true).
-					Attr("@change", onChange),
+				web.Scope(
+					v.VCheckbox().
+						Class("mt-0").
+						TrueValue(idsOfPageComma).
+						Attr("v-model", "itemLocals.allInputValue").
+						HideDetails(true).
+						Attr("@update:model-value", onChange),
+				).VSlotDefault("{ locals: itemLocals }").Init(fmt.Sprintf(`{ allInputValue :"%v"} `, allInputValue)),
 			).Style("width: 48px;").Class("pr-0"))
 		}
 
