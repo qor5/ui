@@ -154,17 +154,17 @@ const clear = (e: any) => {
 </script>
 
 <template>
-    <span class="cursor-pointer">
-          <v-icon
-            start
-            @click="clear"
-            :icon="op.selected ? 'mdi-close-circle' : 'mdi-plus-circle'"
-          ></v-icon>
-      {{ op.label }}
-      <span v-if="op.selected">
-        | <span class="text-primary">{{ showValueComputed }}</span>
-      </span>
+  <span class="cursor-pointer">
+    <v-icon
+      start
+      @click="clear"
+      :icon="op.selected ? 'mdi-close-circle' : 'mdi-plus-circle'"
+    ></v-icon>
+    {{ op.label }}
+    <span v-if="op.selected">
+      | <span class="text-primary">{{ showValueComputed }}</span>
     </span>
+  </span>
 </template>
 
 <style scoped></style>

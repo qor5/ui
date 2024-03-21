@@ -5,26 +5,26 @@ import (
 	"context"
 	"encoding/gob"
 	"fmt"
+	"github.com/qor5/web"
 	"net/url"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 
 type VXFilterBuilder struct {
-	value    FilterData
-	tag      *h.HTMLTagBuilder
-	onChange interface{}
+	internalValue    FilterData
+	tag              *h.HTMLTagBuilder
+	updateModelValue interface{}
 }
 
 func VXFilter(value FilterData) (r *VXFilterBuilder) {
 	r = &VXFilterBuilder{
-		value: value,
-		tag:   h.Tag("vx-filter"),
+		internalValue: value,
+		tag:           h.Tag("vx-filter"),
 	}
 
 	return
@@ -35,32 +35,32 @@ func (b *VXFilterBuilder) Attr(vs ...interface{}) (r *VXFilterBuilder) {
 	return b
 }
 
-func (b *VXFilterBuilder) Value(v FilterData) (r *VXFilterBuilder) {
-	b.tag.Attr(":value", v)
-	return b
-}
-
 func (b *VXFilterBuilder) Translations(v FilterTranslations) (r *VXFilterBuilder) {
 	b.tag.Attr(":translations", h.JSONString(v))
 	return b
 }
 
-func (b *VXFilterBuilder) OnChange(v interface{}) (r *VXFilterBuilder) {
-	b.onChange = v
+func (b *VXFilterBuilder) InternalValue(v FilterData) (r *VXFilterBuilder) {
+	b.tag.Attr(":internal-value", v)
+	return b
+}
+
+func (b *VXFilterBuilder) UpdateModelValue(v interface{}) (r *VXFilterBuilder) {
+	b.updateModelValue = v
 	return b
 }
 
 func (b *VXFilterBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 	var visibleFilterData FilterData
-	for _, v := range b.value {
+	for _, v := range b.internalValue {
 		if !v.Invisible {
 			visibleFilterData = append(visibleFilterData, v)
 		}
 	}
 
-	if b.onChange == nil {
+	if b.updateModelValue == nil {
 		//	$plaid().stringLocation(qs).mergeQueryWithoutParams(keysInFilterData).url(window.location.href).pushState(true).go()
-		b.onChange = web.GET().
+		b.updateModelValue = web.GET().
 			StringQuery(web.Var("$event.encodedFilterData")).
 			Query("page", 1).
 			ClearMergeQuery(web.Var("$event.filterKeys")).
@@ -68,7 +68,7 @@ func (b *VXFilterBuilder) MarshalHTML(ctx context.Context) (r []byte, err error)
 			Go()
 	}
 
-	b = b.Value(visibleFilterData).Attr("@change", b.onChange)
+	b = b.InternalValue(visibleFilterData).Attr("@update:modelValue", b.updateModelValue)
 
 	return b.tag.MarshalHTML(ctx)
 }

@@ -55,7 +55,9 @@ const clear = (e: any) => {
       <div>{{ modelValue.translations?.filterBy }}</div>
       <component v-model="value" :is="itemComp" :translations="compTranslations"></component>
       <div>
-        <v-btn class="mt-5 float-right" color="primary" rounded @click="clickDone">{{ translations.apply }}</v-btn>
+        <v-btn class="mt-5 float-right" color="primary" rounded @click="clickDone">{{
+          translations.apply
+        }}</v-btn>
       </div>
     </v-card>
   </v-menu>
