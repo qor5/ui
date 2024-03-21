@@ -372,7 +372,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		}
 		thead = h.Thead(
 			h.Tr(heads...),
-		).Class("grey lighten-5")
+		).Class("bg-grey-lighten-3")
 	}
 
 	var tfoot h.HTMLComponent
