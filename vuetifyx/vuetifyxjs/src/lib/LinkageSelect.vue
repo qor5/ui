@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row v-if="row">
-      <v-col v-for="(v, i) in items" :key="i">
+      <v-col v-for="(v, i) in linkageSelectItems" :key="i">
         <v-autocomplete
           :label="labels[i]"
           :items="levelItems(i)"
@@ -21,7 +21,7 @@
     </v-row>
     <v-autocomplete
       v-else
-      v-for="(v, i) in items"
+      v-for="(v, i) in linkageSelectItems"
       :label="labels[i]"
       :items="levelItems(i)"
       item-title="Name"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 interface LinkageSelectItem {
   ID: string
   Name: string
@@ -60,8 +60,9 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits(['update:modelValue'])
+const linkageSelectItems = ref([...props.items])
 
-props.items.forEach((v: any) => {
+linkageSelectItems.value.forEach((v: any) => {
   v.forEach((item: LinkageSelectItem) => {
     if (!item.Name) {
       item.Name = item.ID
@@ -72,7 +73,7 @@ props.items.forEach((v: any) => {
 const selectedIDs = reactive([...props.modelValue])
 
 const validateAndResetSelectedIDs = () => {
-  props.items.forEach((v: any, i: number) => {
+  linkageSelectItems.value.forEach((v: any, i: number) => {
     if (!selectedIDs[i]) {
       selectedIDs[i] = ''
     }
@@ -84,7 +85,7 @@ const validateAndResetSelectedIDs = () => {
     }
 
     var exists = false
-    for (var item of props.items[i]) {
+    for (var item of linkageSelectItems.value[i]) {
       if (item.ID === v) {
         exists = true
         break
@@ -105,7 +106,7 @@ const validateAndResetSelectedIDs = () => {
       }
       return
     } else {
-      for (const item of props.items[i - 1]) {
+      for (const item of linkageSelectItems.value[i - 1]) {
         if (item.ID === pID) {
           for (var id of item.ChildrenIDs) {
             if (id === v) {
@@ -125,12 +126,12 @@ validateAndResetSelectedIDs()
 
 const levelItems = (level: number): LinkageSelectItem[] => {
   if (level === 0) {
-    return props.items[level]
+    return linkageSelectItems.value[level]
   }
   let items: LinkageSelectItem[] = []
   if (selectedIDs[level - 1]) {
     let idM: any = {}
-    for (const item of props.items[level - 1]) {
+    for (const item of linkageSelectItems.value[level - 1]) {
       if (item.ID === selectedIDs[level - 1]) {
         for (let id of item.ChildrenIDs) {
           idM[id] = true
@@ -138,7 +139,7 @@ const levelItems = (level: number): LinkageSelectItem[] => {
         break
       }
     }
-    for (const item of props.items[level]) {
+    for (const item of linkageSelectItems.value[level]) {
       if (idM[item.ID]) {
         items.push(item)
       }
@@ -199,11 +200,11 @@ const selectItem = (v: string, level: number) => {
 }
 
 const findNextItems = (selectedID: any, level: number): LinkageSelectItem[] => {
-  if (level + 1 >= props.items.length) {
+  if (level + 1 >= linkageSelectItems.value.length) {
     return []
   }
   var childrenIDs: string[] = []
-  for (const item of props.items[level]) {
+  for (const item of linkageSelectItems.value[level]) {
     if (item.ID === selectedID) {
       childrenIDs = item.ChildrenIDs
       break
@@ -213,7 +214,7 @@ const findNextItems = (selectedID: any, level: number): LinkageSelectItem[] => {
     return []
   }
   var items = []
-  for (const item of props.items[level + 1]) {
+  for (const item of linkageSelectItems.value[level + 1]) {
     if (childrenIDs.includes(item.ID)) {
       items.push(item)
     }

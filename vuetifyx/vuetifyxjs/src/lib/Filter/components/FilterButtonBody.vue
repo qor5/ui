@@ -109,7 +109,6 @@ const showValueComputed = computed(() => {
       case 'LinkageSelectItem': {
         const textsAre = props.op.valuesAre.map((o, i) => {
           return props.op.linkageSelectData?.items[i].find((x: any) => {
-            console.log(o, x)
             return o === x.ID
           }).Name
         })

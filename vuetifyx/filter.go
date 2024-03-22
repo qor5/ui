@@ -181,7 +181,7 @@ type FilterItem struct {
 	Selected               bool                          `json:"selected,omitempty"`
 	Modifier               FilterItemModifier            `json:"modifier,omitempty"`
 	ValueIs                string                        `json:"valueIs,omitempty"`
-	ValuesAre              []string                      `json:"valuesAre,omitempty"`
+	ValuesAre              []string                      `json:"valuesAre"`
 	ValueFrom              string                        `json:"valueFrom,omitempty"`
 	ValueTo                string                        `json:"valueTo,omitempty"`
 	SQLCondition           string                        `json:"-"`
