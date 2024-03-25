@@ -344,12 +344,14 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectAllFunc(idsOfPage, ctx)
 			}
 			heads = append(heads, h.Th("").Children(
-				v.VCheckbox().
-					Class("mt-0").
-					TrueValue(idsOfPageComma).
-					Value(allInputValue).
-					HideDetails(true).
-					Attr("@change", onChange),
+				web.Scope(
+					v.VCheckbox().
+						Class("mt-0").
+						TrueValue(idsOfPageComma).
+						HideDetails(true).
+						VModel("itemLocals.allInputValue").
+						UpdateModelValue(onChange),
+				).VSlot("{ locals: itemLocals }").Init(fmt.Sprintf(`{ allInputValue :"%v"} `, allInputValue)),
 			).Style("width: 48px;").Class("pr-0"))
 		}
 

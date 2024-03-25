@@ -22564,7 +22564,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     setup(__props, { emit: __emit }) {
       const props = __props;
       const emit = __emit;
-      props.items.forEach((v) => {
+      const linkageSelectItems = require$$0.ref([...props.items]);
+      linkageSelectItems.value.forEach((v) => {
         v.forEach((item) => {
           if (!item.Name) {
             item.Name = item.ID;
@@ -22573,7 +22574,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       });
       const selectedIDs = require$$0.reactive([...props.modelValue]);
       const validateAndResetSelectedIDs = () => {
-        props.items.forEach((v, i) => {
+        linkageSelectItems.value.forEach((v, i) => {
           if (!selectedIDs[i]) {
             selectedIDs[i] = "";
           }
@@ -22584,7 +22585,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             return;
           }
           var exists = false;
-          for (var item of props.items[i]) {
+          for (var item of linkageSelectItems.value[i]) {
             if (item.ID === v) {
               exists = true;
               break;
@@ -22604,7 +22605,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             }
             return;
           } else {
-            for (const item2 of props.items[i - 1]) {
+            for (const item2 of linkageSelectItems.value[i - 1]) {
               if (item2.ID === pID) {
                 for (var id of item2.ChildrenIDs) {
                   if (id === v) {
@@ -22621,12 +22622,12 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       validateAndResetSelectedIDs();
       const levelItems = (level) => {
         if (level === 0) {
-          return props.items[level];
+          return linkageSelectItems.value[level];
         }
         let items = [];
         if (selectedIDs[level - 1]) {
           let idM = {};
-          for (const item of props.items[level - 1]) {
+          for (const item of linkageSelectItems.value[level - 1]) {
             if (item.ID === selectedIDs[level - 1]) {
               for (let id of item.ChildrenIDs) {
                 idM[id] = true;
@@ -22634,7 +22635,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               break;
             }
           }
-          for (const item of props.items[level]) {
+          for (const item of linkageSelectItems.value[level]) {
             if (idM[item.ID]) {
               items.push(item);
             }
@@ -22691,11 +22692,11 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         emit("update:modelValue", selectedIDs);
       };
       const findNextItems = (selectedID, level) => {
-        if (level + 1 >= props.items.length) {
+        if (level + 1 >= linkageSelectItems.value.length) {
           return [];
         }
         var childrenIDs = [];
-        for (const item of props.items[level]) {
+        for (const item of linkageSelectItems.value[level]) {
           if (item.ID === selectedID) {
             childrenIDs = item.ChildrenIDs;
             break;
@@ -22705,7 +22706,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           return [];
         }
         var items = [];
-        for (const item of props.items[level + 1]) {
+        for (const item of linkageSelectItems.value[level + 1]) {
           if (childrenIDs.includes(item.ID)) {
             items.push(item);
           }
@@ -22716,7 +22717,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         return require$$0.openBlock(), require$$0.createElementBlock("div", null, [
           _ctx.row ? (require$$0.openBlock(), require$$0.createBlock(VRow, { key: 0 }, {
             default: require$$0.withCtx(() => [
-              (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(_ctx.items, (v, i) => {
+              (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(linkageSelectItems.value, (v, i) => {
                 return require$$0.openBlock(), require$$0.createBlock(VCol, { key: i }, {
                   default: require$$0.withCtx(() => {
                     var _a;
@@ -22742,7 +22743,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               }), 128))
             ]),
             _: 1
-          })) : (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, { key: 1 }, require$$0.renderList(_ctx.items, (v, i) => {
+          })) : (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, { key: 1 }, require$$0.renderList(linkageSelectItems.value, (v, i) => {
             var _a;
             return require$$0.openBlock(), require$$0.createBlock(VAutocomplete, {
               label: _ctx.labels[i],
@@ -23672,7 +23673,6 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               const textsAre = props.op.valuesAre.map((o, i) => {
                 var _a;
                 return (_a = props.op.linkageSelectData) == null ? void 0 : _a.items[i].find((x) => {
-                  console.log(o, x);
                   return o === x.ID;
                 }).Name;
               });
