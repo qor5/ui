@@ -307,7 +307,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 								b.rowExpandFunc(obj, ctx),
 								v.VDivider(),
 							).Attr("v-if", fmt.Sprintf("locals.%s_%d", expandVarName, i)).
-								Class("grey lighten-5"),
+								Class("bg-grey-lighten-5"), //bg-grey-lighten-5 | grey lighten-5
 						),
 					).Attr("colspan", fmt.Sprint(tdCount)).Class("pa-0").Style("height: auto; border-bottom: none"),
 				).Class("v-data-table__expand-row"),
@@ -437,7 +437,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				Size("small").
 				On("click", onClearSelection),
 		).
-			Class("grey lighten-3 text-center pt-2 pb-2").
+			Class("bg-grey-lighten-3 text-center pt-2 pb-2").
 			Attr("v-show", fmt.Sprintf("vars.%s > 0", selectedCountVarName)),
 		v.VTable(
 			h.Template(
