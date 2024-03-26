@@ -312,7 +312,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 								b.rowExpandFunc(obj, ctx),
 								v.VDivider(),
 							).Attr("v-if", fmt.Sprintf("locals.%s_%d", expandVarName, i)).
-								Class("bg-grey-lighten-5"), //bg-grey-lighten-5 | grey lighten-5
+								Class("bg-grey-lighten-5"), // bg-grey-lighten-5 | grey lighten-5
 						),
 					).Attr("colspan", fmt.Sprint(tdCount)).Class("pa-0").Style("height: auto; border-bottom: none"),
 				).Class("v-data-table__expand-row"),
@@ -450,16 +450,16 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				h.Tbody(rows...),
 				tfoot,
 			).Attr("#default", true),
-		),
+		).Density("compact"),
 	).VSlot("{ locals }").Init(fmt.Sprintf(` { selected_count : %v , loadmore : false }`, len(selected)))
 
 	if inPlaceLoadMore {
 		initContextLocalsMap[loadMoreVarName] = false
 	}
 
-	//if len(initContextLocalsMap) > 0 {
+	// if len(initContextLocalsMap) > 0 {
 	//	table.AppendChildren(web.ObjectAssignTag("vars", initContextLocalsMap))
-	//}
+	// }
 
 	return table.MarshalHTML(c)
 }

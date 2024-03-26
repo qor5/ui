@@ -158,9 +158,9 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 				),
 				h.Div(
 					vuetify.VSelect().Items(sItems).Variant("underlined").ModelValue(fmt.Sprint(tpb.perPage)).
-						HideDetails(true).Class("pt-0 mt-0").
-						Attr("@input", tpb.onSelectPerPage),
-				).Style("width: 60px;").Class("ml-6"),
+						HideDetails(true).Density("compact").Attr("style", "margin-top: -8px").
+						Attr("@update:model-value", tpb.onSelectPerPage),
+				).Style("width: 64px;").Class("ml-6"),
 			),
 			h.Div(
 				h.Text(fmt.Sprintf("%d-%d of %d", currPageStart, currPageEnd, tpb.total)),
