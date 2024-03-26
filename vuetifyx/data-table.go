@@ -210,9 +210,11 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		var tds []h.HTMLComponent
 		if hasExpand {
 			initContextLocalsMap[fmt.Sprintf("%s_%d", expandVarName, i)] = false
+			localsExpandVarName := fmt.Sprintf("locals.%s_%d", expandVarName, i)
 			tds = append(tds, h.Td(
-				v.VIcon("$vuetify.icons.expand").
-					Attr(":class", fmt.Sprintf("{\"v-data-table__expand-icon--active\": locals.%s_%d, \"v-data-table__expand-icon\": true}", expandVarName, i)).
+				v.VIcon("").
+					Attr(":icon", fmt.Sprintf(`%s?"mdi-chevron-up-circle":"mdi-chevron-down"`, localsExpandVarName)).
+					Attr(":class", fmt.Sprintf(`{"v-data-table__expand-icon--active": locals.%s_%d, "v-data-table__expand-icon": true}`, expandVarName, i)).
 					On("click", fmt.Sprintf("locals.%s_%d = !locals.%s_%d", expandVarName, i, expandVarName, i)),
 			).Class("pr-0").Style("width: 40px;"))
 		}
@@ -227,6 +229,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			if b.onSelectFunc != nil {
 				onChange = b.onSelectFunc(id, ctx)
 			}
+
 			tds = append(tds, h.Td(
 				web.Scope(
 					v.VCheckbox().
@@ -235,7 +238,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 						FalseValue("").
 						HideDetails(true).
 						Attr("v-model", "itemLocals.inputValue").
-						Attr("@update:model-value", onChange+fmt.Sprintf(";vars.%s+=($event?1:-1)", selectedCountVarName)),
+						Attr("@update:model-value", onChange+";locals.selected_count+=($event?1:-1);"),
 				).VSlot("{ locals: itemLocals }").Init(fmt.Sprintf(`{ inputValue :"%v"} `, inputValue)),
 			).Class("pr-0"))
 		}
@@ -376,7 +379,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		}
 		thead = h.Thead(
 			h.Tr(heads...),
-		).Class("bg-grey-lighten-3")
+		).Class("bg-grey-lighten-5")
 	}
 
 	var tfoot h.HTMLComponent
@@ -431,7 +434,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			)
 		}
 	}
-	table := h.Div(
+	table := web.Scope(
 		h.Div(
 			selectedCountNotice,
 			v.VBtn(b.clearSelectionLabel).
@@ -440,7 +443,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				On("click", onClearSelection),
 		).
 			Class("bg-grey-lighten-3 text-center pt-2 pb-2").
-			Attr("v-show", fmt.Sprintf("vars.%s > 0", selectedCountVarName)),
+			Attr("v-show", "locals.selected_count > 0"),
 		v.VTable(
 			h.Template(
 				thead,
@@ -448,7 +451,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				tfoot,
 			).Attr("#default", true),
 		),
-	)
+	).VSlot("{ locals }").Init(fmt.Sprintf(` { selected_count : %v , loadmore : false }`, len(selected)))
 
 	if inPlaceLoadMore {
 		initContextLocalsMap[loadMoreVarName] = false

@@ -11192,7 +11192,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       },
       dialogWidth: {
         type: Number,
-        default: 580
+        default: 620
       },
       dateFormat: {
         type: String,
@@ -11316,45 +11316,21 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               default: require$$0.withCtx(() => [
                 require$$0.createVNode(VCardText, { class: "px-0 py-0" }, {
                   default: require$$0.withCtx(() => [
-                    require$$0.createVNode(VContainer, { class: "flex-0-0" }, {
+                    require$$0.createVNode(VContainer, { class: "d-flex justify-space-between align-center" }, {
                       default: require$$0.withCtx(() => [
-                        require$$0.createVNode(VRow, null, {
-                          default: require$$0.withCtx(() => [
-                            require$$0.createVNode(VCol, {
-                              cols: "6",
-                              class: "pa-0"
-                            }, {
-                              default: require$$0.withCtx(() => [
-                                require$$0.createVNode(VDatePicker, {
-                                  modelValue: date.value,
-                                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => date.value = $event),
-                                  "full-width": "",
-                                  "no-title": ""
-                                }, null, 8, ["modelValue"])
-                              ]),
-                              _: 1
-                            }),
-                            require$$0.createVNode(VCol, {
-                              cols: "6",
-                              class: "pa-8",
-                              "align-self": "center",
-                              ref_key: "timer",
-                              ref: timer
-                            }, {
-                              default: require$$0.withCtx(() => [
-                                require$$0.withDirectives(require$$0.createElementVNode("input", {
-                                  type: "time",
-                                  class: "text-h2 timer",
-                                  "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => time.value = $event)
-                                }, null, 512), [
-                                  [require$$0.vModelText, time.value]
-                                ])
-                              ]),
-                              _: 1
-                            }, 512)
-                          ]),
-                          _: 1
-                        })
+                        require$$0.createVNode(VDatePicker, {
+                          modelValue: date.value,
+                          "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => date.value = $event),
+                          "full-width": "",
+                          "no-title": ""
+                        }, null, 8, ["modelValue"]),
+                        require$$0.withDirectives(require$$0.createElementVNode("input", {
+                          type: "time",
+                          class: "text-h2 timer",
+                          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => time.value = $event)
+                        }, null, 512), [
+                          [require$$0.vModelText, time.value]
+                        ])
                       ]),
                       _: 1
                     })
@@ -24391,6 +24367,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       app.component("vx-filter", _sfc_main);
       app.component("vx-autocomplete", _sfc_main$d);
       app.component("vx-textdatepicker", _sfc_main$c);
+      app.component("vx-draggable", draggable);
     }
   };
   window.__goplaidVueComponentRegisters = window.__goplaidVueComponentRegisters || [];

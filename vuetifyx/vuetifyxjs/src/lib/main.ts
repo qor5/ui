@@ -7,6 +7,7 @@ import LinkageSelect from '@/lib/LinkageSelect.vue'
 import Autocomplete from '@/lib/Autocomplete.vue'
 import TextDatepicker from '@/lib/TextDatepicker.vue'
 import Filter from '@/lib/Filter/index.vue'
+import draggable from 'vuedraggable'
 
 const vuetifyx = {
   install: (app: App) => {
@@ -17,6 +18,7 @@ const vuetifyx = {
     app.component('vx-filter', Filter)
     app.component('vx-autocomplete', Autocomplete)
     app.component('vx-textdatepicker', TextDatepicker)
+    app.component('vx-draggable', draggable)
   }
 }
 declare const window: any

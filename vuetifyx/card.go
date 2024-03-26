@@ -80,7 +80,7 @@ func (b *CardBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 		v.VToolbar(
 			v.VToolbarTitle("").Children(b.header...),
 			v.VSpacer(),
-		).Flat(true).AppendChildren(b.actions...),
+		).Flat(true).AppendChildren(b.actions...).Color("white"),
 		hr,
 	).Variant(b.variant).Class(b.classNames...).AppendChildren(b.children...).MarshalHTML(ctx)
 }
