@@ -247,15 +247,6 @@ func (b *VCheckboxBuilder) Bind(name string, value string) (r *VCheckboxBuilder)
 	return b
 }
 
-func (b *VCheckboxBuilder) VModel(v interface{}) (r *VCheckboxBuilder) {
-	b.tag.Attr("v-model", v)
-	return b
-}
-
-func (b *VCheckboxBuilder) UpdateModelValue(v interface{}) (r *VCheckboxBuilder) {
-	b.tag.SetAttr("@update:model-value", v)
-	return b
-}
 func (b *VCheckboxBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 	return b.tag.MarshalHTML(ctx)
 }

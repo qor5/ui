@@ -228,13 +228,15 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectFunc(id, ctx)
 			}
 			tds = append(tds, h.Td(
-				v.VCheckbox().
-					Class("mt-0").
-					Value(inputValue).
-					TrueValue(id).
-					FalseValue("").
-					HideDetails(true).
-					Attr("@change", onChange+";locals.selected_count+=($event?1:-1)"),
+				web.Scope(
+					v.VCheckbox().
+						Class("mt-0").
+						TrueValue(id).
+						FalseValue("").
+						HideDetails(true).
+						Attr("v-model", "itemLocals.inputValue").
+						Attr("@update:model-value", onChange+fmt.Sprintf(";vars.%s+=($event?1:-1)", selectedCountVarName)),
+				).VSlot("{ locals: itemLocals }").Init(fmt.Sprintf(`{ inputValue :"%v"} `, inputValue)),
 			).Class("pr-0"))
 		}
 
@@ -349,8 +351,8 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 						Class("mt-0").
 						TrueValue(idsOfPageComma).
 						HideDetails(true).
-						VModel("itemLocals.allInputValue").
-						UpdateModelValue(onChange),
+						Attr("v-model", "itemLocals.allInputValue").
+						Attr("@update:model-value", onChange),
 				).VSlot("{ locals: itemLocals }").Init(fmt.Sprintf(`{ allInputValue :"%v"} `, allInputValue)),
 			).Style("width: 48px;").Class("pr-0"))
 		}

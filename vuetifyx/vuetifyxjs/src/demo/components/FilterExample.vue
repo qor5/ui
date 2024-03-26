@@ -108,6 +108,19 @@ const internalValue = ref([
         value: 'Jacob'
       }
     ]
+  },
+  {
+    key: 'f_company',
+    label: 'Company',
+    itemType: 'SelectItem',
+    valuesAre: null,
+    valuesIs: null,
+    options: [
+      { text: '高节', value: '1' },
+      { text: '地界', value: '3' }
+    ],
+    linkageSelectData: {},
+    translations: { filterBy: 'Filter by Company' }
   }
 ])
 // const internalValue = [{

@@ -4,7 +4,9 @@ import draggable from 'vuedraggable'
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
-  modelValue: { type: Array<any>, required: true },
+  modelValue: { type: String },
+  items: { type: Array<any>, default: [] },
+  cacheItems: { type: Array<any>, default: [] },
   isPaging: Boolean,
   hasIcon: Boolean,
   hideSelected: Boolean,
@@ -33,9 +35,9 @@ const props = defineProps({
     }
   }
 })
-const listItems: Ref<Array<any>> = ref([])
+const listItems: Ref<Array<any>> = ref([...props.items])
 const value = ref()
-const cachedSelectedItems: Ref<Array<any>> = ref([])
+const cachedSelectedItems: Ref<Array<any>> = ref([...(props.cacheItems ?? [])])
 const isLoading = ref(false)
 const disabled = ref(false)
 const total = ref(0)
@@ -97,15 +99,13 @@ const endIntersect = (isIntersecting: boolean) => {
 }
 
 const changeStatus = (e: any) => {
-  if (
-    cachedSelectedItems.value.find(
-      (element) => element[props.itemValueKey] == e[props.itemValueKey]
-    )
-  ) {
+  if (cachedSelectedItems.value.find((element) => element[props.itemValueKey] == e)) {
     return
   }
-  cachedSelectedItems.value.push(e)
-  emit('update:modelValue', cachedSelectedItems.value)
+  cachedSelectedItems.value.push(
+    listItems.value.find((element) => element[props.itemValueKey] == e)
+  )
+  emit('update:modelValue', value.value)
 }
 
 const removeItem = (v: any) => {
@@ -113,10 +113,9 @@ const removeItem = (v: any) => {
   cachedSelectedItems.value = cachedSelectedItems.value.filter(
     (element) => element[props.itemValueKey] != v[props.itemValueKey]
   )
-  emit('update:modelValue', cachedSelectedItems.value)
+  emit('update:modelValue', value.value)
 }
 onMounted(() => {
-  cachedSelectedItems.value = props.modelValue
   loadRemoteItems()
 })
 
@@ -178,7 +177,6 @@ const chipsVisible = computed(() => {
       :loading="isLoading"
       :item-value="itemValueKey"
       :item-title="itemTextKey"
-      return-object
       :clearable="sorting ? false : clearable"
       :hide-details="hideDetails"
       :hide-selected="hideSelected"
@@ -202,7 +200,7 @@ const chipsVisible = computed(() => {
           :text="item.raw[itemTextKey]"
         ></v-chip>
       </template>
-      <template v-slot:append-item="">
+      <template v-slot:append-item="" v-if="loadData">
         <div class="text-center">
           <v-pagination
             v-if="props.isPaging"

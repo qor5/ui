@@ -32,23 +32,24 @@ const loadData = (): Promise<any> => {
     })
   })
 }
+// const items = ref( [{ 'text': '高节', 'value': '1' }, { 'text': '地界', 'value': '3' }],)
 const items = ref([])
-const value = ref(getItems())
+const value = ref()
 </script>
 <template>
   <vue-json-pretty :data="value"></vue-json-pretty>
+  <!--  <vx-autocomplete-->
+  <!--    v-model="value"-->
+  <!--    :items="items"-->
+  <!--  ></vx-autocomplete>-->
   <vx-autocomplete
-    sorting
-    v-model="value"
-    :items="items"
     :load-data="loadData"
+    sorting
+    :items="items"
     has-icon
     :remote="remote"
+    v-model="value"
   ></vx-autocomplete>
-  <!--    <vx-autocomplete :load-data="loadData" sorting :items="items" has-icon :remote="remote"-->
-  <!--                     v-model="value"-->
-
-  <!--    ></vx-autocomplete>-->
 </template>
 
 <style scoped></style>
