@@ -22,6 +22,8 @@
         <v-divider class="mb-6"></v-divider>
         <h1 class="text-h2 mb-4">text-datepicker-example</h1>
         <text-datepicker-example></text-datepicker-example>
+        <h1 class="text-h2 mb-4">default-navigator-example</h1>
+        <default-navigator-example></default-navigator-example>
       </v-container>
     </v-main>
   </v-app>
@@ -35,4 +37,5 @@ import DatetimepickerExample from '@/demo/components/DatetimepickerExample.vue'
 import FilterExample from '@/demo/components/FilterExample.vue'
 import AutoCompleteExample from '@/demo/components/AutoCompleteExample.vue'
 import TextDatepickerExample from '@/demo/components/TextDatepickerExample.vue'
+import DefaultNavigatorExample from '@/demo/components/DefaultNavigatorExample.vue'
 </script>
