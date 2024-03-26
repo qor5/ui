@@ -7,7 +7,6 @@ import (
 
 	v "github.com/qor5/ui/vuetify"
 	"github.com/qor5/web"
-	"github.com/rs/xid"
 	"github.com/sunfmin/reflectutils"
 	h "github.com/theplant/htmlgo"
 	"github.com/thoas/go-funk"
@@ -162,12 +161,11 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 	selected := getSelectedIds(ctx, b.selectionParamName)
 
-	dataTableId := xid.New().String()
-	loadMoreVarName := fmt.Sprintf("loadmore_%s", dataTableId)
-	expandVarName := fmt.Sprintf("expand_%s", dataTableId)
-	selectedCountVarName := fmt.Sprintf("selected_count_%s", dataTableId)
+	loadMoreVarName := "loadmore"
+	expandVarName := "expand"
+	selectedCountVarName := "selected_count"
 
-	initContextVarsMap := map[string]interface{}{
+	initContextLocalsMap := map[string]interface{}{
 		selectedCountVarName: len(selected),
 	}
 
@@ -211,11 +209,11 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		}
 		var tds []h.HTMLComponent
 		if hasExpand {
-			initContextVarsMap[fmt.Sprintf("%s_%d", expandVarName, i)] = false
+			initContextLocalsMap[fmt.Sprintf("%s_%d", expandVarName, i)] = false
 			tds = append(tds, h.Td(
 				v.VIcon("$vuetify.icons.expand").
-					Attr(":class", fmt.Sprintf("{\"v-data-table__expand-icon--active\": vars.%s_%d, \"v-data-table__expand-icon\": true}", expandVarName, i)).
-					On("click", fmt.Sprintf("vars.%s_%d = !vars.%s_%d", expandVarName, i, expandVarName, i)),
+					Attr(":class", fmt.Sprintf("{\"v-data-table__expand-icon--active\": locals.%s_%d, \"v-data-table__expand-icon\": true}", expandVarName, i)).
+					On("click", fmt.Sprintf("locals.%s_%d = !locals.%s_%d", expandVarName, i, expandVarName, i)),
 			).Class("pr-0").Style("width: 40px;"))
 		}
 
@@ -256,7 +254,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 			var tdWrapped h.HTMLComponent = std
 			if b.cellWrapper != nil {
-				tdWrapped = b.cellWrapper(std, id, obj, dataTableId)
+				tdWrapped = b.cellWrapper(std, id, obj, "")
 			}
 
 			bindTds = append(bindTds, tdWrapped)
@@ -291,13 +289,13 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			if len(b.loadMoreURL) > 0 {
 				return
 			} else {
-				row.Attr("v-if", fmt.Sprintf("vars.%s", loadMoreVarName))
+				row.Attr("v-if", "locals.loadmore")
 			}
 			haveMoreRecord = true
 		}
 
 		if b.rowWrapper != nil {
-			rows = append(rows, b.rowWrapper(row, id, obj, dataTableId))
+			rows = append(rows, b.rowWrapper(row, id, obj, ""))
 		} else {
 			rows = append(rows, row)
 		}
@@ -310,8 +308,8 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 							h.Div(
 								b.rowExpandFunc(obj, ctx),
 								v.VDivider(),
-							).Attr("v-if", fmt.Sprintf("vars.%s_%d", expandVarName, i)).
-								Class("grey lighten-5"),
+							).Attr("v-if", fmt.Sprintf("locals.%s_%d", expandVarName, i)).
+								Class("bg-grey-lighten-5"), //bg-grey-lighten-5 | grey lighten-5
 						),
 					).Attr("colspan", fmt.Sprint(tdCount)).Class("pa-0").Style("height: auto; border-bottom: none"),
 				).Class("v-data-table__expand-row"),
@@ -378,7 +376,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		}
 		thead = h.Thead(
 			h.Tr(heads...),
-		).Class("grey lighten-5")
+		).Class("bg-grey-lighten-3")
 	}
 
 	var tfoot h.HTMLComponent
@@ -393,8 +391,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				Variant("text").
 				Size("small").
 				Class("mt-2").
-				On("click",
-					fmt.Sprintf("vars.%s = !vars.%s", loadMoreVarName, loadMoreVarName))
+				On("click", "locals.loadmore = !locals.loadmore")
 		} else {
 			btn = v.VBtn(b.loadMoreLabel).
 				Variant("text").
@@ -410,7 +407,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 					btn,
 				).Class("text-center pa-0").Attr("colspan", fmt.Sprint(tdCount)),
 			),
-		).Attr("v-if", fmt.Sprintf("!vars.%s", loadMoreVarName))
+		).Attr("v-if", "!locals.loadmore")
 	}
 
 	var selectedCountNotice h.HTMLComponents
@@ -429,7 +426,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		} else {
 			selectedCountNotice = append(selectedCountNotice,
 				h.Text(ss[0]),
-				h.Strong(fmt.Sprintf("{{vars.%s}}", selectedCountVarName)),
+				h.Strong("{{locals.selected_count}}"),
 				h.Text(ss[1]),
 			)
 		}
@@ -442,7 +439,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				Size("small").
 				On("click", onClearSelection),
 		).
-			Class("grey lighten-3 text-center pt-2 pb-2").
+			Class("bg-grey-lighten-3 text-center pt-2 pb-2").
 			Attr("v-show", fmt.Sprintf("vars.%s > 0", selectedCountVarName)),
 		v.VTable(
 			h.Template(
@@ -454,12 +451,12 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 	)
 
 	if inPlaceLoadMore {
-		initContextVarsMap[loadMoreVarName] = false
+		initContextLocalsMap[loadMoreVarName] = false
 	}
 
-	if len(initContextVarsMap) > 0 {
-		table.AppendChildren(web.ObjectAssignTag("vars", initContextVarsMap))
-	}
+	//if len(initContextLocalsMap) > 0 {
+	//	table.AppendChildren(web.ObjectAssignTag("vars", initContextLocalsMap))
+	//}
 
 	return table.MarshalHTML(c)
 }
