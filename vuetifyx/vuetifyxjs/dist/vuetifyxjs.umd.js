@@ -22389,7 +22389,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       }, vTextFieldRef);
     }
   });
-  const _hoisted_1$9 = ["innerHTML"];
+  const _hoisted_1$a = ["innerHTML"];
   const _sfc_main$f = /* @__PURE__ */ require$$0.defineComponent({
     __name: "SelectMany",
     props: {
@@ -22475,7 +22475,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           require$$0.createElementVNode("label", {
             class: "v-label theme--light",
             innerHTML: __props.label
-          }, null, 8, _hoisted_1$9),
+          }, null, 8, _hoisted_1$a),
           internalSelectedItems.value.length > 0 ? (require$$0.openBlock(), require$$0.createBlock(VCard, {
             key: 0,
             variant: "flat",
@@ -22547,6 +22547,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       };
     }
   });
+  const _hoisted_1$9 = { key: 1 };
   const _sfc_main$e = /* @__PURE__ */ require$$0.defineComponent({
     __name: "LinkageSelect",
     props: {
@@ -22565,6 +22566,17 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       const props = __props;
       const emit = __emit;
       const linkageSelectItems = require$$0.ref([...props.items]);
+      const levelItems = require$$0.ref([]);
+      const selectedIDs = require$$0.computed(() => {
+        let ids = [...props.modelValue ?? []];
+        validateAndResetSelectedIDs(ids);
+        return ids;
+      });
+      require$$0.onMounted(() => {
+        for (let i = 0; i < props.labels.length; i++) {
+          levelItems.value.push(getLevelItems(i));
+        }
+      });
       linkageSelectItems.value.forEach((v) => {
         v.forEach((item) => {
           if (!item.Name) {
@@ -22572,16 +22584,15 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           }
         });
       });
-      const selectedIDs = require$$0.reactive([...props.modelValue]);
-      const validateAndResetSelectedIDs = () => {
+      const validateAndResetSelectedIDs = (ids) => {
         linkageSelectItems.value.forEach((v, i) => {
-          if (!selectedIDs[i]) {
-            selectedIDs[i] = "";
+          if (!ids[i]) {
+            ids[i] = "";
           }
         });
-        selectedIDs.forEach((v, i) => {
+        ids.forEach((v, i) => {
           if (!v) {
-            selectedIDs[i] = "";
+            ids[i] = "";
             return;
           }
           var exists = false;
@@ -22592,16 +22603,16 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             }
           }
           if (!exists) {
-            selectedIDs[i] = "";
+            ids[i] = "";
             return;
           }
           if (i === 0) {
             return;
           }
-          var pID = selectedIDs[i - 1];
+          var pID = ids[i - 1];
           if (!pID) {
             if (!props.selectOutOfOrder) {
-              selectedIDs[i] = "";
+              ids[i] = "";
             }
             return;
           } else {
@@ -22615,20 +22626,19 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               }
             }
           }
-          selectedIDs[i] = "";
+          ids[i] = "";
           return;
         });
       };
-      validateAndResetSelectedIDs();
-      const levelItems = (level) => {
+      const getLevelItems = (level) => {
         if (level === 0) {
           return linkageSelectItems.value[level];
         }
         let items = [];
-        if (selectedIDs[level - 1]) {
+        if (selectedIDs.value[level - 1]) {
           let idM = {};
           for (const item of linkageSelectItems.value[level - 1]) {
-            if (item.ID === selectedIDs[level - 1]) {
+            if (item.ID === selectedIDs.value[level - 1]) {
               for (let id of item.ChildrenIDs) {
                 idM[id] = true;
               }
@@ -22644,8 +22654,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         }
         if (props.selectOutOfOrder) {
           for (let i = level - 2; i >= 0; i--) {
-            if (selectedIDs[i]) {
-              items = findNextItems(selectedIDs[i], i);
+            if (selectedIDs.value[i]) {
+              items = findNextItems(selectedIDs.value[i], i);
               for (let j = i + 1; j < level; j++) {
                 let newItems = [];
                 for (const item of items) {
@@ -22661,35 +22671,39 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         return [];
       };
       const selectItem = (v, level) => {
+        const updateSelectIds = [...selectedIDs.value];
         if (v) {
-          for (var i = level + 1; i < selectedIDs.length; i++) {
-            if (selectedIDs[i]) {
-              var items = levelItems(i);
+          for (var i = level + 1; i < updateSelectIds.length; i++) {
+            if (updateSelectIds[i]) {
+              var items = getLevelItems(i);
               if (!items || items.length === 0) {
-                selectedIDs[i] = "";
+                updateSelectIds[i] = "";
                 continue;
               }
               var found = false;
               for (var item of items) {
-                if (item.ID === selectedIDs[i]) {
+                if (item.ID === updateSelectIds[i]) {
                   found = true;
                   break;
                 }
               }
               if (!found) {
-                selectedIDs[i] = "";
+                updateSelectIds[i] = "";
               }
             }
           }
         } else {
-          selectedIDs[level] = "";
+          updateSelectIds[level] = "";
           if (!props.selectOutOfOrder) {
-            for (let i2 = level + 1; i2 < selectedIDs.length; i2++) {
-              selectedIDs[i2] = "";
+            for (let i2 = level + 1; i2 < updateSelectIds.length; i2++) {
+              updateSelectIds[i2] = "";
             }
           }
         }
-        emit("update:modelValue", selectedIDs);
+        if (props.labels.length > level + 1) {
+          levelItems.value[level + 1] = getLevelItems(level + 1);
+        }
+        emit("update:modelValue", updateSelectIds);
       };
       const findNextItems = (selectedID, level) => {
         if (level + 1 >= linkageSelectItems.value.length) {
@@ -22724,11 +22738,11 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
                     return [
                       require$$0.createVNode(VAutocomplete, {
                         label: _ctx.labels[i],
-                        items: levelItems(i),
+                        items: levelItems.value[i],
                         "item-title": "Name",
                         "item-value": "ID",
-                        modelValue: selectedIDs[i],
-                        "onUpdate:modelValue": [($event) => selectedIDs[i] = $event, ($event) => selectItem($event, i)],
+                        modelValue: selectedIDs.value[i],
+                        "onUpdate:modelValue": [($event) => selectedIDs.value[i] = $event, ($event) => selectItem($event, i)],
                         clearable: !_ctx.chips,
                         "error-messages": (_a = _ctx.errorMessages) == null ? void 0 : _a[i],
                         chips: _ctx.chips,
@@ -22743,23 +22757,25 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
               }), 128))
             ]),
             _: 1
-          })) : (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, { key: 1 }, require$$0.renderList(linkageSelectItems.value, (v, i) => {
-            var _a;
-            return require$$0.openBlock(), require$$0.createBlock(VAutocomplete, {
-              label: _ctx.labels[i],
-              items: levelItems(i),
-              "item-title": "Name",
-              "item-value": "ID",
-              modelValue: selectedIDs[i],
-              "onUpdate:modelValue": [($event) => selectedIDs[i] = $event, ($event) => selectItem($event, i)],
-              variant: "underlined",
-              clearable: !_ctx.chips,
-              "error-messages": (_a = _ctx.errorMessages) == null ? void 0 : _a[i],
-              chips: _ctx.chips,
-              disabled: _ctx.disabled,
-              "hide-details": _ctx.hideDetails
-            }, null, 8, ["label", "items", "modelValue", "onUpdate:modelValue", "clearable", "error-messages", "chips", "disabled", "hide-details"]);
-          }), 256))
+          })) : (require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_1$9, [
+            (require$$0.openBlock(true), require$$0.createElementBlock(require$$0.Fragment, null, require$$0.renderList(linkageSelectItems.value, (v, i) => {
+              var _a;
+              return require$$0.openBlock(), require$$0.createBlock(VAutocomplete, {
+                label: _ctx.labels[i],
+                items: levelItems.value[i],
+                "item-value": "ID",
+                "item-title": "Name",
+                modelValue: selectedIDs.value[i],
+                "onUpdate:modelValue": [($event) => selectedIDs.value[i] = $event, ($event) => selectItem($event, i)],
+                variant: "underlined",
+                clearable: !_ctx.chips,
+                "error-messages": (_a = _ctx.errorMessages) == null ? void 0 : _a[i],
+                chips: _ctx.chips,
+                disabled: _ctx.disabled,
+                "hide-details": _ctx.hideDetails
+              }, null, 8, ["label", "items", "modelValue", "onUpdate:modelValue", "clearable", "error-messages", "chips", "disabled", "hide-details"]);
+            }), 256))
+          ]))
         ]);
       };
     }
@@ -23104,7 +23120,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   const _sfc_main$d = /* @__PURE__ */ require$$0.defineComponent({
     __name: "Autocomplete",
     props: {
-      modelValue: { type: Array, required: true },
+      modelValue: { type: String },
+      items: { type: Array, default: [] },
+      cacheItems: { type: Array, default: [] },
       isPaging: Boolean,
       hasIcon: Boolean,
       hideSelected: Boolean,
@@ -23137,9 +23155,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     setup(__props, { emit: __emit }) {
       const emit = __emit;
       const props = __props;
-      const listItems = require$$0.ref([]);
+      const listItems = require$$0.ref([...props.items]);
       const value = require$$0.ref();
-      const cachedSelectedItems = require$$0.ref([]);
+      const cachedSelectedItems = require$$0.ref([...props.cacheItems ?? []]);
       const isLoading = require$$0.ref(false);
       const disabled = require$$0.ref(false);
       const total = require$$0.ref(0);
@@ -23192,23 +23210,22 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         }
       };
       const changeStatus = (e) => {
-        if (cachedSelectedItems.value.find(
-          (element) => element[props.itemValueKey] == e[props.itemValueKey]
-        )) {
+        if (cachedSelectedItems.value.find((element) => element[props.itemValueKey] == e)) {
           return;
         }
-        cachedSelectedItems.value.push(e);
-        emit("update:modelValue", cachedSelectedItems.value);
+        cachedSelectedItems.value.push(
+          listItems.value.find((element) => element[props.itemValueKey] == e)
+        );
+        emit("update:modelValue", value.value);
       };
       const removeItem = (v) => {
         value.value = "";
         cachedSelectedItems.value = cachedSelectedItems.value.filter(
           (element) => element[props.itemValueKey] != v[props.itemValueKey]
         );
-        emit("update:modelValue", cachedSelectedItems.value);
+        emit("update:modelValue", value.value);
       };
       require$$0.onMounted(() => {
-        cachedSelectedItems.value = props.modelValue;
         loadRemoteItems();
       });
       const reloadSearch = (val) => {
@@ -23297,51 +23314,13 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             loading: isLoading.value,
             "item-value": __props.itemValueKey,
             "item-title": __props.itemTextKey,
-            "return-object": "",
             clearable: __props.sorting ? false : __props.clearable,
             "hide-details": __props.hideDetails,
             "hide-selected": __props.hideSelected,
             class: require$$0.normalizeClass(__props.sorting ? "v-autocomplete-sorting" : ""),
             variant: "underlined",
             "onUpdate:search": reloadSearch
-          }, require$$0.createSlots({
-            "append-item": require$$0.withCtx(() => [
-              require$$0.createElementVNode("div", _hoisted_1$8, [
-                props.isPaging ? (require$$0.openBlock(), require$$0.createBlock(VPagination, {
-                  key: 0,
-                  modelValue: __props.remote[__props.pageKey],
-                  "onUpdate:modelValue": [
-                    _cache[1] || (_cache[1] = ($event) => __props.remote[__props.pageKey] = $event),
-                    _cache[2] || (_cache[2] = ($event) => loadRemoteItems())
-                  ],
-                  rounded: "circle",
-                  length: pages.value,
-                  "total-visible": "5"
-                }, null, 8, ["modelValue", "length"])) : (require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_2$4, [
-                  require$$0.withDirectives((require$$0.openBlock(), require$$0.createBlock(VBtn, {
-                    class: "ma-2",
-                    color: "primary",
-                    disabled: disabled.value,
-                    loading: isLoading.value,
-                    onClick: _cache[3] || (_cache[3] = () => {
-                      __props.remote[__props.pageKey] += 1;
-                      loadRemoteItems();
-                    })
-                  }, {
-                    default: require$$0.withCtx(() => [
-                      require$$0.createTextVNode("Load more ")
-                    ]),
-                    _: 1
-                  }, 8, ["disabled", "loading"])), [
-                    [Intersect, endIntersect]
-                  ]),
-                  require$$0.createVNode(VDivider, { vertical: "" }),
-                  require$$0.createElementVNode("span", null, require$$0.toDisplayString(current.value) + "/" + require$$0.toDisplayString(total.value), 1)
-                ]))
-              ])
-            ]),
-            _: 2
-          }, [
+          }, require$$0.createSlots({ _: 2 }, [
             __props.hasIcon ? {
               name: "item",
               fn: require$$0.withCtx(({ item, props: props2 }) => [
@@ -23362,6 +23341,45 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
                 }), null, 16, ["color", "prepend-avatar", "text"])
               ]),
               key: "1"
+            } : void 0,
+            __props.loadData ? {
+              name: "append-item",
+              fn: require$$0.withCtx(() => [
+                require$$0.createElementVNode("div", _hoisted_1$8, [
+                  props.isPaging ? (require$$0.openBlock(), require$$0.createBlock(VPagination, {
+                    key: 0,
+                    modelValue: __props.remote[__props.pageKey],
+                    "onUpdate:modelValue": [
+                      _cache[1] || (_cache[1] = ($event) => __props.remote[__props.pageKey] = $event),
+                      _cache[2] || (_cache[2] = ($event) => loadRemoteItems())
+                    ],
+                    rounded: "circle",
+                    length: pages.value,
+                    "total-visible": "5"
+                  }, null, 8, ["modelValue", "length"])) : (require$$0.openBlock(), require$$0.createElementBlock("div", _hoisted_2$4, [
+                    require$$0.withDirectives((require$$0.openBlock(), require$$0.createBlock(VBtn, {
+                      class: "ma-2",
+                      color: "primary",
+                      disabled: disabled.value,
+                      loading: isLoading.value,
+                      onClick: _cache[3] || (_cache[3] = () => {
+                        __props.remote[__props.pageKey] += 1;
+                        loadRemoteItems();
+                      })
+                    }, {
+                      default: require$$0.withCtx(() => [
+                        require$$0.createTextVNode("Load more ")
+                      ]),
+                      _: 1
+                    }, 8, ["disabled", "loading"])), [
+                      [Intersect, endIntersect]
+                    ]),
+                    require$$0.createVNode(VDivider, { vertical: "" }),
+                    require$$0.createElementVNode("span", null, require$$0.toDisplayString(current.value) + "/" + require$$0.toDisplayString(total.value), 1)
+                  ]))
+                ])
+              ]),
+              key: "2"
             } : void 0
           ]), 1032, ["modelValue", "items", "loading", "item-value", "item-title", "clearable", "hide-details", "hide-selected", "class"])
         ]);
@@ -23672,9 +23690,10 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             case "LinkageSelectItem": {
               const textsAre = props.op.valuesAre.map((o, i) => {
                 var _a;
-                return (_a = props.op.linkageSelectData) == null ? void 0 : _a.items[i].find((x) => {
+                const item = (_a = props.op.linkageSelectData) == null ? void 0 : _a.items[i].find((x) => {
                   return o === x.ID;
-                }).Name;
+                });
+                return item.Name ? item.Name : item.ID;
               });
               showValue = textsAre.join(",");
               break;
@@ -24135,8 +24154,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   const _sfc_main$1 = /* @__PURE__ */ require$$0.defineComponent({
     __name: "SelectItem",
     props: {
-      modelValue: {},
-      options: {}
+      modelValue: {}
     },
     emits: ["update:modelValue"],
     setup(__props, { emit: __emit }) {
@@ -24145,7 +24163,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           require$$0.createVNode(_sfc_main$d, {
             modelValue: _ctx.modelValue.valueIs,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue.valueIs = $event),
-            items: _ctx.options,
+            items: _ctx.modelValue.options,
             style: { "width": "200px" },
             class: "d-inline-block",
             "hide-details": ""

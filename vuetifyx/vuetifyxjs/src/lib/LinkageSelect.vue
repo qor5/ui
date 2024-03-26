@@ -4,7 +4,7 @@
       <v-col v-for="(v, i) in linkageSelectItems" :key="i">
         <v-autocomplete
           :label="labels[i]"
-          :items="levelItems(i)"
+          :items="levelItems[i]"
           item-title="Name"
           item-value="ID"
           v-model="selectedIDs[i]"
@@ -19,28 +19,30 @@
         </v-autocomplete>
       </v-col>
     </v-row>
-    <v-autocomplete
-      v-else
-      v-for="(v, i) in linkageSelectItems"
-      :label="labels[i]"
-      :items="levelItems(i)"
-      item-title="Name"
-      item-value="ID"
-      v-model="selectedIDs[i]"
-      variant="underlined"
-      @update:modelValue="selectItem($event, i)"
-      :clearable="!chips"
-      :error-messages="errorMessages?.[i]"
-      :chips="chips"
-      :disabled="disabled"
-      :hide-details="hideDetails"
-    >
-    </v-autocomplete>
+    <div v-else>
+      <v-autocomplete
+        v-for="(v, i) in linkageSelectItems"
+        :label="labels[i]"
+        :items="levelItems[i]"
+        item-value="ID"
+        item-title="Name"
+        v-model="selectedIDs[i]"
+        variant="underlined"
+        @update:modelValue="selectItem($event, i)"
+        :clearable="!chips"
+        :error-messages="errorMessages?.[i]"
+        :chips="chips"
+        :disabled="disabled"
+        :hide-details="hideDetails"
+      >
+      </v-autocomplete>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { onMounted, ref, computed, Ref } from 'vue'
+
 interface LinkageSelectItem {
   ID: string
   Name: string
@@ -48,7 +50,7 @@ interface LinkageSelectItem {
 }
 
 const props = defineProps<{
-  modelValue: string[]
+  modelValue: string[] | undefined
   items: LinkageSelectItem[][]
   labels: string[]
   errorMessages?: string[]
@@ -62,6 +64,19 @@ const props = defineProps<{
 const emit = defineEmits(['update:modelValue'])
 const linkageSelectItems = ref([...props.items])
 
+const levelItems: Ref<any[]> = ref([])
+
+const selectedIDs = computed(() => {
+  let ids: Array<string> = [...(props.modelValue ?? [])]
+  validateAndResetSelectedIDs(ids)
+  return ids
+})
+
+onMounted(() => {
+  for (let i = 0; i < props.labels.length; i++) {
+    levelItems.value.push(getLevelItems(i))
+  }
+})
 linkageSelectItems.value.forEach((v: any) => {
   v.forEach((item: LinkageSelectItem) => {
     if (!item.Name) {
@@ -70,17 +85,15 @@ linkageSelectItems.value.forEach((v: any) => {
   })
 })
 
-const selectedIDs = reactive([...props.modelValue])
-
-const validateAndResetSelectedIDs = () => {
+const validateAndResetSelectedIDs = (ids: Array<string>) => {
   linkageSelectItems.value.forEach((v: any, i: number) => {
-    if (!selectedIDs[i]) {
-      selectedIDs[i] = ''
+    if (!ids[i]) {
+      ids[i] = ''
     }
   })
-  selectedIDs.forEach((v, i) => {
+  ids.forEach((v, i) => {
     if (!v) {
-      selectedIDs[i] = ''
+      ids[i] = ''
       return
     }
 
@@ -92,17 +105,17 @@ const validateAndResetSelectedIDs = () => {
       }
     }
     if (!exists) {
-      selectedIDs[i] = ''
+      ids[i] = ''
       return
     }
 
     if (i === 0) {
       return
     }
-    var pID = selectedIDs[i - 1]
+    var pID = ids[i - 1]
     if (!pID) {
       if (!props.selectOutOfOrder) {
-        selectedIDs[i] = ''
+        ids[i] = ''
       }
       return
     } else {
@@ -117,22 +130,20 @@ const validateAndResetSelectedIDs = () => {
       }
     }
 
-    selectedIDs[i] = ''
+    ids[i] = ''
     return
   })
 }
 
-validateAndResetSelectedIDs()
-
-const levelItems = (level: number): LinkageSelectItem[] => {
+const getLevelItems = (level: number): LinkageSelectItem[] => {
   if (level === 0) {
     return linkageSelectItems.value[level]
   }
   let items: LinkageSelectItem[] = []
-  if (selectedIDs[level - 1]) {
+  if (selectedIDs.value[level - 1]) {
     let idM: any = {}
     for (const item of linkageSelectItems.value[level - 1]) {
-      if (item.ID === selectedIDs[level - 1]) {
+      if (item.ID === selectedIDs.value[level - 1]) {
         for (let id of item.ChildrenIDs) {
           idM[id] = true
         }
@@ -149,8 +160,8 @@ const levelItems = (level: number): LinkageSelectItem[] => {
 
   if (props.selectOutOfOrder) {
     for (let i = level - 2; i >= 0; i--) {
-      if (selectedIDs[i]) {
-        items = findNextItems(selectedIDs[i], i)
+      if (selectedIDs.value[i]) {
+        items = findNextItems(selectedIDs.value[i], i)
         for (let j = i + 1; j < level; j++) {
           let newItems: Array<LinkageSelectItem> = []
           for (const item of items) {
@@ -168,35 +179,39 @@ const levelItems = (level: number): LinkageSelectItem[] => {
 }
 
 const selectItem = (v: string, level: number) => {
+  const updateSelectIds = [...selectedIDs.value]
   if (v) {
-    for (var i = level + 1; i < selectedIDs.length; i++) {
-      if (selectedIDs[i]) {
-        var items = levelItems(i)
+    for (var i = level + 1; i < updateSelectIds.length; i++) {
+      if (updateSelectIds[i]) {
+        var items = getLevelItems(i)
         if (!items || items.length === 0) {
-          selectedIDs[i] = ''
+          updateSelectIds[i] = ''
           continue
         }
         var found = false
         for (var item of items) {
-          if (item.ID === selectedIDs[i]) {
+          if (item.ID === updateSelectIds[i]) {
             found = true
             break
           }
         }
         if (!found) {
-          selectedIDs[i] = ''
+          updateSelectIds[i] = ''
         }
       }
     }
   } else {
-    selectedIDs[level] = ''
+    updateSelectIds[level] = ''
     if (!props.selectOutOfOrder) {
-      for (let i = level + 1; i < selectedIDs.length; i++) {
-        selectedIDs[i] = ''
+      for (let i = level + 1; i < updateSelectIds.length; i++) {
+        updateSelectIds[i] = ''
       }
     }
   }
-  emit('update:modelValue', selectedIDs)
+  if (props.labels.length > level + 1) {
+    levelItems.value[level + 1] = getLevelItems(level + 1)
+  }
+  emit('update:modelValue', updateSelectIds)
 }
 
 const findNextItems = (selectedID: any, level: number): LinkageSelectItem[] => {
