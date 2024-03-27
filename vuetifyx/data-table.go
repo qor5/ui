@@ -445,11 +445,9 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			Class("bg-grey-lighten-3 text-center pt-2 pb-2").
 			Attr("v-show", "locals.selected_count > 0"),
 		v.VTable(
-			h.Template(
-				thead,
-				h.Tbody(rows...),
-				tfoot,
-			).Attr("#default", true),
+			thead,
+			h.Tbody(rows...),
+			tfoot,
 		).Density("compact"),
 	).VSlot("{ locals }").Init(fmt.Sprintf(` { selected_count : %v , loadmore : false }`, len(selected)))
 

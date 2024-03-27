@@ -11,13 +11,6 @@ type VTableBuilder struct {
 	tag *h.HTMLTagBuilder
 }
 
-func VTable(children ...h.HTMLComponent) (r *VTableBuilder) {
-	r = &VTableBuilder{
-		tag: h.Tag("v-table").Children(children...),
-	}
-	return
-}
-
 func (b *VTableBuilder) FixedHeader(v bool) (r *VTableBuilder) {
 	b.tag.Attr(":fixed-header", fmt.Sprint(v))
 	return b
