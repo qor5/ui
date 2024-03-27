@@ -7,6 +7,8 @@ import LinkageSelect from '@/lib/LinkageSelect.vue'
 import Autocomplete from '@/lib/Autocomplete.vue'
 import TextDatepicker from '@/lib/TextDatepicker.vue'
 import Filter from '@/lib/Filter/index.vue'
+import RestoreScrollListener from '@/lib/RestoreScrollListener.vue'
+import ScrollToCurrentContainerListener from '@/lib/ScrollToCurrentContainerListener.vue'
 import draggable from 'vuedraggable'
 
 const vuetifyx = {
@@ -19,6 +21,8 @@ const vuetifyx = {
     app.component('vx-autocomplete', Autocomplete)
     app.component('vx-textdatepicker', TextDatepicker)
     app.component('vx-draggable', draggable)
+    app.component('vx-restore-scroll-listener', RestoreScrollListener)
+    app.component('vx-scroll-to-current-container-listener', ScrollToCurrentContainerListener)
   }
 }
 declare const window: any

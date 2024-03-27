@@ -7,8 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    1111: typeof import('./src/lib/1111.vue')['default']
+    App: typeof import('./src/lib/app.vue')['default']
     Autocomplete: typeof import('./src/lib/Autocomplete.vue')['default']
     AutoCompleteExample: typeof import('./src/demo/components/AutoCompleteExample.vue')['default']
+    Builder: typeof import('./src/lib/RestoreScrollListener.vue')['default']
     DateItem: typeof import('./src/lib/Filter/components/DateItem.vue')['default']
     Datepicker: typeof import('./src/lib/Datepicker.vue')['default']
     DatepickerExample: typeof import('./src/demo/components/DatepickerExample.vue')['default']
@@ -21,6 +24,7 @@ declare module 'vue' {
     FilterButton: typeof import('./src/lib/Filter/components/FilterButton.vue')['default']
     FilterButtonBody: typeof import('./src/lib/Filter/components/FilterButtonBody.vue')['default']
     FilterExample: typeof import('./src/demo/components/FilterExample.vue')['default']
+    Footer: typeof import('./src/lib/footer.vue')['default']
     HelloWorld: typeof import('./src/demo/components/HelloWorld.vue')['default']
     ItemFilter: typeof import('./src/lib/Filter/components/ItemFilter.vue')['default']
     LinkageSelect: typeof import('./src/lib/LinkageSelect.vue')['default']
@@ -29,6 +33,8 @@ declare module 'vue' {
     MessageListener: typeof import('./src/lib/MessageListener.vue')['default']
     MultipleSelectItem: typeof import('./src/lib/Filter/components/MultipleSelectItem.vue')['default']
     NumberItem: typeof import('./src/lib/Filter/components/NumberItem.vue')['default']
+    RestoreScrollListener: typeof import('./src/lib/RestoreScrollListener.vue')['default']
+    ScrollToCurrentContainerListener: typeof import('./src/lib/ScrollToCurrentContainerListener.vue')['default']
     SelectItem: typeof import('./src/lib/Filter/components/SelectItem.vue')['default']
     SelectMany: typeof import('./src/lib/SelectMany.vue')['default']
     SelectManyExample: typeof import('./src/demo/components/SelectManyExample.vue')['default']
