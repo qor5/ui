@@ -2,7 +2,9 @@
 import { onMounted } from 'vue'
 
 const scrollToCurrentContainer = (event: any) => {
-  const current = document.querySelector('div[data-container-id=\'' + event.data + '\']') as HTMLElement
+  const current = document.querySelector(
+    "div[data-container-id='" + event.data + "']"
+  ) as HTMLElement
   if (!current) {
     return
   }
@@ -14,9 +16,9 @@ const scrollToCurrentContainer = (event: any) => {
   current.querySelector('.wrapper-shadow')?.classList.add('hover')
 }
 onMounted(() => {
-  document.querySelectorAll('.wrapper-shadow').forEach(shadow => {
-    shadow.addEventListener('mouseover', event => {
-      document.querySelectorAll('.wrapper-shadow.hover').forEach(item => {
+  document.querySelectorAll('.wrapper-shadow').forEach((shadow) => {
+    shadow.addEventListener('mouseover', (event) => {
+      document.querySelectorAll('.wrapper-shadow.hover').forEach((item) => {
         item.classList.remove('hover')
       })
       shadow.classList.add('hover')
@@ -25,14 +27,8 @@ onMounted(() => {
 
   window.addEventListener('message', scrollToCurrentContainer, false)
 })
-
-
 </script>
 
-<template>
+<template></template>
 
-</template>
-
-<style scoped>
-
-</style>
+<style scoped></style>

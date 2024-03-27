@@ -4,13 +4,13 @@ import { onMounted } from 'vue'
 let scrollLeft = 0
 let scrollTop = 0
 const pause = (duration: number) => {
-  return new Promise(res => setTimeout(res, duration))
+  return new Promise((res) => setTimeout(res, duration))
 }
 
 const backoff = (retries: number, fn: Function, delay = 100) => {
-  fn().catch((err: any) => retries > 1
-    ? pause(delay).then(() => backoff(retries - 1, fn, delay * 2))
-    : Promise.reject(err))
+  fn().catch((err: any) =>
+    retries > 1 ? pause(delay).then(() => backoff(retries - 1, fn, delay * 2)) : Promise.reject(err)
+  )
 }
 
 const restoreScroll = () => {
@@ -33,10 +33,6 @@ onMounted(() => {
 })
 </script>
 
-<template>
+<template></template>
 
-</template>
-
-<style scoped>
-
-</style>
+<style scoped></style>
