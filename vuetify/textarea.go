@@ -263,6 +263,11 @@ func (b *VTextareaBuilder) Rounded(v interface{}) (r *VTextareaBuilder) {
 	return b
 }
 
+func (b *VTextareaBuilder) Tile(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VTextareaBuilder) Theme(v string) (r *VTextareaBuilder) {
 	b.tag.Attr("theme", v)
 	return b

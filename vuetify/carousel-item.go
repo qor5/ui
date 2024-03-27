@@ -128,6 +128,11 @@ func (b *VCarouselItemBuilder) Rounded(v interface{}) (r *VCarouselItemBuilder) 
 	return b
 }
 
+func (b *VCarouselItemBuilder) Tile(v bool) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VCarouselItemBuilder) Transition(v interface{}) (r *VCarouselItemBuilder) {
 	b.tag.Attr(":transition", h.JSONString(v))
 	return b

@@ -148,6 +148,11 @@ func (b *VAppBarNavIconBuilder) Rounded(v interface{}) (r *VAppBarNavIconBuilder
 	return b
 }
 
+func (b *VAppBarNavIconBuilder) Tile(v bool) (r *VAppBarNavIconBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VAppBarNavIconBuilder) Href(v string) (r *VAppBarNavIconBuilder) {
 	b.tag.Attr("href", v)
 	return b

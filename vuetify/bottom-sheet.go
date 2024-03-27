@@ -73,6 +73,11 @@ func (b *VBottomSheetBuilder) Disabled(v bool) (r *VBottomSheetBuilder) {
 	return b
 }
 
+func (b *VBottomSheetBuilder) Opacity(v interface{}) (r *VBottomSheetBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VBottomSheetBuilder) NoClickAnimation(v bool) (r *VBottomSheetBuilder) {
 	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b

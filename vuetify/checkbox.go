@@ -183,8 +183,8 @@ func (b *VCheckboxBuilder) TrueIcon(v interface{}) (r *VCheckboxBuilder) {
 	return b
 }
 
-func (b *VCheckboxBuilder) Ripple(v bool) (r *VCheckboxBuilder) {
-	b.tag.Attr(":ripple", fmt.Sprint(v))
+func (b *VCheckboxBuilder) Ripple(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":ripple", h.JSONString(v))
 	return b
 }
 

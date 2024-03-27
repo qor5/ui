@@ -16,6 +16,11 @@ func (b *VIconBuilder) Color(v string) (r *VIconBuilder) {
 	return b
 }
 
+func (b *VIconBuilder) Disabled(v bool) (r *VIconBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VIconBuilder) Start(v bool) (r *VIconBuilder) {
 	b.tag.Attr(":start", fmt.Sprint(v))
 	return b

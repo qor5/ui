@@ -43,6 +43,11 @@ func (b *VBtnGroupBuilder) Rounded(v interface{}) (r *VBtnGroupBuilder) {
 	return b
 }
 
+func (b *VBtnGroupBuilder) Tile(v bool) (r *VBtnGroupBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBtnGroupBuilder) Tag(v string) (r *VBtnGroupBuilder) {
 	b.tag.Attr("tag", v)
 	return b

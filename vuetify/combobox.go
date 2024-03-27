@@ -178,6 +178,11 @@ func (b *VComboboxBuilder) Rounded(v interface{}) (r *VComboboxBuilder) {
 	return b
 }
 
+func (b *VComboboxBuilder) Tile(v bool) (r *VComboboxBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VComboboxBuilder) Theme(v string) (r *VComboboxBuilder) {
 	b.tag.Attr("theme", v)
 	return b

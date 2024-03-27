@@ -198,6 +198,11 @@ func (b *VDatePickerBuilder) Rounded(v interface{}) (r *VDatePickerBuilder) {
 	return b
 }
 
+func (b *VDatePickerBuilder) Tile(v bool) (r *VDatePickerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDatePickerBuilder) Tag(v string) (r *VDatePickerBuilder) {
 	b.tag.Attr("tag", v)
 	return b

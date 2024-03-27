@@ -238,6 +238,11 @@ func (b *VFileInputBuilder) Rounded(v interface{}) (r *VFileInputBuilder) {
 	return b
 }
 
+func (b *VFileInputBuilder) Tile(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFileInputBuilder) Theme(v string) (r *VFileInputBuilder) {
 	b.tag.Attr("theme", v)
 	return b

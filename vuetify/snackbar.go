@@ -68,6 +68,11 @@ func (b *VSnackbarBuilder) Rounded(v interface{}) (r *VSnackbarBuilder) {
 	return b
 }
 
+func (b *VSnackbarBuilder) Tile(v bool) (r *VSnackbarBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSnackbarBuilder) Color(v string) (r *VSnackbarBuilder) {
 	b.tag.Attr("color", v)
 	return b
@@ -105,6 +110,11 @@ func (b *VSnackbarBuilder) ContentProps(v interface{}) (r *VSnackbarBuilder) {
 
 func (b *VSnackbarBuilder) Disabled(v bool) (r *VSnackbarBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSnackbarBuilder) Opacity(v interface{}) (r *VSnackbarBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
 	return b
 }
 

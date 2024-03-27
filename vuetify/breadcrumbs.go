@@ -68,6 +68,11 @@ func (b *VBreadcrumbsBuilder) Rounded(v interface{}) (r *VBreadcrumbsBuilder) {
 	return b
 }
 
+func (b *VBreadcrumbsBuilder) Tile(v bool) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBreadcrumbsBuilder) Tag(v string) (r *VBreadcrumbsBuilder) {
 	b.tag.Attr("tag", v)
 	return b

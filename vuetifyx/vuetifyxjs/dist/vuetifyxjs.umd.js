@@ -5022,6 +5022,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   }
   const makeVIconProps = propsFactory({
     color: String,
+    disabled: Boolean,
     start: Boolean,
     end: Boolean,
     icon: IconValue,
@@ -5060,11 +5061,13 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         if (slotValue) {
           slotIcon.value = (_b = flattenFragments(slotValue).filter((node) => node.type === require$$0.Text && node.children && typeof node.children === "string")[0]) == null ? void 0 : _b.children;
         }
+        const hasClick = !!(attrs.onClick || attrs.onClickOnce);
         return require$$0.createVNode(iconData.value.component, {
           "tag": props.tag,
           "icon": iconData.value.icon,
           "class": ["v-icon", "notranslate", themeClasses.value, sizeClasses.value, textColorClasses.value, {
-            "v-icon--clickable": !!attrs.onClick,
+            "v-icon--clickable": hasClick,
+            "v-icon--disabled": props.disabled,
             "v-icon--start": props.start,
             "v-icon--end": props.end
           }, props.class],
@@ -5073,8 +5076,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             height: convertToUnit(props.size),
             width: convertToUnit(props.size)
           } : void 0, textColorStyles.value, props.style],
-          "role": attrs.onClick ? "button" : void 0,
-          "aria-hidden": !attrs.onClick
+          "role": hasClick ? "button" : void 0,
+          "aria-hidden": !hasClick,
+          "tabindex": hasClick ? props.disabled ? -1 : 0 : void 0
         }, {
           default: () => [slotValue]
         });
@@ -5585,6 +5589,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     return (_b = (_a = getCurrentInstance("useRouter")) == null ? void 0 : _a.proxy) == null ? void 0 : _b.$router;
   }
   function useLink(props, attrs) {
+    var _a, _b;
     const RouterLink = require$$0.resolveDynamicComponent("RouterLink");
     const isLink = require$$0.computed(() => !!(props.href || props.to));
     const isClickable = require$$0.computed(() => {
@@ -5597,22 +5602,32 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         href: require$$0.toRef(props, "href")
       };
     }
-    const link = props.to ? RouterLink.useLink(props) : void 0;
+    const linkProps = require$$0.computed(() => ({
+      ...props,
+      to: props.to ? props.to : {}
+    }));
+    const routerLink = RouterLink.useLink(linkProps.value);
+    const link = require$$0.computed(() => props.to ? routerLink : void 0);
     const route = useRoute();
     return {
       isLink,
       isClickable,
-      route: link == null ? void 0 : link.route,
-      navigate: link == null ? void 0 : link.navigate,
-      isActive: link && require$$0.computed(() => {
-        var _a, _b, _c;
+      route: (_a = link.value) == null ? void 0 : _a.route,
+      navigate: (_b = link.value) == null ? void 0 : _b.navigate,
+      isActive: require$$0.computed(() => {
+        var _a2, _b2, _c;
+        if (!link.value)
+          return false;
         if (!props.exact)
-          return (_a = link.isActive) == null ? void 0 : _a.value;
+          return ((_a2 = link.value.isActive) == null ? void 0 : _a2.value) ?? false;
         if (!route.value)
-          return (_b = link.isExactActive) == null ? void 0 : _b.value;
-        return ((_c = link.isExactActive) == null ? void 0 : _c.value) && deepEqual(link.route.value.query, route.value.query);
+          return ((_b2 = link.value.isExactActive) == null ? void 0 : _b2.value) ?? false;
+        return ((_c = link.value.isExactActive) == null ? void 0 : _c.value) && deepEqual(link.value.route.value.query, route.value.query);
       }),
-      href: require$$0.computed(() => props.to ? link == null ? void 0 : link.route.value.href : props.href)
+      href: require$$0.computed(() => {
+        var _a2;
+        return props.to ? (_a2 = link.value) == null ? void 0 : _a2.route.value.href : props.href;
+      })
     };
   }
   const makeRouterProps = propsFactory({
@@ -6259,10 +6274,13 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     } = typeof transition === "object" ? transition : {};
     return require$$0.h(component, require$$0.mergeProps(typeof transition === "string" ? {
       name: disabled ? "" : transition
-    } : customProps, typeof transition === "string" ? {} : {
+    } : customProps, typeof transition === "string" ? {} : Object.fromEntries(Object.entries({
       disabled,
       group
-    }, rest), slots);
+    }).filter((_ref2) => {
+      let [_, v] = _ref2;
+      return v !== void 0;
+    })), rest), slots);
   };
   function mounted(el, binding) {
     if (!SUPPORTS_INTERSECTION)
@@ -7604,6 +7622,12 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       const adapter = useDate();
       const rangeStart = require$$0.shallowRef();
       const rangeStop = require$$0.shallowRef();
+      if (props.multiple === "range" && model.value.length > 0) {
+        rangeStart.value = model.value[0];
+        if (model.value.length > 1) {
+          rangeStop.value = model.value[model.value.length - 1];
+        }
+      }
       const atMax = require$$0.computed(() => {
         const max = ["number", "string"].includes(typeof props.multiple) ? Number(props.multiple) : Infinity;
         return model.value.length >= max;
@@ -7614,15 +7638,15 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           rangeStart.value = _value;
           model.value = [rangeStart.value];
         } else if (!rangeStop.value) {
-          if (adapter.isSameDay(value, rangeStart.value)) {
+          if (adapter.isSameDay(_value, rangeStart.value)) {
             rangeStart.value = void 0;
             model.value = [];
             return;
-          } else if (adapter.isBefore(value, rangeStart.value)) {
-            rangeStop.value = rangeStart.value;
+          } else if (adapter.isBefore(_value, rangeStart.value)) {
+            rangeStop.value = adapter.endOfDay(rangeStart.value);
             rangeStart.value = _value;
           } else {
-            rangeStop.value = _value;
+            rangeStop.value = adapter.endOfDay(_value);
           }
           const diff = adapter.getDiff(rangeStop.value, rangeStart.value, "days");
           const datesInRange = [rangeStart.value];
@@ -8970,7 +8994,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       if (!(data.isActive.value && props.scrollStrategy))
         return;
       scope = require$$0.effectScope();
-      await require$$0.nextTick();
+      await new Promise((resolve) => setTimeout(resolve));
       scope.active && scope.run(() => {
         var _a;
         if (typeof props.scrollStrategy === "function") {
@@ -9675,6 +9699,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           isActive.value = false;
       });
       const root = require$$0.ref();
+      const scrimEl = require$$0.ref();
       const contentEl = require$$0.ref();
       const {
         contentStyles,
@@ -9699,8 +9724,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         else
           animateClick();
       }
-      function closeConditional() {
-        return isActive.value && globalTop.value;
+      function closeConditional(e) {
+        return isActive.value && globalTop.value && // If using scrim, only close if clicking on it rather than anything opened on top
+        (!props.scrim || e.target === scrimEl.value);
       }
       IN_BROWSER && require$$0.watch(isActive, (val) => {
         if (val) {
@@ -9794,7 +9820,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             "ref": root
           }, scopeId, attrs), [require$$0.createVNode(Scrim, require$$0.mergeProps({
             "color": scrimColor,
-            "modelValue": isActive.value && !!props.scrim
+            "modelValue": isActive.value && !!props.scrim,
+            "ref": scrimEl
           }, scrimEvents.value), null), require$$0.createVNode(MaybeTransition, {
             "appear": true,
             "persisted": true,
@@ -9821,6 +9848,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       });
       return {
         activatorEl,
+        scrimEl,
         target,
         animateClick,
         contentEl,
@@ -10319,7 +10347,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       useRender(() => {
         var _a, _b, _c;
         const isOutlined = props.variant === "outlined";
-        const hasPrepend = slots["prepend-inner"] || props.prependInnerIcon;
+        const hasPrepend = !!(slots["prepend-inner"] || props.prependInnerIcon);
         const hasClear = !!(props.clearable || slots.clear);
         const hasAppend = !!(slots["append-inner"] || props.appendInnerIcon || hasClear);
         const label = () => slots.label ? slots.label({
@@ -10605,14 +10633,15 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     require$$0.watch([isValid2, errorMessages], () => {
       form == null ? void 0 : form.update(uid.value, isValid2.value, errorMessages.value);
     });
-    function reset() {
+    async function reset() {
       model.value = null;
-      require$$0.nextTick(resetValidation);
+      await require$$0.nextTick();
+      await resetValidation();
     }
-    function resetValidation() {
+    async function resetValidation() {
       isPristine.value = true;
       if (!validateOn.value.lazy) {
-        validate(true);
+        await validate(true);
       } else {
         internalErrorMessages.value = [];
       }
@@ -18379,7 +18408,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     falseIcon: IconValue,
     trueIcon: IconValue,
     ripple: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: true
     },
     multiple: {
@@ -18608,6 +18637,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           "onFocus": onFocus,
           "onInput": onInput,
           "aria-disabled": !!props.disabled,
+          "aria-label": props.label,
           "type": props.type,
           "value": trueValue.value,
           "name": props.name,
@@ -19470,6 +19500,123 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
   function useList() {
     return require$$0.inject(ListKey, null);
   }
+  const independentActiveStrategy = (mandatory) => {
+    const strategy = {
+      activate: (_ref) => {
+        let {
+          id,
+          value,
+          activated
+        } = _ref;
+        id = require$$0.toRaw(id);
+        if (mandatory && !value && activated.size === 1 && activated.has(id))
+          return activated;
+        if (value) {
+          activated.add(id);
+        } else {
+          activated.delete(id);
+        }
+        return activated;
+      },
+      in: (v, children, parents) => {
+        let set = /* @__PURE__ */ new Set();
+        for (const id of v || []) {
+          set = strategy.activate({
+            id,
+            value: true,
+            activated: new Set(set),
+            children,
+            parents
+          });
+        }
+        return set;
+      },
+      out: (v) => {
+        return Array.from(v);
+      }
+    };
+    return strategy;
+  };
+  const independentSingleActiveStrategy = (mandatory) => {
+    const parentStrategy = independentActiveStrategy(mandatory);
+    const strategy = {
+      activate: (_ref2) => {
+        let {
+          activated,
+          id,
+          ...rest
+        } = _ref2;
+        id = require$$0.toRaw(id);
+        const singleSelected = activated.has(id) ? /* @__PURE__ */ new Set([id]) : /* @__PURE__ */ new Set();
+        return parentStrategy.activate({
+          ...rest,
+          id,
+          activated: singleSelected
+        });
+      },
+      in: (v, children, parents) => {
+        let set = /* @__PURE__ */ new Set();
+        if (v == null ? void 0 : v.length) {
+          set = parentStrategy.in(v.slice(0, 1), children, parents);
+        }
+        return set;
+      },
+      out: (v, children, parents) => {
+        return parentStrategy.out(v, children, parents);
+      }
+    };
+    return strategy;
+  };
+  const leafActiveStrategy = (mandatory) => {
+    const parentStrategy = independentActiveStrategy(mandatory);
+    const strategy = {
+      activate: (_ref3) => {
+        let {
+          id,
+          activated,
+          children,
+          ...rest
+        } = _ref3;
+        id = require$$0.toRaw(id);
+        if (children.has(id))
+          return activated;
+        return parentStrategy.activate({
+          id,
+          activated,
+          children,
+          ...rest
+        });
+      },
+      in: parentStrategy.in,
+      out: parentStrategy.out
+    };
+    return strategy;
+  };
+  const leafSingleActiveStrategy = (mandatory) => {
+    const parentStrategy = independentSingleActiveStrategy(mandatory);
+    const strategy = {
+      activate: (_ref4) => {
+        let {
+          id,
+          activated,
+          children,
+          ...rest
+        } = _ref4;
+        id = require$$0.toRaw(id);
+        if (children.has(id))
+          return activated;
+        return parentStrategy.activate({
+          id,
+          activated,
+          children,
+          ...rest
+        });
+      },
+      in: parentStrategy.in,
+      out: parentStrategy.out
+    };
+    return strategy;
+  };
   const singleOpenStrategy = {
     open: (_ref) => {
       let {
@@ -19549,7 +19696,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         if (mandatory && !value) {
           const on2 = Array.from(selected.entries()).reduce((arr, _ref2) => {
             let [key, value2] = _ref2;
-            return value2 === "on" ? [...arr, key] : arr;
+            if (value2 === "on")
+              arr.push(key);
+            return arr;
           }, []);
           if (on2.length === 1 && on2[0] === id)
             return selected;
@@ -19692,7 +19841,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         if (mandatory && !value) {
           const on2 = Array.from(selected.entries()).reduce((arr, _ref7) => {
             let [key, value2] = _ref7;
-            return value2 === "on" ? [...arr, key] : arr;
+            if (value2 === "on")
+              arr.push(key);
+            return arr;
           }, []);
           if (on2.length === 0)
             return original;
@@ -19733,16 +19884,24 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       children: require$$0.ref(/* @__PURE__ */ new Map()),
       open: () => null,
       openOnSelect: () => null,
+      activate: () => null,
       select: () => null,
+      activatable: require$$0.ref(false),
+      selectable: require$$0.ref(false),
       opened: require$$0.ref(/* @__PURE__ */ new Set()),
+      activated: require$$0.ref(/* @__PURE__ */ new Set()),
       selected: require$$0.ref(/* @__PURE__ */ new Map()),
       selectedValues: require$$0.ref([])
     }
   };
   const makeNestedProps = propsFactory({
+    activatable: Boolean,
+    selectable: Boolean,
+    activeStrategy: [String, Function],
     selectStrategy: [String, Function],
     openStrategy: [String, Object],
     opened: Array,
+    activated: Array,
     selected: Array,
     mandatory: Boolean
   }, "nested");
@@ -19751,6 +19910,21 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     const children = require$$0.ref(/* @__PURE__ */ new Map());
     const parents = require$$0.ref(/* @__PURE__ */ new Map());
     const opened = useProxiedModel(props, "opened", props.opened, (v) => new Set(v), (v) => [...v.values()]);
+    const activeStrategy = require$$0.computed(() => {
+      if (typeof props.activeStrategy === "object")
+        return props.activeStrategy;
+      switch (props.activeStrategy) {
+        case "leaf":
+          return leafActiveStrategy(props.mandatory);
+        case "single-leaf":
+          return leafSingleActiveStrategy(props.mandatory);
+        case "independent":
+          return independentActiveStrategy(props.mandatory);
+        case "single-independent":
+        default:
+          return independentSingleActiveStrategy(props.mandatory);
+      }
+    });
     const selectStrategy = require$$0.computed(() => {
       if (typeof props.selectStrategy === "object")
         return props.selectStrategy;
@@ -19781,6 +19955,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           return multipleOpenStrategy;
       }
     });
+    const activated = useProxiedModel(props, "activated", props.activated, (v) => activeStrategy.value.in(v, children.value, parents.value), (v) => activeStrategy.value.out(v, children.value, parents.value));
     const selected = useProxiedModel(props, "selected", props.selected, (v) => selectStrategy.value.in(v, children.value, parents.value), (v) => selectStrategy.value.out(v, children.value, parents.value));
     require$$0.onBeforeUnmount(() => {
       isUnmounted = true;
@@ -19799,6 +19974,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       id: require$$0.shallowRef(),
       root: {
         opened,
+        activatable: require$$0.toRef(props, "activatable"),
+        selectable: require$$0.toRef(props, "selectable"),
+        activated,
         selected,
         selectedValues: require$$0.computed(() => {
           const arr = [];
@@ -19874,6 +20052,26 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           newSelected && (selected.value = newSelected);
           nested.root.openOnSelect(id, value, event);
         },
+        activate: (id, value, event) => {
+          if (!props.activatable) {
+            return nested.root.select(id, true, event);
+          }
+          vm.emit("click:activate", {
+            id,
+            value,
+            path: getPath(id),
+            event
+          });
+          const newActivated = activeStrategy.value.activate({
+            id,
+            value,
+            activated: new Set(activated.value),
+            children: children.value,
+            parents: parents.value,
+            event
+          });
+          newActivated && (activated.value = newActivated);
+        },
         children,
         parents
       }
@@ -19892,6 +20090,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       openOnSelect: (open, e) => parent.root.openOnSelect(computedId.value, open, e),
       isOpen: require$$0.computed(() => parent.root.opened.value.has(computedId.value)),
       parent: require$$0.computed(() => parent.root.parents.value.get(computedId.value)),
+      activate: (activated, e) => parent.root.activate(computedId.value, activated, e),
+      isActivated: require$$0.computed(() => parent.root.activated.value.has(require$$0.toRaw(computedId.value))),
       select: (selected, e) => parent.root.select(computedId.value, selected, e),
       isSelected: require$$0.computed(() => parent.root.selected.value.get(require$$0.toRaw(computedId.value)) === "on"),
       isIndeterminate: require$$0.computed(() => parent.root.selected.value.get(computedId.value) === "indeterminate"),
@@ -20034,7 +20234,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           }
         })]
       }));
-      return {};
+      return {
+        isOpen
+      };
     }
   });
   const VListItemSubtitle = createSimpleFunctional("v-list-item-subtitle");
@@ -20100,6 +20302,8 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       const link = useLink(props, attrs);
       const id = require$$0.computed(() => props.value === void 0 ? link.href.value : props.value);
       const {
+        activate,
+        isActivated,
         select,
         isSelected,
         isIndeterminate,
@@ -20111,10 +20315,10 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       const list = useList();
       const isActive = require$$0.computed(() => {
         var _a;
-        return props.active !== false && (props.active || ((_a = link.isActive) == null ? void 0 : _a.value) || isSelected.value);
+        return props.active !== false && (props.active || ((_a = link.isActive) == null ? void 0 : _a.value) || (root.activatable.value ? isActivated.value : isSelected.value));
       });
       const isLink = require$$0.computed(() => props.link !== false && link.isLink.value);
-      const isClickable = require$$0.computed(() => !props.disabled && props.link !== false && (props.link || link.isClickable.value || props.value != null && !!list));
+      const isClickable = require$$0.computed(() => !props.disabled && props.link !== false && (props.link || link.isClickable.value || !!list && (root.selectable.value || root.activatable.value || props.value != null)));
       const roundedProps = require$$0.computed(() => props.rounded || props.nav);
       const color = require$$0.computed(() => props.color ?? props.activeColor);
       const variantProps = require$$0.computed(() => ({
@@ -20170,7 +20374,13 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         if (isGroupActivator || !isClickable.value)
           return;
         (_a = link.navigate) == null ? void 0 : _a.call(link, e);
-        props.value != null && select(!isSelected.value, e);
+        if (root.activatable.value) {
+          activate(!isActivated.value, e);
+        } else if (root.selectable.value) {
+          select(!isSelected.value, e);
+        } else if (props.value != null) {
+          select(!isSelected.value, e);
+        }
       }
       function onKeyDown(e) {
         if (e.key === "Enter" || e.key === " ") {
@@ -20301,7 +20511,12 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           }
         }), [[require$$0.resolveDirective("ripple"), isClickable.value && props.ripple]]);
       });
-      return {};
+      return {
+        isGroupActivator,
+        isSelected,
+        list,
+        select
+      };
     }
   });
   const makeVListSubheaderProps = propsFactory({
@@ -20644,8 +20859,10 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
     props: makeVListProps(),
     emits: {
       "update:selected": (value) => true,
+      "update:activated": (value) => true,
       "update:opened": (value) => true,
       "click:open": (value) => true,
+      "click:activate": (value) => true,
       "click:select": (value) => true
     },
     setup(props, _ref) {
@@ -20678,7 +20895,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         roundedClasses
       } = useRounded(props);
       const {
+        children,
         open,
+        parents,
         select
       } = useNested(props);
       const lineClasses = require$$0.computed(() => props.lines ? `v-list--${props.lines}-line` : void 0);
@@ -20771,7 +20990,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       return {
         open,
         select,
-        focus
+        focus,
+        children,
+        parents
       };
     }
   });
@@ -20863,6 +21084,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             isActive.value = false;
             (_c = (_b = overlay.value) == null ? void 0 : _b.activatorEl) == null ? void 0 : _c.focus();
           }
+        } else if (["Enter", " "].includes(e.key) && props.closeOnContentClick) {
+          isActive.value = false;
+          parent == null ? void 0 : parent.closeParents();
         }
       }
       function onActivatorKeydown(e) {
@@ -21590,10 +21814,12 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           });
         }
       });
-      require$$0.watch(() => props.items, (val) => {
-        if (!isFocused.value || !val.length || menu.value)
+      require$$0.watch(() => props.items, (newVal, oldVal) => {
+        if (menu.value)
           return;
-        menu.value = true;
+        if (isFocused.value && !oldVal.length && newVal.length) {
+          menu.value = true;
+        }
       });
       useRender(() => {
         const hasChips = !!(props.chips || slots.chip);
@@ -22037,9 +22263,9 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
         if (e.key === "ArrowDown" && highlightFirst.value) {
           (_a = listRef.value) == null ? void 0 : _a.focus("next");
         }
-        if (!props.multiple)
-          return;
         if (["Backspace", "Delete"].includes(e.key)) {
+          if (!props.multiple && hasSelectionSlot.value && model.value.length > 0)
+            return select(model.value[0], false);
           if (selectionIndex.value < 0) {
             if (e.key === "Backspace" && !search.value) {
               selectionIndex.value = length - 1;
@@ -22047,11 +22273,11 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
             return;
           }
           const originalSelectionIndex = selectionIndex.value;
-          const selectedItem = model.value[selectionIndex.value];
-          if (selectedItem && !selectedItem.props.disabled)
-            select(selectedItem, false);
+          select(model.value[selectionIndex.value], false);
           selectionIndex.value = originalSelectionIndex >= length - 1 ? length - 2 : originalSelectionIndex;
         }
+        if (!props.multiple)
+          return;
         if (e.key === "ArrowLeft") {
           if (selectionIndex.value < 0 && selectionStart > 0)
             return;
@@ -22106,7 +22332,7 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
       const isSelecting = require$$0.shallowRef(false);
       function select(item) {
         let set = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
-        if (item.props.disabled)
+        if (!item || item.props.disabled)
           return;
         if (props.multiple) {
           const index2 = model.value.findIndex((selection) => props.valueComparator(selection.value, item.value));
@@ -22172,10 +22398,12 @@ Expected #hex, #hexa, rgb(), rgba(), hsl(), hsla(), object or number`);
           });
         }
       });
-      require$$0.watch(() => props.items, (val) => {
-        if (!isFocused.value || !val.length || menu.value)
+      require$$0.watch(() => props.items, (newVal, oldVal) => {
+        if (menu.value)
           return;
-        menu.value = true;
+        if (isFocused.value && !oldVal.length && newVal.length) {
+          menu.value = true;
+        }
       });
       useRender(() => {
         const hasList = !!(!props.hideNoData || displayItems.value.length || slots["prepend-item"] || slots["append-item"] || slots["no-data"]);

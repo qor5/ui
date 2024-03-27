@@ -133,6 +133,11 @@ func (b *VNavigationDrawerBuilder) Rounded(v interface{}) (r *VNavigationDrawerB
 	return b
 }
 
+func (b *VNavigationDrawerBuilder) Tile(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VNavigationDrawerBuilder) Tag(v string) (r *VNavigationDrawerBuilder) {
 	b.tag.Attr("tag", v)
 	return b

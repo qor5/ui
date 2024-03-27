@@ -18,13 +18,28 @@ func VExpansionPanels(children ...h.HTMLComponent) (r *VExpansionPanelsBuilder) 
 	return
 }
 
+func (b *VExpansionPanelsBuilder) Flat(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":flat", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpansionPanelsBuilder) Color(v string) (r *VExpansionPanelsBuilder) {
 	b.tag.Attr("color", v)
 	return b
 }
 
+func (b *VExpansionPanelsBuilder) Focusable(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":focusable", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpansionPanelsBuilder) Static(v bool) (r *VExpansionPanelsBuilder) {
 	b.tag.Attr(":static", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Tile(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
 	return b
 }
 

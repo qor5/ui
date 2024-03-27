@@ -103,6 +103,11 @@ func (b *VColorPickerBuilder) Rounded(v interface{}) (r *VColorPickerBuilder) {
 	return b
 }
 
+func (b *VColorPickerBuilder) Tile(v bool) (r *VColorPickerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VColorPickerBuilder) Tag(v string) (r *VColorPickerBuilder) {
 	b.tag.Attr("tag", v)
 	return b

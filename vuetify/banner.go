@@ -118,6 +118,11 @@ func (b *VBannerBuilder) Rounded(v interface{}) (r *VBannerBuilder) {
 	return b
 }
 
+func (b *VBannerBuilder) Tile(v bool) (r *VBannerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBannerBuilder) Tag(v string) (r *VBannerBuilder) {
 	b.tag.Attr("tag", v)
 	return b

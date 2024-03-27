@@ -58,6 +58,11 @@ func (b *VSystemBarBuilder) Rounded(v interface{}) (r *VSystemBarBuilder) {
 	return b
 }
 
+func (b *VSystemBarBuilder) Tile(v bool) (r *VSystemBarBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSystemBarBuilder) Tag(v string) (r *VSystemBarBuilder) {
 	b.tag.Attr("tag", v)
 	return b

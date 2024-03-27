@@ -63,6 +63,11 @@ func (b *VExpansionPanelBuilder) Rounded(v interface{}) (r *VExpansionPanelBuild
 	return b
 }
 
+func (b *VExpansionPanelBuilder) Tile(v bool) (r *VExpansionPanelBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpansionPanelBuilder) Tag(v string) (r *VExpansionPanelBuilder) {
 	b.tag.Attr("tag", v)
 	return b
@@ -85,6 +90,11 @@ func (b *VExpansionPanelBuilder) CollapseIcon(v interface{}) (r *VExpansionPanel
 
 func (b *VExpansionPanelBuilder) HideActions(v bool) (r *VExpansionPanelBuilder) {
 	b.tag.Attr(":hide-actions", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelBuilder) Focusable(v bool) (r *VExpansionPanelBuilder) {
+	b.tag.Attr(":focusable", fmt.Sprint(v))
 	return b
 }
 

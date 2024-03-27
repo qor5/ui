@@ -176,6 +176,11 @@ func (b *VAutocompleteBuilder) Rounded(v interface{}) (r *VAutocompleteBuilder) 
 	return b
 }
 
+func (b *VAutocompleteBuilder) Tile(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VAutocompleteBuilder) Theme(v string) (r *VAutocompleteBuilder) {
 	b.tag.Attr("theme", v)
 	return b

@@ -98,6 +98,11 @@ func (b *VAppBarBuilder) Rounded(v interface{}) (r *VAppBarBuilder) {
 	return b
 }
 
+func (b *VAppBarBuilder) Tile(v bool) (r *VAppBarBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VAppBarBuilder) Tag(v string) (r *VAppBarBuilder) {
 	b.tag.Attr("tag", v)
 	return b

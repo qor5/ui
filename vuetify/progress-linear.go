@@ -103,6 +103,11 @@ func (b *VProgressLinearBuilder) Rounded(v interface{}) (r *VProgressLinearBuild
 	return b
 }
 
+func (b *VProgressLinearBuilder) Tile(v bool) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VProgressLinearBuilder) Tag(v string) (r *VProgressLinearBuilder) {
 	b.tag.Attr("tag", v)
 	return b

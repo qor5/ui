@@ -128,6 +128,11 @@ func (b *VImgBuilder) Rounded(v interface{}) (r *VImgBuilder) {
 	return b
 }
 
+func (b *VImgBuilder) Tile(v bool) (r *VImgBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VImgBuilder) Transition(v interface{}) (r *VImgBuilder) {
 	b.tag.Attr(":transition", h.JSONString(v))
 	return b

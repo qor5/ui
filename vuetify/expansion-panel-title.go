@@ -38,6 +38,11 @@ func (b *VExpansionPanelTitleBuilder) HideActions(v bool) (r *VExpansionPanelTit
 	return b
 }
 
+func (b *VExpansionPanelTitleBuilder) Focusable(v bool) (r *VExpansionPanelTitleBuilder) {
+	b.tag.Attr(":focusable", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpansionPanelTitleBuilder) Static(v bool) (r *VExpansionPanelTitleBuilder) {
 	b.tag.Attr(":static", fmt.Sprint(v))
 	return b

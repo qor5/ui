@@ -68,6 +68,11 @@ func (b *VBottomNavigationBuilder) Rounded(v interface{}) (r *VBottomNavigationB
 	return b
 }
 
+func (b *VBottomNavigationBuilder) Tile(v bool) (r *VBottomNavigationBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBottomNavigationBuilder) Name(v string) (r *VBottomNavigationBuilder) {
 	b.tag.Attr("name", v)
 	return b

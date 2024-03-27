@@ -63,6 +63,11 @@ func (b *VFooterBuilder) Rounded(v interface{}) (r *VFooterBuilder) {
 	return b
 }
 
+func (b *VFooterBuilder) Tile(v bool) (r *VFooterBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFooterBuilder) Tag(v string) (r *VFooterBuilder) {
 	b.tag.Attr("tag", v)
 	return b

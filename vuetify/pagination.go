@@ -133,6 +133,11 @@ func (b *VPaginationBuilder) Rounded(v interface{}) (r *VPaginationBuilder) {
 	return b
 }
 
+func (b *VPaginationBuilder) Tile(v bool) (r *VPaginationBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VPaginationBuilder) Size(v interface{}) (r *VPaginationBuilder) {
 	b.tag.Attr(":size", h.JSONString(v))
 	return b

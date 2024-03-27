@@ -93,6 +93,11 @@ func (b *VBadgeBuilder) Rounded(v interface{}) (r *VBadgeBuilder) {
 	return b
 }
 
+func (b *VBadgeBuilder) Tile(v bool) (r *VBadgeBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBadgeBuilder) Tag(v string) (r *VBadgeBuilder) {
 	b.tag.Attr("tag", v)
 	return b

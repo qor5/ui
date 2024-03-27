@@ -53,6 +53,11 @@ func (b *VOverlayBuilder) Disabled(v bool) (r *VOverlayBuilder) {
 	return b
 }
 
+func (b *VOverlayBuilder) Opacity(v interface{}) (r *VOverlayBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VOverlayBuilder) NoClickAnimation(v bool) (r *VOverlayBuilder) {
 	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b

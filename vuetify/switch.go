@@ -198,8 +198,8 @@ func (b *VSwitchBuilder) TrueIcon(v interface{}) (r *VSwitchBuilder) {
 	return b
 }
 
-func (b *VSwitchBuilder) Ripple(v bool) (r *VSwitchBuilder) {
-	b.tag.Attr(":ripple", fmt.Sprint(v))
+func (b *VSwitchBuilder) Ripple(v interface{}) (r *VSwitchBuilder) {
+	b.tag.Attr(":ripple", h.JSONString(v))
 	return b
 }
 

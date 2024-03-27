@@ -136,6 +136,11 @@ func (b *VSelectBuilder) Rounded(v interface{}) (r *VSelectBuilder) {
 	return b
 }
 
+func (b *VSelectBuilder) Tile(v bool) (r *VSelectBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSelectBuilder) Theme(v string) (r *VSelectBuilder) {
 	b.tag.Attr("theme", v)
 	return b

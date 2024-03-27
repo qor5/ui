@@ -53,6 +53,11 @@ func (b *VAvatarBuilder) Rounded(v interface{}) (r *VAvatarBuilder) {
 	return b
 }
 
+func (b *VAvatarBuilder) Tile(v bool) (r *VAvatarBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VAvatarBuilder) Size(v interface{}) (r *VAvatarBuilder) {
 	b.tag.Attr(":size", h.JSONString(v))
 	return b

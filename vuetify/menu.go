@@ -53,6 +53,11 @@ func (b *VMenuBuilder) Disabled(v bool) (r *VMenuBuilder) {
 	return b
 }
 
+func (b *VMenuBuilder) Opacity(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VMenuBuilder) NoClickAnimation(v bool) (r *VMenuBuilder) {
 	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b

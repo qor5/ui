@@ -93,6 +93,11 @@ func (b *VTimelineItemBuilder) Rounded(v interface{}) (r *VTimelineItemBuilder) 
 	return b
 }
 
+func (b *VTimelineItemBuilder) Tile(v bool) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VTimelineItemBuilder) Size(v interface{}) (r *VTimelineItemBuilder) {
 	b.tag.Attr(":size", h.JSONString(v))
 	return b

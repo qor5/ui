@@ -141,6 +141,11 @@ func (b *VBtnBuilder) Rounded(v interface{}) (r *VBtnBuilder) {
 	return b
 }
 
+func (b *VBtnBuilder) Tile(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBtnBuilder) Href(v string) (r *VBtnBuilder) {
 	b.tag.Attr("href", v)
 	return b

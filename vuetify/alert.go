@@ -128,6 +128,11 @@ func (b *VAlertBuilder) Rounded(v interface{}) (r *VAlertBuilder) {
 	return b
 }
 
+func (b *VAlertBuilder) Tile(v bool) (r *VAlertBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VAlertBuilder) Tag(v string) (r *VAlertBuilder) {
 	b.tag.Attr("tag", v)
 	return b

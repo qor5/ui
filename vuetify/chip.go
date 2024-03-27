@@ -138,6 +138,11 @@ func (b *VChipBuilder) Rounded(v interface{}) (r *VChipBuilder) {
 	return b
 }
 
+func (b *VChipBuilder) Tile(v bool) (r *VChipBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VChipBuilder) Href(v string) (r *VChipBuilder) {
 	b.tag.Attr("href", v)
 	return b

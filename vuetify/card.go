@@ -148,6 +148,11 @@ func (b *VCardBuilder) Rounded(v interface{}) (r *VCardBuilder) {
 	return b
 }
 
+func (b *VCardBuilder) Tile(v bool) (r *VCardBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VCardBuilder) Href(v string) (r *VCardBuilder) {
 	b.tag.Attr("href", v)
 	return b

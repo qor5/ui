@@ -128,6 +128,11 @@ func (b *VFieldBuilder) Rounded(v interface{}) (r *VFieldBuilder) {
 	return b
 }
 
+func (b *VFieldBuilder) Tile(v bool) (r *VFieldBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFieldBuilder) Theme(v string) (r *VFieldBuilder) {
 	b.tag.Attr("theme", v)
 	return b

@@ -43,6 +43,11 @@ func (b *VBtnToggleBuilder) Rounded(v interface{}) (r *VBtnToggleBuilder) {
 	return b
 }
 
+func (b *VBtnToggleBuilder) Tile(v bool) (r *VBtnToggleBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBtnToggleBuilder) Tag(v string) (r *VBtnToggleBuilder) {
 	b.tag.Attr("tag", v)
 	return b

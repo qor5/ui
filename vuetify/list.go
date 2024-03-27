@@ -68,8 +68,23 @@ func (b *VListBuilder) Nav(v bool) (r *VListBuilder) {
 	return b
 }
 
+func (b *VListBuilder) Activatable(v bool) (r *VListBuilder) {
+	b.tag.Attr(":activatable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VListBuilder) Selectable(v bool) (r *VListBuilder) {
+	b.tag.Attr(":selectable", fmt.Sprint(v))
+	return b
+}
+
 func (b *VListBuilder) Mandatory(v bool) (r *VListBuilder) {
 	b.tag.Attr(":mandatory", fmt.Sprint(v))
+	return b
+}
+
+func (b *VListBuilder) ActiveStrategy(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":active-strategy", h.JSONString(v))
 	return b
 }
 
@@ -85,6 +100,11 @@ func (b *VListBuilder) OpenStrategy(v interface{}) (r *VListBuilder) {
 
 func (b *VListBuilder) Opened(v interface{}) (r *VListBuilder) {
 	b.tag.Attr(":opened", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Activated(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":activated", h.JSONString(v))
 	return b
 }
 
@@ -180,6 +200,11 @@ func (b *VListBuilder) ValueComparator(v interface{}) (r *VListBuilder) {
 
 func (b *VListBuilder) Rounded(v interface{}) (r *VListBuilder) {
 	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Tile(v bool) (r *VListBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
 	return b
 }
 

@@ -83,13 +83,8 @@ func (b *VRadioBuilder) TrueIcon(v interface{}) (r *VRadioBuilder) {
 	return b
 }
 
-func (b *VRadioBuilder) Ripple(v bool) (r *VRadioBuilder) {
-	b.tag.Attr(":ripple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRadioBuilder) Type(v string) (r *VRadioBuilder) {
-	b.tag.Attr("type", v)
+func (b *VRadioBuilder) Ripple(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":ripple", h.JSONString(v))
 	return b
 }
 
@@ -110,6 +105,11 @@ func (b *VRadioBuilder) Readonly(v bool) (r *VRadioBuilder) {
 
 func (b *VRadioBuilder) ModelValue(v interface{}) (r *VRadioBuilder) {
 	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioBuilder) Type(v string) (r *VRadioBuilder) {
+	b.tag.Attr("type", v)
 	return b
 }
 

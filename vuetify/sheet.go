@@ -78,6 +78,11 @@ func (b *VSheetBuilder) Rounded(v interface{}) (r *VSheetBuilder) {
 	return b
 }
 
+func (b *VSheetBuilder) Tile(v bool) (r *VSheetBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSheetBuilder) Tag(v string) (r *VSheetBuilder) {
 	b.tag.Attr("tag", v)
 	return b

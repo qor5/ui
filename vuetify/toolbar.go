@@ -88,6 +88,11 @@ func (b *VToolbarBuilder) Rounded(v interface{}) (r *VToolbarBuilder) {
 	return b
 }
 
+func (b *VToolbarBuilder) Tile(v bool) (r *VToolbarBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VToolbarBuilder) Tag(v string) (r *VToolbarBuilder) {
 	b.tag.Attr("tag", v)
 	return b

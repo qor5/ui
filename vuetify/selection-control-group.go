@@ -58,13 +58,8 @@ func (b *VSelectionControlGroupBuilder) TrueIcon(v interface{}) (r *VSelectionCo
 	return b
 }
 
-func (b *VSelectionControlGroupBuilder) Ripple(v bool) (r *VSelectionControlGroupBuilder) {
-	b.tag.Attr(":ripple", fmt.Sprint(v))
-	return b
-}
-
-func (b *VSelectionControlGroupBuilder) Type(v string) (r *VSelectionControlGroupBuilder) {
-	b.tag.Attr("type", v)
+func (b *VSelectionControlGroupBuilder) Ripple(v interface{}) (r *VSelectionControlGroupBuilder) {
+	b.tag.Attr(":ripple", h.JSONString(v))
 	return b
 }
 
@@ -85,6 +80,11 @@ func (b *VSelectionControlGroupBuilder) Readonly(v bool) (r *VSelectionControlGr
 
 func (b *VSelectionControlGroupBuilder) ModelValue(v interface{}) (r *VSelectionControlGroupBuilder) {
 	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VSelectionControlGroupBuilder) Type(v string) (r *VSelectionControlGroupBuilder) {
+	b.tag.Attr("type", v)
 	return b
 }
 

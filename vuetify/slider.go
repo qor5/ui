@@ -123,6 +123,11 @@ func (b *VSliderBuilder) Rounded(v interface{}) (r *VSliderBuilder) {
 	return b
 }
 
+func (b *VSliderBuilder) Tile(v bool) (r *VSliderBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSliderBuilder) Elevation(v interface{}) (r *VSliderBuilder) {
 	b.tag.Attr(":elevation", h.JSONString(v))
 	return b

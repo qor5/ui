@@ -158,6 +158,11 @@ func (b *VStepperBuilder) Rounded(v interface{}) (r *VStepperBuilder) {
 	return b
 }
 
+func (b *VStepperBuilder) Tile(v bool) (r *VStepperBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VStepperBuilder) Tag(v string) (r *VStepperBuilder) {
 	b.tag.Attr("tag", v)
 	return b

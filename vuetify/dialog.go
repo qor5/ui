@@ -68,6 +68,11 @@ func (b *VDialogBuilder) Disabled(v bool) (r *VDialogBuilder) {
 	return b
 }
 
+func (b *VDialogBuilder) Opacity(v interface{}) (r *VDialogBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VDialogBuilder) NoClickAnimation(v bool) (r *VDialogBuilder) {
 	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b

@@ -148,6 +148,11 @@ func (b *VListItemBuilder) Rounded(v interface{}) (r *VListItemBuilder) {
 	return b
 }
 
+func (b *VListItemBuilder) Tile(v bool) (r *VListItemBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VListItemBuilder) Href(v string) (r *VListItemBuilder) {
 	b.tag.Attr("href", v)
 	return b

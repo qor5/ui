@@ -98,6 +98,11 @@ func (b *VPickerBuilder) Rounded(v interface{}) (r *VPickerBuilder) {
 	return b
 }
 
+func (b *VPickerBuilder) Tile(v bool) (r *VPickerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VPickerBuilder) Tag(v string) (r *VPickerBuilder) {
 	b.tag.Attr("tag", v)
 	return b

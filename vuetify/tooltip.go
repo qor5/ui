@@ -58,6 +58,11 @@ func (b *VTooltipBuilder) Disabled(v bool) (r *VTooltipBuilder) {
 	return b
 }
 
+func (b *VTooltipBuilder) Opacity(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VTooltipBuilder) NoClickAnimation(v bool) (r *VTooltipBuilder) {
 	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b

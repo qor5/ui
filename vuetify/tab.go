@@ -138,6 +138,11 @@ func (b *VTabBuilder) Rounded(v interface{}) (r *VTabBuilder) {
 	return b
 }
 
+func (b *VTabBuilder) Tile(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VTabBuilder) Href(v string) (r *VTabBuilder) {
 	b.tag.Attr("href", v)
 	return b

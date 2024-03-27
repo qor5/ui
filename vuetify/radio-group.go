@@ -163,8 +163,8 @@ func (b *VRadioGroupBuilder) TrueIcon(v interface{}) (r *VRadioGroupBuilder) {
 	return b
 }
 
-func (b *VRadioGroupBuilder) Ripple(v bool) (r *VRadioGroupBuilder) {
-	b.tag.Attr(":ripple", fmt.Sprint(v))
+func (b *VRadioGroupBuilder) Ripple(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":ripple", h.JSONString(v))
 	return b
 }
 
