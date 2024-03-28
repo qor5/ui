@@ -14,7 +14,7 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    minify: false,
+    // minify: false,
     lib: {
       entry: resolve(__dirname, 'src/lib/main.ts'),
       formats: ['umd'],
@@ -28,7 +28,8 @@ export default defineConfig({
           return 'vuetifyxjs.css'
         },
         globals: {
-          vue: 'Vue'
+          vue: 'Vue',
+          vuetify: 'Vuetify'
         }
       }
     }

@@ -7,4 +7,4 @@ fi
 
 rm -r $CUR/vuetifyxjs/dist
 echo "Building vuetifyjs"
-cd $CUR/vuetifyxjs && pnpm install && pnpm run build
+cd $CUR/vuetifyxjs && pnpm install && pnpm format && pnpm run build
