@@ -14,9 +14,9 @@ const props = defineProps({
   clearable: Boolean,
   chips: Boolean,
   sorting: Boolean,
-  itemTextKey: { type: String, default: 'text' },
-  itemValueKey: { type: String, default: 'value' },
-  itemIconKey: { type: String, default: 'icon' },
+  itemText: { type: String, default: 'text' },
+  itemValue: { type: String, default: 'value' },
+  itemIcon: { type: String, default: 'icon' },
   pageKey: { type: String, default: 'page' },
   pagesKey: { type: String, default: 'pages' },
   pageSizeKey: { type: String, default: 'pageSize' },
@@ -99,19 +99,17 @@ const endIntersect = (isIntersecting: boolean) => {
 }
 
 const changeStatus = (e: any) => {
-  if (cachedSelectedItems.value.find((element) => element[props.itemValueKey] == e)) {
+  if (cachedSelectedItems.value.find((element) => element[props.itemValue] == e)) {
     return
   }
-  cachedSelectedItems.value.push(
-    listItems.value.find((element) => element[props.itemValueKey] == e)
-  )
+  cachedSelectedItems.value.push(listItems.value.find((element) => element[props.itemValue] == e))
   emit('update:modelValue', value.value)
 }
 
 const removeItem = (v: any) => {
   value.value = ''
   cachedSelectedItems.value = cachedSelectedItems.value.filter(
-    (element) => element[props.itemValueKey] != v[props.itemValueKey]
+    (element) => element[props.itemValue] != v[props.itemValue]
   )
   emit('update:modelValue', value.value)
 }
@@ -126,7 +124,7 @@ const reloadSearch = (val: any) => {
   if (val == props.remote[props.searchKey] || !val) {
     return
   }
-  if (val == value.value[props.itemTextKey]) {
+  if (val == value.value[props.itemText]) {
     return
   }
   props.remote[props.pageKey] = 1
@@ -147,13 +145,13 @@ const chipsVisible = computed(() => {
           animation="300"
           handle=".handle"
           v-model="cachedSelectedItems"
-          :item-key="itemValueKey"
+          :item-key="itemValue"
         >
           <template #item="{ element }">
             <v-list-item
               v-if="hasIcon"
-              :prepend-avatar="element[itemIconKey]"
-              :title="element[itemTextKey]"
+              :prepend-avatar="element[itemIcon]"
+              :title="element[itemText]"
               animation="300"
             >
               <template v-slot:append>
@@ -161,7 +159,7 @@ const chipsVisible = computed(() => {
                 <v-btn @click="removeItem(element)" variant="text" icon="mdi-delete"></v-btn>
               </template>
             </v-list-item>
-            <v-list-item v-else :title="element[itemTextKey]" animation="300">
+            <v-list-item v-else :title="element[itemText]" animation="300">
               <template v-slot:append>
                 <v-icon icon="mdi-drag" class="handle mx-2 cursor-grab"></v-icon>
                 <v-btn @click="removeItem(element)" variant="text" icon="mdi-delete"></v-btn>
@@ -175,8 +173,8 @@ const chipsVisible = computed(() => {
       v-model="value"
       :items="listItems"
       :loading="isLoading"
-      :item-value="itemValueKey"
-      :item-title="itemTextKey"
+      :item-value="itemValue"
+      :item-title="itemText"
       :clearable="sorting ? false : clearable"
       :hide-details="hideDetails"
       :hide-selected="hideSelected"
@@ -188,16 +186,16 @@ const chipsVisible = computed(() => {
       <template v-slot:item="{ item, props }" v-if="hasIcon">
         <v-list-item
           v-bind="props"
-          :prepend-avatar="item.raw[itemIconKey]"
-          :title="item.raw[itemTextKey]"
+          :prepend-avatar="item.raw[itemIcon]"
+          :title="item.raw[itemText]"
         ></v-list-item>
       </template>
       <template v-slot:chip="{ props, item }" v-if="chipsVisible">
         <v-chip
           v-bind="props"
           :color="chipColor"
-          :prepend-avatar="hasIcon ? item.raw[itemIconKey] : undefined"
-          :text="item.raw[itemTextKey]"
+          :prepend-avatar="hasIcon ? item.raw[itemIcon] : undefined"
+          :text="item.raw[itemText]"
         ></v-chip>
       </template>
       <template v-slot:append-item="" v-if="loadData">
