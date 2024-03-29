@@ -7,25 +7,21 @@ import (
 	"github.com/qor5/web"
 )
 
-//go:embed assets
+//go:embed redactorjs
 var box embed.FS
 
 func JSComponentsPack() web.ComponentsPack {
 	var js [][]byte
-	j1, err := box.ReadFile("assets/redactor.min.js")
+	j1, err := box.ReadFile("redactorjs/dist/redactorjs.umd.cjs")
 	if err != nil {
 		panic(err)
 	}
-	v3, err := box.ReadFile("assets/vue-redactor.js")
-	if err != nil {
-		panic(err)
-	}
-	js = append(js, j1, v3)
+	js = append(js, j1)
 	return web.ComponentsPack(bytes.Join(js, []byte("\n\n")))
 }
 
 func CSSComponentsPack() web.ComponentsPack {
-	c, err := box.ReadFile("assets/redactor.min.css")
+	c, err := box.ReadFile("redactorjs/dist/redactor.css")
 	if err != nil {
 		panic(err)
 	}
