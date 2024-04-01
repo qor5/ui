@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import { ref } from 'vue'
 
 const vnode = ref()
 
@@ -11,17 +11,19 @@ const addTags = (tag: any) => {
     return
   }
   var lazyValue = vnode.value.modelValue
-  var startString = lazyValue.substring(0, vnode.value.$el.querySelector("input").selectionStart);
-  var endString = lazyValue.substring(vnode.value.$el.querySelector("input").selectionEnd, lazyValue.length);
+  var startString = lazyValue.substring(0, vnode.value.$el.querySelector('input').selectionStart)
+  var endString = lazyValue.substring(
+    vnode.value.$el.querySelector('input').selectionEnd,
+    lazyValue.length
+  )
 
-
-  vnode.value.$emit("update:modelValue", startString + '{{' + tag + '}}' + endString)
-  vnode.value.focus();
+  vnode.value.$emit('update:modelValue', startString + '{{' + tag + '}}' + endString)
+  vnode.value.focus()
 }
 defineExpose({
-  tagInputsFocus, addTags
+  tagInputsFocus,
+  addTags
 })
-
 </script>
 
 <template>
@@ -30,6 +32,4 @@ defineExpose({
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

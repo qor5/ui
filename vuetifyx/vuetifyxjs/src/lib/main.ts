@@ -1,4 +1,4 @@
-import {App} from 'vue'
+import { App } from 'vue'
 
 import Datepicker from '@/lib/Datepicker.vue'
 import Datetimepicker from '@/lib/Datetimepicker.vue'
@@ -10,7 +10,7 @@ import Filter from '@/lib/Filter/index.vue'
 import RestoreScrollListener from '@/lib/RestoreScrollListener.vue'
 import ScrollToCurrentContainerListener from '@/lib/ScrollToCurrentContainerListener.vue'
 import draggable from 'vuedraggable'
-import SendVariables from "@/lib/SendVariables.vue";
+import SendVariables from '@/lib/SendVariables.vue'
 
 const vuetifyx = {
   install: (app: App) => {

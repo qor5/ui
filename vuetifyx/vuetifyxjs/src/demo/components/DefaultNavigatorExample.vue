@@ -1,6 +1,14 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" class="rounded-lg my-2 ma-1" width="320"  max-width="320" permanent elevation="2" temporary>
+    <v-navigation-drawer
+      v-model="drawer"
+      class="rounded-lg my-2 ma-1"
+      width="320"
+      max-width="320"
+      permanent
+      elevation="2"
+      temporary
+    >
       <v-toolbar extended color="white" dark>
         <v-toolbar-title>Q O R </v-toolbar-title>
         <v-row align="center" justify="end">
@@ -17,24 +25,16 @@
               class="text-grey-darken-1"
               @click="drawer = !drawer"
             ></v-app-bar-nav-icon
-            ></v-col>
+          ></v-col>
         </v-row>
       </v-toolbar>
       <div class="align-center" max-width="320" elevation="0">
         <v-list lines="two">
-          <v-list-item
-            v-for="(item, i) in leftMenuItems"
-            :key="i"
-            :value="item"
-            color="primary"
-          >
+          <v-list-item v-for="(item, i) in leftMenuItems" :key="i" :value="item" color="primary">
             <template v-slot:prepend>
               <v-icon :icon="item.icon"></v-icon>
             </template>
-            <v-list-item-title
-              v-text="item.title"
-              class="text-grey-darken-1"
-            ></v-list-item-title>
+            <v-list-item-title v-text="item.title" class="text-grey-darken-1"></v-list-item-title>
           </v-list-item>
         </v-list>
       </div>
@@ -47,9 +47,7 @@
               <v-avatar color="blue" size="48" class="rounded-lg">
                 <span class="text-h5">{{ userProfile.initials }}</span>
               </v-avatar>
-              <span  class="mx-2 text-sm-body-2 text-grey-darken-1">{{
-                  userProfile.nickname
-                }}</span>
+              <span class="mx-2 text-sm-body-2 text-grey-darken-1">{{ userProfile.nickname }}</span>
             </v-col>
             <v-col cols="auto" class="d-flex justify-center align-center">
               <v-btn
@@ -81,35 +79,35 @@
     </v-app-bar>
 
     <v-main class="d-flex justify-center align-center">
-          <h1>Main container</h1>
+      <h1>Main container</h1>
     </v-main>
   </v-app>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 const userProfile = ref({
-  initials: "VJ",
-  nickname: "Peterson Lee",
-  age: 25,
-});
-const drawer = ref(true);
+  initials: 'VJ',
+  nickname: 'Peterson Lee',
+  age: 25
+})
+const drawer = ref(true)
 const leftMenuItems = ref([
   {
-    icon: "mdi-information-outline",
-    title: "Dashboard",
+    icon: 'mdi-information-outline',
+    title: 'Dashboard'
   },
   {
-    icon: "mdi-information-outline",
-    title: "Identities",
+    icon: 'mdi-information-outline',
+    title: 'Identities'
   },
   {
-    icon: "mdi-information-outline",
-    title: "Authentication",
+    icon: 'mdi-information-outline',
+    title: 'Authentication'
   },
   {
-    icon: "mdi-information-outline",
-    title: "Account Experience",
-  },
-]);
+    icon: 'mdi-information-outline',
+    title: 'Account Experience'
+  }
+])
 </script>
