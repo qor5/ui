@@ -22,8 +22,12 @@
         <v-divider class="mb-6"></v-divider>
         <h1 class="text-h2 mb-4">text-datepicker-example</h1>
         <text-datepicker-example></text-datepicker-example>
+        <v-divider class="mb-6"></v-divider>
         <h1 class="text-h2 mb-4">default-navigator-example</h1>
         <default-navigator-example></default-navigator-example>
+        <v-divider class="mb-6"></v-divider>
+        <h1 class="text-h2 mb-4">send-variables-example</h1>
+        <send-variables-example></send-variables-example>
       </v-container>
     </v-main>
   </v-app>
@@ -38,4 +42,5 @@ import FilterExample from '@/demo/components/FilterExample.vue'
 import AutoCompleteExample from '@/demo/components/AutoCompleteExample.vue'
 import TextDatepickerExample from '@/demo/components/TextDatepickerExample.vue'
 import DefaultNavigatorExample from '@/demo/components/DefaultNavigatorExample.vue'
+import SendVariablesExample from '@/demo/components/SendVariablesExample.vue'
 </script>

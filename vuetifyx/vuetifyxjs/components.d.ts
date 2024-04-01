@@ -34,6 +34,8 @@ declare module 'vue' {
     SelectItem: typeof import('./src/lib/Filter/components/SelectItem.vue')['default']
     SelectMany: typeof import('./src/lib/SelectMany.vue')['default']
     SelectManyExample: typeof import('./src/demo/components/SelectManyExample.vue')['default']
+    SendVariables: typeof import('./src/lib/SendVariables.vue')['default']
+    SendVariablesExample: typeof import('./src/demo/components/SendVariablesExample.vue')['default']
     StringItem: typeof import('./src/lib/Filter/components/StringItem.vue')['default']
     TextDatepicker: typeof import('./src/lib/TextDatepicker.vue')['default']
     TextDatepickerExample: typeof import('./src/demo/components/TextDatepickerExample.vue')['default']
