@@ -51,6 +51,8 @@ const defaultVuetifyOpts = `{
 			  info:      "#0091FF",
 			  success:   "#30A46C",
 			  warning:   "#F76808",
+			  background: '#FFFFFF',
+			  surface: '#FFFFFF',
 			}
 		  },
 		},
