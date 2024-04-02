@@ -39,9 +39,26 @@ const defaultVuetifyOpts = `{
 	icons: {
 		// defaultSet: 'md', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
 	},
+	  theme: {
+		themes: {
+		  light: {
+			dark: false,
+			colors: {
+			  primary: "#3E63DD",
+			  secondary:  "#5B6471",
+			  accent:    "#82B1FF",
+			  error:     "#82B1FF",
+			  info:      "#0091FF",
+			  success:   "#30A46C",
+			  warning:   "#F76808",
+			}
+		  },
+		},
+	  },
 }`
 
 func Vuetify(opts string) web.ComponentsPack {
+
 	if opts == "" {
 		opts = defaultVuetifyOpts
 	}
