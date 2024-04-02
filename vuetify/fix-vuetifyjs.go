@@ -41,11 +41,11 @@ const defaultVuetifyOpts = `{
 	},
 	  theme: {
 		themes: {
-		  light: {
+		  qor5: {
 			dark: false,
 			colors: {
-			  primary: "#3E63DD",
-			  secondary:  "#5B6471",
+			  primary:   "#3E63DD",
+			  secondary: "#5B6471",
 			  accent:    "#82B1FF",
 			  error:     "#82B1FF",
 			  info:      "#0091FF",
@@ -58,7 +58,6 @@ const defaultVuetifyOpts = `{
 }`
 
 func Vuetify(opts string) web.ComponentsPack {
-
 	if opts == "" {
 		opts = defaultVuetifyOpts
 	}
