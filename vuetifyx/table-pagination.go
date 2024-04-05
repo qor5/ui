@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/qor5/ui/vuetify"
+	v "github.com/qor5/ui/vuetify"
 	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
@@ -150,30 +150,31 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 	if tpb.perPageText != "" {
 		rowsPerPageText = tpb.perPageText
 	}
-	return vuetify.VContainer(vuetify.VRow().Justify("end").Align("center").Class("ma-0").
-		Children(
-			h.If(!tpb.noPerPagePart,
-				h.Div(
-					h.Text(rowsPerPageText),
+	return h.Div(
+		v.VRow().Justify("end").Align("center").Class("ma-0").
+			Children(
+				h.If(!tpb.noPerPagePart,
+					h.Div(
+						h.Text(rowsPerPageText),
+					),
+					h.Div(
+						v.VSelect().Items(sItems).Variant("underlined").ModelValue(fmt.Sprint(tpb.perPage)).
+							HideDetails(true).Density("compact").Attr("style", "margin-top: -8px").
+							Attr("@update:model-value", tpb.onSelectPerPage),
+					).Style("width: 64px;").Class("ml-6"),
 				),
 				h.Div(
-					vuetify.VSelect().Items(sItems).Variant("underlined").ModelValue(fmt.Sprint(tpb.perPage)).
-						HideDetails(true).Density("compact").Attr("style", "margin-top: -8px").
-						Attr("@update:model-value", tpb.onSelectPerPage),
-				).Style("width: 64px;").Class("ml-6"),
-			),
-			h.Div(
-				h.Text(fmt.Sprintf("%d-%d of %d", currPageStart, currPageEnd, tpb.total)),
-			).Class("ml-6"),
-			h.Div(
-				h.Span("").Style(prevIconStyle).Children(
-					vuetify.VBtn("").Variant("text").Icon("mdi-chevron-left").Size(32).Disabled(!canPrev).
-						Attr("@click", tpb.onPrevPage),
-				),
-				h.Span("").Style(nextIconStyle).Children(
-					vuetify.VBtn("").Variant("text").Icon("mdi-chevron-right").Size(32).Disabled(!canNext).
-						Attr("@click", tpb.onNextPage),
-				).Class("ml-3"),
-			).Class("ml-6"),
-		)).Fluid(true).MarshalHTML(ctx)
+					h.Text(fmt.Sprintf("%d-%d of %d", currPageStart, currPageEnd, tpb.total)),
+				).Class("ml-6"),
+				h.Div(
+					h.Span("").Style(prevIconStyle).Children(
+						v.VBtn("").Variant("text").Icon("mdi-chevron-left").Size(32).Disabled(!canPrev).
+							Attr("@click", tpb.onPrevPage),
+					),
+					h.Span("").Style(nextIconStyle).Children(
+						v.VBtn("").Variant("text").Icon("mdi-chevron-right").Size(32).Disabled(!canNext).
+							Attr("@click", tpb.onNextPage),
+					).Class("ml-3"),
+				).Class("ml-6"),
+			)).MarshalHTML(ctx)
 }
