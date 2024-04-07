@@ -32,7 +32,7 @@ func (b *VIconBuilder) End(v bool) (r *VIconBuilder) {
 }
 
 func (b *VIconBuilder) Icon(v interface{}) (r *VIconBuilder) {
-	b.tag.Attr("icon", fmt.Sprint(v))
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 

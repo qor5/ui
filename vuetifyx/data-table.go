@@ -233,6 +233,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			tds = append(tds, h.Td(
 				web.Scope(
 					v.VCheckbox().
+						Density(v.DensityCompact).
 						Class("mt-0").
 						TrueValue(id).
 						FalseValue("").
@@ -351,6 +352,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			heads = append(heads, h.Th("").Children(
 				web.Scope(
 					v.VCheckbox().
+						Density(v.DensityCompact).
 						Class("mt-0").
 						TrueValue(idsOfPageComma).
 						HideDetails(true).
