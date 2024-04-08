@@ -10,12 +10,16 @@ const addTags = (tag: any) => {
   if (!vnode.value) {
     return
   }
-  var lazyValue = vnode.value.modelValue
-  var startString = lazyValue.substring(0, vnode.value.$el.querySelector('input').selectionStart)
-  var endString = lazyValue.substring(
-    vnode.value.$el.querySelector('input').selectionEnd,
-    lazyValue.length
-  )
+  let lazyValue = vnode.value.modelValue
+  let selectionStart = vnode.value.selectionStart
+  let selectionEnd = vnode.value.selectionEnd
+  const input = vnode.value.$el.querySelector('input')
+  if (input) {
+    selectionStart = input.selectionStart
+    selectionEnd = input.selectionEnd
+  }
+  let startString = lazyValue.substring(0, selectionStart)
+  let endString = lazyValue.substring(selectionEnd, lazyValue.length)
 
   vnode.value.$emit('update:modelValue', startString + '{{' + tag + '}}' + endString)
   vnode.value.focus()

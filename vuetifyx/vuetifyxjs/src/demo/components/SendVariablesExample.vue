@@ -21,6 +21,15 @@ const value = ref('1eiuh1ihaubfiad')
       ref="setting_title"
     >
     </v-text-field>
+    <v-textarea
+      counter
+      v-model="value"
+      label="textarea"
+      variant="underlined"
+      @focus="seo.tagInputsFocus($refs.textarea)"
+      ref="textarea"
+    >
+    </v-textarea>
   </seo>
 </template>
 
