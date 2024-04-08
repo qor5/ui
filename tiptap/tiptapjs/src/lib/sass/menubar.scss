@@ -1,7 +1,8 @@
 .menubar {
-
   margin-bottom: 1rem;
-  transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s;
+  transition:
+    visibility 0.2s 0.4s,
+    opacity 0.2s 0.4s;
 
   &.is-hidden {
     visibility: hidden;
@@ -11,7 +12,9 @@
   &.is-focused {
     visibility: visible;
     opacity: 1;
-    transition: visibility 0.2s, opacity 0.2s;
+    transition:
+      visibility 0.2s,
+      opacity 0.2s;
   }
 
   &__button {

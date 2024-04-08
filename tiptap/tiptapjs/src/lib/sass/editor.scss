@@ -2,7 +2,6 @@
   position: relative;
 
   &__content {
-
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -10,7 +9,7 @@
     * {
       caret-color: currentColor;
     }
-    
+
     h1,
     h2,
     h3,
@@ -20,16 +19,15 @@
     pre,
     blockquote {
       margin: 1rem 0;
-    
+
       &:first-child {
         margin-top: 0;
       }
-    
+
       &:last-child {
         margin-bottom: 0;
       }
     }
-
 
     h1,
     h2,
@@ -98,7 +96,8 @@
       margin: 0;
       overflow: hidden;
 
-      td, th {
+      td,
+      th {
         min-width: 1em;
         border: 2px solid $color-grey;
         padding: 3px 5px;
@@ -119,14 +118,19 @@
         z-index: 2;
         position: absolute;
         content: "";
-        left: 0; right: 0; top: 0; bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
         background: rgba(200, 200, 255, 0.4);
         pointer-events: none;
       }
 
       .column-resize-handle {
         position: absolute;
-        right: -2px; top: 0; bottom: 0;
+        right: -2px;
+        top: 0;
+        bottom: 0;
         width: 4px;
         z-index: 20;
         background-color: #adf;
@@ -143,6 +147,5 @@
       cursor: ew-resize;
       cursor: col-resize;
     }
-
   }
 }
