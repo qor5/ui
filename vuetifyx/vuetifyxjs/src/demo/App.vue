@@ -28,6 +28,9 @@
         <v-divider class="mb-6"></v-divider>
         <h1 class="text-h2 mb-4">send-variables-example</h1>
         <send-variables-example></send-variables-example>
+        <v-divider class="mb-6"></v-divider>
+        <h1 class="text-h2 mb-4">scroll-iframe-example</h1>
+        <scroll-iframe-example></scroll-iframe-example>
       </v-container>
     </v-main>
   </v-app>
@@ -43,4 +46,6 @@ import AutoCompleteExample from '@/demo/components/AutoCompleteExample.vue'
 import TextDatepickerExample from '@/demo/components/TextDatepickerExample.vue'
 import DefaultNavigatorExample from '@/demo/components/DefaultNavigatorExample.vue'
 import SendVariablesExample from '@/demo/components/SendVariablesExample.vue'
+import ScrollIframeExample from '@/demo/components/ScrollIframeExample.vue'
+import ScrollIframe from '@/lib/ScrollIframe.vue'
 </script>
