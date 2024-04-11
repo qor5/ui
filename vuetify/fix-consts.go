@@ -81,3 +81,32 @@ const (
 	LocationTop    = "top"
 	LocationBottom = "bottom"
 )
+
+// sizing
+// width, height
+
+const (
+	HAuto   = "h-auto"
+	HScreen = "h-screen"
+	H0      = "h-0"
+	H25     = "h-25"
+	H50     = "h-50"
+	H75     = "h-75"
+	H100    = "h-100"
+
+	WAuto = "w-auto"
+	W0    = "w-0"
+	W25   = "w-25"
+	W50   = "w-50"
+	W75   = "w-75"
+	W100  = "w-100"
+)
+
+// v-slot
+const (
+	VSlotPrepend  = "prepend"
+	VSlotAppend   = "append"
+	VSlotTitle    = "title"
+	VSlotSubtitle = "subtitle"
+	VSlotText     = "text"
+)
