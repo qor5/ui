@@ -19,6 +19,7 @@ export default defineConfig(({mode}) => {
                 name: 'tiptap'
             },
             copyPublicDir: false,
+            // @snippet_begin(TipTapVueConfig)
             rollupOptions: {
                 external: ['vue'],
                 output: {
@@ -30,6 +31,7 @@ export default defineConfig(({mode}) => {
                     }
                 }
             }
+            // @snippet_end
         },
         plugins: [
             vue(),

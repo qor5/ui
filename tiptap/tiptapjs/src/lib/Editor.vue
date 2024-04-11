@@ -1,3 +1,4 @@
+<!--   @snippet_begin(TipTapEditorVueComponent) -->
 <script setup lang="ts">
 import "@/lib/sass/main.scss";
 import { Editor, EditorContent } from "@tiptap/vue-3";
@@ -229,3 +230,4 @@ onMounted(() => {
     <editor-content :editor="editor" class="tiptap-editor__content" />
   </div>
 </template>
+<!-- @snippet_end -->
