@@ -3,7 +3,7 @@ package cropper
 import (
 	"embed"
 
-	"github.com/qor5/web"
+	"github.com/qor5/web/v3"
 )
 
 //go:embed cropperjs/dist

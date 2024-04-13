@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/gob"
 	"fmt"
-	"github.com/qor5/web"
+	"github.com/qor5/web/v3"
 	"net/url"
 	"sort"
 	"strconv"

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	v "github.com/qor5/ui/vuetify"
-	"github.com/qor5/web"
+	v "github.com/qor5/ui/v3/vuetify"
+	"github.com/qor5/web/v3"
 	"github.com/sunfmin/reflectutils"
 	h "github.com/theplant/htmlgo"
 	"github.com/thoas/go-funk"
