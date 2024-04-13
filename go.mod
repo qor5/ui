@@ -3,7 +3,7 @@ module github.com/qor5/ui/v3
 go 1.22
 
 require (
-	github.com/qor5/web/v3 v3.0.0-00010101000000-000000000000
+	github.com/qor5/web/v3 v3.0.0
 	github.com/sunfmin/reflectutils v1.0.3
 	github.com/theplant/htmlgo v1.0.3
 	github.com/theplant/testingutils v0.0.0-20240326065615-ab2586803ce4
