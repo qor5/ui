@@ -9,7 +9,6 @@ import (
 	"github.com/qor5/web/v3"
 	"github.com/sunfmin/reflectutils"
 	h "github.com/theplant/htmlgo"
-	"github.com/thoas/go-funk"
 )
 
 type CellComponentFunc func(obj interface{}, fieldName string, ctx *web.EventContext) h.HTMLComponent
@@ -156,6 +155,15 @@ type primarySlugger interface {
 	PrimarySlug() string
 }
 
+func containsString(s []string, v string) bool {
+	for _, vv := range s {
+		if vv == v {
+			return true
+		}
+	}
+	return false
+}
+
 func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) {
 	ctx := web.MustGetEventContext(c)
 
@@ -171,7 +179,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 	// map[obj_id]{rowMenus}
 	objRowMenusMap := make(map[string][]h.HTMLComponent)
-	funk.ForEach(b.data, func(obj interface{}) {
+	reflectutils.ForEach(b.data, func(obj interface{}) {
 		id := ObjectID(obj)
 		var opMenuItems []h.HTMLComponent
 		for _, f := range b.rowMenuItemFuncs {
@@ -198,13 +206,13 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 	i := 0
 	tdCount := 0
 	haveMoreRecord := false
-	funk.ForEach(b.data, func(obj interface{}) {
+	reflectutils.ForEach(b.data, func(obj interface{}) {
 
 		id := ObjectID(obj)
 
 		idsOfPage = append(idsOfPage, id)
 		inputValue := ""
-		if funk.ContainsString(selected, id) {
+		if containsString(selected, id) {
 			inputValue = id
 		}
 		var tds []h.HTMLComponent
@@ -484,7 +492,7 @@ func getSelectedIds(ctx *web.EventContext, selectedParamName string) (selected [
 
 func allSelected(selectedInURL []string, pageSelected []string) bool {
 	for _, ps := range pageSelected {
-		if !funk.ContainsString(selectedInURL, ps) {
+		if !containsString(selectedInURL, ps) {
 			return false
 		}
 	}
