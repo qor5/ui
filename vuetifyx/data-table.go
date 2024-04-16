@@ -278,7 +278,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 						v.VList(
 							rowMenus...,
-						).Density("compact"),
+						),
 					),
 				).Style("width: 64px;").Class("pl-0")
 			} else {
@@ -450,7 +450,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			thead,
 			h.Tbody(rows...),
 			tfoot,
-		).Density("compact"),
+		),
 	).VSlot("{ locals }").Init(fmt.Sprintf(` { selected_count : %v , loadmore : false }`, len(selected)))
 
 	if inPlaceLoadMore {
