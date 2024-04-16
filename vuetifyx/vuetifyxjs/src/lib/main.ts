@@ -12,6 +12,7 @@ import ScrollIframe from '@/lib/ScrollIframe.vue'
 import draggable from 'vuedraggable'
 import SendVariables from '@/lib/SendVariables.vue'
 import MessageListener from '@/lib/MessageListener.vue'
+import DragListener from '@/lib/DragListener.vue'
 
 const vuetifyx = {
   install: (app: App) => {
@@ -27,6 +28,7 @@ const vuetifyx = {
     app.component('vx-scroll-iframe', ScrollIframe)
     app.component('vx-send-variables', SendVariables)
     app.component('vx-messagelistener', MessageListener)
+    app.component('vx-drag-listener', DragListener)
   }
 }
 declare const window: any
