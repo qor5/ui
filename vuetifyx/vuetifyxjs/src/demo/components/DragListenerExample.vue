@@ -14,12 +14,11 @@ const list = ref([
 const drop = (e: any) => {
   console.log('drop', e)
 }
-
 </script>
 
 <template>
   <drag-listener @drop="drop">
-    <div v-for="item in list" draggable="true" >{{ item.name }}</div>
+    <div v-for="item in list" draggable="true">{{ item.name }}</div>
     <div id="vx-drag-target-area">
       <iframe src="https://demo.qor5.theplant-dev.com/" style="pointer-events: none"></iframe>
     </div>
