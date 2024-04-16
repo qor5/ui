@@ -10,6 +10,9 @@ import (
 //go:embed dist
 var assetsbox embed.FS
 
+//go:embed vuetifyjs/dist
+var vuetifyjs embed.FS
+
 func JSComponentsPack() web.ComponentsPack {
 	v, err := assetsbox.ReadFile("dist/vuetify.min.js")
 	if err != nil {
@@ -20,7 +23,7 @@ func JSComponentsPack() web.ComponentsPack {
 }
 
 func CSSComponentsPack() web.ComponentsPack {
-	v, err := assetsbox.ReadFile("dist/vuetify.min.css")
+	v, err := vuetifyjs.ReadFile("vuetifyjs/dist/index.css")
 	if err != nil {
 		panic(err)
 	}
