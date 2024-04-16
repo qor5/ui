@@ -3,6 +3,7 @@ package vuetifyx
 import (
 	"context"
 	"fmt"
+	"slices"
 	"strings"
 
 	v "github.com/qor5/ui/v3/vuetify"
@@ -155,15 +156,6 @@ type primarySlugger interface {
 	PrimarySlug() string
 }
 
-func containsString(s []string, v string) bool {
-	for _, vv := range s {
-		if vv == v {
-			return true
-		}
-	}
-	return false
-}
-
 func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) {
 	ctx := web.MustGetEventContext(c)
 
@@ -212,7 +204,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 		idsOfPage = append(idsOfPage, id)
 		inputValue := ""
-		if containsString(selected, id) {
+		if slices.Contains(selected, id) {
 			inputValue = id
 		}
 		var tds []h.HTMLComponent
@@ -492,7 +484,7 @@ func getSelectedIds(ctx *web.EventContext, selectedParamName string) (selected [
 
 func allSelected(selectedInURL []string, pageSelected []string) bool {
 	for _, ps := range pageSelected {
-		if !containsString(selectedInURL, ps) {
+		if !slices.Contains(selectedInURL, ps) {
 			return false
 		}
 	}
