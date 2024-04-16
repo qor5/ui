@@ -28,19 +28,21 @@ onMounted(() => {
   }
   drag.ondragstart = (e) => {
     start = e.target
-    const target = document.getElementById(props.targetId)
+    const target = document.getElementById(props.targetId).querySelector('iframe')
     if (target) {
       target.style.pointerEvents = 'none'
     }
   }
   drag.ondragover = (e) => {
     e.preventDefault()
-    // console.log(e.target)
   }
   drag.ondrop = (e) => {
-    const target = document.getElementById(props.targetId)
+    const target = document.getElementById(props.targetId).querySelector('iframe')
     if (target) {
       target.style.pointerEvents = 'auto'
+    }
+    if (e.target.id !== props.targetId) {
+      return
     }
     emit('drop', { start: start, target: e.target })
   }
