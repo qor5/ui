@@ -61,8 +61,8 @@ func (b *CropperBuilder) Alt(v string) (r *CropperBuilder) {
 	return b
 }
 
-func (b *CropperBuilder) Value(v Value) (r *CropperBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *CropperBuilder) ModelValue(v Value) (r *CropperBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
