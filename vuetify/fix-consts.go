@@ -110,3 +110,9 @@ const (
 	VSlotSubtitle = "subtitle"
 	VSlotText     = "text"
 )
+
+// direction
+const (
+	DirectionHorizontal = "horizontal"
+	DirectionVertical   = "vertical"
+)
