@@ -56,7 +56,7 @@
 <script lang="ts" setup>
 import { format, parse } from 'date-fns'
 
-import { computed, onMounted, Ref, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, Ref, ref, watch } from 'vue'
 
 const DEFAULT_TIME = '00:00:00'
 const DEFAULT_DATE_FORMAT = 'yyyy-MM-dd'
@@ -113,9 +113,6 @@ const props = defineProps({
 const date = ref()
 const time = ref(DEFAULT_TIME)
 const timer = ref()
-const value = computed(() => {
-  return props.modelValue
-})
 
 const dateTimeFormat = computed(() => {
   return props.dateFormat + ' ' + props.timeFormat
@@ -141,11 +138,11 @@ const dateSelected = () => {
   return !date.value
 }
 const init = () => {
-  if (!value.value) {
+  if (!props.modelValue) {
     return
   }
   // see https://stackoverflow.com/a/9436948
-  let initDateTime = parse(value.value, dateTimeFormat.value, new Date())
+  let initDateTime = parse(props.modelValue, dateTimeFormat.value, new Date())
   date.value = initDateTime
   time.value = format(initDateTime, DEFAULT_TIME_FORMAT)
 }
@@ -169,8 +166,10 @@ const resetPicker = (isActive: Ref) => {
     timer.value.selectingHour = true
   }
 }
-watch(value, () => {
-  init()
+onMounted(() => {
+  nextTick(() => {
+    init()
+  })
 })
 </script>
 

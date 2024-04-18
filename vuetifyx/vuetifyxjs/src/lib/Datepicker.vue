@@ -59,7 +59,7 @@
 <script lang="ts" setup>
 import { format, parse } from 'date-fns'
 
-import { computed, onMounted, Ref, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, Ref, ref, watch } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -104,9 +104,6 @@ const props = defineProps({
 })
 const display = ref(false)
 const date = ref()
-const value = computed(() => {
-  return props.modelValue
-})
 
 const dateTimeFormat = computed(() => {
   return props.dateFormat
@@ -115,11 +112,11 @@ const formattedDatetime = computed(() => {
   return date.value ? format(<Date>date.value, dateTimeFormat.value) : ''
 })
 const init = () => {
-  if (!value.value) {
+  if (!props.modelValue) {
     return
   }
   // see https://stackoverflow.com/a/9436948
-  date.value = parse(value.value, dateTimeFormat.value, new Date())
+  date.value = parse(props.modelValue, dateTimeFormat.value, new Date())
 }
 
 const emit = defineEmits(['update:modelValue'])
@@ -140,7 +137,9 @@ const clearHandler = (isActive: Ref) => {
 const resetPicker = () => {
   display.value = false
 }
-watch(value, () => {
-  init()
+onMounted(() => {
+  nextTick(() => {
+    init()
+  })
 })
 </script>
