@@ -2,7 +2,6 @@ export const themes = {
   light: {
     dark: false,
     colors: {
-      /* custom colors: `*-darken-2`, `*-lighten-1`, `*-lighten-2` */
       // primary
       'primary': '#3E63DD',
       'on-primary': '#fff',
@@ -47,10 +46,10 @@ export const themes = {
       'error-lighten-2': '#FFE5E5',
       // background
       'background': '#fff',
-      'on-background': '#424242',
+      'on-background': '#212121',
       // surface
       'surface': '#fff',
-      'on-surface': '#212121',
+      'on-surface': '#424242',
       // grey
       'grey-50': '#FAFAFA',
       'grey-100': '#F5F5F5',
@@ -66,7 +65,7 @@ export const themes = {
     variables: {
       'border-color': '#000000',
       'border-opacity': 0.12,
-      'high-emphasis-opacity': 0.87,
+      'high-emphasis-opacity': 1,
       'medium-emphasis-opacity': 0.60,
       'disabled-opacity': 0.38,
       'idle-opacity': 0.04,
