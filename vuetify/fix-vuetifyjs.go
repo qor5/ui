@@ -2,6 +2,7 @@ package vuetify
 
 import (
 	"embed"
+	"os"
 	"strings"
 
 	"github.com/qor5/web/v3"
@@ -13,21 +14,27 @@ var assetsbox embed.FS
 //go:embed vuetifyjs/dist
 var vuetifyjs embed.FS
 
+var customizeVuetifyCSS = os.Getenv("CUSTOMIZE_VUETIFY_CSS") != ""
+
 func JSComponentsPack() web.ComponentsPack {
 	v, err := assetsbox.ReadFile("dist/vuetify.min.js")
 	if err != nil {
 		panic(err)
 	}
-
 	return web.ComponentsPack(v)
 }
 
 func CSSComponentsPack() web.ComponentsPack {
-	v, err := vuetifyjs.ReadFile("vuetifyjs/dist/index.css")
+	var v []byte
+	var err error
+	if customizeVuetifyCSS {
+		v, err = vuetifyjs.ReadFile("vuetifyjs/dist/index.css")
+	} else {
+		v, err = assetsbox.ReadFile("dist/vuetify.min.css")
+	}
 	if err != nil {
 		panic(err)
 	}
-
 	return web.ComponentsPack(v)
 }
 
