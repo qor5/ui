@@ -56,6 +56,8 @@ defineExpose({ scrollToCurrentContainer })
   <iframe
     ref="iframe"
     :srcdoc="srcdoc"
+    frameborder="0"
+    scrolling="no"
     @load="load"
     :style="{
       width: '100%',
