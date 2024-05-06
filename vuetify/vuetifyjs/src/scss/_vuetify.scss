@@ -1,4 +1,5 @@
-$font-family-custom: "SF Pro", sans-serif;
+$font-family-custom: -apple-system, "system-ui", "Segoe UI", "Noto Sans",
+  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 $border-radius-custom: 4px;
 
 @forward "vuetify/settings" with (
