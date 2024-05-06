@@ -12,7 +12,6 @@ const load = (event: any) => {
   let height = document.body.parentElement?.offsetHeight + 'px'
   document.body.style.height = height
   document.cookie = `${props.iframeHeightName}=` + height
-  addListener()
 }
 
 const scrollToCurrentContainer = (data: any) => {
@@ -25,29 +24,14 @@ const scrollToCurrentContainer = (data: any) => {
   if (!current) {
     return
   }
-  const hover = iframe.value.contentWindow.document.body.querySelector('.wrapper-shadow.hover')
-  if (hover) {
-    hover.classList.remove('hover')
+  const highlight = iframe.value.contentWindow.document.body.querySelector(
+    '.wrapper-shadow.highlight'
+  )
+  if (highlight) {
+    highlight.classList.remove('highlight')
   }
   window.parent.scroll({ top: current.offsetTop, behavior: 'smooth' })
-  current.querySelector('.wrapper-shadow')?.classList.add('hover')
-}
-const addListener = () => {
-  if (!iframe.value) {
-    return
-  }
-  iframe.value.contentWindow.document.body
-    .querySelectorAll('.wrapper-shadow')
-    .forEach((shadow: any) => {
-      shadow.addEventListener('mouseover', (event: any) => {
-        iframe.value.contentWindow.document.body
-          .querySelectorAll('.wrapper-shadow.hover')
-          .forEach((item: any) => {
-            item.classList.remove('hover')
-          })
-        shadow.classList.add('hover')
-      })
-    })
+  current.parentElement?.classList.add('highlight')
 }
 defineExpose({ scrollToCurrentContainer })
 </script>
@@ -56,6 +40,8 @@ defineExpose({ scrollToCurrentContainer })
   <iframe
     ref="iframe"
     :srcdoc="srcdoc"
+    frameborder="0"
+    scrolling="no"
     @load="load"
     :style="{
       width: '100%',

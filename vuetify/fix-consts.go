@@ -116,3 +116,11 @@ const (
 	DirectionHorizontal = "horizontal"
 	DirectionVertical   = "vertical"
 )
+
+// type
+const (
+	TypeInfo    = "info"
+	TypeSuccess = "success"
+	TypeWarning = "warning"
+	TypeError   = "error"
+)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Ref, onMounted, computed } from 'vue'
+import { ref, Ref, onMounted, computed, onUpdated } from 'vue'
 import draggable from 'vuedraggable'
 
 const emit = defineEmits(['update:modelValue'])
@@ -115,6 +115,9 @@ const removeItem = (v: any) => {
 }
 onMounted(() => {
   loadRemoteItems()
+})
+onUpdated(() => {
+  value.value = props.modelValue
 })
 
 const reloadSearch = (val: any) => {
