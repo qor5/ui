@@ -1,3 +1,5 @@
+@use "./variables" as variables;
+
 $font-family-custom: -apple-system, "system-ui", "Segoe UI", "Noto Sans",
   Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 $border-radius-custom: 4px;
@@ -15,7 +17,7 @@ $border-radius-custom: 4px;
   $table-header-font-weight: 510 !default,
   $table-header-height: 44px !default,
   $table-row-height: 60px !default,
-  $table-border-color: rgb(var(--v-theme-grey-300)) !default,
+  $table-border-color: variables.$color-grey-300 !default,
 
   // Global Border Radius
   $border-radius-root: $border-radius-custom !default,
