@@ -98,6 +98,26 @@ func (b *VSwitchBuilder) Density(v interface{}) (r *VSwitchBuilder) {
 	return b
 }
 
+func (b *VSwitchBuilder) MaxWidth(v interface{}) (r *VSwitchBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSwitchBuilder) MinWidth(v interface{}) (r *VSwitchBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSwitchBuilder) Width(v interface{}) (r *VSwitchBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VSwitchBuilder) Theme(v string) (r *VSwitchBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VSwitchBuilder) Disabled(v bool) (r *VSwitchBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -210,11 +230,6 @@ func (b *VSwitchBuilder) Multiple(v bool) (r *VSwitchBuilder) {
 
 func (b *VSwitchBuilder) ValueComparator(v interface{}) (r *VSwitchBuilder) {
 	b.tag.Attr(":value-comparator", h.JSONString(v))
-	return b
-}
-
-func (b *VSwitchBuilder) Theme(v string) (r *VSwitchBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

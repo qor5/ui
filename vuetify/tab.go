@@ -38,6 +38,11 @@ func (b *VTabBuilder) Direction(v interface{}) (r *VTabBuilder) {
 	return b
 }
 
+func (b *VTabBuilder) BaseColor(v string) (r *VTabBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VTabBuilder) PrependIcon(v interface{}) (r *VTabBuilder) {
 	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
@@ -45,6 +50,11 @@ func (b *VTabBuilder) PrependIcon(v interface{}) (r *VTabBuilder) {
 
 func (b *VTabBuilder) AppendIcon(v interface{}) (r *VTabBuilder) {
 	b.tag.Attr(":append-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Readonly(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 

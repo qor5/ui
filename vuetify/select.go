@@ -96,6 +96,21 @@ func (b *VSelectBuilder) Density(v interface{}) (r *VSelectBuilder) {
 	return b
 }
 
+func (b *VSelectBuilder) MaxWidth(v interface{}) (r *VSelectBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSelectBuilder) MinWidth(v interface{}) (r *VSelectBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSelectBuilder) Width(v interface{}) (r *VSelectBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
 func (b *VSelectBuilder) Items(v interface{}) (r *VSelectBuilder) {
 	b.tag.Attr(":items", h.JSONString(v))
 	return b

@@ -98,6 +98,11 @@ func (b *VTabsBuilder) ShowArrows(v interface{}) (r *VTabsBuilder) {
 	return b
 }
 
+func (b *VTabsBuilder) Mobile(v bool) (r *VTabsBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VTabsBuilder) MobileBreakpoint(v interface{}) (r *VTabsBuilder) {
 	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b

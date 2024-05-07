@@ -83,6 +83,26 @@ func (b *VRadioGroupBuilder) Density(v interface{}) (r *VRadioGroupBuilder) {
 	return b
 }
 
+func (b *VRadioGroupBuilder) MaxWidth(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) MinWidth(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Width(v interface{}) (r *VRadioGroupBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioGroupBuilder) Theme(v string) (r *VRadioGroupBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VRadioGroupBuilder) Disabled(v bool) (r *VRadioGroupBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -170,11 +190,6 @@ func (b *VRadioGroupBuilder) Ripple(v interface{}) (r *VRadioGroupBuilder) {
 
 func (b *VRadioGroupBuilder) ValueComparator(v interface{}) (r *VRadioGroupBuilder) {
 	b.tag.Attr(":value-comparator", h.JSONString(v))
-	return b
-}
-
-func (b *VRadioGroupBuilder) Theme(v string) (r *VRadioGroupBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

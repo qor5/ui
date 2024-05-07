@@ -33,6 +33,11 @@ func (b *VDividerBuilder) Inset(v bool) (r *VDividerBuilder) {
 	return b
 }
 
+func (b *VDividerBuilder) Opacity(v interface{}) (r *VDividerBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VDividerBuilder) Thickness(v interface{}) (r *VDividerBuilder) {
 	b.tag.Attr(":thickness", h.JSONString(v))
 	return b

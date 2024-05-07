@@ -43,6 +43,11 @@ func (b *VFabBuilder) Extended(v bool) (r *VFabBuilder) {
 	return b
 }
 
+func (b *VFabBuilder) Layout(v bool) (r *VFabBuilder) {
+	b.tag.Attr(":layout", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFabBuilder) Location(v interface{}) (r *VFabBuilder) {
 	b.tag.Attr(":location", h.JSONString(v))
 	return b
@@ -63,6 +68,11 @@ func (b *VFabBuilder) Active(v bool) (r *VFabBuilder) {
 	return b
 }
 
+func (b *VFabBuilder) BaseColor(v string) (r *VFabBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VFabBuilder) PrependIcon(v interface{}) (r *VFabBuilder) {
 	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
@@ -75,6 +85,11 @@ func (b *VFabBuilder) AppendIcon(v interface{}) (r *VFabBuilder) {
 
 func (b *VFabBuilder) Block(v bool) (r *VFabBuilder) {
 	b.tag.Attr(":block", fmt.Sprint(v))
+	return b
+}
+
+func (b *VFabBuilder) Readonly(v bool) (r *VFabBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 

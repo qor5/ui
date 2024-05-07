@@ -48,6 +48,11 @@ func (b *VFileInputBuilder) CounterString(v string) (r *VFileInputBuilder) {
 	return b
 }
 
+func (b *VFileInputBuilder) HideInput(v bool) (r *VFileInputBuilder) {
+	b.tag.Attr(":hide-input", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFileInputBuilder) Multiple(v bool) (r *VFileInputBuilder) {
 	b.tag.Attr(":multiple", fmt.Sprint(v))
 	return b
@@ -110,6 +115,26 @@ func (b *VFileInputBuilder) Reverse(v bool) (r *VFileInputBuilder) {
 
 func (b *VFileInputBuilder) Density(v interface{}) (r *VFileInputBuilder) {
 	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) MaxWidth(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) MinWidth(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Width(v interface{}) (r *VFileInputBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VFileInputBuilder) Theme(v string) (r *VFileInputBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
@@ -240,11 +265,6 @@ func (b *VFileInputBuilder) Rounded(v interface{}) (r *VFileInputBuilder) {
 
 func (b *VFileInputBuilder) Tile(v bool) (r *VFileInputBuilder) {
 	b.tag.Attr(":tile", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFileInputBuilder) Theme(v string) (r *VFileInputBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

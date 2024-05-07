@@ -73,6 +73,11 @@ func (b *VNumberInputBuilder) Density(v interface{}) (r *VNumberInputBuilder) {
 	return b
 }
 
+func (b *VNumberInputBuilder) Theme(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VNumberInputBuilder) Disabled(v bool) (r *VNumberInputBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -88,8 +93,8 @@ func (b *VNumberInputBuilder) Readonly(v bool) (r *VNumberInputBuilder) {
 	return b
 }
 
-func (b *VNumberInputBuilder) ModelValue(v interface{}) (r *VNumberInputBuilder) {
-	b.tag.Attr(":model-value", h.JSONString(v))
+func (b *VNumberInputBuilder) ModelValue(v int) (r *VNumberInputBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
@@ -130,11 +135,6 @@ func (b *VNumberInputBuilder) Loading(v interface{}) (r *VNumberInputBuilder) {
 
 func (b *VNumberInputBuilder) Rounded(v interface{}) (r *VNumberInputBuilder) {
 	b.tag.Attr(":rounded", h.JSONString(v))
-	return b
-}
-
-func (b *VNumberInputBuilder) Theme(v string) (r *VNumberInputBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

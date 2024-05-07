@@ -23,8 +23,18 @@ func (b *VDataTableRowBuilder) CellProps(v interface{}) (r *VDataTableRowBuilder
 	return b
 }
 
+func (b *VDataTableRowBuilder) Mobile(v bool) (r *VDataTableRowBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableRowBuilder) Index(v int) (r *VDataTableRowBuilder) {
 	b.tag.Attr(":index", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableRowBuilder) MobileBreakpoint(v interface{}) (r *VDataTableRowBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 

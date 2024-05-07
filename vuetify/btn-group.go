@@ -18,6 +18,11 @@ func VBtnGroup(children ...h.HTMLComponent) (r *VBtnGroupBuilder) {
 	return
 }
 
+func (b *VBtnGroupBuilder) BaseColor(v string) (r *VBtnGroupBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VBtnGroupBuilder) Divided(v bool) (r *VBtnGroupBuilder) {
 	b.tag.Attr(":divided", fmt.Sprint(v))
 	return b

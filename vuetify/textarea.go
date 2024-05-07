@@ -138,6 +138,26 @@ func (b *VTextareaBuilder) Density(v interface{}) (r *VTextareaBuilder) {
 	return b
 }
 
+func (b *VTextareaBuilder) MaxWidth(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) MinWidth(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Width(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Theme(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VTextareaBuilder) Disabled(v bool) (r *VTextareaBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -265,11 +285,6 @@ func (b *VTextareaBuilder) Rounded(v interface{}) (r *VTextareaBuilder) {
 
 func (b *VTextareaBuilder) Tile(v bool) (r *VTextareaBuilder) {
 	b.tag.Attr(":tile", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Theme(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

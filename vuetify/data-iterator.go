@@ -148,6 +148,11 @@ func (b *VDataIteratorBuilder) Tag(v string) (r *VDataIteratorBuilder) {
 	return b
 }
 
+func (b *VDataIteratorBuilder) Transition(v interface{}) (r *VDataIteratorBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
 func (b *VDataIteratorBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

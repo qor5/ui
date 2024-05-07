@@ -33,6 +33,11 @@ func (b *VAppBarNavIconBuilder) Active(v bool) (r *VAppBarNavIconBuilder) {
 	return b
 }
 
+func (b *VAppBarNavIconBuilder) BaseColor(v string) (r *VAppBarNavIconBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VAppBarNavIconBuilder) PrependIcon(v interface{}) (r *VAppBarNavIconBuilder) {
 	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
@@ -45,6 +50,11 @@ func (b *VAppBarNavIconBuilder) AppendIcon(v interface{}) (r *VAppBarNavIconBuil
 
 func (b *VAppBarNavIconBuilder) Block(v bool) (r *VAppBarNavIconBuilder) {
 	b.tag.Attr(":block", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAppBarNavIconBuilder) Readonly(v bool) (r *VAppBarNavIconBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 

@@ -18,6 +18,11 @@ func VBottomNavigation(children ...h.HTMLComponent) (r *VBottomNavigationBuilder
 	return
 }
 
+func (b *VBottomNavigationBuilder) BaseColor(v string) (r *VBottomNavigationBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VBottomNavigationBuilder) BgColor(v string) (r *VBottomNavigationBuilder) {
 	b.tag.Attr("bg-color", v)
 	return b

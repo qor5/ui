@@ -136,6 +136,21 @@ func (b *VAutocompleteBuilder) Density(v interface{}) (r *VAutocompleteBuilder) 
 	return b
 }
 
+func (b *VAutocompleteBuilder) MaxWidth(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) MinWidth(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Width(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
 func (b *VAutocompleteBuilder) Items(v interface{}) (r *VAutocompleteBuilder) {
 	b.tag.Attr(":items", h.JSONString(v))
 	return b

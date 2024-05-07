@@ -68,6 +68,26 @@ func (b *VInputBuilder) Density(v interface{}) (r *VInputBuilder) {
 	return b
 }
 
+func (b *VInputBuilder) MaxWidth(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) MinWidth(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) Width(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) Theme(v string) (r *VInputBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VInputBuilder) Disabled(v bool) (r *VInputBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b

@@ -23,6 +23,11 @@ func (b *VExpandXTransitionBuilder) Disabled(v bool) (r *VExpandXTransitionBuild
 	return b
 }
 
+func (b *VExpandXTransitionBuilder) Group(v bool) (r *VExpandXTransitionBuilder) {
+	b.tag.Attr(":group", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpandXTransitionBuilder) Mode(v interface{}) (r *VExpandXTransitionBuilder) {
 	b.tag.Attr(":mode", h.JSONString(v))
 	return b

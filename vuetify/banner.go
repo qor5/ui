@@ -93,6 +93,11 @@ func (b *VBannerBuilder) Width(v interface{}) (r *VBannerBuilder) {
 	return b
 }
 
+func (b *VBannerBuilder) Mobile(v bool) (r *VBannerBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VBannerBuilder) MobileBreakpoint(v interface{}) (r *VBannerBuilder) {
 	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b

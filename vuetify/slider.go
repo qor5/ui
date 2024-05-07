@@ -183,6 +183,26 @@ func (b *VSliderBuilder) Density(v interface{}) (r *VSliderBuilder) {
 	return b
 }
 
+func (b *VSliderBuilder) MaxWidth(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) MinWidth(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Width(v interface{}) (r *VSliderBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VSliderBuilder) Theme(v string) (r *VSliderBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VSliderBuilder) MaxErrors(v interface{}) (r *VSliderBuilder) {
 	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b

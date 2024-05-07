@@ -63,6 +63,11 @@ func (b *VChipGroupBuilder) ShowArrows(v interface{}) (r *VChipGroupBuilder) {
 	return b
 }
 
+func (b *VChipGroupBuilder) Mobile(v bool) (r *VChipGroupBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VChipGroupBuilder) MobileBreakpoint(v interface{}) (r *VChipGroupBuilder) {
 	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b

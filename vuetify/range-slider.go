@@ -83,6 +83,26 @@ func (b *VRangeSliderBuilder) Density(v interface{}) (r *VRangeSliderBuilder) {
 	return b
 }
 
+func (b *VRangeSliderBuilder) MaxWidth(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) MinWidth(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Width(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Theme(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VRangeSliderBuilder) Disabled(v bool) (r *VRangeSliderBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b

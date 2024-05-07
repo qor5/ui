@@ -23,6 +23,36 @@ func (b *VMainBuilder) Scrollable(v bool) (r *VMainBuilder) {
 	return b
 }
 
+func (b *VMainBuilder) Height(v interface{}) (r *VMainBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VMainBuilder) MaxHeight(v interface{}) (r *VMainBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VMainBuilder) MaxWidth(v interface{}) (r *VMainBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VMainBuilder) MinHeight(v interface{}) (r *VMainBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VMainBuilder) MinWidth(v interface{}) (r *VMainBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VMainBuilder) Width(v interface{}) (r *VMainBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
 func (b *VMainBuilder) Tag(v string) (r *VMainBuilder) {
 	b.tag.Attr("tag", v)
 	return b

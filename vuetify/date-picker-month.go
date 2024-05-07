@@ -33,6 +33,16 @@ func (b *VDatePickerMonthBuilder) ShowWeek(v bool) (r *VDatePickerMonthBuilder) 
 	return b
 }
 
+func (b *VDatePickerMonthBuilder) Transition(v string) (r *VDatePickerMonthBuilder) {
+	b.tag.Attr("transition", v)
+	return b
+}
+
+func (b *VDatePickerMonthBuilder) ReverseTransition(v string) (r *VDatePickerMonthBuilder) {
+	b.tag.Attr("reverse-transition", v)
+	return b
+}
+
 func (b *VDatePickerMonthBuilder) Disabled(v bool) (r *VDatePickerMonthBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -55,6 +65,11 @@ func (b *VDatePickerMonthBuilder) Year(v interface{}) (r *VDatePickerMonthBuilde
 
 func (b *VDatePickerMonthBuilder) Weekdays(v interface{}) (r *VDatePickerMonthBuilder) {
 	b.tag.Attr(":weekdays", h.JSONString(v))
+	return b
+}
+
+func (b *VDatePickerMonthBuilder) WeeksInMonth(v interface{}) (r *VDatePickerMonthBuilder) {
+	b.tag.Attr(":weeks-in-month", h.JSONString(v))
 	return b
 }
 

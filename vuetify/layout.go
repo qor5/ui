@@ -18,6 +18,36 @@ func VLayout(children ...h.HTMLComponent) (r *VLayoutBuilder) {
 	return
 }
 
+func (b *VLayoutBuilder) Height(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VLayoutBuilder) MaxHeight(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VLayoutBuilder) MaxWidth(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VLayoutBuilder) MinHeight(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VLayoutBuilder) MinWidth(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VLayoutBuilder) Width(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
 func (b *VLayoutBuilder) FullHeight(v bool) (r *VLayoutBuilder) {
 	b.tag.Attr(":full-height", fmt.Sprint(v))
 	return b

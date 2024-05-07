@@ -23,11 +23,6 @@ func (b *VTimelineBuilder) Justify(v string) (r *VTimelineBuilder) {
 	return b
 }
 
-func (b *VTimelineBuilder) LineInset(v interface{}) (r *VTimelineBuilder) {
-	b.tag.Attr(":line-inset", h.JSONString(v))
-	return b
-}
-
 func (b *VTimelineBuilder) LineThickness(v interface{}) (r *VTimelineBuilder) {
 	b.tag.Attr(":line-thickness", h.JSONString(v))
 	return b
@@ -38,13 +33,43 @@ func (b *VTimelineBuilder) LineColor(v string) (r *VTimelineBuilder) {
 	return b
 }
 
-func (b *VTimelineBuilder) Density(v interface{}) (r *VTimelineBuilder) {
-	b.tag.Attr(":density", h.JSONString(v))
+func (b *VTimelineBuilder) DotColor(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("dot-color", v)
+	return b
+}
+
+func (b *VTimelineBuilder) FillDot(v bool) (r *VTimelineBuilder) {
+	b.tag.Attr(":fill-dot", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimelineBuilder) HideOpposite(v bool) (r *VTimelineBuilder) {
+	b.tag.Attr(":hide-opposite", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimelineBuilder) IconColor(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("icon-color", v)
+	return b
+}
+
+func (b *VTimelineBuilder) LineInset(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":line-inset", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) Size(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
 	return b
 }
 
 func (b *VTimelineBuilder) Tag(v string) (r *VTimelineBuilder) {
 	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VTimelineBuilder) Density(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 

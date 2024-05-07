@@ -23,6 +23,11 @@ func (b *VCounterBuilder) Active(v bool) (r *VCounterBuilder) {
 	return b
 }
 
+func (b *VCounterBuilder) Disabled(v bool) (r *VCounterBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VCounterBuilder) Max(v interface{}) (r *VCounterBuilder) {
 	b.tag.Attr(":max", h.JSONString(v))
 	return b

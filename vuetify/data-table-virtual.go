@@ -33,6 +33,11 @@ func (b *VDataTableVirtualBuilder) CellProps(v interface{}) (r *VDataTableVirtua
 	return b
 }
 
+func (b *VDataTableVirtualBuilder) Mobile(v bool) (r *VDataTableVirtualBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableVirtualBuilder) Headers(v interface{}) (r *VDataTableVirtualBuilder) {
 	b.tag.Attr(":headers", h.JSONString(v))
 	return b
@@ -60,6 +65,11 @@ func (b *VDataTableVirtualBuilder) Items(v interface{}) (r *VDataTableVirtualBui
 
 func (b *VDataTableVirtualBuilder) NoDataText(v string) (r *VDataTableVirtualBuilder) {
 	b.tag.Attr("no-data-text", v)
+	return b
+}
+
+func (b *VDataTableVirtualBuilder) MobileBreakpoint(v interface{}) (r *VDataTableVirtualBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 

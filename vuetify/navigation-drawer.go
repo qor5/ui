@@ -78,6 +78,11 @@ func (b *VNavigationDrawerBuilder) Temporary(v bool) (r *VNavigationDrawerBuilde
 	return b
 }
 
+func (b *VNavigationDrawerBuilder) Persistent(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":persistent", fmt.Sprint(v))
+	return b
+}
+
 func (b *VNavigationDrawerBuilder) Touchless(v bool) (r *VNavigationDrawerBuilder) {
 	b.tag.Attr(":touchless", fmt.Sprint(v))
 	return b
@@ -100,6 +105,21 @@ func (b *VNavigationDrawerBuilder) Sticky(v bool) (r *VNavigationDrawerBuilder) 
 
 func (b *VNavigationDrawerBuilder) Border(v interface{}) (r *VNavigationDrawerBuilder) {
 	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) CloseDelay(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":close-delay", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) OpenDelay(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":open-delay", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Mobile(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
 	return b
 }
 

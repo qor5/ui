@@ -53,6 +53,11 @@ func (b *VCalendarBuilder) Weekdays(v interface{}) (r *VCalendarBuilder) {
 	return b
 }
 
+func (b *VCalendarBuilder) WeeksInMonth(v interface{}) (r *VCalendarBuilder) {
+	b.tag.Attr(":weeks-in-month", h.JSONString(v))
+	return b
+}
+
 func (b *VCalendarBuilder) AllowedDates(v interface{}) (r *VCalendarBuilder) {
 	b.tag.Attr(":allowed-dates", h.JSONString(v))
 	return b

@@ -138,6 +138,21 @@ func (b *VComboboxBuilder) Density(v interface{}) (r *VComboboxBuilder) {
 	return b
 }
 
+func (b *VComboboxBuilder) MaxWidth(v interface{}) (r *VComboboxBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VComboboxBuilder) MinWidth(v interface{}) (r *VComboboxBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VComboboxBuilder) Width(v interface{}) (r *VComboboxBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
 func (b *VComboboxBuilder) Items(v interface{}) (r *VComboboxBuilder) {
 	b.tag.Attr(":items", h.JSONString(v))
 	return b

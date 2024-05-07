@@ -78,6 +78,26 @@ func (b *VCheckboxBuilder) Density(v interface{}) (r *VCheckboxBuilder) {
 	return b
 }
 
+func (b *VCheckboxBuilder) MaxWidth(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) MinWidth(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Width(v interface{}) (r *VCheckboxBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VCheckboxBuilder) Theme(v string) (r *VCheckboxBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VCheckboxBuilder) Disabled(v bool) (r *VCheckboxBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -195,11 +215,6 @@ func (b *VCheckboxBuilder) Multiple(v bool) (r *VCheckboxBuilder) {
 
 func (b *VCheckboxBuilder) ValueComparator(v interface{}) (r *VCheckboxBuilder) {
 	b.tag.Attr(":value-comparator", h.JSONString(v))
-	return b
-}
-
-func (b *VCheckboxBuilder) Theme(v string) (r *VCheckboxBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

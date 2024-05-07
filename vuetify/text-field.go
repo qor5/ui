@@ -128,6 +128,26 @@ func (b *VTextFieldBuilder) Density(v interface{}) (r *VTextFieldBuilder) {
 	return b
 }
 
+func (b *VTextFieldBuilder) MaxWidth(v interface{}) (r *VTextFieldBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextFieldBuilder) MinWidth(v interface{}) (r *VTextFieldBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextFieldBuilder) Width(v interface{}) (r *VTextFieldBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextFieldBuilder) Theme(v string) (r *VTextFieldBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VTextFieldBuilder) Disabled(v bool) (r *VTextFieldBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
@@ -255,11 +275,6 @@ func (b *VTextFieldBuilder) Rounded(v interface{}) (r *VTextFieldBuilder) {
 
 func (b *VTextFieldBuilder) Tile(v bool) (r *VTextFieldBuilder) {
 	b.tag.Attr(":tile", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextFieldBuilder) Theme(v string) (r *VTextFieldBuilder) {
-	b.tag.Attr("theme", v)
 	return b
 }
 

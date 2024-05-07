@@ -26,6 +26,11 @@ func (b *VBtnBuilder) Active(v bool) (r *VBtnBuilder) {
 	return b
 }
 
+func (b *VBtnBuilder) BaseColor(v string) (r *VBtnBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VBtnBuilder) PrependIcon(v interface{}) (r *VBtnBuilder) {
 	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
@@ -38,6 +43,11 @@ func (b *VBtnBuilder) AppendIcon(v interface{}) (r *VBtnBuilder) {
 
 func (b *VBtnBuilder) Block(v bool) (r *VBtnBuilder) {
 	b.tag.Attr(":block", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBtnBuilder) Readonly(v bool) (r *VBtnBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 

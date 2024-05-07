@@ -48,6 +48,16 @@ func (b *VDataTableHeadersBuilder) HeaderProps(v interface{}) (r *VDataTableHead
 	return b
 }
 
+func (b *VDataTableHeadersBuilder) Mobile(v bool) (r *VDataTableHeadersBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableHeadersBuilder) MobileBreakpoint(v interface{}) (r *VDataTableHeadersBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
+	return b
+}
+
 func (b *VDataTableHeadersBuilder) Loading(v interface{}) (r *VDataTableHeadersBuilder) {
 	b.tag.Attr(":loading", h.JSONString(v))
 	return b

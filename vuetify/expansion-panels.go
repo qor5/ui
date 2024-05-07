@@ -23,36 +23,6 @@ func (b *VExpansionPanelsBuilder) Flat(v bool) (r *VExpansionPanelsBuilder) {
 	return b
 }
 
-func (b *VExpansionPanelsBuilder) Color(v string) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Focusable(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":focusable", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Static(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":static", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Tile(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Variant(v interface{}) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":variant", h.JSONString(v))
-	return b
-}
-
-func (b *VExpansionPanelsBuilder) Readonly(v bool) (r *VExpansionPanelsBuilder) {
-	b.tag.Attr(":readonly", fmt.Sprint(v))
-	return b
-}
-
 func (b *VExpansionPanelsBuilder) ModelValue(v interface{}) (r *VExpansionPanelsBuilder) {
 	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
@@ -83,13 +53,98 @@ func (b *VExpansionPanelsBuilder) Mandatory(v interface{}) (r *VExpansionPanelsB
 	return b
 }
 
+func (b *VExpansionPanelsBuilder) Title(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("title", v)
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Text(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("text", v)
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) BgColor(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("bg-color", v)
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Elevation(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Value(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":value", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Rounded(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Tile(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpansionPanelsBuilder) Tag(v string) (r *VExpansionPanelsBuilder) {
 	b.tag.Attr("tag", v)
 	return b
 }
 
+func (b *VExpansionPanelsBuilder) Color(v string) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) ExpandIcon(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":expand-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) CollapseIcon(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":collapse-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) HideActions(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":hide-actions", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Focusable(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":focusable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Static(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":static", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Ripple(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":ripple", h.JSONString(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Readonly(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Eager(v bool) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":eager", fmt.Sprint(v))
+	return b
+}
+
 func (b *VExpansionPanelsBuilder) Theme(v string) (r *VExpansionPanelsBuilder) {
 	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VExpansionPanelsBuilder) Variant(v interface{}) (r *VExpansionPanelsBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 

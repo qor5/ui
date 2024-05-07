@@ -53,11 +53,6 @@ func (b *VExpansionPanelBuilder) SelectedClass(v string) (r *VExpansionPanelBuil
 	return b
 }
 
-func (b *VExpansionPanelBuilder) Eager(v bool) (r *VExpansionPanelBuilder) {
-	b.tag.Attr(":eager", fmt.Sprint(v))
-	return b
-}
-
 func (b *VExpansionPanelBuilder) Rounded(v interface{}) (r *VExpansionPanelBuilder) {
 	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
@@ -110,6 +105,11 @@ func (b *VExpansionPanelBuilder) Ripple(v interface{}) (r *VExpansionPanelBuilde
 
 func (b *VExpansionPanelBuilder) Readonly(v bool) (r *VExpansionPanelBuilder) {
 	b.tag.Attr(":readonly", fmt.Sprint(v))
+	return b
+}
+
+func (b *VExpansionPanelBuilder) Eager(v bool) (r *VExpansionPanelBuilder) {
+	b.tag.Attr(":eager", fmt.Sprint(v))
 	return b
 }
 

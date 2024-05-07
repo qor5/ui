@@ -18,6 +18,11 @@ func VBtnToggle(children ...h.HTMLComponent) (r *VBtnToggleBuilder) {
 	return
 }
 
+func (b *VBtnToggleBuilder) BaseColor(v string) (r *VBtnToggleBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
 func (b *VBtnToggleBuilder) Divided(v bool) (r *VBtnToggleBuilder) {
 	b.tag.Attr(":divided", fmt.Sprint(v))
 	return b

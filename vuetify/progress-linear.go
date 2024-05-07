@@ -43,6 +43,16 @@ func (b *VProgressLinearBuilder) BufferValue(v interface{}) (r *VProgressLinearB
 	return b
 }
 
+func (b *VProgressLinearBuilder) BufferColor(v string) (r *VProgressLinearBuilder) {
+	b.tag.Attr("buffer-color", v)
+	return b
+}
+
+func (b *VProgressLinearBuilder) BufferOpacity(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":buffer-opacity", h.JSONString(v))
+	return b
+}
+
 func (b *VProgressLinearBuilder) Clickable(v bool) (r *VProgressLinearBuilder) {
 	b.tag.Attr(":clickable", fmt.Sprint(v))
 	return b
@@ -70,6 +80,11 @@ func (b *VProgressLinearBuilder) Max(v interface{}) (r *VProgressLinearBuilder) 
 
 func (b *VProgressLinearBuilder) ModelValue(v interface{}) (r *VProgressLinearBuilder) {
 	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VProgressLinearBuilder) Opacity(v interface{}) (r *VProgressLinearBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
 	return b
 }
 

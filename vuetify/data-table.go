@@ -33,6 +33,11 @@ func (b *VDataTableBuilder) CellProps(v interface{}) (r *VDataTableBuilder) {
 	return b
 }
 
+func (b *VDataTableBuilder) Mobile(v bool) (r *VDataTableBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableBuilder) Loading(v interface{}) (r *VDataTableBuilder) {
 	b.tag.Attr(":loading", h.JSONString(v))
 	return b
@@ -70,6 +75,11 @@ func (b *VDataTableBuilder) Items(v interface{}) (r *VDataTableBuilder) {
 
 func (b *VDataTableBuilder) NoDataText(v string) (r *VDataTableBuilder) {
 	b.tag.Attr("no-data-text", v)
+	return b
+}
+
+func (b *VDataTableBuilder) MobileBreakpoint(v interface{}) (r *VDataTableBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 

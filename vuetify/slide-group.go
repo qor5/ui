@@ -48,6 +48,11 @@ func (b *VSlideGroupBuilder) ShowArrows(v interface{}) (r *VSlideGroupBuilder) {
 	return b
 }
 
+func (b *VSlideGroupBuilder) Mobile(v bool) (r *VSlideGroupBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
 func (b *VSlideGroupBuilder) MobileBreakpoint(v interface{}) (r *VSlideGroupBuilder) {
 	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
