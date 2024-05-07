@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "./variables" as vuetify;
+@use "./vuetify" as vuetify;
 
 // Usage: `@use "../mixins";` and then use `@include mixins.elevation(24);`
 @mixin elevation($z, $important: false) {
