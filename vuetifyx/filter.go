@@ -68,7 +68,7 @@ func (b *VXFilterBuilder) MarshalHTML(ctx context.Context) (r []byte, err error)
 			Go()
 	}
 
-	b = b.InternalValue(visibleFilterData).Attr("@update:modelValue", b.updateModelValue)
+	b = b.InternalValue(visibleFilterData).Attr("@update:model-value", b.updateModelValue)
 
 	return b.tag.MarshalHTML(ctx)
 }
