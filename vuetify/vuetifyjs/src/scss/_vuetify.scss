@@ -13,12 +13,6 @@ $border-radius-custom: 4px;
   $body-font-family: $font-family-custom !default,
   $heading-font-family: $font-family-custom !default,
 
-  // Global Table
-  $table-header-font-weight: 510 !default,
-  $table-header-height: 44px !default,
-  $table-row-height: 60px !default,
-  $table-border-color: variables.$color-grey-300 !default,
-
   // Global Border Radius
   $border-radius-root: $border-radius-custom !default,
 
@@ -372,5 +366,12 @@ $border-radius-custom: 4px;
       0 0 transparent,
     )
   )
-  !default
+  !default,
+
+  // Components
+  // Global Table
+  $table-header-font-weight: 510 !default,
+  $table-header-height: 44px !default,
+  $table-row-height: 60px !default,
+  $table-border-color: variables.$color-grey-300 !default,
 );
