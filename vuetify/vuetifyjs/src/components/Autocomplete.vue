@@ -1,12 +1,17 @@
 <template>
-  <v-autocomplete label="Autocomplete" :items="items"></v-autocomplete>
+  <v-autocomplete
+    clearable
+    chips
+    label="Autocomplete"
+    :items="[
+      'California',
+      'Colorado',
+      'Florida',
+      'Georgia',
+      'Texas',
+      'Wyoming',
+    ]"
+    multiple
+    variant="outlined"
+  ></v-autocomplete>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      items: ["foo", "bar", "baz"],
-    };
-  },
-};
-</script>
