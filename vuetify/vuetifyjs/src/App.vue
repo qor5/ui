@@ -21,6 +21,10 @@
         <h3 class="v-heading mb-2 text-h3">Text Field</h3>
         <TextField></TextField>
       </v-container>
+      <v-container fluid>
+        <h3 class="v-heading mb-2 text-h3">Card</h3>
+        <Card></Card>
+      </v-container>
     </v-main>
   </v-app>
 </template>
@@ -31,4 +35,5 @@ import Table from "@/components/Table.vue";
 import Autocomplete from "@/components/Autocomplete.vue";
 import Checkbox from "@/components/Checkbox.vue";
 import TextField from "@/components/TextField.vue";
+import Card from "@/components/Card.vue";
 </script>
