@@ -69,5 +69,14 @@
         readonly
       ></v-text-field>
     </v-col>
+
+    <v-col cols="12" sm="6">
+      <v-text-field
+        model-value="Compact Outlined"
+        variant="outlined"
+        density="compact"
+        readonly
+      ></v-text-field>
+    </v-col>
   </v-row>
 </template>
