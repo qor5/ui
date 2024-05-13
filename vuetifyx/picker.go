@@ -61,5 +61,4 @@ func (b *PickerBuilder) MarshalHTML(ctx context.Context) ([]byte, error) {
 	).Init(fmt.Sprintf(`{%s: %s, %s: false}`, valueLocal, h.JSONString(b.value), menuLocal)).
 		VSlot("{ locals }").
 		MarshalHTML(ctx)
-
 }

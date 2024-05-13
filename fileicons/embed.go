@@ -24,7 +24,7 @@ func init() {
 		if f.IsDir() {
 			continue
 		}
-		//fmt.Println(f.Name())
+		// fmt.Println(f.Name())
 		svg, err := icons.ReadFile(fmt.Sprintf("icons/%s", f.Name()))
 		if err != nil {
 			panic(err)
@@ -33,7 +33,7 @@ func init() {
 		svgs[filetype] = base64.StdEncoding.EncodeToString(svg)
 	}
 
-	//fmt.Println(svgs)
+	// fmt.Println(svgs)
 
 }
 

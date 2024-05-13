@@ -141,7 +141,6 @@ func (b *OptionalTextBuilder) ZeroLabel(label string) (r *OptionalTextBuilder) {
 }
 
 func (b *OptionalTextBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
-
 	var body h.HTMLComponent
 
 	if len(b.text) > 0 {

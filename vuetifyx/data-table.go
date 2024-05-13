@@ -12,15 +12,17 @@ import (
 	h "github.com/theplant/htmlgo"
 )
 
-type CellComponentFunc func(obj interface{}, fieldName string, ctx *web.EventContext) h.HTMLComponent
-type CellWrapperFunc func(cell h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
-type HeadCellWrapperFunc func(cell h.MutableAttrHTMLComponent, field string, title string) h.HTMLComponent
-type RowWrapperFunc func(row h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
-type RowMenuItemFunc func(obj interface{}, id string, ctx *web.EventContext) h.HTMLComponent
-type RowComponentFunc func(obj interface{}, ctx *web.EventContext) h.HTMLComponent
-type OnSelectFunc func(id string, ctx *web.EventContext) string
-type OnSelectAllFunc func(idsOfPage []string, ctx *web.EventContext) string
-type OnClearSelectionFunc func(ctx *web.EventContext) string
+type (
+	CellComponentFunc    func(obj interface{}, fieldName string, ctx *web.EventContext) h.HTMLComponent
+	CellWrapperFunc      func(cell h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
+	HeadCellWrapperFunc  func(cell h.MutableAttrHTMLComponent, field string, title string) h.HTMLComponent
+	RowWrapperFunc       func(row h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
+	RowMenuItemFunc      func(obj interface{}, id string, ctx *web.EventContext) h.HTMLComponent
+	RowComponentFunc     func(obj interface{}, ctx *web.EventContext) h.HTMLComponent
+	OnSelectFunc         func(id string, ctx *web.EventContext) string
+	OnSelectAllFunc      func(idsOfPage []string, ctx *web.EventContext) string
+	OnClearSelectionFunc func(ctx *web.EventContext) string
+)
 
 type DataTableBuilder struct {
 	data               interface{}
@@ -199,7 +201,6 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 	tdCount := 0
 	haveMoreRecord := false
 	reflectutils.ForEach(b.data, func(obj interface{}) {
-
 		id := ObjectID(obj)
 
 		idsOfPage = append(idsOfPage, id)

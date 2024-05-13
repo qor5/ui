@@ -66,6 +66,7 @@ func (b *VXLinkageSelectBuilber) Attr(vs ...interface{}) (r *VXLinkageSelectBuil
 	b.tag.Attr(vs...)
 	return b
 }
+
 func (b *VXLinkageSelectBuilber) MarshalHTML(ctx context.Context) ([]byte, error) {
 	return b.tag.MarshalHTML(ctx)
 }

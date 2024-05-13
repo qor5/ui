@@ -5,12 +5,13 @@ import (
 	"context"
 	"encoding/gob"
 	"fmt"
-	"github.com/qor5/web/v3"
 	"net/url"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/qor5/web/v3"
 
 	h "github.com/theplant/htmlgo"
 )
@@ -250,14 +251,13 @@ const SQLOperatorPlaceholder = "{op}"
 
 func (fd FilterData) SetByQueryString(qs string) (sqlCondition string, sqlArgs []interface{}) {
 	queryMap, err := url.ParseQuery(qs)
-
 	if err != nil {
 		panic(err)
 	}
 
 	var conds []string
 
-	var keys = make([]string, len(queryMap))
+	keys := make([]string, len(queryMap))
 	i := 0
 	for k := range queryMap {
 		keys[i] = k
@@ -265,12 +265,12 @@ func (fd FilterData) SetByQueryString(qs string) (sqlCondition string, sqlArgs [
 	}
 	sort.Strings(keys)
 
-	var keyModValueMap = map[string]map[string]string{}
+	keyModValueMap := map[string]map[string]string{}
 	for _, k := range keys {
 		v := queryMap[k]
 		segs := strings.Split(k, ".")
 
-		var mod = ""
+		mod := ""
 		key := k
 		val := v[0]
 		if len(segs) > 1 {

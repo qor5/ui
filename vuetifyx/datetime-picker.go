@@ -18,8 +18,7 @@ func VXDateTimePicker() (r *VXDateTimePickerBuilder) {
 	return
 }
 
-type DatePickerProps struct {
-}
+type DatePickerProps struct{}
 
 type TimePickerProps struct {
 	Format     string `json:"format"` // 可用的选项是 ampm 和 24hr
@@ -57,6 +56,7 @@ func (b *VXDateTimePickerBuilder) ClearText(v string) (r *VXDateTimePickerBuilde
 	b.tag.Attr(":clearText", h.JSONString(v))
 	return b
 }
+
 func (b *VXDateTimePickerBuilder) OkText(v string) (r *VXDateTimePickerBuilder) {
 	b.tag.Attr(":okText", h.JSONString(v))
 	return b
@@ -71,6 +71,7 @@ func (b *VXDateTimePickerBuilder) DatePickerProps(v DatePickerProps) (r *VXDateT
 	b.tag.Attr(":datePickerProps", h.JSONString(v))
 	return b
 }
+
 func (b *VXDateTimePickerBuilder) TimePickerProps(v TimePickerProps) (r *VXDateTimePickerBuilder) {
 	b.tag.Attr(":timePickerProps", h.JSONString(v))
 	return b

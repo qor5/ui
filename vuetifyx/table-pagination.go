@@ -114,7 +114,7 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 			perPagesM[v] = struct{}{}
 		}
 		perPages := make([]int, 0, len(perPagesM))
-		for k, _ := range perPagesM {
+		for k := range perPagesM {
 			perPages = append(perPages, int(k))
 		}
 		sort.Ints(perPages)
