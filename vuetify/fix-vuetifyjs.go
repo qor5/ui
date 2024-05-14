@@ -2,10 +2,10 @@ package vuetify
 
 import (
 	"embed"
-	"os"
 	"strings"
 
 	"github.com/qor5/web/v3"
+	"github.com/theplant/osenv"
 )
 
 //go:embed dist
@@ -14,7 +14,7 @@ var assetsbox embed.FS
 //go:embed vuetifyjs/dist
 var vuetifyjs embed.FS
 
-var customizeVuetifyCSS = os.Getenv("CUSTOMIZE_VUETIFY_CSS") != ""
+var customizeVuetifyCSS = osenv.GetBool("CUSTOMIZE_VUETIFY_CSS", "Use customized styles for vuetify", true)
 
 func JSComponentsPack() web.ComponentsPack {
 	v, err := assetsbox.ReadFile("dist/vuetify.min.js")
