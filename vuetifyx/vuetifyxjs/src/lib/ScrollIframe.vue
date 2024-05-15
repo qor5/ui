@@ -4,14 +4,11 @@ import { ref } from 'vue'
 const iframe = ref()
 const props = defineProps({
   srcdoc: { type: String, required: true },
-  iframeHeightName: { type: String, required: true },
-  iframeValue: { type: String, required: true }
 })
 
 const load = (event: any) => {
-  let height = document.body.parentElement?.offsetHeight + 'px'
-  document.body.style.height = height
-  document.cookie = `${props.iframeHeightName}=` + height
+  iframe.value.style.height = iframe.value.contentWindow.document.documentElement.scrollHeight + 'px';
+
 }
 
 const scrollToCurrentContainer = (data: any) => {
@@ -49,7 +46,6 @@ defineExpose({ scrollToCurrentContainer })
       border: 'none',
       padding: 0,
       margin: 0,
-      height: iframeValue
     }"
   >
   </iframe>
