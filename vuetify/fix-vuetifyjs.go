@@ -67,12 +67,18 @@ const defaultVuetifyOpts = `{
 	  },
 }`
 
-func Vuetify(opts string) web.ComponentsPack {
-	if opts == "" {
-		opts = defaultVuetifyOpts
+var vuetifyOpts string
+
+func ChangeVuetifyOpts(opts string) {
+	vuetifyOpts = opts
+}
+
+func Vuetify() web.ComponentsPack {
+	if vuetifyOpts == "" {
+		vuetifyOpts = defaultVuetifyOpts
 	}
 	return web.ComponentsPack(
-		strings.NewReplacer("{{vuetifyOpts}}", opts).
+		strings.NewReplacer("{{vuetifyOpts}}", vuetifyOpts).
 			Replace(initVuetify),
 	)
 }

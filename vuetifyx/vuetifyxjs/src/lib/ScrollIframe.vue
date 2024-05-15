@@ -3,12 +3,12 @@ import { ref } from 'vue'
 
 const iframe = ref()
 const props = defineProps({
-  srcdoc: { type: String, required: true },
+  srcdoc: { type: String, required: true }
 })
 
 const load = (event: any) => {
-  iframe.value.style.height = iframe.value.contentWindow.document.documentElement.scrollHeight + 'px';
-
+  iframe.value.style.height =
+    iframe.value.contentWindow.document.documentElement.scrollHeight + 'px'
 }
 
 const scrollToCurrentContainer = (data: any) => {
@@ -45,7 +45,7 @@ defineExpose({ scrollToCurrentContainer })
       display: 'block',
       border: 'none',
       padding: 0,
-      margin: 0,
+      margin: 0
     }"
   >
   </iframe>
