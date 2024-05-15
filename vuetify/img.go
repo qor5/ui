@@ -83,8 +83,8 @@ func (b *VImgBuilder) AspectRatio(v interface{}) (r *VImgBuilder) {
 	return b
 }
 
-func (b *VImgBuilder) ContentClass(v string) (r *VImgBuilder) {
-	b.tag.Attr("content-class", v)
+func (b *VImgBuilder) ContentClass(v interface{}) (r *VImgBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 

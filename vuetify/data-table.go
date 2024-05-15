@@ -88,6 +88,16 @@ func (b *VDataTableBuilder) RowProps(v interface{}) (r *VDataTableBuilder) {
 	return b
 }
 
+func (b *VDataTableBuilder) HideDefaultFooter(v bool) (r *VDataTableBuilder) {
+	b.tag.Attr(":hide-default-footer", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableBuilder) HideDefaultHeader(v bool) (r *VDataTableBuilder) {
+	b.tag.Attr(":hide-default-header", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableBuilder) Search(v string) (r *VDataTableBuilder) {
 	b.tag.Attr("search", v)
 	return b

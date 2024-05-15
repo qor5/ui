@@ -78,6 +78,16 @@ func (b *VDataTableVirtualBuilder) RowProps(v interface{}) (r *VDataTableVirtual
 	return b
 }
 
+func (b *VDataTableVirtualBuilder) HideDefaultFooter(v bool) (r *VDataTableVirtualBuilder) {
+	b.tag.Attr(":hide-default-footer", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableVirtualBuilder) HideDefaultHeader(v bool) (r *VDataTableVirtualBuilder) {
+	b.tag.Attr(":hide-default-header", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableVirtualBuilder) Search(v string) (r *VDataTableVirtualBuilder) {
 	b.tag.Attr("search", v)
 	return b

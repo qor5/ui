@@ -18,35 +18,35 @@ importers:
         specifier: ^3.4.27
         version: 3.4.27
       vuetify:
-        specifier: ^3.6.3
-        version: 3.6.3(vite-plugin-vuetify@2.0.3)(vue@3.4.27)
+        specifier: ^3.6.6
+        version: 3.6.6(vite-plugin-vuetify@2.0.3)(vue@3.4.27)
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.0.4(vite@5.2.11(sass@1.77.0))(vue@3.4.27)
+        version: 5.0.4(vite@5.2.11(sass@1.77.1))(vue@3.4.27)
       sass:
-        specifier: ^1.77.0
-        version: 1.77.0
+        specifier: ^1.77.1
+        version: 1.77.1
       sass-loader:
         specifier: ^14.2.1
-        version: 14.2.1(sass@1.77.0)
+        version: 14.2.1(sass@1.77.1)
       unplugin-fonts:
         specifier: ^1.1.1
-        version: 1.1.1(vite@5.2.11(sass@1.77.0))
+        version: 1.1.1(vite@5.2.11(sass@1.77.1))
       unplugin-vue-components:
         specifier: ^0.26.0
         version: 0.26.0(@babel/parser@7.24.5)(rollup@4.17.2)(vue@3.4.27)
       vite:
         specifier: ^5.2.11
-        version: 5.2.11(sass@1.77.0)
+        version: 5.2.11(sass@1.77.1)
       vite-plugin-vuetify:
         specifier: ^2.0.3
-        version: 2.0.3(vite@5.2.11(sass@1.77.0))(vue@3.4.27)(vuetify@3.6.3)
+        version: 2.0.3(vite@5.2.11(sass@1.77.1))(vue@3.4.27)(vuetify@3.6.6)
 
 packages:
 
-  '@antfu/utils@0.7.7':
-    resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
+  '@antfu/utils@0.7.8':
+    resolution: {integrity: sha512-rWQkqXRESdjXtc+7NRfK9lASQjpXJu1ayp7qi1d23zZorY+wBHVLHHoVcMsEnkqEBWTFqbztO7/QdJFzyEcLTg==}
 
   '@babel/helper-string-parser@7.24.1':
     resolution: {integrity: sha512-2ofRCjnnA9y+wk8b9IAREroeUP02KHp431N2mhKniy2yKIDKpbrHv9eXwm8cBeWQYcJmzv5qKCu65P47eCF7CQ==}
@@ -433,8 +433,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  immutable@4.3.5:
-    resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
+  immutable@4.3.6:
+    resolution: {integrity: sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==}
 
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
@@ -492,8 +492,8 @@ packages:
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  picocolors@1.0.0:
-    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+  picocolors@1.0.1:
+    resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
 
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
@@ -550,8 +550,8 @@ packages:
       webpack:
         optional: true
 
-  sass@1.77.0:
-    resolution: {integrity: sha512-eGj4HNfXqBWtSnvItNkn7B6icqH14i3CiCGbzMKs3BAPTq62pp9NBYsBgyN4cA+qssqo9r26lW4JSvlaUUWbgw==}
+  sass@1.77.1:
+    resolution: {integrity: sha512-OMEyfirt9XEfyvocduUIOlUSkWOXS/LAt6oblR/ISXCTukyavjex+zQNm51pPCOiFKY1QpWvEH1EeCkgyV3I6w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -645,8 +645,8 @@ packages:
       typescript:
         optional: true
 
-  vuetify@3.6.3:
-    resolution: {integrity: sha512-OBYYJYnNeUYA7kwrv8Rag1EBFbGWAQxJpp0s98U2KQ6SPU7MzzcrvNn7t69vcDbj7mR7Dcf9/jvFapfranXZvA==}
+  vuetify@3.6.6:
+    resolution: {integrity: sha512-7RkL0kuLsVUbc0YCwhPhVq54gSFKt5xv+SOrF01dxwJz7Ke3tAbvO616WhhQIfS78h1q/Ev952WJj5jpsdK58g==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       typescript: '>=4.7'
@@ -673,7 +673,7 @@ packages:
 
 snapshots:
 
-  '@antfu/utils@0.7.7': {}
+  '@antfu/utils@0.7.8': {}
 
   '@babel/helper-string-parser@7.24.1': {}
 
@@ -832,9 +832,9 @@ snapshots:
 
   '@types/estree@1.0.5': {}
 
-  '@vitejs/plugin-vue@5.0.4(vite@5.2.11(sass@1.77.0))(vue@3.4.27)':
+  '@vitejs/plugin-vue@5.0.4(vite@5.2.11(sass@1.77.1))(vue@3.4.27)':
     dependencies:
-      vite: 5.2.11(sass@1.77.0)
+      vite: 5.2.11(sass@1.77.1)
       vue: 3.4.27
 
   '@vue/compiler-core@3.4.27':
@@ -890,11 +890,11 @@ snapshots:
 
   '@vue/shared@3.4.27': {}
 
-  '@vuetify/loader-shared@2.0.3(vue@3.4.27)(vuetify@3.6.3(vite-plugin-vuetify@2.0.3)(vue@3.4.27))':
+  '@vuetify/loader-shared@2.0.3(vue@3.4.27)(vuetify@3.6.6(vite-plugin-vuetify@2.0.3)(vue@3.4.27))':
     dependencies:
       upath: 2.0.1
       vue: 3.4.27
-      vuetify: 3.6.3(vite-plugin-vuetify@2.0.3)(vue@3.4.27)
+      vuetify: 3.6.6(vite-plugin-vuetify@2.0.3)(vue@3.4.27)
 
   acorn@8.11.3: {}
 
@@ -992,7 +992,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  immutable@4.3.5: {}
+  immutable@4.3.6: {}
 
   is-binary-path@2.1.0:
     dependencies:
@@ -1037,14 +1037,14 @@ snapshots:
 
   path-parse@1.0.7: {}
 
-  picocolors@1.0.0: {}
+  picocolors@1.0.1: {}
 
   picomatch@2.3.1: {}
 
   postcss@8.4.38:
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       source-map-js: 1.2.0
 
   queue-microtask@1.2.3: {}
@@ -1089,16 +1089,16 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  sass-loader@14.2.1(sass@1.77.0):
+  sass-loader@14.2.1(sass@1.77.1):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
-      sass: 1.77.0
+      sass: 1.77.1
 
-  sass@1.77.0:
+  sass@1.77.1:
     dependencies:
       chokidar: 3.6.0
-      immutable: 4.3.5
+      immutable: 4.3.6
       source-map-js: 1.2.0
 
   source-map-js@1.2.0: {}
@@ -1111,15 +1111,15 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  unplugin-fonts@1.1.1(vite@5.2.11(sass@1.77.0)):
+  unplugin-fonts@1.1.1(vite@5.2.11(sass@1.77.1)):
     dependencies:
       fast-glob: 3.3.2
       unplugin: 1.10.1
-      vite: 5.2.11(sass@1.77.0)
+      vite: 5.2.11(sass@1.77.1)
 
   unplugin-vue-components@0.26.0(@babel/parser@7.24.5)(rollup@4.17.2)(vue@3.4.27):
     dependencies:
-      '@antfu/utils': 0.7.7
+      '@antfu/utils': 0.7.8
       '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
       chokidar: 3.6.0
       debug: 4.3.4
@@ -1145,25 +1145,25 @@ snapshots:
 
   upath@2.0.1: {}
 
-  vite-plugin-vuetify@2.0.3(vite@5.2.11(sass@1.77.0))(vue@3.4.27)(vuetify@3.6.3):
+  vite-plugin-vuetify@2.0.3(vite@5.2.11(sass@1.77.1))(vue@3.4.27)(vuetify@3.6.6):
     dependencies:
-      '@vuetify/loader-shared': 2.0.3(vue@3.4.27)(vuetify@3.6.3(vite-plugin-vuetify@2.0.3)(vue@3.4.27))
+      '@vuetify/loader-shared': 2.0.3(vue@3.4.27)(vuetify@3.6.6(vite-plugin-vuetify@2.0.3)(vue@3.4.27))
       debug: 4.3.4
       upath: 2.0.1
-      vite: 5.2.11(sass@1.77.0)
+      vite: 5.2.11(sass@1.77.1)
       vue: 3.4.27
-      vuetify: 3.6.3(vite-plugin-vuetify@2.0.3)(vue@3.4.27)
+      vuetify: 3.6.6(vite-plugin-vuetify@2.0.3)(vue@3.4.27)
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.2.11(sass@1.77.0):
+  vite@5.2.11(sass@1.77.1):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.17.2
     optionalDependencies:
       fsevents: 2.3.3
-      sass: 1.77.0
+      sass: 1.77.1
 
   vue@3.4.27:
     dependencies:
@@ -1173,11 +1173,11 @@ snapshots:
       '@vue/server-renderer': 3.4.27(vue@3.4.27)
       '@vue/shared': 3.4.27
 
-  vuetify@3.6.3(vite-plugin-vuetify@2.0.3)(vue@3.4.27):
+  vuetify@3.6.6(vite-plugin-vuetify@2.0.3)(vue@3.4.27):
     dependencies:
       vue: 3.4.27
     optionalDependencies:
-      vite-plugin-vuetify: 2.0.3(vite@5.2.11(sass@1.77.0))(vue@3.4.27)(vuetify@3.6.3)
+      vite-plugin-vuetify: 2.0.3(vite@5.2.11(sass@1.77.1))(vue@3.4.27)(vuetify@3.6.6)
 
   webpack-sources@3.2.3: {}
 

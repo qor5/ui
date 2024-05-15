@@ -78,6 +78,21 @@ func (b *VListBuilder) Selectable(v bool) (r *VListBuilder) {
 	return b
 }
 
+func (b *VListBuilder) Opened(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":opened", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Activated(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":activated", h.JSONString(v))
+	return b
+}
+
+func (b *VListBuilder) Selected(v interface{}) (r *VListBuilder) {
+	b.tag.Attr(":selected", h.JSONString(v))
+	return b
+}
+
 func (b *VListBuilder) Mandatory(v bool) (r *VListBuilder) {
 	b.tag.Attr(":mandatory", fmt.Sprint(v))
 	return b
@@ -95,21 +110,6 @@ func (b *VListBuilder) SelectStrategy(v interface{}) (r *VListBuilder) {
 
 func (b *VListBuilder) OpenStrategy(v interface{}) (r *VListBuilder) {
 	b.tag.Attr(":open-strategy", h.JSONString(v))
-	return b
-}
-
-func (b *VListBuilder) Opened(v interface{}) (r *VListBuilder) {
-	b.tag.Attr(":opened", h.JSONString(v))
-	return b
-}
-
-func (b *VListBuilder) Activated(v interface{}) (r *VListBuilder) {
-	b.tag.Attr(":activated", h.JSONString(v))
-	return b
-}
-
-func (b *VListBuilder) Selected(v interface{}) (r *VListBuilder) {
-	b.tag.Attr(":selected", h.JSONString(v))
 	return b
 }
 

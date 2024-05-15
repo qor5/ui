@@ -83,8 +83,8 @@ func (b *VCarouselItemBuilder) AspectRatio(v interface{}) (r *VCarouselItemBuild
 	return b
 }
 
-func (b *VCarouselItemBuilder) ContentClass(v string) (r *VCarouselItemBuilder) {
-	b.tag.Attr("content-class", v)
+func (b *VCarouselItemBuilder) ContentClass(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 

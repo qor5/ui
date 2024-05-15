@@ -23,8 +23,8 @@ func (b *VResponsiveBuilder) AspectRatio(v interface{}) (r *VResponsiveBuilder) 
 	return b
 }
 
-func (b *VResponsiveBuilder) ContentClass(v string) (r *VResponsiveBuilder) {
-	b.tag.Attr("content-class", v)
+func (b *VResponsiveBuilder) ContentClass(v interface{}) (r *VResponsiveBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 

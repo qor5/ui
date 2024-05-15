@@ -93,6 +93,16 @@ func (b *VDataTableServerBuilder) RowProps(v interface{}) (r *VDataTableServerBu
 	return b
 }
 
+func (b *VDataTableServerBuilder) HideDefaultFooter(v bool) (r *VDataTableServerBuilder) {
+	b.tag.Attr(":hide-default-footer", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableServerBuilder) HideDefaultHeader(v bool) (r *VDataTableServerBuilder) {
+	b.tag.Attr(":hide-default-header", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableServerBuilder) Search(v string) (r *VDataTableServerBuilder) {
 	b.tag.Attr("search", v)
 	return b

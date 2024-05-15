@@ -123,6 +123,21 @@ func (b *VTreeviewBuilder) Activatable(v bool) (r *VTreeviewBuilder) {
 	return b
 }
 
+func (b *VTreeviewBuilder) Opened(v interface{}) (r *VTreeviewBuilder) {
+	b.tag.Attr(":opened", h.JSONString(v))
+	return b
+}
+
+func (b *VTreeviewBuilder) Activated(v interface{}) (r *VTreeviewBuilder) {
+	b.tag.Attr(":activated", h.JSONString(v))
+	return b
+}
+
+func (b *VTreeviewBuilder) Selected(v interface{}) (r *VTreeviewBuilder) {
+	b.tag.Attr(":selected", h.JSONString(v))
+	return b
+}
+
 func (b *VTreeviewBuilder) Mandatory(v bool) (r *VTreeviewBuilder) {
 	b.tag.Attr(":mandatory", fmt.Sprint(v))
 	return b
@@ -140,21 +155,6 @@ func (b *VTreeviewBuilder) SelectStrategy(v interface{}) (r *VTreeviewBuilder) {
 
 func (b *VTreeviewBuilder) OpenStrategy(v interface{}) (r *VTreeviewBuilder) {
 	b.tag.Attr(":open-strategy", h.JSONString(v))
-	return b
-}
-
-func (b *VTreeviewBuilder) Opened(v interface{}) (r *VTreeviewBuilder) {
-	b.tag.Attr(":opened", h.JSONString(v))
-	return b
-}
-
-func (b *VTreeviewBuilder) Activated(v interface{}) (r *VTreeviewBuilder) {
-	b.tag.Attr(":activated", h.JSONString(v))
-	return b
-}
-
-func (b *VTreeviewBuilder) Selected(v interface{}) (r *VTreeviewBuilder) {
-	b.tag.Attr(":selected", h.JSONString(v))
 	return b
 }
 

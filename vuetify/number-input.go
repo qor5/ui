@@ -23,6 +23,16 @@ func (b *VNumberInputBuilder) Label(v string) (r *VNumberInputBuilder) {
 	return b
 }
 
+func (b *VNumberInputBuilder) Counter(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":counter", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Flat(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":flat", fmt.Sprint(v))
+	return b
+}
+
 func (b *VNumberInputBuilder) ControlVariant(v interface{}) (r *VNumberInputBuilder) {
 	b.tag.Attr(":control-variant", h.JSONString(v))
 	return b
@@ -43,6 +53,11 @@ func (b *VNumberInputBuilder) Min(v int) (r *VNumberInputBuilder) {
 	return b
 }
 
+func (b *VNumberInputBuilder) Type(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("type", v)
+	return b
+}
+
 func (b *VNumberInputBuilder) Max(v int) (r *VNumberInputBuilder) {
 	b.tag.Attr(":max", fmt.Sprint(v))
 	return b
@@ -50,6 +65,66 @@ func (b *VNumberInputBuilder) Max(v int) (r *VNumberInputBuilder) {
 
 func (b *VNumberInputBuilder) Step(v int) (r *VNumberInputBuilder) {
 	b.tag.Attr(":step", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Autofocus(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":autofocus", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Prefix(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("prefix", v)
+	return b
+}
+
+func (b *VNumberInputBuilder) Placeholder(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("placeholder", v)
+	return b
+}
+
+func (b *VNumberInputBuilder) PersistentPlaceholder(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":persistent-placeholder", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) PersistentCounter(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":persistent-counter", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Suffix(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("suffix", v)
+	return b
+}
+
+func (b *VNumberInputBuilder) Role(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("role", v)
+	return b
+}
+
+func (b *VNumberInputBuilder) Id(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("id", v)
+	return b
+}
+
+func (b *VNumberInputBuilder) AppendIcon(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) CenterAffix(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) PrependIcon(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) HideSpinButtons(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
 	return b
 }
 
@@ -63,6 +138,16 @@ func (b *VNumberInputBuilder) PersistentHint(v bool) (r *VNumberInputBuilder) {
 	return b
 }
 
+func (b *VNumberInputBuilder) Messages(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Direction(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
 func (b *VNumberInputBuilder) Reverse(v bool) (r *VNumberInputBuilder) {
 	b.tag.Attr(":reverse", fmt.Sprint(v))
 	return b
@@ -70,6 +155,21 @@ func (b *VNumberInputBuilder) Reverse(v bool) (r *VNumberInputBuilder) {
 
 func (b *VNumberInputBuilder) Density(v interface{}) (r *VNumberInputBuilder) {
 	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) MaxWidth(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) MinWidth(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Width(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
@@ -88,13 +188,43 @@ func (b *VNumberInputBuilder) Error(v bool) (r *VNumberInputBuilder) {
 	return b
 }
 
+func (b *VNumberInputBuilder) ErrorMessages(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":error-messages", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) MaxErrors(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Name(v string) (r *VNumberInputBuilder) {
+	b.tag.Attr("name", v)
+	return b
+}
+
 func (b *VNumberInputBuilder) Readonly(v bool) (r *VNumberInputBuilder) {
 	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 
-func (b *VNumberInputBuilder) ModelValue(v int) (r *VNumberInputBuilder) {
-	b.tag.Attr(":model-value", fmt.Sprint(v))
+func (b *VNumberInputBuilder) Rules(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":rules", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) ModelValue(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) ValidateOn(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) ValidationValue(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
 	return b
 }
 
@@ -113,6 +243,21 @@ func (b *VNumberInputBuilder) BgColor(v string) (r *VNumberInputBuilder) {
 	return b
 }
 
+func (b *VNumberInputBuilder) Clearable(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":clearable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) ClearIcon(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":clear-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Active(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":active", fmt.Sprint(v))
+	return b
+}
+
 func (b *VNumberInputBuilder) Color(v string) (r *VNumberInputBuilder) {
 	b.tag.Attr("color", v)
 	return b
@@ -120,6 +265,21 @@ func (b *VNumberInputBuilder) Color(v string) (r *VNumberInputBuilder) {
 
 func (b *VNumberInputBuilder) BaseColor(v string) (r *VNumberInputBuilder) {
 	b.tag.Attr("base-color", v)
+	return b
+}
+
+func (b *VNumberInputBuilder) Dirty(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":dirty", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) PersistentClear(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":persistent-clear", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) SingleLine(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":single-line", fmt.Sprint(v))
 	return b
 }
 
@@ -135,6 +295,21 @@ func (b *VNumberInputBuilder) Loading(v interface{}) (r *VNumberInputBuilder) {
 
 func (b *VNumberInputBuilder) Rounded(v interface{}) (r *VNumberInputBuilder) {
 	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) Tile(v bool) (r *VNumberInputBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) CounterValue(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":counter-value", h.JSONString(v))
+	return b
+}
+
+func (b *VNumberInputBuilder) ModelModifiers(v interface{}) (r *VNumberInputBuilder) {
+	b.tag.Attr(":model-modifiers", h.JSONString(v))
 	return b
 }
 
