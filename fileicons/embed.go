@@ -34,7 +34,6 @@ func init() {
 	}
 
 	// fmt.Println(svgs)
-
 }
 
 func Icon(ext string) *h.HTMLTagBuilder {
