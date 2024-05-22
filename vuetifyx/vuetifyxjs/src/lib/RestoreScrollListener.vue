@@ -14,7 +14,7 @@ const backoff = (retries: number, fn: Function, delay = 100) => {
 }
 
 const restoreScroll = () => {
-  window.scroll({ left: scrollLeft, top: scrollTop, behavior: 'auto' })
+  window.scroll({ left: scrollLeft, top: scrollTop, behavior: 'smooth' })
   if (window.scrollX == scrollLeft && window.scrollY == scrollTop) {
     return Promise.resolve()
   }

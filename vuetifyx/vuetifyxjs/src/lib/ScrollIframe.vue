@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const iframe = ref()
+const container = ref()
 const props = defineProps({
-  srcdoc: { type: String, required: true }
+  srcdoc: { type: String, required: true },
+  iframeHeightName: { type: String, required: true },
+  iframeHeight: { type: String, required: true },
+  width: { type: String }
 })
 
 const load = (event: any) => {
-  iframe.value.style.height =
-    iframe.value.contentWindow.document.documentElement.scrollHeight + 'px'
+  let height = iframe.value.contentWindow.document.documentElement.scrollHeight + 'px'
+  iframe.value.style.height = height
+  document.cookie = `${props.iframeHeightName}=` + height
+  container.value.style.height = height
 }
-
 const scrollToCurrentContainer = (data: any) => {
   if (!iframe.value) {
     return
@@ -27,28 +32,30 @@ const scrollToCurrentContainer = (data: any) => {
   if (highlight) {
     highlight.classList.remove('highlight')
   }
-  window.parent.scroll({ top: current.offsetTop, behavior: 'smooth' })
+  window.parent.scroll({ top: current.parentElement?.offsetTop, behavior: 'smooth' })
   current.parentElement?.classList.add('highlight')
 }
 defineExpose({ scrollToCurrentContainer })
 </script>
 
 <template>
-  <iframe
-    ref="iframe"
-    :srcdoc="srcdoc"
-    frameborder="0"
-    scrolling="no"
-    @load="load"
-    :style="{
-      width: '100%',
-      display: 'block',
-      border: 'none',
-      padding: 0,
-      margin: 0
-    }"
-  >
-  </iframe>
+  <div class="mx-auto" ref="container" :style="{ height: iframeHeight }">
+    <iframe
+      ref="iframe"
+      :srcdoc="srcdoc"
+      frameborder="0"
+      scrolling="no"
+      @load="load"
+      :style="{
+        width: '100%',
+        display: 'block',
+        border: 'none',
+        padding: 0,
+        margin: 0
+      }"
+    >
+    </iframe>
+  </div>
 </template>
 
 <style scoped></style>

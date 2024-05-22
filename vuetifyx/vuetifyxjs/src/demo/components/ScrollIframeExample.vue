@@ -11,7 +11,7 @@ const srcdoc = ref(`
 
 <template>
   <scroll-iframe
-    iframe-value="1000px"
+    iframe-height="1000px"
     iframe-height-name="_iframeHeight"
     :srcdoc="srcdoc"
   ></scroll-iframe>
