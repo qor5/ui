@@ -39,7 +39,7 @@ defineExpose({ scrollToCurrentContainer })
 </script>
 
 <template>
-  <div class="mx-auto" ref="container" :style="{ height: iframeHeight }">
+  <div class="mx-auto" ref="container" :style="{ height: iframeHeight, width: width }">
     <iframe
       ref="iframe"
       :srcdoc="srcdoc"
