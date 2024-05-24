@@ -93,6 +93,11 @@ func (b *VDataTableServerBuilder) RowProps(v interface{}) (r *VDataTableServerBu
 	return b
 }
 
+func (b *VDataTableServerBuilder) HideDefaultBody(v bool) (r *VDataTableServerBuilder) {
+	b.tag.Attr(":hide-default-body", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableServerBuilder) HideDefaultFooter(v bool) (r *VDataTableServerBuilder) {
 	b.tag.Attr(":hide-default-footer", fmt.Sprint(v))
 	return b
@@ -190,6 +195,11 @@ func (b *VDataTableServerBuilder) Color(v string) (r *VDataTableServerBuilder) {
 
 func (b *VDataTableServerBuilder) Sticky(v bool) (r *VDataTableServerBuilder) {
 	b.tag.Attr(":sticky", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableServerBuilder) DisableSort(v bool) (r *VDataTableServerBuilder) {
+	b.tag.Attr(":disable-sort", fmt.Sprint(v))
 	return b
 }
 

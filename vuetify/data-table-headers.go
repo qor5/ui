@@ -28,6 +28,11 @@ func (b *VDataTableHeadersBuilder) Sticky(v bool) (r *VDataTableHeadersBuilder) 
 	return b
 }
 
+func (b *VDataTableHeadersBuilder) DisableSort(v bool) (r *VDataTableHeadersBuilder) {
+	b.tag.Attr(":disable-sort", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableHeadersBuilder) MultiSort(v bool) (r *VDataTableHeadersBuilder) {
 	b.tag.Attr(":multi-sort", fmt.Sprint(v))
 	return b

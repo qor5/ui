@@ -33,6 +33,21 @@ func (b *VDatePickerMonthsBuilder) ModelValue(v int) (r *VDatePickerMonthsBuilde
 	return b
 }
 
+func (b *VDatePickerMonthsBuilder) Year(v int) (r *VDatePickerMonthsBuilder) {
+	b.tag.Attr(":year", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDatePickerMonthsBuilder) Min(v interface{}) (r *VDatePickerMonthsBuilder) {
+	b.tag.Attr(":min", h.JSONString(v))
+	return b
+}
+
+func (b *VDatePickerMonthsBuilder) Max(v interface{}) (r *VDatePickerMonthsBuilder) {
+	b.tag.Attr(":max", h.JSONString(v))
+	return b
+}
+
 func (b *VDatePickerMonthsBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

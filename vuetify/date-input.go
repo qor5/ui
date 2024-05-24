@@ -358,8 +358,8 @@ func (b *VDateInputBuilder) Month(v interface{}) (r *VDateInputBuilder) {
 	return b
 }
 
-func (b *VDateInputBuilder) Year(v interface{}) (r *VDateInputBuilder) {
-	b.tag.Attr(":year", h.JSONString(v))
+func (b *VDateInputBuilder) Year(v int) (r *VDateInputBuilder) {
+	b.tag.Attr(":year", fmt.Sprint(v))
 	return b
 }
 

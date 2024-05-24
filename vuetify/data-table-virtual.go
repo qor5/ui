@@ -78,6 +78,11 @@ func (b *VDataTableVirtualBuilder) RowProps(v interface{}) (r *VDataTableVirtual
 	return b
 }
 
+func (b *VDataTableVirtualBuilder) HideDefaultBody(v bool) (r *VDataTableVirtualBuilder) {
+	b.tag.Attr(":hide-default-body", fmt.Sprint(v))
+	return b
+}
+
 func (b *VDataTableVirtualBuilder) HideDefaultFooter(v bool) (r *VDataTableVirtualBuilder) {
 	b.tag.Attr(":hide-default-footer", fmt.Sprint(v))
 	return b
@@ -175,6 +180,11 @@ func (b *VDataTableVirtualBuilder) Color(v string) (r *VDataTableVirtualBuilder)
 
 func (b *VDataTableVirtualBuilder) Sticky(v bool) (r *VDataTableVirtualBuilder) {
 	b.tag.Attr(":sticky", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDataTableVirtualBuilder) DisableSort(v bool) (r *VDataTableVirtualBuilder) {
+	b.tag.Attr(":disable-sort", fmt.Sprint(v))
 	return b
 }
 
