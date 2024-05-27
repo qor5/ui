@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { ref, Ref, onMounted, computed, onUpdated } from 'vue'
+import { computed, onMounted, onUpdated, PropType, Ref, ref } from 'vue'
 import draggable from 'vuedraggable'
+
+enum Variant {
+  Filled = 'filled',
+  Underlined = 'underlined',
+  Outlined = 'outlined',
+  Plain = 'plain',
+  Solo = 'solo',
+  SoloInverted = 'solo-inverted',
+  SoloFilled = 'solo-filled'
+}
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: { type: String },
+  variant: { type: String as PropType<Variant>, default: 'underlined' },
   items: { type: Array<any>, default: [] },
   cacheItems: { type: Array<any>, default: [] },
   isPaging: Boolean,
@@ -183,7 +194,7 @@ const chipsVisible = computed(() => {
       :hide-selected="hideSelected"
       :class="sorting ? 'v-autocomplete-sorting' : ''"
       @update:modelValue="changeStatus"
-      variant="underlined"
+      :variant="variant"
       @update:search="reloadSearch"
     >
       <template v-slot:item="{ item, props }" v-if="hasIcon">
