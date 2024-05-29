@@ -26,14 +26,7 @@ const scrollToCurrentContainer = (data: any) => {
   if (!current) {
     return
   }
-  const highlight = iframe.value.contentWindow.document.body.querySelector(
-    '.wrapper-shadow.highlight'
-  )
-  if (highlight) {
-    highlight.classList.remove('highlight')
-  }
   window.parent.scroll({ top: current.parentElement?.offsetTop, behavior: 'smooth' })
-  current.parentElement?.classList.add('highlight')
 }
 defineExpose({ scrollToCurrentContainer })
 </script>
