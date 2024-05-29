@@ -2,6 +2,7 @@ package vuetify
 
 import (
 	"embed"
+	"net/http"
 	"strings"
 
 	"github.com/qor5/web/v3"
@@ -24,11 +25,11 @@ func JSComponentsPack() web.ComponentsPack {
 	return web.ComponentsPack(v)
 }
 
-func CSSComponentsPack() web.ComponentsPack {
+func cssComponentsPack() web.ComponentsPack {
 	var v []byte
 	var err error
 	if customizeVuetifyCSS {
-		v, err = vuetifyjs.ReadFile("vuetifyjs/dist/index.css")
+		v, err = vuetifyjs.ReadFile("vuetifyjs/dist/vuetify/assets/index.css")
 	} else {
 		v, err = assetsbox.ReadFile("dist/vuetify.min.css")
 	}
@@ -36,6 +37,55 @@ func CSSComponentsPack() web.ComponentsPack {
 		panic(err)
 	}
 	return web.ComponentsPack(v)
+}
+
+func fontEot() web.ComponentsPack {
+	v, err := vuetifyjs.ReadFile("vuetifyjs/dist/vuetify/assets/materialdesignicons-webfont.eot")
+	if err != nil {
+		panic(err)
+	}
+	return web.ComponentsPack(v)
+}
+
+func fontTtf() web.ComponentsPack {
+	v, err := vuetifyjs.ReadFile("vuetifyjs/dist/vuetify/assets/materialdesignicons-webfont.ttf")
+	if err != nil {
+		panic(err)
+	}
+	return web.ComponentsPack(v)
+}
+
+func fontWoff() web.ComponentsPack {
+	v, err := vuetifyjs.ReadFile("vuetifyjs/dist/vuetify/assets/materialdesignicons-webfont.woff")
+	if err != nil {
+		panic(err)
+	}
+	return web.ComponentsPack(v)
+}
+
+func fontWoff2() web.ComponentsPack {
+	v, err := vuetifyjs.ReadFile("vuetifyjs/dist/vuetify/assets/materialdesignicons-webfont.woff2")
+	if err != nil {
+		panic(err)
+	}
+	return web.ComponentsPack(v)
+}
+
+type muxer interface {
+	Handle(pattern string, handler http.Handler)
+}
+
+func HandleMaterialDesignIcons(prefix string, mux muxer) {
+	mux.Handle(prefix+"/vuetify/assets/index.css", web.PacksHandler(
+		"text/css",
+		web.ComponentsPack(
+			strings.ReplaceAll(string(cssComponentsPack()), "/vuetify/assets/materialdesignicons", prefix+"/vuetify/assets/materialdesignicons")),
+	))
+	mux.Handle(prefix+"/vuetify/assets/materialdesignicons-webfont.eot", web.PacksHandler("application/vnd.ms-fontobject",
+		fontEot()))
+	mux.Handle(prefix+"/vuetify/assets/materialdesignicons-webfont.ttf", web.PacksHandler("font/ttf", fontTtf()))
+	mux.Handle(prefix+"/vuetify/assets/materialdesignicons-webfont.woff", web.PacksHandler("font/woff", fontWoff()))
+	mux.Handle(prefix+"/vuetify/assets/materialdesignicons-webfont.woff2", web.PacksHandler("font/woff2", fontWoff()))
 }
 
 const initVuetify = `
