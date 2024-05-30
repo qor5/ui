@@ -16,6 +16,7 @@ const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: { type: String },
   variant: { type: String as PropType<Variant>, default: 'underlined' },
+  density: { type: String as PropType<null | 'default' | 'comfortable' | 'compact'> },
   items: { type: Array<any>, default: [] },
   cacheItems: { type: Array<any>, default: [] },
   isPaging: Boolean,
@@ -195,6 +196,7 @@ const chipsVisible = computed(() => {
       :class="sorting ? 'v-autocomplete-sorting' : ''"
       @update:modelValue="changeStatus"
       :variant="variant"
+      :density="density"
       @update:search="reloadSearch"
     >
       <template v-slot:item="{ item, props }" v-if="hasIcon">

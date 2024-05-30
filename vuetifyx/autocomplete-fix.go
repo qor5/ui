@@ -47,6 +47,11 @@ func (b *VXAutocompleteBuilder) Variant(v string) (r *VXAutocompleteBuilder) {
 	return b
 }
 
+func (b *VXAutocompleteBuilder) Density(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("density", v)
+	return b
+}
+
 func (b *VXAutocompleteBuilder) Items(v interface{}) (r *VXAutocompleteBuilder) {
 	b.items = v
 	return b
