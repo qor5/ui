@@ -3,7 +3,7 @@ module github.com/qor5/ui/v3
 go 1.22.2
 
 require (
-	github.com/qor5/web/v3 v3.0.1
+	github.com/qor5/web/v3 v3.0.2
 	github.com/sunfmin/reflectutils v1.0.4
 	github.com/theplant/htmlgo v1.0.3
 	github.com/theplant/osenv v0.0.1
@@ -17,4 +17,4 @@ require (
 	github.com/stretchr/testify v1.4.0 // indirect
 )
 
-replace github.com/qor5/web/v3 => ../web
+//replace github.com/qor5/web/v3 => ../web
