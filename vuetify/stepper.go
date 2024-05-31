@@ -33,8 +33,23 @@ func (b *VStepperBuilder) BgColor(v string) (r *VStepperBuilder) {
 	return b
 }
 
+func (b *VStepperBuilder) CompleteIcon(v string) (r *VStepperBuilder) {
+	b.tag.Attr("complete-icon", v)
+	return b
+}
+
+func (b *VStepperBuilder) EditIcon(v string) (r *VStepperBuilder) {
+	b.tag.Attr("edit-icon", v)
+	return b
+}
+
 func (b *VStepperBuilder) Editable(v bool) (r *VStepperBuilder) {
 	b.tag.Attr(":editable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VStepperBuilder) ErrorIcon(v string) (r *VStepperBuilder) {
+	b.tag.Attr("error-icon", v)
 	return b
 }
 
@@ -58,13 +73,18 @@ func (b *VStepperBuilder) ItemValue(v string) (r *VStepperBuilder) {
 	return b
 }
 
+func (b *VStepperBuilder) NonLinear(v bool) (r *VStepperBuilder) {
+	b.tag.Attr(":non-linear", fmt.Sprint(v))
+	return b
+}
+
 func (b *VStepperBuilder) Mobile(v bool) (r *VStepperBuilder) {
 	b.tag.Attr(":mobile", fmt.Sprint(v))
 	return b
 }
 
-func (b *VStepperBuilder) NonLinear(v bool) (r *VStepperBuilder) {
-	b.tag.Attr(":non-linear", fmt.Sprint(v))
+func (b *VStepperBuilder) MobileBreakpoint(v interface{}) (r *VStepperBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 

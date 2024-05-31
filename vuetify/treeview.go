@@ -73,6 +73,11 @@ func (b *VTreeviewBuilder) Items(v interface{}) (r *VTreeviewBuilder) {
 	return b
 }
 
+func (b *VTreeviewBuilder) SelectStrategy(v interface{}) (r *VTreeviewBuilder) {
+	b.tag.Attr(":select-strategy", h.JSONString(v))
+	return b
+}
+
 func (b *VTreeviewBuilder) BaseColor(v string) (r *VTreeviewBuilder) {
 	b.tag.Attr("base-color", v)
 	return b
@@ -145,11 +150,6 @@ func (b *VTreeviewBuilder) Mandatory(v bool) (r *VTreeviewBuilder) {
 
 func (b *VTreeviewBuilder) ActiveStrategy(v interface{}) (r *VTreeviewBuilder) {
 	b.tag.Attr(":active-strategy", h.JSONString(v))
-	return b
-}
-
-func (b *VTreeviewBuilder) SelectStrategy(v interface{}) (r *VTreeviewBuilder) {
-	b.tag.Attr(":select-strategy", h.JSONString(v))
 	return b
 }
 

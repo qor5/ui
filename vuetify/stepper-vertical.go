@@ -48,8 +48,23 @@ func (b *VStepperVerticalBuilder) BgColor(v string) (r *VStepperVerticalBuilder)
 	return b
 }
 
+func (b *VStepperVerticalBuilder) CompleteIcon(v string) (r *VStepperVerticalBuilder) {
+	b.tag.Attr("complete-icon", v)
+	return b
+}
+
+func (b *VStepperVerticalBuilder) EditIcon(v string) (r *VStepperVerticalBuilder) {
+	b.tag.Attr("edit-icon", v)
+	return b
+}
+
 func (b *VStepperVerticalBuilder) Editable(v bool) (r *VStepperVerticalBuilder) {
 	b.tag.Attr(":editable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VStepperVerticalBuilder) ErrorIcon(v string) (r *VStepperVerticalBuilder) {
+	b.tag.Attr("error-icon", v)
 	return b
 }
 
@@ -78,13 +93,18 @@ func (b *VStepperVerticalBuilder) Value(v interface{}) (r *VStepperVerticalBuild
 	return b
 }
 
+func (b *VStepperVerticalBuilder) NonLinear(v bool) (r *VStepperVerticalBuilder) {
+	b.tag.Attr(":non-linear", fmt.Sprint(v))
+	return b
+}
+
 func (b *VStepperVerticalBuilder) Mobile(v bool) (r *VStepperVerticalBuilder) {
 	b.tag.Attr(":mobile", fmt.Sprint(v))
 	return b
 }
 
-func (b *VStepperVerticalBuilder) NonLinear(v bool) (r *VStepperVerticalBuilder) {
-	b.tag.Attr(":non-linear", fmt.Sprint(v))
+func (b *VStepperVerticalBuilder) MobileBreakpoint(v interface{}) (r *VStepperVerticalBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
 	return b
 }
 
