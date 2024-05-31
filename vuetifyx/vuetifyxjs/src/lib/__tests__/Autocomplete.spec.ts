@@ -16,8 +16,9 @@ it('Autocomplete modelValue', async () => {
     })
   }
   const wrapper = mountTemplate(Autocomplete, {
-    modelValue: items,
-    sorting: true
+    items: items,
+    sorting: true,
+    modelValue: '1'
   })
   await nextTick()
   expect(wrapper.html()).toContain('test_1_1')
