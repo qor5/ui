@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/qor5/ui/vuetifyx"
+	. "github.com/qor5/ui/v3/vuetifyx"
 	"github.com/theplant/testingutils"
 )
 
@@ -353,7 +353,6 @@ var setByQueryCases = []struct {
 							{ID: "4", Name: "苏州", ChildrenIDs: []string{"7", "8"}},
 						},
 						{
-
 							{ID: "1", Name: "拱墅区"},
 							{ID: "2", Name: "西湖区"},
 							{ID: "3", Name: "镇海区"},

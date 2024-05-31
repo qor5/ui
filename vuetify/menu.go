@@ -18,63 +18,33 @@ func VMenu(children ...h.HTMLComponent) (r *VMenuBuilder) {
 	return
 }
 
-func (b *VMenuBuilder) Absolute(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
-	return b
-}
-
 func (b *VMenuBuilder) Activator(v interface{}) (r *VMenuBuilder) {
 	b.tag.Attr(":activator", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) AllowOverflow(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":allow-overflow", fmt.Sprint(v))
+func (b *VMenuBuilder) Id(v string) (r *VMenuBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VMenuBuilder) Attach(v interface{}) (r *VMenuBuilder) {
-	b.tag.Attr(":attach", h.JSONString(v))
+func (b *VMenuBuilder) CloseOnBack(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":close-on-back", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) Auto(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":auto", fmt.Sprint(v))
+func (b *VMenuBuilder) Contained(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":contained", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) Bottom(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
+func (b *VMenuBuilder) ContentClass(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) CloseDelay(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":close-delay", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) CloseOnClick(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":close-on-click", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) CloseOnContentClick(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":close-on-content-click", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) ContentClass(v string) (r *VMenuBuilder) {
-	b.tag.Attr("content-class", v)
-	return b
-}
-
-func (b *VMenuBuilder) Dark(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) DisableKeys(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":disable-keys", fmt.Sprint(v))
+func (b *VMenuBuilder) ContentProps(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":content-props", h.JSONString(v))
 	return b
 }
 
@@ -83,88 +53,43 @@ func (b *VMenuBuilder) Disabled(v bool) (r *VMenuBuilder) {
 	return b
 }
 
-func (b *VMenuBuilder) Eager(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":eager", fmt.Sprint(v))
+func (b *VMenuBuilder) Opacity(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Fixed(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
+func (b *VMenuBuilder) NoClickAnimation(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) InternalActivator(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":internal-activator", fmt.Sprint(v))
+func (b *VMenuBuilder) ModelValue(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) Left(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VMenuBuilder) Persistent(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":persistent", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) Light(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VMenuBuilder) Scrim(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":scrim", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) MaxHeight(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VMenuBuilder) ZIndex(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":z-index", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) MaxWidth(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VMenuBuilder) Target(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":target", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) MinWidth(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) NudgeBottom(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":nudge-bottom", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) NudgeLeft(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":nudge-left", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) NudgeRight(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":nudge-right", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) NudgeTop(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":nudge-top", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) NudgeWidth(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":nudge-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) OffsetOverflow(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":offset-overflow", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) OffsetX(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":offset-x", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) OffsetY(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":offset-y", fmt.Sprint(v))
-	return b
-}
-
-func (b *VMenuBuilder) OpenDelay(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":open-delay", fmt.Sprint(v))
+func (b *VMenuBuilder) ActivatorProps(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":activator-props", h.JSONString(v))
 	return b
 }
 
@@ -173,68 +98,103 @@ func (b *VMenuBuilder) OpenOnClick(v bool) (r *VMenuBuilder) {
 	return b
 }
 
-func (b *VMenuBuilder) OpenOnFocus(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":open-on-focus", fmt.Sprint(v))
-	return b
-}
-
 func (b *VMenuBuilder) OpenOnHover(v bool) (r *VMenuBuilder) {
 	b.tag.Attr(":open-on-hover", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) Origin(v string) (r *VMenuBuilder) {
-	b.tag.Attr("origin", v)
+func (b *VMenuBuilder) OpenOnFocus(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":open-on-focus", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) PositionX(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":position-x", fmt.Sprint(v))
+func (b *VMenuBuilder) CloseOnContentClick(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":close-on-content-click", fmt.Sprint(v))
 	return b
 }
 
-func (b *VMenuBuilder) PositionY(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":position-y", fmt.Sprint(v))
+func (b *VMenuBuilder) CloseDelay(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":close-delay", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) ReturnValue(v interface{}) (r *VMenuBuilder) {
-	b.tag.Attr(":return-value", h.JSONString(v))
+func (b *VMenuBuilder) OpenDelay(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":open-delay", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Right(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
+func (b *VMenuBuilder) Height(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Rounded(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VMenuBuilder) MaxHeight(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Tile(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":tile", fmt.Sprint(v))
+func (b *VMenuBuilder) MaxWidth(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Top(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":top", fmt.Sprint(v))
+func (b *VMenuBuilder) MinHeight(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Transition(v bool) (r *VMenuBuilder) {
-	b.tag.Attr(":transition", fmt.Sprint(v))
+func (b *VMenuBuilder) MinWidth(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) Value(v interface{}) (r *VMenuBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VMenuBuilder) Width(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VMenuBuilder) ZIndex(v int) (r *VMenuBuilder) {
-	b.tag.Attr(":z-index", fmt.Sprint(v))
+func (b *VMenuBuilder) Eager(v bool) (r *VMenuBuilder) {
+	b.tag.Attr(":eager", fmt.Sprint(v))
+	return b
+}
+
+func (b *VMenuBuilder) LocationStrategy(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":location-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VMenuBuilder) Location(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VMenuBuilder) Origin(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":origin", h.JSONString(v))
+	return b
+}
+
+func (b *VMenuBuilder) Offset(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":offset", h.JSONString(v))
+	return b
+}
+
+func (b *VMenuBuilder) ScrollStrategy(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":scroll-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VMenuBuilder) Theme(v string) (r *VMenuBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VMenuBuilder) Transition(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VMenuBuilder) Attach(v interface{}) (r *VMenuBuilder) {
+	b.tag.Attr(":attach", h.JSONString(v))
 	return b
 }
 

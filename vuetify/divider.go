@@ -18,8 +18,13 @@ func VDivider(children ...h.HTMLComponent) (r *VDividerBuilder) {
 	return
 }
 
-func (b *VDividerBuilder) Dark(v bool) (r *VDividerBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VDividerBuilder) Length(v interface{}) (r *VDividerBuilder) {
+	b.tag.Attr(":length", h.JSONString(v))
+	return b
+}
+
+func (b *VDividerBuilder) Color(v string) (r *VDividerBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
@@ -28,13 +33,23 @@ func (b *VDividerBuilder) Inset(v bool) (r *VDividerBuilder) {
 	return b
 }
 
-func (b *VDividerBuilder) Light(v bool) (r *VDividerBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VDividerBuilder) Opacity(v interface{}) (r *VDividerBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
+func (b *VDividerBuilder) Thickness(v interface{}) (r *VDividerBuilder) {
+	b.tag.Attr(":thickness", h.JSONString(v))
 	return b
 }
 
 func (b *VDividerBuilder) Vertical(v bool) (r *VDividerBuilder) {
 	b.tag.Attr(":vertical", fmt.Sprint(v))
+	return b
+}
+
+func (b *VDividerBuilder) Theme(v string) (r *VDividerBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

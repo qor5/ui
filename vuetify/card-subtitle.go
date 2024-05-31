@@ -18,6 +18,16 @@ func VCardSubtitle(children ...h.HTMLComponent) (r *VCardSubtitleBuilder) {
 	return
 }
 
+func (b *VCardSubtitleBuilder) Opacity(v interface{}) (r *VCardSubtitleBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
+func (b *VCardSubtitleBuilder) Tag(v string) (r *VCardSubtitleBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VCardSubtitleBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

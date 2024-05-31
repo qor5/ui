@@ -18,63 +18,53 @@ func VTab(children ...h.HTMLComponent) (r *VTabBuilder) {
 	return
 }
 
-func (b *VTabBuilder) ActiveClass(v string) (r *VTabBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VTabBuilder) Fixed(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":fixed", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTabBuilder) Append(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":append", fmt.Sprint(v))
+func (b *VTabBuilder) SliderColor(v string) (r *VTabBuilder) {
+	b.tag.Attr("slider-color", v)
 	return b
 }
 
-func (b *VTabBuilder) Dark(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VTabBuilder) HideSlider(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":hide-slider", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTabBuilder) Disabled(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
+func (b *VTabBuilder) Direction(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
 	return b
 }
 
-func (b *VTabBuilder) Exact(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":exact", fmt.Sprint(v))
+func (b *VTabBuilder) BaseColor(v string) (r *VTabBuilder) {
+	b.tag.Attr("base-color", v)
 	return b
 }
 
-func (b *VTabBuilder) ExactActiveClass(v string) (r *VTabBuilder) {
-	b.tag.Attr("exact-active-class", v)
+func (b *VTabBuilder) PrependIcon(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VTabBuilder) ExactPath(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":exact-path", fmt.Sprint(v))
+func (b *VTabBuilder) AppendIcon(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VTabBuilder) Href(v interface{}) (r *VTabBuilder) {
-	b.tag.Attr(":href", h.JSONString(v))
+func (b *VTabBuilder) Readonly(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTabBuilder) Light(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VTabBuilder) Slim(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":slim", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTabBuilder) Link(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":link", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTabBuilder) Nuxt(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":nuxt", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTabBuilder) Replace(v bool) (r *VTabBuilder) {
-	b.tag.Attr(":replace", fmt.Sprint(v))
+func (b *VTabBuilder) Stacked(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":stacked", fmt.Sprint(v))
 	return b
 }
 
@@ -83,18 +73,133 @@ func (b *VTabBuilder) Ripple(v interface{}) (r *VTabBuilder) {
 	return b
 }
 
-func (b *VTabBuilder) Tag(v string) (r *VTabBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VTabBuilder) Value(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":value", h.JSONString(v))
 	return b
 }
 
-func (b *VTabBuilder) Target(v string) (r *VTabBuilder) {
-	b.tag.Attr("target", v)
+func (b *VTabBuilder) Text(v string) (r *VTabBuilder) {
+	b.tag.Attr("text", v)
+	return b
+}
+
+func (b *VTabBuilder) Border(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Density(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Height(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) MaxHeight(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) MaxWidth(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) MinHeight(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) MinWidth(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Width(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Elevation(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Disabled(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTabBuilder) SelectedClass(v string) (r *VTabBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VTabBuilder) Loading(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":loading", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Rounded(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Tile(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTabBuilder) Href(v string) (r *VTabBuilder) {
+	b.tag.Attr("href", v)
+	return b
+}
+
+func (b *VTabBuilder) Replace(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":replace", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTabBuilder) Exact(v bool) (r *VTabBuilder) {
+	b.tag.Attr(":exact", fmt.Sprint(v))
 	return b
 }
 
 func (b *VTabBuilder) To(v interface{}) (r *VTabBuilder) {
 	b.tag.Attr(":to", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Size(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Tag(v string) (r *VTabBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VTabBuilder) Theme(v string) (r *VTabBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VTabBuilder) Color(v string) (r *VTabBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VTabBuilder) Variant(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
+	return b
+}
+
+func (b *VTabBuilder) Icon(v interface{}) (r *VTabBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 

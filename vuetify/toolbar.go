@@ -18,13 +18,23 @@ func VToolbar(children ...h.HTMLComponent) (r *VToolbarBuilder) {
 	return
 }
 
-func (b *VToolbarBuilder) Absolute(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
+func (b *VToolbarBuilder) Image(v string) (r *VToolbarBuilder) {
+	b.tag.Attr("image", v)
 	return b
 }
 
-func (b *VToolbarBuilder) Bottom(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
+func (b *VToolbarBuilder) Title(v string) (r *VToolbarBuilder) {
+	b.tag.Attr("title", v)
+	return b
+}
+
+func (b *VToolbarBuilder) Flat(v bool) (r *VToolbarBuilder) {
+	b.tag.Attr(":flat", fmt.Sprint(v))
+	return b
+}
+
+func (b *VToolbarBuilder) Absolute(v bool) (r *VToolbarBuilder) {
+	b.tag.Attr(":absolute", fmt.Sprint(v))
 	return b
 }
 
@@ -38,18 +48,8 @@ func (b *VToolbarBuilder) Color(v string) (r *VToolbarBuilder) {
 	return b
 }
 
-func (b *VToolbarBuilder) Dark(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Dense(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Elevation(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
+func (b *VToolbarBuilder) Density(v interface{}) (r *VToolbarBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
@@ -58,13 +58,8 @@ func (b *VToolbarBuilder) Extended(v bool) (r *VToolbarBuilder) {
 	return b
 }
 
-func (b *VToolbarBuilder) ExtensionHeight(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":extension-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Flat(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
+func (b *VToolbarBuilder) ExtensionHeight(v interface{}) (r *VToolbarBuilder) {
+	b.tag.Attr(":extension-height", h.JSONString(v))
 	return b
 }
 
@@ -73,68 +68,23 @@ func (b *VToolbarBuilder) Floating(v bool) (r *VToolbarBuilder) {
 	return b
 }
 
-func (b *VToolbarBuilder) Height(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VToolbarBuilder) Height(v interface{}) (r *VToolbarBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VToolbarBuilder) Light(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VToolbarBuilder) Border(v interface{}) (r *VToolbarBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
 	return b
 }
 
-func (b *VToolbarBuilder) MaxHeight(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VToolbarBuilder) Elevation(v interface{}) (r *VToolbarBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
 	return b
 }
 
-func (b *VToolbarBuilder) MaxWidth(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) MinHeight(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) MinWidth(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Outlined(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Prominent(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":prominent", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Rounded(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Shaped(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Short(v bool) (r *VToolbarBuilder) {
-	b.tag.Attr(":short", fmt.Sprint(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Src(v interface{}) (r *VToolbarBuilder) {
-	b.tag.Attr(":src", h.JSONString(v))
-	return b
-}
-
-func (b *VToolbarBuilder) Tag(v string) (r *VToolbarBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VToolbarBuilder) Rounded(v interface{}) (r *VToolbarBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -143,8 +93,13 @@ func (b *VToolbarBuilder) Tile(v bool) (r *VToolbarBuilder) {
 	return b
 }
 
-func (b *VToolbarBuilder) Width(v int) (r *VToolbarBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VToolbarBuilder) Tag(v string) (r *VToolbarBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VToolbarBuilder) Theme(v string) (r *VToolbarBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

@@ -18,6 +18,11 @@ func VFadeTransition(children ...h.HTMLComponent) (r *VFadeTransitionBuilder) {
 	return
 }
 
+func (b *VFadeTransitionBuilder) Disabled(v bool) (r *VFadeTransitionBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
 func (b *VFadeTransitionBuilder) Group(v bool) (r *VFadeTransitionBuilder) {
 	b.tag.Attr(":group", fmt.Sprint(v))
 	return b

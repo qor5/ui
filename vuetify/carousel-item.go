@@ -18,18 +18,23 @@ func VCarouselItem(children ...h.HTMLComponent) (r *VCarouselItemBuilder) {
 	return
 }
 
-func (b *VCarouselItemBuilder) ActiveClass(v string) (r *VCarouselItemBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VCarouselItemBuilder) Alt(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("alt", v)
 	return b
 }
 
-func (b *VCarouselItemBuilder) Append(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":append", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Cover(v bool) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":cover", fmt.Sprint(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Disabled(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Color(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VCarouselItemBuilder) Draggable(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":draggable", h.JSONString(v))
 	return b
 }
 
@@ -38,73 +43,128 @@ func (b *VCarouselItemBuilder) Eager(v bool) (r *VCarouselItemBuilder) {
 	return b
 }
 
-func (b *VCarouselItemBuilder) Exact(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":exact", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Gradient(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("gradient", v)
 	return b
 }
 
-func (b *VCarouselItemBuilder) ExactActiveClass(v string) (r *VCarouselItemBuilder) {
-	b.tag.Attr("exact-active-class", v)
+func (b *VCarouselItemBuilder) LazySrc(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("lazy-src", v)
 	return b
 }
 
-func (b *VCarouselItemBuilder) ExactPath(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":exact-path", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Options(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":options", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Href(v interface{}) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":href", h.JSONString(v))
+func (b *VCarouselItemBuilder) Sizes(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("sizes", v)
 	return b
 }
 
-func (b *VCarouselItemBuilder) Link(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":link", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Src(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":src", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Nuxt(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":nuxt", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Srcset(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("srcset", v)
 	return b
 }
 
-func (b *VCarouselItemBuilder) Replace(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":replace", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) Position(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("position", v)
 	return b
 }
 
-func (b *VCarouselItemBuilder) ReverseTransition(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":reverse-transition", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) AspectRatio(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":aspect-ratio", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Ripple(v interface{}) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":ripple", h.JSONString(v))
+func (b *VCarouselItemBuilder) ContentClass(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Tag(v string) (r *VCarouselItemBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VCarouselItemBuilder) Inline(v bool) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":inline", fmt.Sprint(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Target(v string) (r *VCarouselItemBuilder) {
-	b.tag.Attr("target", v)
+func (b *VCarouselItemBuilder) Height(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) To(v interface{}) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":to", h.JSONString(v))
+func (b *VCarouselItemBuilder) MaxHeight(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselItemBuilder) Transition(v bool) (r *VCarouselItemBuilder) {
-	b.tag.Attr(":transition", fmt.Sprint(v))
+func (b *VCarouselItemBuilder) MaxWidth(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) MinHeight(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) MinWidth(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Width(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Rounded(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Tile(v bool) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Transition(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Crossorigin(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":crossorigin", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Referrerpolicy(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":referrerpolicy", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) ReverseTransition(v interface{}) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":reverse-transition", h.JSONString(v))
 	return b
 }
 
 func (b *VCarouselItemBuilder) Value(v interface{}) (r *VCarouselItemBuilder) {
 	b.tag.Attr(":value", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) Disabled(v bool) (r *VCarouselItemBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VCarouselItemBuilder) SelectedClass(v string) (r *VCarouselItemBuilder) {
+	b.tag.Attr("selected-class", v)
 	return b
 }
 

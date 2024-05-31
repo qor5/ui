@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/qor5/ui/vuetify"
-	"github.com/qor5/web"
+	"github.com/qor5/ui/v3/vuetify"
+	"github.com/qor5/web/v3"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -47,8 +47,6 @@ func (b *PickerBuilder) MarshalHTML(ctx context.Context) ([]byte, error) {
 			web.Slot(
 				vuetify.VTextField().
 					Label(b.label).
-					Attr(web.VFieldName(b.fieldName)...).
-					Value(b.value).
 					Readonly(true).
 					PrependIcon("edit_calendar").
 					Attr("v-model", fmt.Sprintf("locals.%s", valueLocal)).
@@ -63,5 +61,4 @@ func (b *PickerBuilder) MarshalHTML(ctx context.Context) ([]byte, error) {
 	).Init(fmt.Sprintf(`{%s: %s, %s: false}`, valueLocal, h.JSONString(b.value), menuLocal)).
 		VSlot("{ locals }").
 		MarshalHTML(ctx)
-
 }

@@ -18,13 +18,13 @@ func VTimelineItem(children ...h.HTMLComponent) (r *VTimelineItemBuilder) {
 	return
 }
 
-func (b *VTimelineItemBuilder) Color(v string) (r *VTimelineItemBuilder) {
-	b.tag.Attr("color", v)
+func (b *VTimelineItemBuilder) Icon(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 
-func (b *VTimelineItemBuilder) Dark(v bool) (r *VTimelineItemBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VTimelineItemBuilder) DotColor(v string) (r *VTimelineItemBuilder) {
+	b.tag.Attr("dot-color", v)
 	return b
 }
 
@@ -38,8 +38,8 @@ func (b *VTimelineItemBuilder) HideDot(v bool) (r *VTimelineItemBuilder) {
 	return b
 }
 
-func (b *VTimelineItemBuilder) Icon(v string) (r *VTimelineItemBuilder) {
-	b.tag.Attr("icon", v)
+func (b *VTimelineItemBuilder) HideOpposite(v bool) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":hide-opposite", fmt.Sprint(v))
 	return b
 }
 
@@ -48,28 +48,68 @@ func (b *VTimelineItemBuilder) IconColor(v string) (r *VTimelineItemBuilder) {
 	return b
 }
 
-func (b *VTimelineItemBuilder) Large(v bool) (r *VTimelineItemBuilder) {
-	b.tag.Attr(":large", fmt.Sprint(v))
+func (b *VTimelineItemBuilder) LineInset(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":line-inset", h.JSONString(v))
 	return b
 }
 
-func (b *VTimelineItemBuilder) Left(v bool) (r *VTimelineItemBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VTimelineItemBuilder) Height(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VTimelineItemBuilder) Light(v bool) (r *VTimelineItemBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VTimelineItemBuilder) MaxHeight(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VTimelineItemBuilder) Right(v bool) (r *VTimelineItemBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
+func (b *VTimelineItemBuilder) MaxWidth(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VTimelineItemBuilder) Small(v bool) (r *VTimelineItemBuilder) {
-	b.tag.Attr(":small", fmt.Sprint(v))
+func (b *VTimelineItemBuilder) MinHeight(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) MinWidth(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) Width(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) Elevation(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) Rounded(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) Tile(v bool) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) Size(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineItemBuilder) Tag(v string) (r *VTimelineItemBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VTimelineItemBuilder) Density(v interface{}) (r *VTimelineItemBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 

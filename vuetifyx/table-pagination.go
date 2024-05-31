@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/qor5/ui/vuetify"
-	"github.com/qor5/web"
+	v "github.com/qor5/ui/v3/vuetify"
+	"github.com/qor5/web/v3"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -114,7 +114,7 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 			perPagesM[v] = struct{}{}
 		}
 		perPages := make([]int, 0, len(perPagesM))
-		for k, _ := range perPagesM {
+		for k := range perPagesM {
 			perPages = append(perPages, int(k))
 		}
 		sort.Ints(perPages)
@@ -150,31 +150,31 @@ func (tpb *VXTablePaginationBuilder) MarshalHTML(ctx context.Context) ([]byte, e
 	if tpb.perPageText != "" {
 		rowsPerPageText = tpb.perPageText
 	}
-	return vuetify.VContainer(vuetify.VRow().Justify("end").Align("center").Class("ma-0").
-		Children(
-			h.If(!tpb.noPerPagePart,
-				h.Div(
-					h.Text(rowsPerPageText),
+	return h.Div(
+		v.VRow().Justify("end").Align("center").Class("ma-0").
+			Children(
+				h.If(!tpb.noPerPagePart,
+					h.Div(
+						h.Text(rowsPerPageText),
+					),
+					h.Div(
+						v.VSelect().Items(sItems).Variant("underlined").ModelValue(fmt.Sprint(tpb.perPage)).
+							HideDetails(true).Density("compact").Attr("style", "margin-top: -8px").
+							Attr("@update:model-value", tpb.onSelectPerPage),
+					).Style("width: 64px;").Class("ml-6"),
 				),
 				h.Div(
-					vuetify.VSelect().Items(sItems).Value(fmt.Sprint(tpb.perPage)).
-						Attach(false).
-						HideDetails(true).Class("pt-0 mt-0").
-						Attr("@input", tpb.onSelectPerPage),
-				).Style("width: 60px;").Class("ml-6"),
-			),
-			h.Div(
-				h.Text(fmt.Sprintf("%d-%d of %d", currPageStart, currPageEnd, tpb.total)),
-			).Class("ml-6"),
-			h.Div(
-				h.Span("").Style(prevIconStyle).Children(
-					vuetify.VIcon("navigate_before").Size(32).Disabled(!canPrev).
-						Attr("@click", tpb.onPrevPage),
-				),
-				h.Span("").Style(nextIconStyle).Children(
-					vuetify.VIcon("navigate_next").Size(32).Disabled(!canNext).
-						Attr("@click", tpb.onNextPage),
-				).Class("ml-3"),
-			).Class("ml-6"),
-		)).Fluid(true).MarshalHTML(ctx)
+					h.Text(fmt.Sprintf("%d-%d of %d", currPageStart, currPageEnd, tpb.total)),
+				).Class("ml-6"),
+				h.Div(
+					h.Span("").Style(prevIconStyle).Children(
+						v.VBtn("").Variant("text").Icon("mdi-chevron-left").Size(32).Disabled(!canPrev).
+							Attr("@click", tpb.onPrevPage),
+					),
+					h.Span("").Style(nextIconStyle).Children(
+						v.VBtn("").Variant("text").Icon("mdi-chevron-right").Size(32).Disabled(!canNext).
+							Attr("@click", tpb.onNextPage),
+					).Class("ml-3"),
+				).Class("ml-6"),
+			)).MarshalHTML(ctx)
 }

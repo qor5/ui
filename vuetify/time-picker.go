@@ -18,18 +18,8 @@ func VTimePicker(children ...h.HTMLComponent) (r *VTimePickerBuilder) {
 	return
 }
 
-func (b *VTimePickerBuilder) AllowedHours(v interface{}) (r *VTimePickerBuilder) {
-	b.tag.Attr(":allowed-hours", h.JSONString(v))
-	return b
-}
-
-func (b *VTimePickerBuilder) AllowedMinutes(v interface{}) (r *VTimePickerBuilder) {
-	b.tag.Attr(":allowed-minutes", h.JSONString(v))
-	return b
-}
-
-func (b *VTimePickerBuilder) AllowedSeconds(v interface{}) (r *VTimePickerBuilder) {
-	b.tag.Attr(":allowed-seconds", h.JSONString(v))
+func (b *VTimePickerBuilder) Title(v string) (r *VTimePickerBuilder) {
+	b.tag.Attr("title", v)
 	return b
 }
 
@@ -38,53 +28,13 @@ func (b *VTimePickerBuilder) AmpmInTitle(v bool) (r *VTimePickerBuilder) {
 	return b
 }
 
-func (b *VTimePickerBuilder) Color(v string) (r *VTimePickerBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VTimePickerBuilder) Dark(v bool) (r *VTimePickerBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
 func (b *VTimePickerBuilder) Disabled(v bool) (r *VTimePickerBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTimePickerBuilder) Elevation(v int) (r *VTimePickerBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTimePickerBuilder) Flat(v bool) (r *VTimePickerBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTimePickerBuilder) Format(v string) (r *VTimePickerBuilder) {
-	b.tag.Attr("format", v)
-	return b
-}
-
-func (b *VTimePickerBuilder) FullWidth(v bool) (r *VTimePickerBuilder) {
-	b.tag.Attr(":full-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTimePickerBuilder) HeaderColor(v string) (r *VTimePickerBuilder) {
-	b.tag.Attr("header-color", v)
-	return b
-}
-
-func (b *VTimePickerBuilder) Landscape(v bool) (r *VTimePickerBuilder) {
-	b.tag.Attr(":landscape", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTimePickerBuilder) Light(v bool) (r *VTimePickerBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VTimePickerBuilder) Format(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":format", h.JSONString(v))
 	return b
 }
 
@@ -95,11 +45,6 @@ func (b *VTimePickerBuilder) Max(v string) (r *VTimePickerBuilder) {
 
 func (b *VTimePickerBuilder) Min(v string) (r *VTimePickerBuilder) {
 	b.tag.Attr("min", v)
-	return b
-}
-
-func (b *VTimePickerBuilder) NoTitle(v bool) (r *VTimePickerBuilder) {
-	b.tag.Attr(":no-title", fmt.Sprint(v))
 	return b
 }
 
@@ -118,13 +63,108 @@ func (b *VTimePickerBuilder) UseSeconds(v bool) (r *VTimePickerBuilder) {
 	return b
 }
 
-func (b *VTimePickerBuilder) Value(v interface{}) (r *VTimePickerBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VTimePickerBuilder) BgColor(v string) (r *VTimePickerBuilder) {
+	b.tag.Attr("bg-color", v)
 	return b
 }
 
-func (b *VTimePickerBuilder) Width(v int) (r *VTimePickerBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VTimePickerBuilder) HideHeader(v bool) (r *VTimePickerBuilder) {
+	b.tag.Attr(":hide-header", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Color(v string) (r *VTimePickerBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VTimePickerBuilder) Border(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Height(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) MaxHeight(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) MaxWidth(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) MinHeight(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) MinWidth(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Width(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Elevation(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Location(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Position(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":position", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Rounded(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Tile(v bool) (r *VTimePickerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) Tag(v string) (r *VTimePickerBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VTimePickerBuilder) Theme(v string) (r *VTimePickerBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VTimePickerBuilder) AllowedHours(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":allowed-hours", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) AllowedMinutes(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":allowed-minutes", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) AllowedSeconds(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":allowed-seconds", h.JSONString(v))
+	return b
+}
+
+func (b *VTimePickerBuilder) ModelValue(v interface{}) (r *VTimePickerBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 

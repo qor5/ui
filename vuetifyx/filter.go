@@ -11,20 +11,21 @@ import (
 	"strings"
 	"time"
 
-	"github.com/qor5/web"
+	"github.com/qor5/web/v3"
+
 	h "github.com/theplant/htmlgo"
 )
 
 type VXFilterBuilder struct {
-	value    FilterData
-	tag      *h.HTMLTagBuilder
-	onChange interface{}
+	internalValue    FilterData
+	tag              *h.HTMLTagBuilder
+	updateModelValue interface{}
 }
 
 func VXFilter(value FilterData) (r *VXFilterBuilder) {
 	r = &VXFilterBuilder{
-		value: value,
-		tag:   h.Tag("vx-filter"),
+		internalValue: value,
+		tag:           h.Tag("vx-filter"),
 	}
 
 	return
@@ -35,32 +36,32 @@ func (b *VXFilterBuilder) Attr(vs ...interface{}) (r *VXFilterBuilder) {
 	return b
 }
 
-func (b *VXFilterBuilder) Value(v FilterData) (r *VXFilterBuilder) {
-	b.tag.Attr(":value", v)
-	return b
-}
-
 func (b *VXFilterBuilder) Translations(v FilterTranslations) (r *VXFilterBuilder) {
 	b.tag.Attr(":translations", h.JSONString(v))
 	return b
 }
 
-func (b *VXFilterBuilder) OnChange(v interface{}) (r *VXFilterBuilder) {
-	b.onChange = v
+func (b *VXFilterBuilder) InternalValue(v FilterData) (r *VXFilterBuilder) {
+	b.tag.Attr(":internal-value", v)
+	return b
+}
+
+func (b *VXFilterBuilder) UpdateModelValue(v interface{}) (r *VXFilterBuilder) {
+	b.updateModelValue = v
 	return b
 }
 
 func (b *VXFilterBuilder) MarshalHTML(ctx context.Context) (r []byte, err error) {
 	var visibleFilterData FilterData
-	for _, v := range b.value {
+	for _, v := range b.internalValue {
 		if !v.Invisible {
 			visibleFilterData = append(visibleFilterData, v)
 		}
 	}
 
-	if b.onChange == nil {
+	if b.updateModelValue == nil {
 		//	$plaid().stringLocation(qs).mergeQueryWithoutParams(keysInFilterData).url(window.location.href).pushState(true).go()
-		b.onChange = web.GET().
+		b.updateModelValue = web.GET().
 			StringQuery(web.Var("$event.encodedFilterData")).
 			Query("page", 1).
 			ClearMergeQuery(web.Var("$event.filterKeys")).
@@ -68,7 +69,7 @@ func (b *VXFilterBuilder) MarshalHTML(ctx context.Context) (r []byte, err error)
 			Go()
 	}
 
-	b = b.Value(visibleFilterData).Attr("@change", b.onChange)
+	b = b.InternalValue(visibleFilterData).Attr("@update:model-value", b.updateModelValue)
 
 	return b.tag.MarshalHTML(ctx)
 }
@@ -181,7 +182,7 @@ type FilterItem struct {
 	Selected               bool                          `json:"selected,omitempty"`
 	Modifier               FilterItemModifier            `json:"modifier,omitempty"`
 	ValueIs                string                        `json:"valueIs,omitempty"`
-	ValuesAre              []string                      `json:"valuesAre,omitempty"`
+	ValuesAre              []string                      `json:"valuesAre"`
 	ValueFrom              string                        `json:"valueFrom,omitempty"`
 	ValueTo                string                        `json:"valueTo,omitempty"`
 	SQLCondition           string                        `json:"-"`
@@ -250,14 +251,13 @@ const SQLOperatorPlaceholder = "{op}"
 
 func (fd FilterData) SetByQueryString(qs string) (sqlCondition string, sqlArgs []interface{}) {
 	queryMap, err := url.ParseQuery(qs)
-
 	if err != nil {
 		panic(err)
 	}
 
 	var conds []string
 
-	var keys = make([]string, len(queryMap))
+	keys := make([]string, len(queryMap))
 	i := 0
 	for k := range queryMap {
 		keys[i] = k
@@ -265,12 +265,12 @@ func (fd FilterData) SetByQueryString(qs string) (sqlCondition string, sqlArgs [
 	}
 	sort.Strings(keys)
 
-	var keyModValueMap = map[string]map[string]string{}
+	keyModValueMap := map[string]map[string]string{}
 	for _, k := range keys {
 		v := queryMap[k]
 		segs := strings.Split(k, ".")
 
-		var mod = ""
+		mod := ""
 		key := k
 		val := v[0]
 		if len(segs) > 1 {

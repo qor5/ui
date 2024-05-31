@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,6 +28,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: vuetifyx/vuetifyxjs/package-lock.json
-      - run: cd ./vuetifyx/vuetifyxjs/ && npm install && npm run build && npm run test
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - name: Build and Test
+        run: cd ./vuetifyx/vuetifyxjs/ && pnpm install && pnpm run build && pnpm run test:unit

@@ -18,13 +18,8 @@ func VCarousel(children ...h.HTMLComponent) (r *VCarouselBuilder) {
 	return
 }
 
-func (b *VCarouselBuilder) ActiveClass(v string) (r *VCarouselBuilder) {
-	b.tag.Attr("active-class", v)
-	return b
-}
-
-func (b *VCarouselBuilder) Continuous(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":continuous", fmt.Sprint(v))
+func (b *VCarouselBuilder) Color(v string) (r *VCarouselBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
@@ -33,23 +28,13 @@ func (b *VCarouselBuilder) Cycle(v bool) (r *VCarouselBuilder) {
 	return b
 }
 
-func (b *VCarouselBuilder) Dark(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VCarouselBuilder) DelimiterIcon(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":delimiter-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselBuilder) DelimiterIcon(v string) (r *VCarouselBuilder) {
-	b.tag.Attr("delimiter-icon", v)
-	return b
-}
-
-func (b *VCarouselBuilder) Height(v int) (r *VCarouselBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCarouselBuilder) HideDelimiterBackground(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":hide-delimiter-background", fmt.Sprint(v))
+func (b *VCarouselBuilder) Height(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
@@ -58,48 +43,33 @@ func (b *VCarouselBuilder) HideDelimiters(v bool) (r *VCarouselBuilder) {
 	return b
 }
 
-func (b *VCarouselBuilder) Interval(v int) (r *VCarouselBuilder) {
-	b.tag.Attr(":interval", fmt.Sprint(v))
+func (b *VCarouselBuilder) HideDelimiterBackground(v bool) (r *VCarouselBuilder) {
+	b.tag.Attr(":hide-delimiter-background", fmt.Sprint(v))
 	return b
 }
 
-func (b *VCarouselBuilder) Light(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VCarouselBuilder) Interval(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":interval", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselBuilder) Mandatory(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
+func (b *VCarouselBuilder) Progress(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":progress", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselBuilder) Max(v int) (r *VCarouselBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
+func (b *VCarouselBuilder) Continuous(v bool) (r *VCarouselBuilder) {
+	b.tag.Attr(":continuous", fmt.Sprint(v))
 	return b
 }
 
-func (b *VCarouselBuilder) Multiple(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":multiple", fmt.Sprint(v))
+func (b *VCarouselBuilder) NextIcon(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":next-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselBuilder) NextIcon(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":next-icon", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCarouselBuilder) PrevIcon(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":prev-icon", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCarouselBuilder) Progress(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":progress", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCarouselBuilder) ProgressColor(v string) (r *VCarouselBuilder) {
-	b.tag.Attr("progress-color", v)
+func (b *VCarouselBuilder) PrevIcon(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":prev-icon", h.JSONString(v))
 	return b
 }
 
@@ -108,18 +78,8 @@ func (b *VCarouselBuilder) Reverse(v bool) (r *VCarouselBuilder) {
 	return b
 }
 
-func (b *VCarouselBuilder) ShowArrows(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":show-arrows", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCarouselBuilder) ShowArrowsOnHover(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":show-arrows-on-hover", fmt.Sprint(v))
-	return b
-}
-
-func (b *VCarouselBuilder) Tag(v string) (r *VCarouselBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VCarouselBuilder) ShowArrows(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":show-arrows", h.JSONString(v))
 	return b
 }
 
@@ -128,23 +88,43 @@ func (b *VCarouselBuilder) Touch(v interface{}) (r *VCarouselBuilder) {
 	return b
 }
 
-func (b *VCarouselBuilder) Touchless(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":touchless", fmt.Sprint(v))
+func (b *VCarouselBuilder) Direction(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselBuilder) Value(v interface{}) (r *VCarouselBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VCarouselBuilder) ModelValue(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VCarouselBuilder) Vertical(v bool) (r *VCarouselBuilder) {
-	b.tag.Attr(":vertical", fmt.Sprint(v))
+func (b *VCarouselBuilder) Disabled(v bool) (r *VCarouselBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VCarouselBuilder) VerticalDelimiters(v string) (r *VCarouselBuilder) {
-	b.tag.Attr("vertical-delimiters", v)
+func (b *VCarouselBuilder) SelectedClass(v string) (r *VCarouselBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VCarouselBuilder) Mandatory(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
+	return b
+}
+
+func (b *VCarouselBuilder) Tag(v string) (r *VCarouselBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VCarouselBuilder) Theme(v string) (r *VCarouselBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VCarouselBuilder) VerticalDelimiters(v interface{}) (r *VCarouselBuilder) {
+	b.tag.Attr(":vertical-delimiters", h.JSONString(v))
 	return b
 }
 

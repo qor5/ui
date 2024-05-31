@@ -18,6 +18,16 @@ func VCardText(children ...h.HTMLComponent) (r *VCardTextBuilder) {
 	return
 }
 
+func (b *VCardTextBuilder) Opacity(v interface{}) (r *VCardTextBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
+func (b *VCardTextBuilder) Tag(v string) (r *VCardTextBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VCardTextBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

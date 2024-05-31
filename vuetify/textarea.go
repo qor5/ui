@@ -18,13 +18,18 @@ func VTextarea(children ...h.HTMLComponent) (r *VTextareaBuilder) {
 	return
 }
 
-func (b *VTextareaBuilder) AppendIcon(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VTextareaBuilder) Label(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VTextareaBuilder) AppendOuterIcon(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("append-outer-icon", v)
+func (b *VTextareaBuilder) Counter(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":counter", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Flat(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":flat", fmt.Sprint(v))
 	return b
 }
 
@@ -38,43 +43,118 @@ func (b *VTextareaBuilder) Autofocus(v bool) (r *VTextareaBuilder) {
 	return b
 }
 
-func (b *VTextareaBuilder) BackgroundColor(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VTextareaBuilder) Prefix(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("prefix", v)
 	return b
 }
 
-func (b *VTextareaBuilder) ClearIcon(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("clear-icon", v)
+func (b *VTextareaBuilder) Placeholder(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("placeholder", v)
 	return b
 }
 
-func (b *VTextareaBuilder) Clearable(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":clearable", fmt.Sprint(v))
+func (b *VTextareaBuilder) PersistentPlaceholder(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":persistent-placeholder", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Color(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("color", v)
+func (b *VTextareaBuilder) PersistentCounter(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":persistent-counter", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Counter(v int) (r *VTextareaBuilder) {
-	b.tag.Attr(":counter", fmt.Sprint(v))
+func (b *VTextareaBuilder) NoResize(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":no-resize", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTextareaBuilder) CounterValue(v interface{}) (r *VTextareaBuilder) {
-	b.tag.Attr(":counter-value", h.JSONString(v))
+func (b *VTextareaBuilder) Rows(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":rows", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Dark(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VTextareaBuilder) MaxRows(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":max-rows", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Dense(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VTextareaBuilder) Suffix(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("suffix", v)
+	return b
+}
+
+func (b *VTextareaBuilder) Id(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("id", v)
+	return b
+}
+
+func (b *VTextareaBuilder) AppendIcon(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) CenterAffix(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) PrependIcon(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) HideSpinButtons(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Hint(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VTextareaBuilder) PersistentHint(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Messages(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Direction(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Reverse(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":reverse", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Density(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) MaxWidth(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) MinWidth(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Width(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Theme(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
@@ -88,108 +168,13 @@ func (b *VTextareaBuilder) Error(v bool) (r *VTextareaBuilder) {
 	return b
 }
 
-func (b *VTextareaBuilder) ErrorCount(v int) (r *VTextareaBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
+func (b *VTextareaBuilder) MaxErrors(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Filled(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":filled", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Flat(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) FullWidth(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":full-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Height(v int) (r *VTextareaBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) HideDetails(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Hint(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VTextareaBuilder) Id(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VTextareaBuilder) Label(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VTextareaBuilder) Light(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) LoaderHeight(v int) (r *VTextareaBuilder) {
-	b.tag.Attr(":loader-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Loading(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Messages(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VTextareaBuilder) NoResize(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":no-resize", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Outlined(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) PersistentHint(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) PersistentPlaceholder(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":persistent-placeholder", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Placeholder(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("placeholder", v)
-	return b
-}
-
-func (b *VTextareaBuilder) Prefix(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("prefix", v)
-	return b
-}
-
-func (b *VTextareaBuilder) PrependIcon(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("prepend-icon", v)
-	return b
-}
-
-func (b *VTextareaBuilder) PrependInnerIcon(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("prepend-inner-icon", v)
+func (b *VTextareaBuilder) Name(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
@@ -198,33 +183,83 @@ func (b *VTextareaBuilder) Readonly(v bool) (r *VTextareaBuilder) {
 	return b
 }
 
-func (b *VTextareaBuilder) Reverse(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":reverse", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Rounded(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) RowHeight(v int) (r *VTextareaBuilder) {
-	b.tag.Attr(":row-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Rows(v int) (r *VTextareaBuilder) {
-	b.tag.Attr(":rows", fmt.Sprint(v))
-	return b
-}
-
 func (b *VTextareaBuilder) Rules(v interface{}) (r *VTextareaBuilder) {
 	b.tag.Attr(":rules", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Shaped(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VTextareaBuilder) ModelValue(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) ValidateOn(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) ValidationValue(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Focused(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) HideDetails(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) AppendInnerIcon(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":append-inner-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) BgColor(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("bg-color", v)
+	return b
+}
+
+func (b *VTextareaBuilder) Clearable(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":clearable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) ClearIcon(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":clear-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Active(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":active", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) Color(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VTextareaBuilder) BaseColor(v string) (r *VTextareaBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
+func (b *VTextareaBuilder) Dirty(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":dirty", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) PersistentClear(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":persistent-clear", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTextareaBuilder) PrependInnerIcon(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":prepend-inner-icon", h.JSONString(v))
 	return b
 }
 
@@ -233,43 +268,33 @@ func (b *VTextareaBuilder) SingleLine(v bool) (r *VTextareaBuilder) {
 	return b
 }
 
-func (b *VTextareaBuilder) Solo(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":solo", fmt.Sprint(v))
+func (b *VTextareaBuilder) Variant(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) SoloInverted(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":solo-inverted", fmt.Sprint(v))
+func (b *VTextareaBuilder) Loading(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":loading", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Success(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
+func (b *VTextareaBuilder) Rounded(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) SuccessMessages(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VTextareaBuilder) Tile(v bool) (r *VTextareaBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Suffix(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("suffix", v)
+func (b *VTextareaBuilder) CounterValue(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":counter-value", h.JSONString(v))
 	return b
 }
 
-func (b *VTextareaBuilder) Type(v string) (r *VTextareaBuilder) {
-	b.tag.Attr("type", v)
-	return b
-}
-
-func (b *VTextareaBuilder) ValidateOnBlur(v bool) (r *VTextareaBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTextareaBuilder) Value(v interface{}) (r *VTextareaBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VTextareaBuilder) ModelModifiers(v interface{}) (r *VTextareaBuilder) {
+	b.tag.Attr(":model-modifiers", h.JSONString(v))
 	return b
 }
 

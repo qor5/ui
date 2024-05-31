@@ -11,6 +11,16 @@ type VToolbarTitleBuilder struct {
 	tag *h.HTMLTagBuilder
 }
 
+func (b *VToolbarTitleBuilder) Text(v string) (r *VToolbarTitleBuilder) {
+	b.tag.Attr("text", v)
+	return b
+}
+
+func (b *VToolbarTitleBuilder) Tag(v string) (r *VToolbarTitleBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VToolbarTitleBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

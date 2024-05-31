@@ -18,28 +18,83 @@ func VTimeline(children ...h.HTMLComponent) (r *VTimelineBuilder) {
 	return
 }
 
-func (b *VTimelineBuilder) AlignTop(v bool) (r *VTimelineBuilder) {
-	b.tag.Attr(":align-top", fmt.Sprint(v))
+func (b *VTimelineBuilder) Justify(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("justify", v)
 	return b
 }
 
-func (b *VTimelineBuilder) Dark(v bool) (r *VTimelineBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VTimelineBuilder) LineThickness(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":line-thickness", h.JSONString(v))
 	return b
 }
 
-func (b *VTimelineBuilder) Dense(v bool) (r *VTimelineBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VTimelineBuilder) LineColor(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("line-color", v)
 	return b
 }
 
-func (b *VTimelineBuilder) Light(v bool) (r *VTimelineBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VTimelineBuilder) DotColor(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("dot-color", v)
 	return b
 }
 
-func (b *VTimelineBuilder) Reverse(v bool) (r *VTimelineBuilder) {
-	b.tag.Attr(":reverse", fmt.Sprint(v))
+func (b *VTimelineBuilder) FillDot(v bool) (r *VTimelineBuilder) {
+	b.tag.Attr(":fill-dot", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimelineBuilder) HideOpposite(v bool) (r *VTimelineBuilder) {
+	b.tag.Attr(":hide-opposite", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTimelineBuilder) IconColor(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("icon-color", v)
+	return b
+}
+
+func (b *VTimelineBuilder) LineInset(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":line-inset", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) Size(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) Tag(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VTimelineBuilder) Density(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) Theme(v string) (r *VTimelineBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VTimelineBuilder) Align(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":align", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) Direction(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) Side(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":side", h.JSONString(v))
+	return b
+}
+
+func (b *VTimelineBuilder) TruncateLine(v interface{}) (r *VTimelineBuilder) {
+	b.tag.Attr(":truncate-line", h.JSONString(v))
 	return b
 }
 

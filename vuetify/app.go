@@ -18,8 +18,18 @@ func VApp(children ...h.HTMLComponent) (r *VAppBuilder) {
 	return
 }
 
-func (b *VAppBuilder) Id(v string) (r *VAppBuilder) {
-	b.tag.Attr("id", v)
+func (b *VAppBuilder) FullHeight(v bool) (r *VAppBuilder) {
+	b.tag.Attr(":full-height", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAppBuilder) Overlaps(v interface{}) (r *VAppBuilder) {
+	b.tag.Attr(":overlaps", h.JSONString(v))
+	return b
+}
+
+func (b *VAppBuilder) Theme(v string) (r *VAppBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

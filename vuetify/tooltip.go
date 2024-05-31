@@ -18,43 +18,38 @@ func VTooltip(children ...h.HTMLComponent) (r *VTooltipBuilder) {
 	return
 }
 
-func (b *VTooltipBuilder) Absolute(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
-	return b
-}
-
 func (b *VTooltipBuilder) Activator(v interface{}) (r *VTooltipBuilder) {
 	b.tag.Attr(":activator", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) AllowOverflow(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":allow-overflow", fmt.Sprint(v))
+func (b *VTooltipBuilder) Id(v string) (r *VTooltipBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VTooltipBuilder) Attach(v interface{}) (r *VTooltipBuilder) {
-	b.tag.Attr(":attach", h.JSONString(v))
+func (b *VTooltipBuilder) Text(v string) (r *VTooltipBuilder) {
+	b.tag.Attr("text", v)
 	return b
 }
 
-func (b *VTooltipBuilder) Bottom(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
+func (b *VTooltipBuilder) CloseOnBack(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":close-on-back", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) CloseDelay(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":close-delay", fmt.Sprint(v))
+func (b *VTooltipBuilder) Contained(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":contained", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Color(v string) (r *VTooltipBuilder) {
-	b.tag.Attr("color", v)
+func (b *VTooltipBuilder) ContentClass(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) ContentClass(v string) (r *VTooltipBuilder) {
-	b.tag.Attr("content-class", v)
+func (b *VTooltipBuilder) ContentProps(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":content-props", h.JSONString(v))
 	return b
 }
 
@@ -63,68 +58,38 @@ func (b *VTooltipBuilder) Disabled(v bool) (r *VTooltipBuilder) {
 	return b
 }
 
-func (b *VTooltipBuilder) Eager(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":eager", fmt.Sprint(v))
+func (b *VTooltipBuilder) Opacity(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Fixed(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
+func (b *VTooltipBuilder) NoClickAnimation(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) InternalActivator(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":internal-activator", fmt.Sprint(v))
+func (b *VTooltipBuilder) ModelValue(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Left(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VTooltipBuilder) Scrim(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":scrim", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) MaxWidth(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VTooltipBuilder) ZIndex(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":z-index", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) MinWidth(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VTooltipBuilder) Target(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":target", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) NudgeBottom(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":nudge-bottom", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTooltipBuilder) NudgeLeft(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":nudge-left", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTooltipBuilder) NudgeRight(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":nudge-right", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTooltipBuilder) NudgeTop(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":nudge-top", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTooltipBuilder) NudgeWidth(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":nudge-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTooltipBuilder) OffsetOverflow(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":offset-overflow", fmt.Sprint(v))
-	return b
-}
-
-func (b *VTooltipBuilder) OpenDelay(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":open-delay", fmt.Sprint(v))
+func (b *VTooltipBuilder) ActivatorProps(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":activator-props", h.JSONString(v))
 	return b
 }
 
@@ -133,53 +98,103 @@ func (b *VTooltipBuilder) OpenOnClick(v bool) (r *VTooltipBuilder) {
 	return b
 }
 
-func (b *VTooltipBuilder) OpenOnFocus(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":open-on-focus", fmt.Sprint(v))
-	return b
-}
-
 func (b *VTooltipBuilder) OpenOnHover(v bool) (r *VTooltipBuilder) {
 	b.tag.Attr(":open-on-hover", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) PositionX(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":position-x", fmt.Sprint(v))
+func (b *VTooltipBuilder) OpenOnFocus(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":open-on-focus", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) PositionY(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":position-y", fmt.Sprint(v))
+func (b *VTooltipBuilder) CloseOnContentClick(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":close-on-content-click", fmt.Sprint(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Right(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
+func (b *VTooltipBuilder) CloseDelay(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":close-delay", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Tag(v string) (r *VTooltipBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VTooltipBuilder) OpenDelay(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":open-delay", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Top(v bool) (r *VTooltipBuilder) {
-	b.tag.Attr(":top", fmt.Sprint(v))
+func (b *VTooltipBuilder) Height(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Transition(v string) (r *VTooltipBuilder) {
-	b.tag.Attr("transition", v)
+func (b *VTooltipBuilder) MaxHeight(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) Value(v interface{}) (r *VTooltipBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VTooltipBuilder) MaxWidth(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VTooltipBuilder) ZIndex(v int) (r *VTooltipBuilder) {
-	b.tag.Attr(":z-index", fmt.Sprint(v))
+func (b *VTooltipBuilder) MinHeight(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) MinWidth(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Width(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Eager(v bool) (r *VTooltipBuilder) {
+	b.tag.Attr(":eager", fmt.Sprint(v))
+	return b
+}
+
+func (b *VTooltipBuilder) LocationStrategy(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":location-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Location(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Origin(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":origin", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Offset(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":offset", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) ScrollStrategy(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":scroll-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Theme(v string) (r *VTooltipBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VTooltipBuilder) Transition(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VTooltipBuilder) Attach(v interface{}) (r *VTooltipBuilder) {
+	b.tag.Attr(":attach", h.JSONString(v))
 	return b
 }
 

@@ -18,113 +18,43 @@ func VLayout(children ...h.HTMLComponent) (r *VLayoutBuilder) {
 	return
 }
 
-func (b *VLayoutBuilder) AlignBaseline(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-baseline", fmt.Sprint(v))
+func (b *VLayoutBuilder) Height(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignCenter(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-center", fmt.Sprint(v))
+func (b *VLayoutBuilder) MaxHeight(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignContentCenter(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-content-center", fmt.Sprint(v))
+func (b *VLayoutBuilder) MaxWidth(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignContentEnd(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-content-end", fmt.Sprint(v))
+func (b *VLayoutBuilder) MinHeight(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignContentSpaceAround(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-content-space-around", fmt.Sprint(v))
+func (b *VLayoutBuilder) MinWidth(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignContentSpaceBetween(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-content-space-between", fmt.Sprint(v))
+func (b *VLayoutBuilder) Width(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignContentStart(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-content-start", fmt.Sprint(v))
+func (b *VLayoutBuilder) FullHeight(v bool) (r *VLayoutBuilder) {
+	b.tag.Attr(":full-height", fmt.Sprint(v))
 	return b
 }
 
-func (b *VLayoutBuilder) AlignEnd(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-end", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) AlignStart(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":align-start", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) Column(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":column", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) Dtype(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":d-{type}", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) FillHeight(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":fill-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) Id(v string) (r *VLayoutBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VLayoutBuilder) JustifyCenter(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":justify-center", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) JustifyEnd(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":justify-end", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) JustifySpaceAround(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":justify-space-around", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) JustifySpaceBetween(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":justify-space-between", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) JustifyStart(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":justify-start", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) Reverse(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":reverse", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) Row(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":row", fmt.Sprint(v))
-	return b
-}
-
-func (b *VLayoutBuilder) Tag(v string) (r *VLayoutBuilder) {
-	b.tag.Attr("tag", v)
-	return b
-}
-
-func (b *VLayoutBuilder) Wrap(v bool) (r *VLayoutBuilder) {
-	b.tag.Attr(":wrap", fmt.Sprint(v))
+func (b *VLayoutBuilder) Overlaps(v interface{}) (r *VLayoutBuilder) {
+	b.tag.Attr(":overlaps", h.JSONString(v))
 	return b
 }
 

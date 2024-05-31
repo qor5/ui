@@ -18,33 +18,13 @@ func VNavigationDrawer(children ...h.HTMLComponent) (r *VNavigationDrawerBuilder
 	return
 }
 
-func (b *VNavigationDrawerBuilder) Absolute(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) App(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":app", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) Bottom(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) Clipped(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":clipped", fmt.Sprint(v))
+func (b *VNavigationDrawerBuilder) Image(v string) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr("image", v)
 	return b
 }
 
 func (b *VNavigationDrawerBuilder) Color(v string) (r *VNavigationDrawerBuilder) {
 	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) Dark(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
 	return b
 }
 
@@ -63,53 +43,13 @@ func (b *VNavigationDrawerBuilder) ExpandOnHover(v bool) (r *VNavigationDrawerBu
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Fixed(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
-	return b
-}
-
 func (b *VNavigationDrawerBuilder) Floating(v bool) (r *VNavigationDrawerBuilder) {
 	b.tag.Attr(":floating", fmt.Sprint(v))
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Height(v int) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) HideOverlay(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":hide-overlay", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) Light(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) MiniVariant(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":mini-variant", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) MiniVariantWidth(v int) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":mini-variant-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) MobileBreakpoint(v int) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":mobile-breakpoint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) OverlayColor(v string) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr("overlay-color", v)
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) OverlayOpacity(v int) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":overlay-opacity", fmt.Sprint(v))
+func (b *VNavigationDrawerBuilder) ModelValue(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
@@ -118,23 +58,18 @@ func (b *VNavigationDrawerBuilder) Permanent(v bool) (r *VNavigationDrawerBuilde
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Right(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
+func (b *VNavigationDrawerBuilder) Rail(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":rail", fmt.Sprint(v))
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Src(v interface{}) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":src", h.JSONString(v))
+func (b *VNavigationDrawerBuilder) RailWidth(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":rail-width", h.JSONString(v))
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Stateless(v bool) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":stateless", fmt.Sprint(v))
-	return b
-}
-
-func (b *VNavigationDrawerBuilder) Tag(v string) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VNavigationDrawerBuilder) Scrim(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":scrim", h.JSONString(v))
 	return b
 }
 
@@ -143,18 +78,93 @@ func (b *VNavigationDrawerBuilder) Temporary(v bool) (r *VNavigationDrawerBuilde
 	return b
 }
 
+func (b *VNavigationDrawerBuilder) Persistent(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":persistent", fmt.Sprint(v))
+	return b
+}
+
 func (b *VNavigationDrawerBuilder) Touchless(v bool) (r *VNavigationDrawerBuilder) {
 	b.tag.Attr(":touchless", fmt.Sprint(v))
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Value(v interface{}) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VNavigationDrawerBuilder) Width(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VNavigationDrawerBuilder) Width(v int) (r *VNavigationDrawerBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VNavigationDrawerBuilder) Location(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Sticky(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":sticky", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Border(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) CloseDelay(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":close-delay", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) OpenDelay(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":open-delay", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Mobile(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":mobile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) MobileBreakpoint(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":mobile-breakpoint", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Elevation(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Name(v string) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr("name", v)
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Order(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":order", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Absolute(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":absolute", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Rounded(v interface{}) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Tile(v bool) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Tag(v string) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VNavigationDrawerBuilder) Theme(v string) (r *VNavigationDrawerBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

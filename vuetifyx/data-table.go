@@ -3,25 +3,26 @@ package vuetifyx
 import (
 	"context"
 	"fmt"
+	"slices"
 	"strings"
 
-	v "github.com/qor5/ui/vuetify"
-	"github.com/qor5/web"
-	"github.com/rs/xid"
+	v "github.com/qor5/ui/v3/vuetify"
+	"github.com/qor5/web/v3"
 	"github.com/sunfmin/reflectutils"
 	h "github.com/theplant/htmlgo"
-	"github.com/thoas/go-funk"
 )
 
-type CellComponentFunc func(obj interface{}, fieldName string, ctx *web.EventContext) h.HTMLComponent
-type CellWrapperFunc func(cell h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
-type HeadCellWrapperFunc func(cell h.MutableAttrHTMLComponent, field string, title string) h.HTMLComponent
-type RowWrapperFunc func(row h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
-type RowMenuItemFunc func(obj interface{}, id string, ctx *web.EventContext) h.HTMLComponent
-type RowComponentFunc func(obj interface{}, ctx *web.EventContext) h.HTMLComponent
-type OnSelectFunc func(id string, ctx *web.EventContext) string
-type OnSelectAllFunc func(idsOfPage []string, ctx *web.EventContext) string
-type OnClearSelectionFunc func(ctx *web.EventContext) string
+type (
+	CellComponentFunc    func(obj interface{}, fieldName string, ctx *web.EventContext) h.HTMLComponent
+	CellWrapperFunc      func(cell h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
+	HeadCellWrapperFunc  func(cell h.MutableAttrHTMLComponent, field string, title string) h.HTMLComponent
+	RowWrapperFunc       func(row h.MutableAttrHTMLComponent, id string, obj interface{}, dataTableID string) h.HTMLComponent
+	RowMenuItemFunc      func(obj interface{}, id string, ctx *web.EventContext) h.HTMLComponent
+	RowComponentFunc     func(obj interface{}, ctx *web.EventContext) h.HTMLComponent
+	OnSelectFunc         func(id string, ctx *web.EventContext) string
+	OnSelectAllFunc      func(idsOfPage []string, ctx *web.EventContext) string
+	OnClearSelectionFunc func(ctx *web.EventContext) string
+)
 
 type DataTableBuilder struct {
 	data               interface{}
@@ -162,18 +163,17 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 	selected := getSelectedIds(ctx, b.selectionParamName)
 
-	dataTableId := xid.New().String()
-	loadMoreVarName := fmt.Sprintf("loadmore_%s", dataTableId)
-	expandVarName := fmt.Sprintf("expand_%s", dataTableId)
-	selectedCountVarName := fmt.Sprintf("selected_count_%s", dataTableId)
+	loadMoreVarName := "loadmore"
+	expandVarName := "expand"
+	selectedCountVarName := "selected_count"
 
-	initContextVarsMap := map[string]interface{}{
+	initContextLocalsMap := map[string]interface{}{
 		selectedCountVarName: len(selected),
 	}
 
 	// map[obj_id]{rowMenus}
 	objRowMenusMap := make(map[string][]h.HTMLComponent)
-	funk.ForEach(b.data, func(obj interface{}) {
+	reflectutils.ForEach(b.data, func(obj interface{}) {
 		id := ObjectID(obj)
 		var opMenuItems []h.HTMLComponent
 		for _, f := range b.rowMenuItemFuncs {
@@ -200,22 +200,23 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 	i := 0
 	tdCount := 0
 	haveMoreRecord := false
-	funk.ForEach(b.data, func(obj interface{}) {
-
+	reflectutils.ForEach(b.data, func(obj interface{}) {
 		id := ObjectID(obj)
 
 		idsOfPage = append(idsOfPage, id)
 		inputValue := ""
-		if funk.ContainsString(selected, id) {
+		if slices.Contains(selected, id) {
 			inputValue = id
 		}
 		var tds []h.HTMLComponent
 		if hasExpand {
-			initContextVarsMap[fmt.Sprintf("%s_%d", expandVarName, i)] = false
+			initContextLocalsMap[fmt.Sprintf("%s_%d", expandVarName, i)] = false
+			localsExpandVarName := fmt.Sprintf("locals.%s_%d", expandVarName, i)
 			tds = append(tds, h.Td(
-				v.VIcon("$vuetify.icons.expand").
-					Attr(":class", fmt.Sprintf("{\"v-data-table__expand-icon--active\": vars.%s_%d, \"v-data-table__expand-icon\": true}", expandVarName, i)).
-					On("click", fmt.Sprintf("vars.%s_%d = !vars.%s_%d", expandVarName, i, expandVarName, i)),
+				v.VIcon("").
+					Attr(":icon", fmt.Sprintf(`%s?"mdi-chevron-up-circle":"mdi-chevron-down"`, localsExpandVarName)).
+					Attr(":class", fmt.Sprintf(`{"v-data-table__expand-icon--active": locals.%s_%d, "v-data-table__expand-icon": true}`, expandVarName, i)).
+					On("click", fmt.Sprintf("locals.%s_%d = !locals.%s_%d", expandVarName, i, expandVarName, i)),
 			).Class("pr-0").Style("width: 40px;"))
 		}
 
@@ -229,14 +230,18 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			if b.onSelectFunc != nil {
 				onChange = b.onSelectFunc(id, ctx)
 			}
+
 			tds = append(tds, h.Td(
-				v.VCheckbox().
-					Class("mt-0").
-					InputValue(inputValue).
-					TrueValue(id).
-					FalseValue("").
-					HideDetails(true).
-					Attr("@change", onChange+fmt.Sprintf(";vars.%s+=($event?1:-1)", selectedCountVarName)),
+				web.Scope(
+					v.VCheckbox().
+						Density(v.DensityCompact).
+						Class("mt-0").
+						TrueValue(id).
+						FalseValue("").
+						HideDetails(true).
+						Attr("v-model", "itemLocals.inputValue").
+						Attr("@update:model-value", onChange+";locals.selected_count+=($event?1:-1);"),
+				).VSlot("{ locals: itemLocals }").Init(fmt.Sprintf(`{ inputValue :"%v"} `, inputValue)),
 			).Class("pr-0"))
 		}
 
@@ -254,7 +259,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 			var tdWrapped h.HTMLComponent = std
 			if b.cellWrapper != nil {
-				tdWrapped = b.cellWrapper(std, id, obj, dataTableId)
+				tdWrapped = b.cellWrapper(std, id, obj, "")
 			}
 
 			bindTds = append(bindTds, tdWrapped)
@@ -268,13 +273,13 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 					v.VMenu(
 						web.Slot(
 							v.VBtn("").Children(
-								v.VIcon("more_horiz"),
-							).Attr("v-on", "on").Text(true).Fab(true).Small(true),
-						).Name("activator").Scope("{ on }"),
+								v.VIcon("mdi-dots-horizontal"),
+							).Attr("v-bind", "props").Variant("text").Size("small"),
+						).Name("activator").Scope("{ props }"),
 
 						v.VList(
 							rowMenus...,
-						).Dense(true),
+						),
 					),
 				).Style("width: 64px;").Class("pl-0")
 			} else {
@@ -289,13 +294,13 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 			if len(b.loadMoreURL) > 0 {
 				return
 			} else {
-				row.Attr("v-if", fmt.Sprintf("vars.%s", loadMoreVarName))
+				row.Attr("v-if", "locals.loadmore")
 			}
 			haveMoreRecord = true
 		}
 
 		if b.rowWrapper != nil {
-			rows = append(rows, b.rowWrapper(row, id, obj, dataTableId))
+			rows = append(rows, b.rowWrapper(row, id, obj, ""))
 		} else {
 			rows = append(rows, row)
 		}
@@ -308,8 +313,8 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 							h.Div(
 								b.rowExpandFunc(obj, ctx),
 								v.VDivider(),
-							).Attr("v-if", fmt.Sprintf("vars.%s_%d", expandVarName, i)).
-								Class("grey lighten-5"),
+							).Attr("v-if", fmt.Sprintf("locals.%s_%d", expandVarName, i)).
+								Class("bg-grey-lighten-5"), // bg-grey-lighten-5 | grey lighten-5
 						),
 					).Attr("colspan", fmt.Sprint(tdCount)).Class("pa-0").Style("height: auto; border-bottom: none"),
 				).Class("v-data-table__expand-row"),
@@ -346,12 +351,15 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 				onChange = b.onSelectAllFunc(idsOfPage, ctx)
 			}
 			heads = append(heads, h.Th("").Children(
-				v.VCheckbox().
-					Class("mt-0").
-					TrueValue(idsOfPageComma).
-					InputValue(allInputValue).
-					HideDetails(true).
-					Attr("@change", onChange),
+				web.Scope(
+					v.VCheckbox().
+						Density(v.DensityCompact).
+						Class("mt-0").
+						TrueValue(idsOfPageComma).
+						HideDetails(true).
+						Attr("v-model", "itemLocals.allInputValue").
+						Attr("@update:model-value", onChange),
+				).VSlot("{ locals: itemLocals }").Init(fmt.Sprintf(`{ allInputValue :"%v"} `, allInputValue)),
 			).Style("width: 48px;").Class("pr-0"))
 		}
 
@@ -374,7 +382,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		}
 		thead = h.Thead(
 			h.Tr(heads...),
-		).Class("grey lighten-5")
+		).Class("bg-grey-lighten-5")
 	}
 
 	var tfoot h.HTMLComponent
@@ -386,16 +394,14 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 
 		if inPlaceLoadMore {
 			btn = v.VBtn(b.loadMoreLabel).
-				Text(true).
-				Small(true).
+				Variant("text").
+				Size("small").
 				Class("mt-2").
-				On("click",
-					fmt.Sprintf("vars.%s = !vars.%s", loadMoreVarName, loadMoreVarName))
+				On("click", "locals.loadmore = !locals.loadmore")
 		} else {
 			btn = v.VBtn(b.loadMoreLabel).
-				Text(true).
-				Small(true).
-				Link(true).
+				Variant("text").
+				Size("small").
 				Class("mt-2").
 				Href(b.loadMoreURL)
 		}
@@ -407,7 +413,7 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 					btn,
 				).Class("text-center pa-0").Attr("colspan", fmt.Sprint(tdCount)),
 			),
-		).Attr("v-if", fmt.Sprintf("!vars.%s", loadMoreVarName))
+		).Attr("v-if", "!locals.loadmore")
 	}
 
 	var selectedCountNotice h.HTMLComponents
@@ -426,36 +432,35 @@ func (b *DataTableBuilder) MarshalHTML(c context.Context) (r []byte, err error) 
 		} else {
 			selectedCountNotice = append(selectedCountNotice,
 				h.Text(ss[0]),
-				h.Strong(fmt.Sprintf("{{vars.%s}}", selectedCountVarName)),
+				h.Strong("{{locals.selected_count}}"),
 				h.Text(ss[1]),
 			)
 		}
 	}
-	table := h.Div(
+	table := web.Scope(
 		h.Div(
 			selectedCountNotice,
 			v.VBtn(b.clearSelectionLabel).
-				Plain(true).
-				Text(true).
-				Small(true).
+				Variant("plain").
+				Size("small").
 				On("click", onClearSelection),
 		).
-			Class("grey lighten-3 text-center pt-2 pb-2").
-			Attr("v-show", fmt.Sprintf("vars.%s > 0", selectedCountVarName)),
-		v.VSimpleTable(
+			Class("bg-grey-lighten-3 text-center pt-2 pb-2").
+			Attr("v-show", "locals.selected_count > 0"),
+		v.VTable(
 			thead,
 			h.Tbody(rows...),
 			tfoot,
 		),
-	)
+	).VSlot("{ locals }").Init(fmt.Sprintf(` { selected_count : %v , loadmore : false }`, len(selected)))
 
 	if inPlaceLoadMore {
-		initContextVarsMap[loadMoreVarName] = false
+		initContextLocalsMap[loadMoreVarName] = false
 	}
 
-	if len(initContextVarsMap) > 0 {
-		table.Attr(web.InitContextVars, h.JSONString(initContextVarsMap))
-	}
+	// if len(initContextLocalsMap) > 0 {
+	//	table.AppendChildren(web.ObjectAssignTag("vars", initContextLocalsMap))
+	// }
 
 	return table.MarshalHTML(c)
 }
@@ -480,7 +485,7 @@ func getSelectedIds(ctx *web.EventContext, selectedParamName string) (selected [
 
 func allSelected(selectedInURL []string, pageSelected []string) bool {
 	for _, ps := range pageSelected {
-		if !funk.ContainsString(selectedInURL, ps) {
+		if !slices.Contains(selectedInURL, ps) {
 			return false
 		}
 	}

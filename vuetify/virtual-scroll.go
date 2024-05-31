@@ -18,48 +18,48 @@ func VVirtualScroll(children ...h.HTMLComponent) (r *VVirtualScrollBuilder) {
 	return
 }
 
-func (b *VVirtualScrollBuilder) Bench(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":bench", fmt.Sprint(v))
-	return b
-}
-
-func (b *VVirtualScrollBuilder) Height(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VVirtualScrollBuilder) ItemHeight(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":item-height", fmt.Sprint(v))
-	return b
-}
-
 func (b *VVirtualScrollBuilder) Items(v interface{}) (r *VVirtualScrollBuilder) {
 	b.tag.Attr(":items", h.JSONString(v))
 	return b
 }
 
-func (b *VVirtualScrollBuilder) MaxHeight(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VVirtualScrollBuilder) Renderless(v bool) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":renderless", fmt.Sprint(v))
 	return b
 }
 
-func (b *VVirtualScrollBuilder) MaxWidth(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VVirtualScrollBuilder) ItemHeight(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":item-height", h.JSONString(v))
 	return b
 }
 
-func (b *VVirtualScrollBuilder) MinHeight(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
+func (b *VVirtualScrollBuilder) Height(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VVirtualScrollBuilder) MinWidth(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
+func (b *VVirtualScrollBuilder) MaxHeight(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
 	return b
 }
 
-func (b *VVirtualScrollBuilder) Width(v int) (r *VVirtualScrollBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VVirtualScrollBuilder) MaxWidth(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VVirtualScrollBuilder) MinHeight(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VVirtualScrollBuilder) MinWidth(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VVirtualScrollBuilder) Width(v interface{}) (r *VVirtualScrollBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 

@@ -18,8 +18,28 @@ func VRadio(children ...h.HTMLComponent) (r *VRadioBuilder) {
 	return
 }
 
-func (b *VRadioBuilder) ActiveClass(v string) (r *VRadioBuilder) {
-	b.tag.Attr("active-class", v)
+func (b *VRadioBuilder) Label(v string) (r *VRadioBuilder) {
+	b.tag.Attr("label", v)
+	return b
+}
+
+func (b *VRadioBuilder) BaseColor(v string) (r *VRadioBuilder) {
+	b.tag.Attr("base-color", v)
+	return b
+}
+
+func (b *VRadioBuilder) TrueValue(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":true-value", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioBuilder) FalseValue(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":false-value", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioBuilder) Value(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":value", h.JSONString(v))
 	return b
 }
 
@@ -28,13 +48,18 @@ func (b *VRadioBuilder) Color(v string) (r *VRadioBuilder) {
 	return b
 }
 
-func (b *VRadioBuilder) Dark(v bool) (r *VRadioBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VRadioBuilder) Disabled(v bool) (r *VRadioBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRadioBuilder) Disabled(v bool) (r *VRadioBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
+func (b *VRadioBuilder) DefaultsTarget(v string) (r *VRadioBuilder) {
+	b.tag.Attr("defaults-target", v)
+	return b
+}
+
+func (b *VRadioBuilder) Error(v bool) (r *VRadioBuilder) {
+	b.tag.Attr(":error", fmt.Sprint(v))
 	return b
 }
 
@@ -43,33 +68,18 @@ func (b *VRadioBuilder) Id(v string) (r *VRadioBuilder) {
 	return b
 }
 
-func (b *VRadioBuilder) Label(v string) (r *VRadioBuilder) {
-	b.tag.Attr("label", v)
+func (b *VRadioBuilder) Inline(v bool) (r *VRadioBuilder) {
+	b.tag.Attr(":inline", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRadioBuilder) Light(v bool) (r *VRadioBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VRadioBuilder) FalseIcon(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":false-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VRadioBuilder) Name(v string) (r *VRadioBuilder) {
-	b.tag.Attr("name", v)
-	return b
-}
-
-func (b *VRadioBuilder) OffIcon(v string) (r *VRadioBuilder) {
-	b.tag.Attr("off-icon", v)
-	return b
-}
-
-func (b *VRadioBuilder) OnIcon(v string) (r *VRadioBuilder) {
-	b.tag.Attr("on-icon", v)
-	return b
-}
-
-func (b *VRadioBuilder) Readonly(v bool) (r *VRadioBuilder) {
-	b.tag.Attr(":readonly", fmt.Sprint(v))
+func (b *VRadioBuilder) TrueIcon(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":true-icon", h.JSONString(v))
 	return b
 }
 
@@ -78,8 +88,43 @@ func (b *VRadioBuilder) Ripple(v interface{}) (r *VRadioBuilder) {
 	return b
 }
 
-func (b *VRadioBuilder) Value(v interface{}) (r *VRadioBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VRadioBuilder) Multiple(v bool) (r *VRadioBuilder) {
+	b.tag.Attr(":multiple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRadioBuilder) Name(v string) (r *VRadioBuilder) {
+	b.tag.Attr("name", v)
+	return b
+}
+
+func (b *VRadioBuilder) Readonly(v bool) (r *VRadioBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRadioBuilder) ModelValue(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioBuilder) Type(v string) (r *VRadioBuilder) {
+	b.tag.Attr("type", v)
+	return b
+}
+
+func (b *VRadioBuilder) ValueComparator(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":value-comparator", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioBuilder) Density(v interface{}) (r *VRadioBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VRadioBuilder) Theme(v string) (r *VRadioBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

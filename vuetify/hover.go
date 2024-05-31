@@ -18,23 +18,23 @@ func VHover(children ...h.HTMLComponent) (r *VHoverBuilder) {
 	return
 }
 
-func (b *VHoverBuilder) CloseDelay(v int) (r *VHoverBuilder) {
-	b.tag.Attr(":close-delay", fmt.Sprint(v))
-	return b
-}
-
 func (b *VHoverBuilder) Disabled(v bool) (r *VHoverBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VHoverBuilder) OpenDelay(v int) (r *VHoverBuilder) {
-	b.tag.Attr(":open-delay", fmt.Sprint(v))
+func (b *VHoverBuilder) ModelValue(v bool) (r *VHoverBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
 	return b
 }
 
-func (b *VHoverBuilder) Value(v bool) (r *VHoverBuilder) {
-	b.tag.Attr(":value", fmt.Sprint(v))
+func (b *VHoverBuilder) CloseDelay(v interface{}) (r *VHoverBuilder) {
+	b.tag.Attr(":close-delay", h.JSONString(v))
+	return b
+}
+
+func (b *VHoverBuilder) OpenDelay(v interface{}) (r *VHoverBuilder) {
+	b.tag.Attr(":open-delay", h.JSONString(v))
 	return b
 }
 

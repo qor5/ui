@@ -18,11 +18,6 @@ func VFooter(children ...h.HTMLComponent) (r *VFooterBuilder) {
 	return
 }
 
-func (b *VFooterBuilder) Absolute(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
-	return b
-}
-
 func (b *VFooterBuilder) App(v bool) (r *VFooterBuilder) {
 	b.tag.Attr(":app", fmt.Sprint(v))
 	return b
@@ -33,78 +28,38 @@ func (b *VFooterBuilder) Color(v string) (r *VFooterBuilder) {
 	return b
 }
 
-func (b *VFooterBuilder) Dark(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VFooterBuilder) Height(v interface{}) (r *VFooterBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
 	return b
 }
 
-func (b *VFooterBuilder) Elevation(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
+func (b *VFooterBuilder) Border(v interface{}) (r *VFooterBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
 	return b
 }
 
-func (b *VFooterBuilder) Fixed(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
+func (b *VFooterBuilder) Elevation(v interface{}) (r *VFooterBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
 	return b
 }
 
-func (b *VFooterBuilder) Height(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VFooterBuilder) Name(v string) (r *VFooterBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
-func (b *VFooterBuilder) Inset(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":inset", fmt.Sprint(v))
+func (b *VFooterBuilder) Order(v interface{}) (r *VFooterBuilder) {
+	b.tag.Attr(":order", h.JSONString(v))
 	return b
 }
 
-func (b *VFooterBuilder) Light(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VFooterBuilder) Absolute(v bool) (r *VFooterBuilder) {
+	b.tag.Attr(":absolute", fmt.Sprint(v))
 	return b
 }
 
-func (b *VFooterBuilder) MaxHeight(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) MaxWidth(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) MinHeight(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) MinWidth(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) Outlined(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) Padless(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":padless", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) Rounded(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) Shaped(v bool) (r *VFooterBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
-	return b
-}
-
-func (b *VFooterBuilder) Tag(v string) (r *VFooterBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VFooterBuilder) Rounded(v interface{}) (r *VFooterBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -113,8 +68,13 @@ func (b *VFooterBuilder) Tile(v bool) (r *VFooterBuilder) {
 	return b
 }
 
-func (b *VFooterBuilder) Width(v int) (r *VFooterBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VFooterBuilder) Tag(v string) (r *VFooterBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VFooterBuilder) Theme(v string) (r *VFooterBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

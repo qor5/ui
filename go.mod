@@ -1,18 +1,20 @@
-module github.com/qor5/ui
+module github.com/qor5/ui/v3
 
-go 1.19
+go 1.22.2
 
 require (
-	github.com/qor5/web v1.2.3
-	github.com/rs/xid v1.4.0
-	github.com/sunfmin/reflectutils v1.0.3
+	github.com/qor5/web/v3 v3.0.3
+	github.com/sunfmin/reflectutils v1.0.4
 	github.com/theplant/htmlgo v1.0.3
-	github.com/theplant/testingutils v0.0.0-20220314083015-b74d1aa8ac8a
-	github.com/thoas/go-funk v0.9.2
+	github.com/theplant/osenv v0.0.1
+	github.com/theplant/testingutils v0.0.1
 )
 
 require (
 	github.com/NYTimes/gziphandler v1.1.1 // indirect
-	github.com/go-playground/form v3.1.4+incompatible // indirect
+	github.com/go-playground/form/v4 v4.2.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/stretchr/testify v1.4.0 // indirect
 )
+
+//replace github.com/qor5/web/v3 => ../web

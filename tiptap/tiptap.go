@@ -4,7 +4,6 @@ package tiptap
 import (
 	"context"
 
-	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -20,13 +19,8 @@ func TipTapEditor() (r *TipTapEditorBuilder) {
 	return
 }
 
-func (b *TipTapEditorBuilder) FieldName(v string) (r *TipTapEditorBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
-	return b
-}
-
-func (b *TipTapEditorBuilder) Value(v string) (r *TipTapEditorBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *TipTapEditorBuilder) Attr(vs ...interface{}) (r *TipTapEditorBuilder) {
+	b.tag.Attr(vs...)
 	return b
 }
 

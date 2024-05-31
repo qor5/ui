@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/qor5/web"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -54,11 +53,6 @@ func (b *VXSelectManyBuilder) Label(v string) (r *VXSelectManyBuilder) {
 
 func (b *VXSelectManyBuilder) AddItemLabel(v string) (r *VXSelectManyBuilder) {
 	b.tag.Attr("add-item-label", v)
-	return b
-}
-
-func (b *VXSelectManyBuilder) FieldName(v string) (r *VXSelectManyBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
 	return b
 }
 

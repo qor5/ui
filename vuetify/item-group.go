@@ -18,28 +18,8 @@ func VItemGroup(children ...h.HTMLComponent) (r *VItemGroupBuilder) {
 	return
 }
 
-func (b *VItemGroupBuilder) ActiveClass(v string) (r *VItemGroupBuilder) {
-	b.tag.Attr("active-class", v)
-	return b
-}
-
-func (b *VItemGroupBuilder) Dark(v bool) (r *VItemGroupBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VItemGroupBuilder) Light(v bool) (r *VItemGroupBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VItemGroupBuilder) Mandatory(v bool) (r *VItemGroupBuilder) {
-	b.tag.Attr(":mandatory", fmt.Sprint(v))
-	return b
-}
-
-func (b *VItemGroupBuilder) Max(v int) (r *VItemGroupBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
+func (b *VItemGroupBuilder) ModelValue(v interface{}) (r *VItemGroupBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
@@ -48,13 +28,33 @@ func (b *VItemGroupBuilder) Multiple(v bool) (r *VItemGroupBuilder) {
 	return b
 }
 
+func (b *VItemGroupBuilder) Max(v int) (r *VItemGroupBuilder) {
+	b.tag.Attr(":max", fmt.Sprint(v))
+	return b
+}
+
+func (b *VItemGroupBuilder) SelectedClass(v string) (r *VItemGroupBuilder) {
+	b.tag.Attr("selected-class", v)
+	return b
+}
+
+func (b *VItemGroupBuilder) Disabled(v bool) (r *VItemGroupBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VItemGroupBuilder) Mandatory(v interface{}) (r *VItemGroupBuilder) {
+	b.tag.Attr(":mandatory", h.JSONString(v))
+	return b
+}
+
 func (b *VItemGroupBuilder) Tag(v string) (r *VItemGroupBuilder) {
 	b.tag.Attr("tag", v)
 	return b
 }
 
-func (b *VItemGroupBuilder) Value(v interface{}) (r *VItemGroupBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VItemGroupBuilder) Theme(v string) (r *VItemGroupBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

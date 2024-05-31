@@ -18,13 +18,8 @@ func VColorPicker(children ...h.HTMLComponent) (r *VColorPickerBuilder) {
 	return
 }
 
-func (b *VColorPickerBuilder) CanvasHeight(v string) (r *VColorPickerBuilder) {
-	b.tag.Attr("canvas-height", v)
-	return b
-}
-
-func (b *VColorPickerBuilder) Dark(v bool) (r *VColorPickerBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VColorPickerBuilder) CanvasHeight(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":canvas-height", h.JSONString(v))
 	return b
 }
 
@@ -33,18 +28,8 @@ func (b *VColorPickerBuilder) Disabled(v bool) (r *VColorPickerBuilder) {
 	return b
 }
 
-func (b *VColorPickerBuilder) DotSize(v int) (r *VColorPickerBuilder) {
-	b.tag.Attr(":dot-size", fmt.Sprint(v))
-	return b
-}
-
-func (b *VColorPickerBuilder) Elevation(v int) (r *VColorPickerBuilder) {
-	b.tag.Attr(":elevation", fmt.Sprint(v))
-	return b
-}
-
-func (b *VColorPickerBuilder) Flat(v bool) (r *VColorPickerBuilder) {
-	b.tag.Attr(":flat", fmt.Sprint(v))
+func (b *VColorPickerBuilder) DotSize(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":dot-size", h.JSONString(v))
 	return b
 }
 
@@ -53,28 +38,23 @@ func (b *VColorPickerBuilder) HideCanvas(v bool) (r *VColorPickerBuilder) {
 	return b
 }
 
-func (b *VColorPickerBuilder) HideInputs(v bool) (r *VColorPickerBuilder) {
-	b.tag.Attr(":hide-inputs", fmt.Sprint(v))
-	return b
-}
-
-func (b *VColorPickerBuilder) HideModeSwitch(v bool) (r *VColorPickerBuilder) {
-	b.tag.Attr(":hide-mode-switch", fmt.Sprint(v))
-	return b
-}
-
 func (b *VColorPickerBuilder) HideSliders(v bool) (r *VColorPickerBuilder) {
 	b.tag.Attr(":hide-sliders", fmt.Sprint(v))
 	return b
 }
 
-func (b *VColorPickerBuilder) Light(v bool) (r *VColorPickerBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VColorPickerBuilder) HideInputs(v bool) (r *VColorPickerBuilder) {
+	b.tag.Attr(":hide-inputs", fmt.Sprint(v))
 	return b
 }
 
-func (b *VColorPickerBuilder) Mode(v string) (r *VColorPickerBuilder) {
-	b.tag.Attr("mode", v)
+func (b *VColorPickerBuilder) Mode(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":mode", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Modes(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":modes", h.JSONString(v))
 	return b
 }
 
@@ -83,23 +63,63 @@ func (b *VColorPickerBuilder) ShowSwatches(v bool) (r *VColorPickerBuilder) {
 	return b
 }
 
+func (b *VColorPickerBuilder) SwatchesMaxHeight(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":swatches-max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) ModelValue(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Color(v string) (r *VColorPickerBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VColorPickerBuilder) Border(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":border", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Width(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Elevation(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Position(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":position", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Rounded(v interface{}) (r *VColorPickerBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Tile(v bool) (r *VColorPickerBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VColorPickerBuilder) Tag(v string) (r *VColorPickerBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VColorPickerBuilder) Theme(v string) (r *VColorPickerBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
 func (b *VColorPickerBuilder) Swatches(v interface{}) (r *VColorPickerBuilder) {
 	b.tag.Attr(":swatches", h.JSONString(v))
-	return b
-}
-
-func (b *VColorPickerBuilder) SwatchesMaxHeight(v int) (r *VColorPickerBuilder) {
-	b.tag.Attr(":swatches-max-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VColorPickerBuilder) Value(v interface{}) (r *VColorPickerBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
-	return b
-}
-
-func (b *VColorPickerBuilder) Width(v int) (r *VColorPickerBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
 	return b
 }
 

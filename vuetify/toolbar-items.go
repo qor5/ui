@@ -18,6 +18,16 @@ func VToolbarItems(children ...h.HTMLComponent) (r *VToolbarItemsBuilder) {
 	return
 }
 
+func (b *VToolbarItemsBuilder) Color(v string) (r *VToolbarItemsBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VToolbarItemsBuilder) Variant(v interface{}) (r *VToolbarItemsBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
+	return b
+}
+
 func (b *VToolbarItemsBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

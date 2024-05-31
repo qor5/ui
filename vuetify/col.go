@@ -18,73 +18,8 @@ func VCol(children ...h.HTMLComponent) (r *VColBuilder) {
 	return
 }
 
-func (b *VColBuilder) AlignSelf(v string) (r *VColBuilder) {
-	b.tag.Attr("align-self", v)
-	return b
-}
-
 func (b *VColBuilder) Cols(v interface{}) (r *VColBuilder) {
 	b.tag.Attr(":cols", h.JSONString(v))
-	return b
-}
-
-func (b *VColBuilder) Lg(v interface{}) (r *VColBuilder) {
-	b.tag.Attr(":lg", h.JSONString(v))
-	return b
-}
-
-func (b *VColBuilder) Md(v interface{}) (r *VColBuilder) {
-	b.tag.Attr(":md", h.JSONString(v))
-	return b
-}
-
-func (b *VColBuilder) Offset(v string) (r *VColBuilder) {
-	b.tag.Attr("offset", v)
-	return b
-}
-
-func (b *VColBuilder) OffsetLg(v string) (r *VColBuilder) {
-	b.tag.Attr("offset-lg", v)
-	return b
-}
-
-func (b *VColBuilder) OffsetMd(v string) (r *VColBuilder) {
-	b.tag.Attr("offset-md", v)
-	return b
-}
-
-func (b *VColBuilder) OffsetSm(v string) (r *VColBuilder) {
-	b.tag.Attr("offset-sm", v)
-	return b
-}
-
-func (b *VColBuilder) OffsetXl(v string) (r *VColBuilder) {
-	b.tag.Attr("offset-xl", v)
-	return b
-}
-
-func (b *VColBuilder) Order(v string) (r *VColBuilder) {
-	b.tag.Attr("order", v)
-	return b
-}
-
-func (b *VColBuilder) OrderLg(v string) (r *VColBuilder) {
-	b.tag.Attr("order-lg", v)
-	return b
-}
-
-func (b *VColBuilder) OrderMd(v string) (r *VColBuilder) {
-	b.tag.Attr("order-md", v)
-	return b
-}
-
-func (b *VColBuilder) OrderSm(v string) (r *VColBuilder) {
-	b.tag.Attr("order-sm", v)
-	return b
-}
-
-func (b *VColBuilder) OrderXl(v string) (r *VColBuilder) {
-	b.tag.Attr("order-xl", v)
 	return b
 }
 
@@ -93,13 +28,93 @@ func (b *VColBuilder) Sm(v interface{}) (r *VColBuilder) {
 	return b
 }
 
-func (b *VColBuilder) Tag(v string) (r *VColBuilder) {
-	b.tag.Attr("tag", v)
+func (b *VColBuilder) Md(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":md", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) Lg(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":lg", h.JSONString(v))
 	return b
 }
 
 func (b *VColBuilder) Xl(v interface{}) (r *VColBuilder) {
 	b.tag.Attr(":xl", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) Xxl(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":xxl", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) Offset(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":offset", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OffsetSm(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":offset-sm", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OffsetMd(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":offset-md", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OffsetLg(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":offset-lg", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OffsetXl(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":offset-xl", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OffsetXxl(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":offset-xxl", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) Order(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":order", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OrderSm(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":order-sm", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OrderMd(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":order-md", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OrderLg(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":order-lg", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OrderXl(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":order-xl", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) OrderXxl(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":order-xxl", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) AlignSelf(v interface{}) (r *VColBuilder) {
+	b.tag.Attr(":align-self", h.JSONString(v))
+	return b
+}
+
+func (b *VColBuilder) Tag(v string) (r *VColBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 

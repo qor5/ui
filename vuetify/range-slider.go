@@ -18,28 +18,88 @@ func VRangeSlider(children ...h.HTMLComponent) (r *VRangeSliderBuilder) {
 	return
 }
 
-func (b *VRangeSliderBuilder) AppendIcon(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VRangeSliderBuilder) Label(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VRangeSliderBuilder) BackgroundColor(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VRangeSliderBuilder) Focused(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Color(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("color", v)
+func (b *VRangeSliderBuilder) Reverse(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":reverse", fmt.Sprint(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Dark(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) Id(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VRangeSliderBuilder) Dense(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) AppendIcon(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) CenterAffix(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) PrependIcon(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) HideSpinButtons(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Hint(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VRangeSliderBuilder) PersistentHint(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Messages(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Direction(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Density(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) MaxWidth(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) MinWidth(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Width(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Theme(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
@@ -53,83 +113,18 @@ func (b *VRangeSliderBuilder) Error(v bool) (r *VRangeSliderBuilder) {
 	return b
 }
 
-func (b *VRangeSliderBuilder) ErrorCount(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) ErrorMessages(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":error-messages", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) ErrorMessages(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("error-messages", v)
+func (b *VRangeSliderBuilder) MaxErrors(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Height(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) HideDetails(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) Hint(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VRangeSliderBuilder) Id(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
-func (b *VRangeSliderBuilder) InverseLabel(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":inverse-label", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) Label(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VRangeSliderBuilder) Light(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) LoaderHeight(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":loader-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) Loading(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) Max(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":max", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) Messages(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VRangeSliderBuilder) Min(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":min", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) PersistentHint(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VRangeSliderBuilder) PrependIcon(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("prepend-icon", v)
+func (b *VRangeSliderBuilder) Name(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
@@ -143,18 +138,38 @@ func (b *VRangeSliderBuilder) Rules(v interface{}) (r *VRangeSliderBuilder) {
 	return b
 }
 
-func (b *VRangeSliderBuilder) Step(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":step", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) ModelValue(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Success(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) ValidateOn(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) SuccessMessages(v string) (r *VRangeSliderBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VRangeSliderBuilder) ValidationValue(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) HideDetails(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Max(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":max", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Min(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":min", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Step(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":step", h.JSONString(v))
 	return b
 }
 
@@ -163,28 +178,33 @@ func (b *VRangeSliderBuilder) ThumbColor(v string) (r *VRangeSliderBuilder) {
 	return b
 }
 
-func (b *VRangeSliderBuilder) ThumbLabel(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":thumb-label", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) ThumbLabel(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":thumb-label", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) ThumbSize(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":thumb-size", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) ThumbSize(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":thumb-size", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) TickLabels(v interface{}) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":tick-labels", h.JSONString(v))
+func (b *VRangeSliderBuilder) ShowTicks(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":show-ticks", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) TickSize(v int) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":tick-size", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) Ticks(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":ticks", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Ticks(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":ticks", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) TickSize(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":tick-size", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Color(v string) (r *VRangeSliderBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
@@ -198,18 +218,33 @@ func (b *VRangeSliderBuilder) TrackFillColor(v string) (r *VRangeSliderBuilder) 
 	return b
 }
 
-func (b *VRangeSliderBuilder) ValidateOnBlur(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) TrackSize(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":track-size", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Value(v interface{}) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VRangeSliderBuilder) Rounded(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
-func (b *VRangeSliderBuilder) Vertical(v bool) (r *VRangeSliderBuilder) {
-	b.tag.Attr(":vertical", fmt.Sprint(v))
+func (b *VRangeSliderBuilder) Tile(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Elevation(v interface{}) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":elevation", h.JSONString(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Ripple(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":ripple", fmt.Sprint(v))
+	return b
+}
+
+func (b *VRangeSliderBuilder) Strict(v bool) (r *VRangeSliderBuilder) {
+	b.tag.Attr(":strict", fmt.Sprint(v))
 	return b
 }
 

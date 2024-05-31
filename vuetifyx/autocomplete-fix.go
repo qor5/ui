@@ -3,8 +3,7 @@ package vuetifyx
 import (
 	"context"
 
-	"github.com/qor5/ui/vuetify"
-	"github.com/qor5/web"
+	"github.com/qor5/ui/v3/vuetify"
 	h "github.com/theplant/htmlgo"
 )
 
@@ -28,11 +27,6 @@ func (b *VXAutocompleteBuilder) ErrorMessages(v ...string) (r *VXAutocompleteBui
 	return b
 }
 
-func (b *VXAutocompleteBuilder) FieldName(v string) (r *VXAutocompleteBuilder) {
-	b.tag.Attr(web.VFieldName(v)...)
-	return b
-}
-
 func (b *VXAutocompleteBuilder) SelectedItems(v interface{}) (r *VXAutocompleteBuilder) {
 	b.selectedItems = v
 	return b
@@ -45,6 +39,16 @@ func (b *VXAutocompleteBuilder) HasIcon(v bool) (r *VXAutocompleteBuilder) {
 
 func (b *VXAutocompleteBuilder) Sorting(v bool) (r *VXAutocompleteBuilder) {
 	b.tag.Attr("sorting", v)
+	return b
+}
+
+func (b *VXAutocompleteBuilder) Variant(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("variant", v)
+	return b
+}
+
+func (b *VXAutocompleteBuilder) Density(v string) (r *VXAutocompleteBuilder) {
+	b.tag.Attr("density", v)
 	return b
 }
 

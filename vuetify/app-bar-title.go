@@ -18,6 +18,16 @@ func VAppBarTitle(children ...h.HTMLComponent) (r *VAppBarTitleBuilder) {
 	return
 }
 
+func (b *VAppBarTitleBuilder) Text(v string) (r *VAppBarTitleBuilder) {
+	b.tag.Attr("text", v)
+	return b
+}
+
+func (b *VAppBarTitleBuilder) Tag(v string) (r *VAppBarTitleBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
 func (b *VAppBarTitleBuilder) SetAttr(k string, v interface{}) {
 	b.tag.SetAttr(k, v)
 }

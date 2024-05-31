@@ -16,48 +16,28 @@ func (b *VIconBuilder) Color(v string) (r *VIconBuilder) {
 	return b
 }
 
-func (b *VIconBuilder) Dark(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VIconBuilder) Dense(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
-	return b
-}
-
 func (b *VIconBuilder) Disabled(v bool) (r *VIconBuilder) {
 	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
-func (b *VIconBuilder) Large(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":large", fmt.Sprint(v))
+func (b *VIconBuilder) Start(v bool) (r *VIconBuilder) {
+	b.tag.Attr(":start", fmt.Sprint(v))
 	return b
 }
 
-func (b *VIconBuilder) Left(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VIconBuilder) End(v bool) (r *VIconBuilder) {
+	b.tag.Attr(":end", fmt.Sprint(v))
 	return b
 }
 
-func (b *VIconBuilder) Light(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VIconBuilder) Icon(v interface{}) (r *VIconBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 
-func (b *VIconBuilder) Right(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
-	return b
-}
-
-func (b *VIconBuilder) Size(v int) (r *VIconBuilder) {
-	b.tag.Attr(":size", fmt.Sprint(v))
-	return b
-}
-
-func (b *VIconBuilder) Small(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":small", fmt.Sprint(v))
+func (b *VIconBuilder) Size(v interface{}) (r *VIconBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
 	return b
 }
 
@@ -66,13 +46,8 @@ func (b *VIconBuilder) Tag(v string) (r *VIconBuilder) {
 	return b
 }
 
-func (b *VIconBuilder) XLarge(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":x-large", fmt.Sprint(v))
-	return b
-}
-
-func (b *VIconBuilder) XSmall(v bool) (r *VIconBuilder) {
-	b.tag.Attr(":x-small", fmt.Sprint(v))
+func (b *VIconBuilder) Theme(v string) (r *VIconBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 

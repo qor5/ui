@@ -18,28 +18,8 @@ func VDialogTransition(children ...h.HTMLComponent) (r *VDialogTransitionBuilder
 	return
 }
 
-func (b *VDialogTransitionBuilder) Group(v bool) (r *VDialogTransitionBuilder) {
-	b.tag.Attr(":group", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDialogTransitionBuilder) HideOnLeave(v bool) (r *VDialogTransitionBuilder) {
-	b.tag.Attr(":hide-on-leave", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDialogTransitionBuilder) LeaveAbsolute(v bool) (r *VDialogTransitionBuilder) {
-	b.tag.Attr(":leave-absolute", fmt.Sprint(v))
-	return b
-}
-
-func (b *VDialogTransitionBuilder) Mode(v string) (r *VDialogTransitionBuilder) {
-	b.tag.Attr("mode", v)
-	return b
-}
-
-func (b *VDialogTransitionBuilder) Origin(v string) (r *VDialogTransitionBuilder) {
-	b.tag.Attr("origin", v)
+func (b *VDialogTransitionBuilder) Target(v interface{}) (r *VDialogTransitionBuilder) {
+	b.tag.Attr(":target", h.JSONString(v))
 	return b
 }
 

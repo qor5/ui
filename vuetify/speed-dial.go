@@ -18,33 +18,83 @@ func VSpeedDial(children ...h.HTMLComponent) (r *VSpeedDialBuilder) {
 	return
 }
 
-func (b *VSpeedDialBuilder) Absolute(v bool) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":absolute", fmt.Sprint(v))
+func (b *VSpeedDialBuilder) Activator(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":activator", h.JSONString(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Bottom(v bool) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":bottom", fmt.Sprint(v))
+func (b *VSpeedDialBuilder) Id(v string) (r *VSpeedDialBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VSpeedDialBuilder) Direction(v string) (r *VSpeedDialBuilder) {
-	b.tag.Attr("direction", v)
+func (b *VSpeedDialBuilder) CloseOnBack(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":close-on-back", fmt.Sprint(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Fixed(v bool) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":fixed", fmt.Sprint(v))
+func (b *VSpeedDialBuilder) Contained(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":contained", fmt.Sprint(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Left(v bool) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VSpeedDialBuilder) ContentClass(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":content-class", h.JSONString(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Mode(v string) (r *VSpeedDialBuilder) {
-	b.tag.Attr("mode", v)
+func (b *VSpeedDialBuilder) ContentProps(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":content-props", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Disabled(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Opacity(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":opacity", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) NoClickAnimation(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":no-click-animation", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) ModelValue(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":model-value", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Persistent(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":persistent", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Scrim(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":scrim", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) ZIndex(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":z-index", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Target(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":target", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) ActivatorProps(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":activator-props", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) OpenOnClick(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":open-on-click", fmt.Sprint(v))
 	return b
 }
 
@@ -53,28 +103,98 @@ func (b *VSpeedDialBuilder) OpenOnHover(v bool) (r *VSpeedDialBuilder) {
 	return b
 }
 
-func (b *VSpeedDialBuilder) Origin(v string) (r *VSpeedDialBuilder) {
-	b.tag.Attr("origin", v)
+func (b *VSpeedDialBuilder) OpenOnFocus(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":open-on-focus", fmt.Sprint(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Right(v bool) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
+func (b *VSpeedDialBuilder) CloseOnContentClick(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":close-on-content-click", fmt.Sprint(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Top(v bool) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":top", fmt.Sprint(v))
+func (b *VSpeedDialBuilder) CloseDelay(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":close-delay", h.JSONString(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Transition(v string) (r *VSpeedDialBuilder) {
-	b.tag.Attr("transition", v)
+func (b *VSpeedDialBuilder) OpenDelay(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":open-delay", h.JSONString(v))
 	return b
 }
 
-func (b *VSpeedDialBuilder) Value(v interface{}) (r *VSpeedDialBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VSpeedDialBuilder) Height(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":height", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) MaxHeight(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":max-height", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) MaxWidth(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) MinHeight(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":min-height", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) MinWidth(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Width(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Eager(v bool) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":eager", fmt.Sprint(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) LocationStrategy(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":location-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Location(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":location", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Origin(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":origin", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Offset(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":offset", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) ScrollStrategy(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":scroll-strategy", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Theme(v string) (r *VSpeedDialBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VSpeedDialBuilder) Transition(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VSpeedDialBuilder) Attach(v interface{}) (r *VSpeedDialBuilder) {
+	b.tag.Attr(":attach", h.JSONString(v))
 	return b
 }
 

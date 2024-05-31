@@ -23,11 +23,6 @@ func (b *VContainerBuilder) Fluid(v bool) (r *VContainerBuilder) {
 	return b
 }
 
-func (b *VContainerBuilder) Id(v string) (r *VContainerBuilder) {
-	b.tag.Attr("id", v)
-	return b
-}
-
 func (b *VContainerBuilder) Tag(v string) (r *VContainerBuilder) {
 	b.tag.Attr("tag", v)
 	return b

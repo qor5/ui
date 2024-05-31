@@ -18,13 +18,38 @@ func VBreadcrumbs(children ...h.HTMLComponent) (r *VBreadcrumbsBuilder) {
 	return
 }
 
-func (b *VBreadcrumbsBuilder) Dark(v bool) (r *VBreadcrumbsBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VBreadcrumbsBuilder) Divider(v string) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr("divider", v)
 	return b
 }
 
-func (b *VBreadcrumbsBuilder) Divider(v string) (r *VBreadcrumbsBuilder) {
-	b.tag.Attr("divider", v)
+func (b *VBreadcrumbsBuilder) ActiveClass(v string) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr("active-class", v)
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) ActiveColor(v string) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr("active-color", v)
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) BgColor(v string) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr("bg-color", v)
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) Color(v string) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) Disabled(v bool) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) Icon(v interface{}) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 
@@ -33,13 +58,23 @@ func (b *VBreadcrumbsBuilder) Items(v interface{}) (r *VBreadcrumbsBuilder) {
 	return b
 }
 
-func (b *VBreadcrumbsBuilder) Large(v bool) (r *VBreadcrumbsBuilder) {
-	b.tag.Attr(":large", fmt.Sprint(v))
+func (b *VBreadcrumbsBuilder) Density(v interface{}) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VBreadcrumbsBuilder) Light(v bool) (r *VBreadcrumbsBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
+func (b *VBreadcrumbsBuilder) Rounded(v interface{}) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) Tile(v bool) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
+	return b
+}
+
+func (b *VBreadcrumbsBuilder) Tag(v string) (r *VBreadcrumbsBuilder) {
+	b.tag.Attr("tag", v)
 	return b
 }
 

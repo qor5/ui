@@ -18,53 +18,38 @@ func VAvatar(children ...h.HTMLComponent) (r *VAvatarBuilder) {
 	return
 }
 
-func (b *VAvatarBuilder) Color(v string) (r *VAvatarBuilder) {
-	b.tag.Attr("color", v)
+func (b *VAvatarBuilder) Start(v bool) (r *VAvatarBuilder) {
+	b.tag.Attr(":start", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAvatarBuilder) Height(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VAvatarBuilder) End(v bool) (r *VAvatarBuilder) {
+	b.tag.Attr(":end", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAvatarBuilder) Left(v bool) (r *VAvatarBuilder) {
-	b.tag.Attr(":left", fmt.Sprint(v))
+func (b *VAvatarBuilder) Icon(v interface{}) (r *VAvatarBuilder) {
+	b.tag.Attr(":icon", h.JSONString(v))
 	return b
 }
 
-func (b *VAvatarBuilder) MaxHeight(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":max-height", fmt.Sprint(v))
+func (b *VAvatarBuilder) Image(v string) (r *VAvatarBuilder) {
+	b.tag.Attr("image", v)
 	return b
 }
 
-func (b *VAvatarBuilder) MaxWidth(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":max-width", fmt.Sprint(v))
+func (b *VAvatarBuilder) Text(v string) (r *VAvatarBuilder) {
+	b.tag.Attr("text", v)
 	return b
 }
 
-func (b *VAvatarBuilder) MinHeight(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":min-height", fmt.Sprint(v))
+func (b *VAvatarBuilder) Density(v interface{}) (r *VAvatarBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VAvatarBuilder) MinWidth(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":min-width", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAvatarBuilder) Right(v bool) (r *VAvatarBuilder) {
-	b.tag.Attr(":right", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAvatarBuilder) Rounded(v bool) (r *VAvatarBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAvatarBuilder) Size(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":size", fmt.Sprint(v))
+func (b *VAvatarBuilder) Rounded(v interface{}) (r *VAvatarBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
@@ -73,8 +58,28 @@ func (b *VAvatarBuilder) Tile(v bool) (r *VAvatarBuilder) {
 	return b
 }
 
-func (b *VAvatarBuilder) Width(v int) (r *VAvatarBuilder) {
-	b.tag.Attr(":width", fmt.Sprint(v))
+func (b *VAvatarBuilder) Size(v interface{}) (r *VAvatarBuilder) {
+	b.tag.Attr(":size", h.JSONString(v))
+	return b
+}
+
+func (b *VAvatarBuilder) Tag(v string) (r *VAvatarBuilder) {
+	b.tag.Attr("tag", v)
+	return b
+}
+
+func (b *VAvatarBuilder) Theme(v string) (r *VAvatarBuilder) {
+	b.tag.Attr("theme", v)
+	return b
+}
+
+func (b *VAvatarBuilder) Color(v string) (r *VAvatarBuilder) {
+	b.tag.Attr("color", v)
+	return b
+}
+
+func (b *VAvatarBuilder) Variant(v interface{}) (r *VAvatarBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 

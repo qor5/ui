@@ -18,28 +18,73 @@ func VInput(children ...h.HTMLComponent) (r *VInputBuilder) {
 	return
 }
 
-func (b *VInputBuilder) AppendIcon(v string) (r *VInputBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VInputBuilder) Id(v string) (r *VInputBuilder) {
+	b.tag.Attr("id", v)
 	return b
 }
 
-func (b *VInputBuilder) BackgroundColor(v string) (r *VInputBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VInputBuilder) AppendIcon(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) Color(v string) (r *VInputBuilder) {
-	b.tag.Attr("color", v)
+func (b *VInputBuilder) CenterAffix(v bool) (r *VInputBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
 	return b
 }
 
-func (b *VInputBuilder) Dark(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
+func (b *VInputBuilder) PrependIcon(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) Dense(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
+func (b *VInputBuilder) HideSpinButtons(v bool) (r *VInputBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VInputBuilder) Hint(v string) (r *VInputBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VInputBuilder) PersistentHint(v bool) (r *VInputBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VInputBuilder) Messages(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) Direction(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) Density(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) MaxWidth(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) MinWidth(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) Width(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
+	return b
+}
+
+func (b *VInputBuilder) Theme(v string) (r *VInputBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
@@ -53,63 +98,23 @@ func (b *VInputBuilder) Error(v bool) (r *VInputBuilder) {
 	return b
 }
 
-func (b *VInputBuilder) ErrorCount(v int) (r *VInputBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
+func (b *VInputBuilder) ErrorMessages(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":error-messages", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) ErrorMessages(v string) (r *VInputBuilder) {
-	b.tag.Attr("error-messages", v)
+func (b *VInputBuilder) MaxErrors(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) Height(v int) (r *VInputBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VInputBuilder) HideDetails(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
-	return b
-}
-
-func (b *VInputBuilder) Hint(v string) (r *VInputBuilder) {
-	b.tag.Attr("hint", v)
-	return b
-}
-
-func (b *VInputBuilder) Id(v string) (r *VInputBuilder) {
-	b.tag.Attr("id", v)
+func (b *VInputBuilder) Name(v string) (r *VInputBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
 func (b *VInputBuilder) Label(v string) (r *VInputBuilder) {
 	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VInputBuilder) Light(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VInputBuilder) Loading(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VInputBuilder) Messages(v string) (r *VInputBuilder) {
-	b.tag.Attr("messages", v)
-	return b
-}
-
-func (b *VInputBuilder) PersistentHint(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
-	return b
-}
-
-func (b *VInputBuilder) PrependIcon(v string) (r *VInputBuilder) {
-	b.tag.Attr("prepend-icon", v)
 	return b
 }
 
@@ -123,23 +128,28 @@ func (b *VInputBuilder) Rules(v interface{}) (r *VInputBuilder) {
 	return b
 }
 
-func (b *VInputBuilder) Success(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
+func (b *VInputBuilder) ModelValue(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) SuccessMessages(v string) (r *VInputBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VInputBuilder) ValidateOn(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) ValidateOnBlur(v bool) (r *VInputBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
+func (b *VInputBuilder) ValidationValue(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":validation-value", h.JSONString(v))
 	return b
 }
 
-func (b *VInputBuilder) Value(v interface{}) (r *VInputBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VInputBuilder) Focused(v bool) (r *VInputBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
+	return b
+}
+
+func (b *VInputBuilder) HideDetails(v interface{}) (r *VInputBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
 	return b
 }
 

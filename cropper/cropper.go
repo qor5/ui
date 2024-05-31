@@ -23,9 +23,9 @@ type Value struct {
 	Y      float64 `json:"y"`
 	Width  float64 `json:"width"`
 	Height float64 `json:"height"`
-	//Rotate float64 `json:"rotate"`
-	//ScaleX float64 `json:"scaleX"`
-	//ScaleY float64 `json:"scaleY"`
+	// Rotate float64 `json:"rotate"`
+	// ScaleX float64 `json:"scaleX"`
+	// ScaleY float64 `json:"scaleY"`
 }
 
 func Cropper() (r *CropperBuilder) {
@@ -61,8 +61,8 @@ func (b *CropperBuilder) Alt(v string) (r *CropperBuilder) {
 	return b
 }
 
-func (b *CropperBuilder) Value(v Value) (r *CropperBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *CropperBuilder) ModelValue(v Value) (r *CropperBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
 	return b
 }
 

@@ -11,123 +11,43 @@ type VAutocompleteBuilder struct {
 	tag *h.HTMLTagBuilder
 }
 
-func (b *VAutocompleteBuilder) AllowOverflow(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":allow-overflow", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Label(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("label", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) AppendIcon(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("append-icon", v)
+func (b *VAutocompleteBuilder) AutoSelectFirst(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":auto-select-first", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) AppendOuterIcon(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("append-outer-icon", v)
+func (b *VAutocompleteBuilder) ClearOnSelect(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":clear-on-select", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Attach(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":attach", h.JSONString(v))
+func (b *VAutocompleteBuilder) Search(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("search", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) AutoSelectFirst(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":auto-select-first", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) FilterMode(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":filter-mode", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Autofocus(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":autofocus", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) NoFilter(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":no-filter", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) BackgroundColor(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("background-color", v)
+func (b *VAutocompleteBuilder) CustomFilter(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":custom-filter", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) CacheItems(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":cache-items", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Chips(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":chips", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) ClearIcon(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("clear-icon", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) Clearable(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":clearable", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Color(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("color", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) Counter(v int) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":counter", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) CounterValue(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":counter-value", h.JSONString(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Dark(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":dark", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) DeletableChips(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":deletable-chips", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Dense(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":dense", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) DisableLookup(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":disable-lookup", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Disabled(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":disabled", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Eager(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":eager", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Error(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":error", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) ErrorCount(v int) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":error-count", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Filled(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":filled", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Filter(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":filter", h.JSONString(v))
+func (b *VAutocompleteBuilder) Reverse(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":reverse", fmt.Sprint(v))
 	return b
 }
 
@@ -136,18 +56,43 @@ func (b *VAutocompleteBuilder) Flat(v bool) (r *VAutocompleteBuilder) {
 	return b
 }
 
-func (b *VAutocompleteBuilder) FullWidth(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":full-width", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) CustomKeyFilter(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":custom-key-filter", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Height(v int) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":height", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) FilterKeys(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":filter-keys", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) HideDetails(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":hide-details", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Chips(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":chips", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) ClosableChips(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":closable-chips", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) CloseText(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("close-text", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) Type(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("type", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) OpenText(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("open-text", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) Eager(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":eager", fmt.Sprint(v))
 	return b
 }
 
@@ -161,68 +106,23 @@ func (b *VAutocompleteBuilder) HideSelected(v bool) (r *VAutocompleteBuilder) {
 	return b
 }
 
-func (b *VAutocompleteBuilder) Hint(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("hint", v)
+func (b *VAutocompleteBuilder) ListProps(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":list-props", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Id(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("id", v)
+func (b *VAutocompleteBuilder) BaseColor(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("base-color", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) ItemColor(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("item-color", v)
+func (b *VAutocompleteBuilder) BgColor(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("bg-color", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) ItemDisabled(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("item-disabled", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) ItemText(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("item-text", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) ItemValue(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("item-value", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) Items(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":items", h.JSONString(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Label(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("label", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) Light(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":light", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) LoaderHeight(v int) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":loader-height", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Loading(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":loading", fmt.Sprint(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) MenuProps(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":menu-props", h.JSONString(v))
-	return b
-}
-
-func (b *VAutocompleteBuilder) Messages(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("messages", v)
+func (b *VAutocompleteBuilder) Disabled(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":disabled", fmt.Sprint(v))
 	return b
 }
 
@@ -231,58 +131,48 @@ func (b *VAutocompleteBuilder) Multiple(v bool) (r *VAutocompleteBuilder) {
 	return b
 }
 
-func (b *VAutocompleteBuilder) NoDataText(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("no-data-text", v)
+func (b *VAutocompleteBuilder) Density(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":density", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) NoFilter(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":no-filter", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) MaxWidth(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":max-width", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) OpenOnClear(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":open-on-clear", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) MinWidth(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":min-width", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Outlined(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":outlined", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Width(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":width", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) PersistentHint(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Items(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":items", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) PersistentPlaceholder(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":persistent-placeholder", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) ItemTitle(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":item-title", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Placeholder(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("placeholder", v)
+func (b *VAutocompleteBuilder) ItemValue(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":item-value", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Prefix(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("prefix", v)
+func (b *VAutocompleteBuilder) ItemChildren(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":item-children", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) PrependIcon(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("prepend-icon", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) PrependInnerIcon(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("prepend-inner-icon", v)
-	return b
-}
-
-func (b *VAutocompleteBuilder) Readonly(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":readonly", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) ItemProps(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":item-props", h.JSONString(v))
 	return b
 }
 
@@ -291,58 +181,113 @@ func (b *VAutocompleteBuilder) ReturnObject(v bool) (r *VAutocompleteBuilder) {
 	return b
 }
 
-func (b *VAutocompleteBuilder) Reverse(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":reverse", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) ValueComparator(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":value-comparator", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Rounded(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":rounded", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Rounded(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":rounded", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Rules(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":rules", h.JSONString(v))
+func (b *VAutocompleteBuilder) Tile(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":tile", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) SearchInput(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("search-input", v)
+func (b *VAutocompleteBuilder) Theme(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("theme", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) Shaped(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":shaped", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Color(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("color", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) SingleLine(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":single-line", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Variant(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":variant", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) SmallChips(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":small-chips", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Name(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("name", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) Solo(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":solo", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) Menu(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":menu", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) SoloInverted(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":solo-inverted", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) MenuIcon(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":menu-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Success(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":success", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) MenuProps(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":menu-props", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) SuccessMessages(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("success-messages", v)
+func (b *VAutocompleteBuilder) Id(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("id", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) ModelValue(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":model-value", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Transition(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":transition", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) NoDataText(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("no-data-text", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) OpenOnClear(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":open-on-clear", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) ItemColor(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("item-color", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) Autofocus(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":autofocus", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Counter(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":counter", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Prefix(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("prefix", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) Placeholder(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("placeholder", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) PersistentPlaceholder(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":persistent-placeholder", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) PersistentCounter(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":persistent-counter", fmt.Sprint(v))
 	return b
 }
 
@@ -351,23 +296,128 @@ func (b *VAutocompleteBuilder) Suffix(v string) (r *VAutocompleteBuilder) {
 	return b
 }
 
-func (b *VAutocompleteBuilder) Type(v string) (r *VAutocompleteBuilder) {
-	b.tag.Attr("type", v)
+func (b *VAutocompleteBuilder) Role(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("role", v)
 	return b
 }
 
-func (b *VAutocompleteBuilder) ValidateOnBlur(v bool) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":validate-on-blur", fmt.Sprint(v))
+func (b *VAutocompleteBuilder) AppendIcon(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":append-icon", h.JSONString(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) Value(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":value", h.JSONString(v))
+func (b *VAutocompleteBuilder) CenterAffix(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":center-affix", fmt.Sprint(v))
 	return b
 }
 
-func (b *VAutocompleteBuilder) ValueComparator(v interface{}) (r *VAutocompleteBuilder) {
-	b.tag.Attr(":value-comparator", h.JSONString(v))
+func (b *VAutocompleteBuilder) PrependIcon(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":prepend-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) HideSpinButtons(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":hide-spin-buttons", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Hint(v string) (r *VAutocompleteBuilder) {
+	b.tag.Attr("hint", v)
+	return b
+}
+
+func (b *VAutocompleteBuilder) PersistentHint(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":persistent-hint", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Messages(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":messages", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Direction(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":direction", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Error(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":error", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) MaxErrors(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":max-errors", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Readonly(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":readonly", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Rules(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":rules", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) ValidateOn(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":validate-on", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Focused(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":focused", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) HideDetails(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":hide-details", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Clearable(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":clearable", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) ClearIcon(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":clear-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Active(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":active", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) PersistentClear(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":persistent-clear", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) PrependInnerIcon(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":prepend-inner-icon", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) SingleLine(v bool) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":single-line", fmt.Sprint(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) Loading(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":loading", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) CounterValue(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":counter-value", h.JSONString(v))
+	return b
+}
+
+func (b *VAutocompleteBuilder) ModelModifiers(v interface{}) (r *VAutocompleteBuilder) {
+	b.tag.Attr(":model-modifiers", h.JSONString(v))
 	return b
 }
 
