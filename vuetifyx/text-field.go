@@ -2,6 +2,7 @@ package vuetifyx
 
 import (
 	"context"
+	"fmt"
 
 	v "github.com/qor5/ui/v3/vuetify"
 	"github.com/qor5/web/v3"
@@ -10,12 +11,19 @@ import (
 )
 
 type VXTextFieldBuilder struct {
-	label    string
-	readOnly bool
-	dense    string
-	formKey  string
-	value    string
-	class    string
+	label     string
+	readOnly  bool
+	dense     string
+	vField    vField
+	text      string
+	class     string
+	valueType string
+	suffix    string
+}
+
+type vField struct {
+	formKey string
+	value   interface{}
 }
 
 func VXTextField() *VXTextFieldBuilder {
@@ -37,19 +45,30 @@ func (b *VXTextFieldBuilder) Dense(dense string) *VXTextFieldBuilder {
 	return b
 }
 
-func (b *VXTextFieldBuilder) Value(value string) *VXTextFieldBuilder {
-	b.value = value
+func (b *VXTextFieldBuilder) Text(value string) *VXTextFieldBuilder {
+	b.text = value
+	b.readOnly = true
 	return b
 }
 
-func (b *VXTextFieldBuilder) VField(formKey, value string) *VXTextFieldBuilder {
-	b.formKey = formKey
-	b.value = value
+func (b *VXTextFieldBuilder) VField(formKey string, value interface{}) *VXTextFieldBuilder {
+	b.vField.formKey = formKey
+	b.vField.value = value
 	return b
 }
 
 func (b *VXTextFieldBuilder) Class(class string) *VXTextFieldBuilder {
 	b.class = class
+	return b
+}
+
+func (b *VXTextFieldBuilder) Type(valueType string) *VXTextFieldBuilder {
+	b.valueType = valueType
+	return b
+}
+
+func (b *VXTextFieldBuilder) Suffix(suffix string) *VXTextFieldBuilder {
+	b.suffix = suffix
 	return b
 }
 
@@ -64,15 +83,23 @@ func (b *VXTextFieldBuilder) MarshalHTML(ctx context.Context) (r []byte, err err
 		if b.label != "" {
 			div.AppendChildren(label)
 		}
+		if b.suffix != "" {
+			b.text = fmt.Sprintf("%s %s", b.text, b.suffix)
+		}
 		div.AppendChildren(
-			h.Div(h.Span(b.value)),
+			h.Div(h.Span(b.text)),
 		)
 		return div.MarshalHTML(ctx)
 	}
 
-	content := v.VTextField().HideDetails(true).
+	var valueType string = "text"
+	if b.valueType != "" {
+		valueType = b.valueType
+	}
+	content := v.VTextField().HideDetails(true).Type(valueType).
 		Variant(v.VariantOutlined).Density(v.DensityCompact).
-		Attr(web.VField(b.formKey, b.value)...)
+		Suffix(b.suffix).
+		Attr(web.VField(b.vField.formKey, b.vField.value)...)
 	return h.Div(
 		label,
 		content,
